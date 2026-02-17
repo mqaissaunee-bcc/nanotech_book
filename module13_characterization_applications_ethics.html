@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 13: Characterization, Applications, Ethics and Course Review - Introduction to Nanotechnology Online Textbook">
+    <title>Module 13: Characterization, Applications, Ethics &amp; Course Review | Introduction to Nanotechnology</title>
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #336699;
+            --accent-teal: #009999;
+            --accent-gold: #CC9900;
+            --success-green: #009933;
+            --warning-orange: #FF6600;
+            --error-red: #CC0000;
+            --white: #FFFFFF;
+            --light-gray: #F0F0F0;
+            --medium-gray: #CCCCCC;
+            --dark-gray: #666666;
+            --text-dark: #333333;
+            --purple-accent: #663399;
+            --deep-purple: #4A0E4E;
+            --light-purple: #E8D5F5;
+            --soft-blue: #E3F2FD;
+            --soft-green: #E8F5E9;
+            --soft-gold: #FFF8E1;
+            --soft-red: #FFEBEE;
+            --soft-purple: #F3E5F5;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Georgia, 'Times New Roman', serif; line-height: 1.75; color: var(--text-dark); background: var(--light-gray); min-height: 100vh; }
+        .skip-link { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); background: var(--primary-blue); color: var(--white); padding: 12px 24px; text-decoration: none; border-radius: 0 0 8px 8px; z-index: 10000; font-weight: bold; }
+        .skip-link:focus { top: 0; outline: 3px solid var(--accent-gold); }
+        header { background: linear-gradient(135deg, var(--deep-purple), var(--purple-accent)); color: var(--white); padding: 16px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); position: sticky; top: 0; z-index: 1000; }
+        .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .logo-section { display: flex; align-items: center; gap: 14px; }
+        .logo-icon { width: 52px; height: 52px; background: var(--accent-gold); color: var(--primary-blue); font-size: 1.3rem; font-weight: bold; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
+        .site-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 2px; }
+        .site-subtitle { font-size: 0.95rem; opacity: 0.9; font-style: italic; }
+        .nav-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+        .nav-btn { background: rgba(255,255,255,0.15); color: var(--white); padding: 9px 16px; text-decoration: none; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s ease; font-weight: 500; font-size: 0.9rem; }
+        .nav-btn:hover, .nav-btn:focus { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); outline: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        main { max-width: 1400px; margin: 0 auto; padding: 30px; background: var(--white); border-radius: 12px 12px 0 0; margin-top: -8px; position: relative; z-index: 1; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); }
+        .module-banner { text-align: center; padding: 45px 30px; background: linear-gradient(135deg, var(--deep-purple), var(--purple-accent)); color: var(--white); margin: -30px -30px 30px -30px; border-radius: 12px 12px 0 0; }
+        .module-banner h1 { font-size: 2.2rem; margin-bottom: 14px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .module-banner p { font-size: 1.1rem; max-width: 850px; margin: 0 auto; opacity: 0.95; }
+        .tabs { display: flex; flex-wrap: wrap; background: var(--light-gray); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 30px; border: 1px solid var(--medium-gray); }
+        .tab-btn { background: transparent; border: none; color: var(--text-dark); padding: 14px 12px; font-size: 0.92rem; cursor: pointer; transition: all 0.3s ease; flex: 1; min-width: 130px; border-right: 1px solid rgba(0,0,0,0.08); position: relative; font-family: Georgia, 'Times New Roman', serif; }
+        .tab-btn:last-child { border-right: none; }
+        .tab-btn:hover { background: rgba(102,51,153,0.1); }
+        .tab-btn:focus { outline: 3px solid var(--accent-gold); outline-offset: -3px; }
+        .tab-btn.active { background: var(--purple-accent); color: var(--white); font-weight: bold; }
+        .tab-btn.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent-gold); }
+        .tab-content { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .content-block { background: var(--white); border-radius: 12px; padding: 30px; box-shadow: 0 3px 12px rgba(0,0,0,0.06); margin-bottom: 28px; border-left: 5px solid var(--purple-accent); }
+        .section-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--light-gray); }
+        .section-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--deep-purple), var(--purple-accent)); color: var(--white); font-size: 1.5rem; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
+        .section-head h2 { font-size: 1.6rem; color: var(--primary-blue); }
+        h3 { color: var(--secondary-blue); margin: 24px 0 14px; font-size: 1.3rem; }
+        h4 { color: var(--primary-blue); margin: 18px 0 10px; font-size: 1.1rem; }
+        p { margin-bottom: 14px; }
+        ul, ol { margin: 10px 0 16px 24px; }
+        li { margin-bottom: 6px; }
+        strong { color: var(--primary-blue); }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 24px 0; }
+        .info-card { background: var(--white); border: 2px solid var(--medium-gray); border-radius: 12px; padding: 24px; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .info-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--accent-teal); }
+        .info-card:hover, .info-card:focus-within { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); border-color: var(--accent-teal); }
+        .card-icon-wrap { width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-teal), var(--secondary-blue)); color: var(--white); font-size: 1.6rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .card-label { font-size: 1.2rem; font-weight: bold; color: var(--primary-blue); text-align: center; margin-bottom: 10px; }
+        .card-body-text { color: var(--text-dark); line-height: 1.6; font-size: 0.95rem; }
+        .card-detail { display: none; margin-top: 16px; padding: 16px; background: var(--soft-blue); border-radius: 8px; border-left: 4px solid var(--secondary-blue); animation: fadeIn 0.3s ease; }
+        .card-detail.open { display: block; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-radius: 10px; overflow: hidden; }
+        .comparison-table th { background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: var(--white); padding: 14px 16px; text-align: left; font-weight: bold; font-size: 0.9rem; }
+        .comparison-table td { padding: 12px 16px; border-bottom: 1px solid var(--light-gray); }
+        .comparison-table tr:nth-child(even) { background: var(--soft-blue); }
+        .comparison-table tr:hover { background: #D0E8FF; }
+        .sim-container { background: linear-gradient(135deg, #1a1a2e, #16213e); border-radius: 14px; padding: 24px; margin: 24px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .sim-title { color: var(--accent-gold); font-size: 1.3rem; font-weight: bold; margin-bottom: 16px; text-align: center; }
+        .sim-canvas-wrap { display: flex; justify-content: center; margin-bottom: 16px; }
+        .sim-canvas-wrap canvas { border-radius: 10px; border: 2px solid rgba(255,255,255,0.15); max-width: 100%; height: auto; }
+        .sim-controls { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; }
+        .sim-controls label { color: #CCCCCC; font-size: 0.92rem; display: flex; align-items: center; gap: 8px; }
+        .sim-controls input[type="range"] { width: 140px; accent-color: var(--accent-gold); }
+        .sim-controls select, .sim-controls button { padding: 8px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: var(--white); font-size: 0.9rem; cursor: pointer; font-family: Georgia, serif; }
+        .sim-controls button { background: var(--accent-gold); color: var(--primary-blue); font-weight: bold; border: none; transition: all 0.3s; }
+        .sim-controls button:hover { transform: scale(1.05); }
+        .sim-readout { text-align: center; color: var(--accent-teal); font-size: 0.95rem; margin-top: 10px; font-family: 'Courier New', Courier, monospace; }
+        .callout { padding: 20px 24px; border-radius: 10px; margin: 20px 0; }
+        .callout-blue { background: var(--soft-blue); border-left: 5px solid var(--secondary-blue); }
+        .callout-green { background: var(--soft-green); border-left: 5px solid var(--success-green); }
+        .callout-gold { background: var(--soft-gold); border-left: 5px solid var(--accent-gold); }
+        .callout-red { background: var(--soft-red); border-left: 5px solid var(--error-red); }
+        .callout-purple { background: var(--soft-purple); border-left: 5px solid var(--purple-accent); }
+        .callout h4 { margin-top: 0; }
+        .tooltip-trigger { border-bottom: 2px dashed var(--accent-teal); cursor: help; position: relative; color: var(--secondary-blue); font-weight: 600; }
+        .tooltip-box { display: none; position: fixed; background: var(--primary-blue); color: var(--white); padding: 14px 18px; border-radius: 10px; font-size: 0.88rem; line-height: 1.5; max-width: 340px; width: max-content; box-shadow: 0 8px 25px rgba(0,0,0,0.3); z-index: 9999; pointer-events: none; }
+        .ethics-card { background: var(--white); border-radius: 12px; border-left: 5px solid var(--warning-orange); padding: 20px 24px; margin: 14px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.3s; }
+        .ethics-card:hover { transform: translateX(4px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .ethics-card h4 { margin-top: 0; color: var(--warning-orange); font-size: 1.1rem; }
+        .quiz-q { background: var(--white); border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 2px solid var(--medium-gray); transition: border-color 0.3s; }
+        .quiz-q.correct { border-color: var(--success-green); background: var(--soft-green); }
+        .quiz-q.incorrect { border-color: var(--error-red); background: var(--soft-red); }
+        .q-number { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--purple-accent); color: var(--white); font-weight: bold; font-size: 1rem; margin-right: 12px; vertical-align: middle; }
+        .q-text { font-size: 1.05rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 14px; }
+        .quiz-option { display: block; padding: 12px 16px; margin: 8px 0; background: var(--light-gray); border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
+        .quiz-option:hover { background: var(--soft-blue); border-color: var(--secondary-blue); }
+        .quiz-option input { margin-right: 10px; accent-color: var(--purple-accent); }
+        .feedback-box { display: none; padding: 14px 18px; border-radius: 8px; margin-top: 12px; font-size: 0.95rem; }
+        .feedback-box.show { display: block; }
+        .feedback-box.correct-fb { background: var(--soft-green); border-left: 4px solid var(--success-green); color: #1B5E20; }
+        .feedback-box.incorrect-fb { background: var(--soft-red); border-left: 4px solid var(--error-red); color: #B71C1C; }
+        .quiz-results { display: none; text-align: center; padding: 30px; background: linear-gradient(135deg, var(--deep-purple), var(--purple-accent)); color: var(--white); border-radius: 14px; margin-top: 24px; }
+        .quiz-results h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 10px; }
+        .quiz-score { font-size: 3rem; font-weight: bold; color: var(--accent-gold); }
+        .phase-card { border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+        .phase-card h3 { margin-top: 0; }
+        .phase-1 { background: var(--soft-green); border-left: 6px solid #2E7D32; } .phase-1 h3 { color: #2E7D32; }
+        .phase-2 { background: var(--soft-blue); border-left: 6px solid #1565C0; } .phase-2 h3 { color: #1565C0; }
+        .phase-3 { background: var(--soft-gold); border-left: 6px solid #E65100; } .phase-3 h3 { color: #E65100; }
+        .phase-4 { background: var(--soft-red); border-left: 6px solid #B71C1C; } .phase-4 h3 { color: #B71C1C; }
+        .phase-5 { background: var(--soft-purple); border-left: 6px solid var(--purple-accent); } .phase-5 h3 { color: var(--purple-accent); }
+        .btn { display: inline-block; padding: 12px 28px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s; font-family: Georgia, serif; }
+        .btn-primary { background: var(--purple-accent); color: var(--white); }
+        .btn-primary:hover { background: var(--deep-purple); transform: translateY(-2px); }
+        .btn-gold { background: var(--accent-gold); color: var(--primary-blue); }
+        .btn-gold:hover { background: #B8860B; transform: translateY(-2px); }
+        .progress-wrap { background: var(--light-gray); border-radius: 20px; height: 10px; margin: 20px 0; overflow: hidden; }
+        .progress-bar { height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--accent-teal), var(--purple-accent)); transition: width 0.6s ease; }
+        .progress-label { text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 4px; }
+        footer { background: linear-gradient(135deg, var(--primary-blue), #001a33); color: var(--white); text-align: center; padding: 30px; margin-top: 0; }
+        footer a { color: var(--accent-gold); }
+        @media (max-width: 768px) { .tabs { flex-direction: column; } .tab-btn { min-width: auto; padding: 12px; font-size: 0.85rem; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); } .module-banner h1 { font-size: 1.6rem; } .card-grid { grid-template-columns: 1fr; } main { padding: 16px; } .module-banner { margin: -16px -16px 20px -16px; padding: 30px 16px; } .header-content { flex-direction: column; align-items: flex-start; } .comparison-table { font-size: 0.82rem; } .comparison-table th, .comparison-table td { padding: 8px 10px; } }
+        @media (max-width: 480px) { .module-banner h1 { font-size: 1.3rem; } .section-head h2 { font-size: 1.25rem; } }
+        @media print { header, .tabs, .sim-container, footer { display: none; } .tab-content { display: block !important; } main { box-shadow: none; } }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to Main Content</a>
+<header>
+    <div class="header-content">
+        <div class="logo-section">
+            <div class="logo-icon" aria-hidden="true">NT</div>
+            <div>
+                <div class="site-title">Introduction to Nanotechnology</div>
+                <div class="site-subtitle">Module 13: Characterization, Applications, Ethics &amp; Course Review</div>
+            </div>
+        </div>
+        <nav class="nav-buttons" aria-label="Module navigation">
+            <a href="index.html" class="nav-btn">&larr; Course Home</a>
+            <a href="module12_self_assembly.html" class="nav-btn">&larr; Module 12</a>
+        </nav>
+    </div>
+</header>
+<main id="main-content">
+    <div class="module-banner">
+        <h1>Module 13 &mdash; Characterization, Applications, Ethics &amp; Course Review</h1>
+        <p>Master nanoscale characterization tools, explore breakthrough applications across industries, confront the ethical dimensions of nanotechnology, and review the full semester in preparation for the final examination.</p>
+        <div class="progress-wrap" style="max-width:600px;margin:20px auto 0;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Module completion progress">
+            <div class="progress-bar" id="moduleProgress" style="width:0%"></div>
+        </div>
+        <div class="progress-label" id="progressLabel">0% Complete</div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Module content sections">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-char" id="tab-char" onclick="switchTab('char')">&#128300; Characterization</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sim" id="tab-sim" onclick="switchTab('sim')">&#9881;&#65039; Simulations</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-app" id="tab-app" onclick="switchTab('app')">&#128640; Applications</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-eth" id="tab-eth" onclick="switchTab('eth')">&#9878;&#65039; Ethics</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-rev" id="tab-rev" onclick="switchTab('rev')">&#128218; Course Review</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-quiz" id="tab-quiz" onclick="switchTab('quiz')">&#10067; Knowledge Check</button>
+    </div>
+
+    <!-- TAB 1: CHARACTERIZATION -->
+    <div id="panel-char" class="tab-content active" role="tabpanel" aria-labelledby="tab-char">
+        <div class="content-block">
+            <div class="section-head"><div class="section-icon" aria-hidden="true">&#128300;</div><h2>Nanoscale Characterization Methods</h2></div>
+            <p>Understanding nanotechnology requires specialized tools that can observe, measure, and analyze matter at the nanoscale. The ultimate goal of <span class="tooltip-trigger" data-tooltip="The science and practice of measurement at the nanoscale, aiming to identify every atom's position and identity in a nanostructure.">nanometrology</span> is to provide a complete list of the coordinates and identities of all constituent atoms in a nanoscale structure. This section explores the key characterization techniques that make this possible.</p>
+            <h3>The Diffraction Barrier &mdash; Why Optical Microscopy Falls Short</h3>
+            <p>Traditional optical microscopy is limited by the <span class="tooltip-trigger" data-tooltip="The fundamental physical limit where structures smaller than roughly half the wavelength of visible light (~250 nm) cannot be resolved by conventional optical microscopes. Described by the Abbe diffraction limit: d = lambda/(2 NA).">diffraction barrier</span>. Since visible light has wavelengths between approximately 400 and 700 nanometers, conventional optical microscopes cannot clearly resolve features smaller than roughly 200&ndash;250 nm. This fundamental limit drives the need for electron-based and probe-based microscopy techniques that use particles or interactions with much shorter effective wavelengths.</p>
+            <div class="callout callout-blue"><h4>&#128161; Key Insight: Resolution Limits Across Techniques</h4><p>Optical microscopes: ~200 nm &bull; SEM: 1&ndash;10 nm &bull; TEM: sub-angstrom (&lt;0.1 nm) &bull; AFM vertical: 0.1 nm &bull; STM: individual atoms (~0.01 nm). Each technique trades off resolution, sample requirements, and the type of information obtained.</p></div>
+        </div>
+
+        <div class="content-block">
+            <h3>Scanning Electron Microscopy (SEM)</h3>
+            <p>The SEM works by focusing a beam of high-energy electrons (typically 1&ndash;30 keV) into a fine probe that is raster-scanned across the sample surface. When these primary electrons strike the sample, they generate several types of signals. <span class="tooltip-trigger" data-tooltip="Low-energy electrons (less than 50 eV) ejected from the sample surface by inelastic scattering. They carry topographical information and produce the most common type of SEM image.">Secondary electrons</span> provide topographical information, while <span class="tooltip-trigger" data-tooltip="Primary beam electrons that bounce back after elastic scattering with atomic nuclei. Their yield depends on atomic number, providing compositional contrast.">backscattered electrons</span> reveal compositional variations because heavier elements scatter more electrons.</p>
+            <p>The SEM offers exceptional <span class="tooltip-trigger" data-tooltip="The large range of distances that appear in focus simultaneously. SEM has ~100x greater depth of field than optical microscopes, making it ideal for examining rough, 3D surfaces.">depth of field</span>&mdash;roughly 100 times greater than optical microscopes&mdash;making it superb for examining rough, three-dimensional surfaces. Modern SEMs achieve resolutions of 1&ndash;10 nm routinely, with sub-nanometer resolution possible on advanced instruments.</p>
+            <div class="callout callout-gold"><h4>&#128736;&#65039; Sample Requirements</h4><p>Samples must be electrically conductive or coated with a thin conductive layer (typically gold, palladium, or carbon) to prevent charge buildup. <strong>Environmental SEM (ESEM)</strong> allows imaging at low pressures without conductive coating, though with reduced resolution. First realized for imaging in air at a few thousandths of an atmosphere, ESEM is particularly useful for biological and hydrated samples.</p></div>
+            <h4>Energy Dispersive X-ray Spectroscopy (EDS/EDX)</h4>
+            <p>When the electron beam ejects inner-shell electrons from sample atoms, characteristic X-rays are emitted as outer electrons fill the vacancies. EDS detectors capture these X-rays and identify which elements are present, providing chemical composition mapping. EDS typically samples a volume extending up to ~1 &mu;m below the surface with a detection limit of roughly 0.1&ndash;1 weight percent. Note that Auger emission spectroscopy (AES) samples only the first few nanometers, making it more surface-sensitive than EDS.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Transmission Electron Microscopy (TEM)</h3>
+            <p>Where SEM examines surfaces, TEM transmits high-energy electrons (typically 80&ndash;300 keV) <em>through</em> ultra-thin specimens to form images. The electrons interact with the sample's atomic structure, and the transmitted beam is magnified by electromagnetic lenses onto a detector. Because the <span class="tooltip-trigger" data-tooltip="According to the de Broglie relation, wavelength = h/(mv). At 200 keV, an electron's wavelength is approximately 0.0025 nm, far smaller than atomic spacing, enabling atomic resolution.">de Broglie wavelength</span> of high-energy electrons is far smaller than atomic spacings, modern TEMs achieve sub-angstrom resolution, allowing direct imaging of individual atomic columns.</p>
+            <p>The development of <strong>Scanning Transmission Electron Microscopy (STEM)</strong>, originally pioneered by Manfred von Ardenne but commercialized decades later, combines the beam-scanning approach of SEM with the transmission geometry of TEM. Modern commercial STEM instruments, such as the Nion UltraSTEM, have practically demonstrated the ability to image and chemically identify every atom in an arbitrary three-dimensional nanostructure&mdash;fulfilling the nanometrologist's ultimate dream.</p>
+            <div class="callout callout-red"><h4>&#9888;&#65039; Critical Requirement: Ultra-Thin Specimens</h4><p>TEM samples must be thinned to less than ~100 nm for conventional imaging, and even thinner (&lt;50 nm) for high-resolution work. Preparation methods include mechanical polishing, ion milling, and <span class="tooltip-trigger" data-tooltip="Focused Ion Beam: Uses a finely focused beam of gallium ions to precisely cut and thin specific regions of a sample for TEM analysis. Originally developed as an etching tool, now also used as an imaging technique in its own right.">focused ion beam (FIB)</span> milling. Three-dimensional tomographic reconstruction is now available for TEM, STEM, AFM, and other techniques.</p></div>
+        </div>
+
+        <div class="content-block">
+            <h3>Atomic Force Microscopy (AFM)</h3>
+            <p>The AFM belongs to the family of <span class="tooltip-trigger" data-tooltip="A broad category of microscopy techniques (including AFM, STM, SNOM) that create images by scanning a physical probe across the sample surface, measuring local interactions point by point.">scanning probe microscopes (SPM)</span>. It uses a sharp tip (radius of curvature ~5&ndash;20 nm) mounted on a flexible cantilever to scan across a surface. As the tip encounters atomic-scale features, forces between the tip and the surface cause the cantilever to deflect. A laser beam reflected off the cantilever's backside detects these deflections with sub-angstrom sensitivity.</p>
+            <h4>Operating Modes</h4>
+            <ul>
+                <li><strong>Contact Mode:</strong> The tip maintains continuous contact. A feedback loop adjusts the tip height to maintain constant force. Best for hard, flat surfaces.</li>
+                <li><strong>Tapping (Intermittent Contact) Mode:</strong> The cantilever oscillates near its resonance frequency and intermittently taps the surface. Reduces lateral forces and is gentler on soft samples, including biological specimens.</li>
+                <li><strong>Non-Contact Mode:</strong> The tip hovers 1&ndash;10 nm above the surface, detecting long-range van der Waals forces. Minimizes sample perturbation but offers lower lateral resolution.</li>
+            </ul>
+            <div class="callout callout-green"><h4>&#127919; Key Advantages of AFM</h4><p>Unlike electron microscopy, AFM operates in air, liquid, or vacuum with minimal sample preparation. It provides true three-dimensional topography with vertical resolution of ~0.1 nm and lateral resolution of 1&ndash;10 nm. The AFM can also measure mechanical properties (stiffness, adhesion), electrical properties, and even chemical composition through force&ndash;distance measurements at each surface patch.</p></div>
+            <h4>Scanning Ion Current Microscopy (SICM)</h4>
+            <p>An innovative extension of SPM uses a miniature electrode inside a fine glass capillary immersed in electrolyte. The ion current between the capillary tip and a counterelectrode decreases as the tip approaches the surface, generating a topographic map. SICM is particularly valuable for imaging mechanically ultrafragile samples like living cells, since the capillary never contacts the surface.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Scanning Tunneling Microscopy (STM)</h3>
+            <p>The STM, invented by Gerd Binnig and Heinrich Rohrer in 1981 (earning the 1986 Nobel Prize in Physics), exploits <span class="tooltip-trigger" data-tooltip="A quantum mechanical phenomenon where electrons pass through a classically forbidden energy barrier. The tunneling current depends exponentially on the tip-sample distance, providing extreme sensitivity.">quantum mechanical tunneling</span>. A sharp metallic tip is brought within ~1 nm of a conductive surface, and a small voltage bias causes a tunneling current to flow. This current depends exponentially on the gap distance&mdash;a change of just 0.1 nm in tip&ndash;sample separation causes roughly a tenfold change in current.</p>
+            <p>The STM achieves true atomic resolution on conductive and semiconductive surfaces. Remarkably, it can also <em>manipulate</em> individual atoms, as famously demonstrated by Eigler and Schweizer at IBM in 1990 when they arranged 35 xenon atoms on a nickel surface to spell &ldquo;IBM.&rdquo;</p>
+            <div class="callout callout-purple"><h4>&#128279; Limitation</h4><p>STM requires electrically conductive or semiconductive samples and typically operates in ultra-high vacuum at low temperatures for highest resolution. It cannot easily image insulating materials without special preparation.</p></div>
+        </div>
+
+        <div class="content-block">
+            <h3>Additional Characterization Techniques</h3>
+            <h4>X-ray Diffraction (XRD)</h4>
+            <p>XRD provides information about crystalline structure. When X-rays interact with a regular atomic lattice, they produce constructive interference at specific angles described by <span class="tooltip-trigger" data-tooltip="Bragg's Law: n times wavelength = 2d sin theta, where n is an integer, wavelength is the X-ray wavelength, d is the atomic plane spacing, and theta is the diffraction angle.">Bragg's law</span>. XRD determines crystal structure, grain size (via peak broadening), and strain in nanomaterials.</p>
+            <h4>Scanning Near-Field Optical Microscopy (SNOM/NSOM)</h4>
+            <p>SNOM overcomes the far-field diffraction limit by positioning a nanoscale optical probe within the near-field region of the sample surface. The probe, typically a tapered metallized optical fiber, illuminates or collects light from a region much smaller than the diffraction limit. Resolution depends on probe diameter and can extend below 50 nm. A related technique, thermal radiation scanning tunneling microscopy (TRSTM), uses thermal radiation for near-field imaging.</p>
+            <h4>Secondary Ion Mass Spectrometry (SIMS)</h4>
+            <p>SIMS bombards a sample with energetic primary ions (typically gallium or oxygen), sputtering secondary ions from the surface for mass spectrometric analysis. NanoSIMS achieves lateral resolution of a few tens of nanometers. A unique advantage is systematic etching to obtain depth profiles of chemical composition, though quantification depends strongly on overall sample composition.</p>
+            <h4>Comprehensive Technique Comparison</h4>
+            <table class="comparison-table" aria-label="Characterization technique comparison">
+                <thead><tr><th scope="col">Technique</th><th scope="col">Resolution</th><th scope="col">Probe Type</th><th scope="col">Information Provided</th><th scope="col">Key Limitation</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Optical</strong></td><td>~200 nm</td><td>Photons</td><td>Color, transparency, fluorescence</td><td>Diffraction limit</td></tr>
+                    <tr><td><strong>SEM</strong></td><td>1&ndash;10 nm</td><td>Electrons</td><td>Surface topography, composition (EDS)</td><td>Conductive samples required</td></tr>
+                    <tr><td><strong>TEM/STEM</strong></td><td>&lt;0.1 nm</td><td>Electrons</td><td>Crystal structure, atomic imaging, 3D tomography</td><td>Ultra-thin samples needed</td></tr>
+                    <tr><td><strong>AFM</strong></td><td>0.1 nm (vertical)</td><td>Physical tip</td><td>3D topography, mechanical/chemical properties</td><td>Slow scanning speed</td></tr>
+                    <tr><td><strong>STM</strong></td><td>0.01 nm</td><td>Tunneling current</td><td>Atomic structure, electronic density</td><td>Conductive samples only</td></tr>
+                    <tr><td><strong>XRD</strong></td><td>Bulk average</td><td>X-rays</td><td>Crystal structure, grain size, strain</td><td>No lateral resolution</td></tr>
+                    <tr><td><strong>SNOM</strong></td><td>&lt;50 nm</td><td>Near-field photons</td><td>Optical properties at nanoscale</td><td>Complex probe fabrication</td></tr>
+                    <tr><td><strong>SIMS</strong></td><td>~50 nm</td><td>Ion beam</td><td>Elemental/isotopic composition, depth profiles</td><td>Destructive, matrix-dependent</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- TAB 2: SIMULATIONS -->
+    <div id="panel-sim" class="tab-content" role="tabpanel" aria-labelledby="tab-sim">
+        <div class="content-block"><div class="section-head"><div class="section-icon" aria-hidden="true">&#9881;&#65039;</div><h2>Interactive Characterization Simulations</h2></div><p>Explore how different characterization techniques work through interactive visualizations. Adjust parameters and observe how they affect imaging results.</p></div>
+
+        <div class="sim-container" id="sem-sim">
+            <div class="sim-title">&#128300; SEM Beam&ndash;Sample Interaction Simulator</div>
+            <div class="sim-canvas-wrap"><canvas id="semCanvas" width="700" height="420" aria-label="SEM beam-sample interaction simulation">Your browser does not support Canvas.</canvas></div>
+            <div class="sim-controls">
+                <label>Beam Energy: <input type="range" id="semEnergy" min="1" max="30" value="15" aria-label="Beam energy keV"> <span id="semEnergyVal">15 keV</span></label>
+                <label>Sample: <select id="semSample" aria-label="Sample material"><option value="gold">Gold (Au, Z=79)</option><option value="silicon" selected>Silicon (Si, Z=14)</option><option value="carbon">Carbon (C, Z=6)</option><option value="aluminum">Aluminum (Al, Z=13)</option></select></label>
+                <button onclick="resetSEM()">Reset</button>
+            </div>
+            <div class="sim-readout" id="semReadout">Interaction volume depth: ~2.4 &mu;m &bull; BSE yield: ~18% &bull; SE yield: ~12%</div>
+        </div>
+
+        <div class="sim-container" id="afm-sim">
+            <div class="sim-title">&#128205; AFM Surface Scanning Simulator</div>
+            <div class="sim-canvas-wrap"><canvas id="afmCanvas" width="700" height="400" aria-label="AFM tip scanning simulation">Your browser does not support Canvas.</canvas></div>
+            <div class="sim-controls">
+                <label>Roughness: <input type="range" id="afmRoughness" min="1" max="10" value="5" aria-label="Surface roughness"> <span id="afmRoughVal">5</span></label>
+                <label>Speed: <input type="range" id="afmSpeed" min="1" max="10" value="4" aria-label="Scan speed"> <span id="afmSpeedVal">4</span></label>
+                <label>Mode: <select id="afmMode" aria-label="AFM mode"><option value="contact">Contact</option><option value="tapping" selected>Tapping</option><option value="noncontact">Non-Contact</option></select></label>
+                <button onclick="restartAFM()">Restart Scan</button>
+            </div>
+            <div class="sim-readout" id="afmReadout">Mode: Tapping &bull; Tip position: 0 nm &bull; Deflection: 0.0 nm</div>
+        </div>
+
+        <div class="sim-container" id="qd-sim">
+            <div class="sim-title">&#128308; Quantum Dot Size&ndash;Color Relationship</div>
+            <div class="sim-canvas-wrap"><canvas id="qdCanvas" width="700" height="350" aria-label="Quantum dot size-color simulation">Your browser does not support Canvas.</canvas></div>
+            <div class="sim-controls">
+                <label>QD Diameter: <input type="range" id="qdSize" min="2" max="10" value="5" step="0.5" aria-label="QD diameter nm"> <span id="qdSizeVal">5.0 nm</span></label>
+                <label>Material: <select id="qdMaterial" aria-label="QD material"><option value="CdSe" selected>CdSe</option><option value="InP">InP</option><option value="PbS">PbS</option></select></label>
+            </div>
+            <div class="sim-readout" id="qdReadout">Diameter: 5.0 nm &bull; Emission: ~550 nm (Green) &bull; Bandgap: ~2.25 eV</div>
+        </div>
+    </div>
+
+    <!-- TAB 3: APPLICATIONS -->
+    <div id="panel-app" class="tab-content" role="tabpanel" aria-labelledby="tab-app">
+        <div class="content-block"><div class="section-head"><div class="section-icon" aria-hidden="true">&#128640;</div><h2>Nanotechnology Applications Across Industries</h2></div><p>The unique properties that emerge at the nanoscale&mdash;quantum confinement, enormous surface-to-volume ratios, and size-dependent behavior&mdash;enable applications impossible with conventional materials. Click each card to explore these transformative technologies in depth.</p></div>
+
+        <div class="card-grid">
+            <div class="info-card" onclick="toggleDetail('med')" tabindex="0" role="button" aria-expanded="false" aria-controls="det-med">
+                <div class="card-icon-wrap" aria-hidden="true">&#9764;&#65039;</div>
+                <div class="card-label">Nanomedicine</div>
+                <div class="card-body-text">Targeted drug delivery, advanced diagnostics, regenerative medicine, and theranostics that combine therapy and diagnostics in a single nanoplatform.</div>
+                <div class="card-detail" id="det-med">
+                    <h4>Key Breakthroughs</h4>
+                    <ul>
+                        <li><strong>Targeted Drug Delivery:</strong> Nanocarriers (liposomes, polymeric nanoparticles, dendrimers) accumulate at disease sites via the Enhanced Permeability and Retention (EPR) effect. FDA-approved examples include Doxil for cancer therapy.</li>
+                        <li><strong>mRNA Vaccines:</strong> Lipid nanoparticles (LNPs) were essential for delivering fragile mRNA in COVID-19 vaccines, protecting it from enzymatic degradation and facilitating cellular uptake.</li>
+                        <li><strong>Quantum Dot Imaging:</strong> Semiconductor nanocrystals serve as bright, photostable fluorescent labels for biological imaging, with emission tunable by particle size.</li>
+                        <li><strong>Gold Nanoparticle Therapy:</strong> Photothermal therapy uses gold nanoshells that absorb near-infrared light, generating localized heat to destroy cancer cells.</li>
+                        <li><strong>Lab-on-a-Chip:</strong> Microfluidic devices combining surface functionalization enable high-speed screening for drug development. DNA and protein chips revolutionize diagnostics.</li>
+                    </ul>
+                    <p><strong>Market Impact:</strong> The global nanomedicine market exceeds $350 billion and is growing at 12&ndash;15% annually.</p>
+                </div>
+            </div>
+
+            <div class="info-card" onclick="toggleDetail('energy')" tabindex="0" role="button" aria-expanded="false" aria-controls="det-energy">
+                <div class="card-icon-wrap" aria-hidden="true">&#9889;</div>
+                <div class="card-label">Energy &amp; Environment</div>
+                <div class="card-body-text">Revolutionary improvements in solar cells, batteries, fuel cells, catalysis, and environmental remediation through nanoscale engineering.</div>
+                <div class="card-detail" id="det-energy">
+                    <h4>Transformative Applications</h4>
+                    <ul>
+                        <li><strong>Quantum Dot Solar Cells:</strong> Size-tunable bandgaps allow harvesting different parts of the solar spectrum. Multi-junction QD cells could theoretically exceed 60% efficiency.</li>
+                        <li><strong>Nanostructured Batteries:</strong> Silicon nanowire anodes accommodate 300% volume change during lithium cycling without cracking. Graphene-enhanced cathodes improve conductivity.</li>
+                        <li><strong>Nanocatalysts:</strong> Platinum nanoparticles in fuel cells maximize catalytic surface area while minimizing expensive metal usage.</li>
+                        <li><strong>Water Purification:</strong> Nanofiltration membranes with precisely controlled pore sizes remove contaminants including heavy metals, bacteria, and viruses.</li>
+                        <li><strong>Microsources of Energy:</strong> Miniaturized energy harvesting and storage systems are key enabling technologies for embedded MEMS systems and IoT devices.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card" onclick="toggleDetail('elec')" tabindex="0" role="button" aria-expanded="false" aria-controls="det-elec">
+                <div class="card-icon-wrap" aria-hidden="true">&#128187;</div>
+                <div class="card-label">Electronics &amp; Computing</div>
+                <div class="card-body-text">Moore's Law continuation through sub-5nm transistors, quantum computing, flexible electronics, and next-generation memory technologies.</div>
+                <div class="card-detail" id="det-elec">
+                    <h4>Cutting-Edge Developments</h4>
+                    <ul>
+                        <li><strong>Advanced Transistors:</strong> Gate-All-Around (GAA) FET architectures at 3 nm and below use nanosheets for superior electrostatic control. The semiconductor industry exceeds $574 billion.</li>
+                        <li><strong>Carbon Nanotube Electronics:</strong> CNTs offer ballistic electron transport. QLED displays already use quantum dots for vivid color reproduction.</li>
+                        <li><strong>Next-Gen Memory:</strong> Phase-change (PCM), Resistive RAM (RRAM), and Magnetic RAM (MRAM) use nanoscale material switching for non-volatile storage.</li>
+                        <li><strong>Quantum Computing:</strong> Quantum dots as qubits, single-atom transistors, and quantum cellular automata (QCA) are being explored for quantum information processing.</li>
+                        <li><strong>Giant Magnetoresistance (GMR):</strong> Nanoscale magnetic multilayers in hard disk read heads exploit quantum spin effects, enabling massive storage density increases.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card" onclick="toggleDetail('mat')" tabindex="0" role="button" aria-expanded="false" aria-controls="det-mat">
+                <div class="card-icon-wrap" aria-hidden="true">&#128296;</div>
+                <div class="card-label">Advanced Materials</div>
+                <div class="card-body-text">Carbon nanotubes, graphene, nanocomposites, and bio-inspired surfaces like the lotus effect for self-cleaning coatings.</div>
+                <div class="card-detail" id="det-mat">
+                    <h4>Material Innovations</h4>
+                    <ul>
+                        <li><strong>Carbon Nanotubes (CNTs):</strong> Single-walled CNTs have tensile strength ~100x greater than steel at 1/6th the weight. Used in composites for sports equipment, aerospace, and bullet-proof vests. Ancient Damascus swords have been found to contain carbon nanotubes.</li>
+                        <li><strong>Graphene:</strong> A single atomic layer of carbon with extraordinary electrical conductivity, mechanical strength (200x stronger than steel), and thermal conductivity.</li>
+                        <li><strong>The Lotus Effect:</strong> The sacred lotus flower has nanometric-sized hairs that make water droplets bead up and roll off, removing dust particles. This biomimetic approach is used for self-cleaning glass, textiles, and coatings.</li>
+                        <li><strong>Nanocomposites:</strong> Adding 1&ndash;5% nanofillers (clay, CNTs, graphene) to polymers dramatically improves mechanical strength, thermal stability, and barrier properties.</li>
+                        <li><strong>Silver Nanoparticles:</strong> Bactericidal properties exploited in medical device coatings, wound dressings, and consumer products.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card" onclick="toggleDetail('mems')" tabindex="0" role="button" aria-expanded="false" aria-controls="det-mems">
+                <div class="card-icon-wrap" aria-hidden="true">&#9881;&#65039;</div>
+                <div class="card-label">MEMS &amp; NEMS</div>
+                <div class="card-body-text">Micro- and nano-electromechanical systems integrating mechanical elements, sensors, actuators, and electronics on a chip.</div>
+                <div class="card-detail" id="det-mems">
+                    <h4>From Micro to Nano Machines</h4>
+                    <ul>
+                        <li><strong>Accelerometers &amp; Gyroscopes:</strong> MEMS sensors in every smartphone detect orientation and motion. Automotive airbag deployment relies on MEMS impact sensors.</li>
+                        <li><strong>Inkjet Print Heads:</strong> MEMS nozzle arrays precisely control picoliter droplets. The same technology enables lab-on-a-chip microfluidics.</li>
+                        <li><strong>Microlenses:</strong> Variable-focus liquid microlenses (e.g., by Varioptic) enable miniaturized optical systems for medical endoscopes and cameras.</li>
+                        <li><strong>Molecular Motors:</strong> Researchers have created synthetic molecular machines that mimic biological motors like ATP synthase. Walking molecules and artificial dragonflies demonstrate nanoscale actuation.</li>
+                        <li><strong>NEMS Sensors:</strong> Nanomechanical resonators detect masses as small as single molecules. Cantilever biosensors achieve femtomolar detection sensitivity.</li>
+                    </ul>
+                    <p><strong>Market Scale:</strong> The global MEMS market exceeds $20 billion with over 10 billion devices shipped annually.</p>
+                </div>
+            </div>
+
+            <div class="info-card" onclick="toggleDetail('consumer')" tabindex="0" role="button" aria-expanded="false" aria-controls="det-consumer">
+                <div class="card-icon-wrap" aria-hidden="true">&#127968;</div>
+                <div class="card-label">Consumer Products</div>
+                <div class="card-body-text">From stain-resistant textiles and enhanced cosmetics to smart packaging, nanotechnology is embedded in everyday life.</div>
+                <div class="card-detail" id="det-consumer">
+                    <h4>Nanotechnology in Daily Life</h4>
+                    <ul>
+                        <li><strong>Cosmetics:</strong> TiO2 and ZnO nanoparticles in sunscreens provide UV protection without white residue. Biodegradable polymer microspheres deliver vitamins and anti-aging compounds. Fullerenes are used to fight skin aging.</li>
+                        <li><strong>Textiles:</strong> Nanofiber modifications improve thermal comfort, create wrinkle-free fabrics, repel stains, and incorporate antibacterial nanocontainers.</li>
+                        <li><strong>Sports Equipment:</strong> CNT-reinforced tennis rackets, bicycle frames, and golf clubs offer lighter weight with superior strength.</li>
+                        <li><strong>Coatings:</strong> Silica nanoparticle anti-scratch polish gives car bodies mechanical resistance and lasting shine with diamond-like toughness.</li>
+                        <li><strong>Food Packaging:</strong> Nanoclay barriers extend shelf life. Silver nanoparticles provide antimicrobial surfaces.</li>
+                    </ul>
+                    <p><strong>Scale:</strong> Over 2,000 commercial products currently incorporate engineered nanomaterials.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Nanotechnology Market Overview</h3>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap:16px; margin:20px 0;">
+                <div style="text-align:center; padding:20px; background:var(--soft-green); border-radius:12px;"><div style="font-size:2rem; font-weight:bold; color:#2E7D32;">$574B</div><div style="color:#388E3C; font-weight:bold; font-size:0.9rem;">Semiconductor Industry</div></div>
+                <div style="text-align:center; padding:20px; background:var(--soft-blue); border-radius:12px;"><div style="font-size:2rem; font-weight:bold; color:#1565C0;">$350B+</div><div style="color:#1976D2; font-weight:bold; font-size:0.9rem;">Nanomedicine Market</div></div>
+                <div style="text-align:center; padding:20px; background:var(--soft-gold); border-radius:12px;"><div style="font-size:2rem; font-weight:bold; color:#E65100;">$20B+</div><div style="color:#F57C00; font-weight:bold; font-size:0.9rem;">MEMS Market</div></div>
+                <div style="text-align:center; padding:20px; background:var(--soft-purple); border-radius:12px;"><div style="font-size:2rem; font-weight:bold; color:#6A1B9A;">2,000+</div><div style="color:#8E24AA; font-weight:bold; font-size:0.9rem;">Nano-Enabled Products</div></div>
+            </div>
+        </div>
+    </div>
+    <!-- TAB 4: ETHICS -->
+    <div id="panel-eth" class="tab-content" role="tabpanel" aria-labelledby="tab-eth">
+        <div class="content-block"><div class="section-head"><div class="section-icon" aria-hidden="true">&#9878;&#65039;</div><h2>Ethical Considerations in Nanotechnology</h2></div>
+            <p>As nanotechnology capabilities expand, society must carefully consider the ethical implications, health risks, environmental impacts, and governance challenges. The multidisciplinary character of nanotechnology means its impacts reach into virtually every aspect of human life, demanding thoughtful engagement from scientists, policymakers, and citizens alike.</p></div>
+
+        <div class="content-block">
+            <h3>Responsible Development Framework</h3>
+            <p>International bodies including the European Parliament, the OECD, and the CNRS Ethics Committee (COMETS) have established guidelines calling for a balance between freedom of scientific research and responsibility toward society. The COMETS guidelines emphasize developing an ethical form of research through norms that will not hinder positive results but will encourage constant consideration of ethics.</p>
+
+            <div class="ethics-card"><h4>&#128300; Precautionary Principle</h4><p>When scientific understanding of risks is incomplete, err on the side of caution. The European Parliament emphasized that the effects of nanoparticles that are not readily soluble or biodegradable should be investigated before placement on the market. Thorough risk assessment must precede widespread deployment, especially for technologies with potentially irreversible consequences.</p></div>
+            <div class="ethics-card"><h4>&#127758; Environmental Stewardship</h4><p>Nanoparticles exhibit unique environmental behaviors due to extreme surface-to-volume ratios and high reactivity. Lifecycle assessment must consider production, use, disposal, and potential ecosystem accumulation. Carbon nanotubes present particular concerns as their fibrous structure could pose risks analogous to asbestos. The EU emphasizes that miniaturization should help reduce waste and ensure better energy use.</p></div>
+            <div class="ethics-card"><h4>&#9764;&#65039; Health &amp; Safety Priority</h4><p>Nanoparticles can cross biological barriers that bulk materials cannot&mdash;skin, lung epithelium, and blood-brain barrier. The emerging field of <strong>nanotoxicology</strong> studies how nanomaterial properties (size, shape, surface chemistry, aggregation state) affect biological systems. Worker safety in nanomanufacturing requires attention to inhalation, dermal absorption, and ingestion pathways. Long-term chronic exposure effects remain largely unknown.</p></div>
+            <div class="ethics-card"><h4>&#129309; Social Justice &amp; Equity</h4><p>Nanotechnology benefits must be accessible globally. The EU Parliament stresses attention to newer member states' development capacity. In developing nations, nanotechnology could address water purification and affordable energy, but only with equitable technology transfer. Impact on traditional industries and vulnerable populations must be considered.</p></div>
+            <div class="ethics-card"><h4>&#127963;&#65039; Democratic Governance &amp; Transparency</h4><p>The CNRS guidelines call for debates with citizens at local, national, European, and international levels. Industry should disseminate objective information about discoveries, uses, risks, and benefits. Transparency of funding and results&mdash;including those shared between public institutions and the private sector&mdash;is critical for public trust.</p></div>
+            <div class="ethics-card"><h4>&#128302; Long-Term &amp; Ethical Research Culture</h4><p>The CNRS Ethics Committee calls for a profound change in research mentality where ethics is constantly present&mdash;not a service delivered by specialists over a short time. Guidelines recommend introducing ethical awareness at education stages, in evaluation processes, and in project descriptions. Creating ethical working spaces where researchers exchange ideas with humanities and social science colleagues is essential.</p></div>
+        </div>
+
+        <div class="content-block">
+            <h3>Key Ethical Challenges</h3>
+            <div class="card-grid">
+                <div class="callout callout-purple"><h4>&#129516; Enhancement vs. Treatment</h4><p>Should nanotechnology be limited to treating diseases, or is human enhancement acceptable? Brain-computer interfaces, genetic modifications, and cognitive enhancement raise questions about fairness and human identity. The EU has planned reviews on non-therapeutic human enhancement.</p></div>
+                <div class="callout callout-purple"><h4>&#128274; Privacy &amp; Surveillance</h4><p>Nanoscale sensors could enable unprecedented surveillance. As sensors become ubiquitous and undetectable, balancing security with privacy rights becomes critical. The EU emphasizes reviewing links between nanotechnology and individual privacy.</p></div>
+                <div class="callout callout-purple"><h4>&#9876;&#65039; Military Applications</h4><p>Significant military potential exists from enhanced armor to autonomous nano-drones. International cooperation to prevent arms races is needed. The EU calls for enhanced cooperation and harmonized approaches between nations.</p></div>
+                <div class="callout callout-purple"><h4>&#128187; Technical Literacy &amp; Education</h4><p>Ensuring broad technical literacy is crucial as nano-enabled products become essential. The gap between those who understand nanotechnology and those who do not could exacerbate social inequalities. Multilingual information materials for different age groups are recommended.</p></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Regulatory Landscape</h3>
+            <div class="card-grid">
+                <div class="callout callout-blue"><h4>&#127482;&#127480; United States</h4><p>The National Nanotechnology Initiative (NNI) coordinates federal R&amp;D with built-in Environmental, Health, and Safety research. EPA, FDA, and OSHA regulate under existing frameworks adapted for nano-specific considerations.</p></div>
+                <div class="callout callout-blue"><h4>&#127466;&#127482; European Union</h4><p>Precautionary approach with mandatory registration and testing under REACH. Consumer product ingredient lists must identify manufactured nanoparticulates. High-level protection of health, consumers, workers, and environment is mandated, with codification and standardization of nanomaterials.</p></div>
+                <div class="callout callout-blue"><h4>&#127758; International</h4><p>OECD coordinates safety testing. ISO and ASTM develop terminology and testing standards. The EU calls for intensified cooperation with USA, Japan, China, and India, including harmonized patent processing and WTO-compliant dialogue.</p></div>
+            </div>
+            <div class="callout callout-gold" style="margin-top:20px;">
+                <h4>&#128172; Discussion Questions for Ethical Reflection</h4>
+                <ol>
+                    <li>Can you identify three products you own that contain engineered nanomaterials?</li>
+                    <li>Should nanomaterials be regulated differently from conventional chemicals given that their properties depend on size, not just composition?</li>
+                    <li>If nanotechnology can solve critical problems like clean water and targeted cancer treatment, what responsibility do wealthy nations have to share these technologies?</li>
+                    <li>How should we balance the enormous benefits of nanomedicine with unknown long-term health effects?</li>
+                    <li>Who should decide which nanotechnologies are developed&mdash;scientists, governments, corporations, or the public?</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- TAB 5: COURSE REVIEW -->
+    <div id="panel-rev" class="tab-content" role="tabpanel" aria-labelledby="tab-rev">
+        <div class="content-block"><div class="section-head"><div class="section-icon" aria-hidden="true">&#128218;</div><h2>Comprehensive Course Review</h2></div><p>This review covers all 13 modules organized by the five phases of the course. Use it to prepare for the final examination.</p></div>
+
+        <div class="phase-card phase-1">
+            <h3>Phase 1: Foundations (Modules 1&ndash;2) &mdash; Weeks 1&ndash;2</h3>
+            <p><strong>Module 1 &ndash; Introduction to Nanotechnology:</strong> Defined the nanoscale (1&ndash;100 nm), explored history from Feynman's 1959 vision through the STM invention. Covered top-down versus bottom-up fabrication, applications across medicine, electronics, and energy.</p>
+            <p><strong>Module 2 &ndash; Nanoscale Science Fundamentals:</strong> How properties change due to quantum effects and surface-area-to-volume ratio dominance. Quantum confinement, size-dependent optical properties, surface energy, and intermolecular forces.</p>
+            <div class="callout callout-green"><h4>Key Takeaway</h4><p>Properties change dramatically at the nanoscale. A gold nanoparticle appears red. The same material can be insulator, semiconductor, or conductor depending on dimensions. These property changes are the foundation of all nanotechnology applications.</p></div>
+        </div>
+
+        <div class="phase-card phase-2">
+            <h3>Phase 2: Controlled Environments (Modules 3&ndash;5) &mdash; Weeks 3&ndash;5</h3>
+            <p><strong>Module 3 &ndash; Cleanroom Technology:</strong> Built a mini-cleanroom. ISO classifications, HEPA filtration (99.97% removal of 0.3 &mu;m particles), contamination sources, gowning protocols.</p>
+            <p><strong>Module 4 &ndash; Vacuum Systems:</strong> Assembled vacuum systems with QF fittings. Pressure ranges, pump types (rotary vane, turbomolecular, diffusion), gauge technologies.</p>
+            <p><strong>Module 5 &ndash; Vacuum Concepts:</strong> Mean free path (&lambda; = k<sub>B</sub>T / (&radic;2 &middot; &pi; &middot; d&sup2; &middot; P)). Gas flow regimes, leak detection, outgassing.</p>
+            <div class="callout callout-green"><h4>Key Takeaway</h4><p>Controlled environments are essential for reproducible nanofabrication. Without adequate vacuum and cleanliness, contamination makes precise nanoscale work impossible.</p></div>
+        </div>
+
+        <div class="phase-card phase-3">
+            <h3>Phase 3: Core Fabrication (Modules 6&ndash;9) &mdash; Weeks 6&ndash;11</h3>
+            <p><strong>Module 6 &ndash; Plasma Technology:</strong> Plasma generation via microwave energy in vacuum. Free radicals (O*, F*) for surface modification, ashing, etching. Contact angle measurements.</p>
+            <p><strong>Module 7 &ndash; Thin Film Deposition:</strong> Thermal evaporation using resistive heating. PVD mechanisms, deposition rate control, film quality (adhesion, stress, uniformity).</p>
+            <p><strong>Module 8 &ndash; Photolithography:</strong> Pattern transfer using UV gel nail polish as photoresist analog. Photoresist chemistry, exposure systems, resolution limits, spin-coat/expose/develop flow.</p>
+            <p><strong>Module 9 &ndash; Etching:</strong> Wet chemical etching for selective material removal. Isotropic wet vs. anisotropic dry (RIE, DRIE). Etch selectivity, rate, and high-aspect-ratio features.</p>
+            <div class="callout callout-green"><h4>Key Takeaway</h4><p>Top-down fabrication uses subtractive and additive processes controlled by patterning to create nanoscale structures. Process optimization requires understanding the physics and chemistry of each step.</p></div>
+        </div>
+
+        <div class="phase-card phase-4">
+            <h3>Phase 4: Integration &amp; Bottom-Up (Modules 10&ndash;12) &mdash; Weeks 12&ndash;14</h3>
+            <p><strong>Module 10 &ndash; Pattern Transfer:</strong> Combined lithography and etching into a complete process flow. In industry, these steps are repeated tens to hundreds of times to build multilayer devices.</p>
+            <p><strong>Module 11 &ndash; Electrochemical Deposition:</strong> Faraday's laws (m = MIt/nF) for electroplating. Current density, electrolyte chemistry, and temperature effects on deposit quality.</p>
+            <p><strong>Module 12 &ndash; Self-Assembly:</strong> Bottom-up fabrication using the Turkevich method for gold nanoparticle synthesis and layer-by-layer polyelectrolyte deposition. Surface plasmon resonance color changes.</p>
+            <div class="callout callout-green"><h4>Key Takeaway</h4><p>Modern nanotechnology combines top-down patterning with bottom-up self-assembly. Understanding both paradigms and their integration is essential for next-generation devices.</p></div>
+        </div>
+
+        <div class="phase-card phase-5">
+            <h3>Phase 5: Capstone (Module 13) &mdash; Week 15</h3>
+            <p><strong>Module 13:</strong> SEM, TEM, AFM, STM, and additional characterization techniques. Applications across medicine, energy, electronics, materials, MEMS/NEMS. Ethical challenges: health risks, environmental impacts, social equity, privacy, responsible governance.</p>
+            <div class="callout callout-green"><h4>Key Takeaway</h4><p>Nanotechnology requires robust characterization to verify results, diverse applications impacting every industry, and thoughtful ethical engagement to ensure technology serves humanity responsibly.</p></div>
+        </div>
+
+        <div class="content-block" style="border-left-color: var(--accent-gold);">
+            <h3 style="color: var(--accent-gold);">Final Exam Preparation</h3>
+            <div class="callout callout-gold"><h4>Exam Coverage</h4>
+                <ul>
+                    <li><strong>Modules 10&ndash;13 (40%):</strong> Pattern transfer, electrodeposition, self-assembly, characterization, applications, ethics.</li>
+                    <li><strong>Cumulative Topics (35%):</strong> Nanoscale phenomena, cleanroom principles, vacuum physics, plasma, deposition, lithography, etching.</li>
+                    <li><strong>Problem Solving (25%):</strong> Calculations (mean free path, Faraday's law, resolution), troubleshooting, design decisions.</li>
+                </ul>
+            </div>
+            <div class="callout callout-blue"><h4>Study Strategies</h4>
+                <ul>
+                    <li>Revisit interactive simulations in each module to reinforce core concepts.</li>
+                    <li>Practice explaining connections between processes (vacuum quality &rarr; deposition, plasma cleaning &rarr; adhesion).</li>
+                    <li>Know the scientific basis for each safety protocol.</li>
+                    <li>Review characterization technique comparison tables.</li>
+                    <li>Be prepared to discuss ethical implications with specific examples and nuanced reasoning.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- TAB 6: QUIZ -->
+    <div id="panel-quiz" class="tab-content" role="tabpanel" aria-labelledby="tab-quiz">
+        <div class="content-block"><div class="section-head"><div class="section-icon" aria-hidden="true">&#10067;</div><h2>Module 13 Knowledge Assessment</h2></div><p>Test your understanding of characterization methods, applications, and ethical considerations. Select the best answer for each question, then submit to see your results.</p></div>
+        <form id="quizForm" onsubmit="return false;">
+            <div class="quiz-q" id="qq1"><div class="q-text"><span class="q-number">1</span>Which characterization technique achieves atomic resolution on conductive surfaces by exploiting quantum tunneling?</div><label class="quiz-option"><input type="radio" name="q1" value="a"> Scanning Electron Microscopy (SEM)</label><label class="quiz-option"><input type="radio" name="q1" value="b"> Scanning Tunneling Microscopy (STM)</label><label class="quiz-option"><input type="radio" name="q1" value="c"> Atomic Force Microscopy (AFM)</label><label class="quiz-option"><input type="radio" name="q1" value="d"> X-ray Diffraction (XRD)</label><div class="feedback-box" id="fb1"></div></div>
+
+            <div class="quiz-q" id="qq2"><div class="q-text"><span class="q-number">2</span>What is the primary limitation of optical microscopy for nanoscale observation?</div><label class="quiz-option"><input type="radio" name="q2" value="a"> Samples must be in vacuum</label><label class="quiz-option"><input type="radio" name="q2" value="b"> The diffraction barrier limits resolution to ~200 nm</label><label class="quiz-option"><input type="radio" name="q2" value="c"> Only conductive samples can be imaged</label><label class="quiz-option"><input type="radio" name="q2" value="d"> Imaging requires ultra-thin specimens</label><div class="feedback-box" id="fb2"></div></div>
+
+            <div class="quiz-q" id="qq3"><div class="q-text"><span class="q-number">3</span>In TEM, why must specimens be prepared as ultra-thin sections?</div><label class="quiz-option"><input type="radio" name="q3" value="a"> To prevent charging of the sample surface</label><label class="quiz-option"><input type="radio" name="q3" value="b"> To reduce contamination from the sample holder</label><label class="quiz-option"><input type="radio" name="q3" value="c"> So that electrons can transmit through and form an image</label><label class="quiz-option"><input type="radio" name="q3" value="d"> To fit within the vacuum chamber</label><div class="feedback-box" id="fb3"></div></div>
+
+            <div class="quiz-q" id="qq4"><div class="q-text"><span class="q-number">4</span>What principle allows quantum dots to emit different colors based on size?</div><label class="quiz-option"><input type="radio" name="q4" value="a"> Surface plasmon resonance</label><label class="quiz-option"><input type="radio" name="q4" value="b"> Bragg diffraction</label><label class="quiz-option"><input type="radio" name="q4" value="c"> Quantum confinement</label><label class="quiz-option"><input type="radio" name="q4" value="d"> Piezoelectric effect</label><div class="feedback-box" id="fb4"></div></div>
+
+            <div class="quiz-q" id="qq5"><div class="q-text"><span class="q-number">5</span>Which technology was essential for delivering fragile mRNA in COVID-19 vaccines?</div><label class="quiz-option"><input type="radio" name="q5" value="a"> Carbon nanotube carriers</label><label class="quiz-option"><input type="radio" name="q5" value="b"> Lipid nanoparticles (LNPs)</label><label class="quiz-option"><input type="radio" name="q5" value="c"> Gold nanoparticle shells</label><label class="quiz-option"><input type="radio" name="q5" value="d"> Dendrimer conjugates</label><div class="feedback-box" id="fb5"></div></div>
+
+            <div class="quiz-q" id="qq6"><div class="q-text"><span class="q-number">6</span>The lotus effect is an example of which nanotechnology concept?</div><label class="quiz-option"><input type="radio" name="q6" value="a"> Quantum computing</label><label class="quiz-option"><input type="radio" name="q6" value="b"> Bio-inspired (biomimetic) surface engineering</label><label class="quiz-option"><input type="radio" name="q6" value="c"> Electrochemical deposition</label><label class="quiz-option"><input type="radio" name="q6" value="d"> Photolithographic patterning</label><div class="feedback-box" id="fb6"></div></div>
+
+            <div class="quiz-q" id="qq7"><div class="q-text"><span class="q-number">7</span>Which ethical principle states that caution should prevail when scientific understanding is incomplete?</div><label class="quiz-option"><input type="radio" name="q7" value="a"> Democratic governance</label><label class="quiz-option"><input type="radio" name="q7" value="b"> Environmental stewardship</label><label class="quiz-option"><input type="radio" name="q7" value="c"> The precautionary principle</label><label class="quiz-option"><input type="radio" name="q7" value="d"> Social justice</label><div class="feedback-box" id="fb7"></div></div>
+
+            <div class="quiz-q" id="qq8"><div class="q-text"><span class="q-number">8</span>Why are carbon nanotubes a particular concern in nanotoxicology?</div><label class="quiz-option"><input type="radio" name="q8" value="a"> They are extremely expensive to produce</label><label class="quiz-option"><input type="radio" name="q8" value="b"> Their fibrous structure could pose risks similar to asbestos</label><label class="quiz-option"><input type="radio" name="q8" value="c"> They dissolve in water and contaminate supplies</label><label class="quiz-option"><input type="radio" name="q8" value="d"> They are radioactive at nanoscale</label><div class="feedback-box" id="fb8"></div></div>
+
+            <div class="quiz-q" id="qq9"><div class="q-text"><span class="q-number">9</span>What SEM signal provides compositional contrast based on atomic number?</div><label class="quiz-option"><input type="radio" name="q9" value="a"> Secondary electrons</label><label class="quiz-option"><input type="radio" name="q9" value="b"> Backscattered electrons</label><label class="quiz-option"><input type="radio" name="q9" value="c"> Characteristic X-rays</label><label class="quiz-option"><input type="radio" name="q9" value="d"> Auger electrons</label><div class="feedback-box" id="fb9"></div></div>
+
+            <div class="quiz-q" id="qq10"><div class="q-text"><span class="q-number">10</span>AFM tapping mode is preferred for biological samples because:</div><label class="quiz-option"><input type="radio" name="q10" value="a"> It provides higher resolution than contact mode</label><label class="quiz-option"><input type="radio" name="q10" value="b"> It reduces lateral forces that could damage soft samples</label><label class="quiz-option"><input type="radio" name="q10" value="c"> It operates only in vacuum</label><label class="quiz-option"><input type="radio" name="q10" value="d"> It uses a blunter tip for safety</label><div class="feedback-box" id="fb10"></div></div>
+
+            <div class="quiz-q" id="qq11"><div class="q-text"><span class="q-number">11</span>Which is NOT a common MEMS application?</div><label class="quiz-option"><input type="radio" name="q11" value="a"> Smartphone accelerometers</label><label class="quiz-option"><input type="radio" name="q11" value="b"> Airbag deployment sensors</label><label class="quiz-option"><input type="radio" name="q11" value="c"> Nuclear reactor control rods</label><label class="quiz-option"><input type="radio" name="q11" value="d"> Inkjet printer heads</label><div class="feedback-box" id="fb11"></div></div>
+
+            <div class="quiz-q" id="qq12"><div class="q-text"><span class="q-number">12</span>Why is the de Broglie wavelength of 200 keV electrons (~0.0025 nm) significant for TEM?</div><label class="quiz-option"><input type="radio" name="q12" value="a"> It means electrons can only image metals</label><label class="quiz-option"><input type="radio" name="q12" value="b"> It is much smaller than atomic spacings, enabling atomic-resolution imaging</label><label class="quiz-option"><input type="radio" name="q12" value="c"> It limits TEM resolution to about 200 nm</label><label class="quiz-option"><input type="radio" name="q12" value="d"> It requires samples to be heated above 200 degrees C</label><div class="feedback-box" id="fb12"></div></div>
+
+            <div style="text-align:center; margin-top:24px;">
+                <button type="button" class="btn btn-primary" onclick="submitQuiz()" id="submitBtn">Submit Answers</button>
+                <button type="button" class="btn btn-gold" onclick="resetQuiz()" style="margin-left:12px;">Reset Quiz</button>
+            </div>
+        </form>
+        <div class="quiz-results" id="quizResults"><h3>Quiz Results</h3><div class="quiz-score" id="quizScore">0/12</div><div id="quizPercent" style="font-size:1.2rem; margin:8px 0;"></div><div id="quizMessage" style="font-size:1.05rem; margin-top:10px;"></div></div>
+    </div>
+</main>
+<footer>
+    <p><strong>Introduction to Nanotechnology</strong> &mdash; Module 13: Characterization, Applications, Ethics &amp; Course Review</p>
+    <p>Supported by NSF ATE Grant DUE 2301137 &bull; <a href="index.html">Return to Course Home</a></p>
+    <p style="margin-top:10px; font-size:0.85rem; opacity:0.8;">Designed for accessible, interactive online education &bull; &copy; 2025</p>
+</footer>
+<script>
+// TAB SWITCHING
+var tabKeys=['char','sim','app','eth','rev','quiz'];
+var visitedTabs=new Set(['char']);
+function switchTab(key){tabKeys.forEach(function(k){document.getElementById('tab-'+k).classList.remove('active');document.getElementById('tab-'+k).setAttribute('aria-selected','false');document.getElementById('panel-'+k).classList.remove('active')});document.getElementById('tab-'+key).classList.add('active');document.getElementById('tab-'+key).setAttribute('aria-selected','true');document.getElementById('panel-'+key).classList.add('active');visitedTabs.add(key);updateProgress();if(key==='sim')initAllSimulations()}
+function updateProgress(){var pct=Math.round(visitedTabs.size/tabKeys.length*100);var bar=document.getElementById('moduleProgress');var label=document.getElementById('progressLabel');bar.style.width=pct+'%';bar.parentElement.setAttribute('aria-valuenow',pct);label.textContent=pct+'% Complete'}
+
+// TOOLTIP SYSTEM
+(function(){function pos(trigger,box){var r=trigger.getBoundingClientRect(),bw=box.offsetWidth,bh=box.offsetHeight,vw=window.innerWidth,vh=window.innerHeight,m=12;var top=r.top-bh-m,left=r.left+r.width/2-bw/2;if(top<m)top=r.bottom+m;if(top+bh>vh-m){top=Math.max(m,r.top);left=r.right+m;if(left+bw>vw-m)left=r.left-bw-m}if(left<m)left=m;if(left+bw>vw-m)left=vw-bw-m;box.style.top=top+'px';box.style.left=left+'px'}
+function show(e){var t=e.target.closest('.tooltip-trigger');if(!t)return;var txt=t.getAttribute('data-tooltip');if(!txt)return;var b=document.getElementById('active-tooltip');if(!b){b=document.createElement('div');b.id='active-tooltip';b.className='tooltip-box';document.body.appendChild(b)}b.innerHTML=txt;b.style.display='block';pos(t,b)}
+function hide(e){var t=e.target.closest('.tooltip-trigger');if(!t)return;var b=document.getElementById('active-tooltip');if(b)b.style.display='none'}
+document.addEventListener('mouseover',show);document.addEventListener('mouseout',hide);document.addEventListener('focusin',show);document.addEventListener('focusout',hide)})();
+
+// CARD TOGGLE
+function toggleDetail(id){var det=document.getElementById('det-'+id);var card=det.closest('.info-card');var isOpen=det.classList.contains('open');det.classList.toggle('open');card.setAttribute('aria-expanded',!isOpen)}
+
+// SEM SIMULATION
+var semAnimId=null;
+var matData={gold:{z:79,color:'#FFD700',name:'Gold',bse:0.50,se:0.10},silicon:{z:14,color:'#8888CC',name:'Silicon',bse:0.18,se:0.12},carbon:{z:6,color:'#555555',name:'Carbon',bse:0.06,se:0.05},aluminum:{z:13,color:'#AAAAAA',name:'Aluminum',bse:0.16,se:0.10}};
+function initSEM(){var c=document.getElementById('semCanvas');if(!c)return;var ctx=c.getContext('2d');var particles=[];var frame=0;
+function getP(){var e=parseInt(document.getElementById('semEnergy').value);var m=matData[document.getElementById('semSample').value];document.getElementById('semEnergyVal').textContent=e+' keV';return{e:e,m:m}}
+function spawn(p){var bx=350,sy=220;for(var i=0;i<2;i++)particles.push({x:bx+(Math.random()-0.5)*20,y:sy,vx:(Math.random()-0.5)*3,vy:-Math.random()*2.5-1,t:'se',life:60+Math.random()*40,age:0});if(Math.random()<p.m.bse*2)particles.push({x:bx+(Math.random()-0.5)*10,y:sy,vx:(Math.random()-0.5)*4,vy:-Math.random()*3-2,t:'bse',life:80+Math.random()*40,age:0});if(Math.random()<0.3){var a=Math.random()*Math.PI;particles.push({x:bx+(Math.random()-0.5)*15,y:sy+20,vx:Math.cos(a)*2.5,vy:-Math.sin(a)*2.5,t:'xr',life:70,age:0})}}
+function draw(){var p=getP();ctx.clearRect(0,0,700,420);ctx.fillStyle='#0a0a20';ctx.fillRect(0,0,700,420);var sy=220;var g=ctx.createLinearGradient(0,sy,0,420);g.addColorStop(0,p.m.color);g.addColorStop(1,'#111');ctx.fillStyle=g;ctx.fillRect(100,sy,500,200);ctx.fillStyle='#FFF';ctx.font='14px Georgia';ctx.textAlign='center';ctx.fillText(p.m.name+' (Z='+p.m.z+')',350,sy+180);
+var depth=p.e*0.04*(14/p.m.z)*100;var w=depth*0.6;ctx.beginPath();ctx.moveTo(350,sy);ctx.bezierCurveTo(350-w/2,sy+depth*0.4,350-w/2,sy+depth*0.8,350,sy+Math.min(depth,180));ctx.bezierCurveTo(350+w/2,sy+depth*0.8,350+w/2,sy+depth*0.4,350,sy);ctx.fillStyle='rgba(0,200,255,0.15)';ctx.fill();ctx.strokeStyle='rgba(0,200,255,0.4)';ctx.lineWidth=1;ctx.stroke();
+ctx.beginPath();ctx.moveTo(350,0);ctx.lineTo(345,sy);ctx.lineTo(355,sy);ctx.closePath();ctx.fillStyle='rgba(0,255,200,0.6)';ctx.fill();
+if(frame%4===0)spawn(p);
+particles.forEach(function(pt){pt.x+=pt.vx;pt.y+=pt.vy;pt.age++;var al=Math.max(0,1-pt.age/pt.life);if(pt.t==='se'){ctx.beginPath();ctx.arc(pt.x,pt.y,3,0,Math.PI*2);ctx.fillStyle='rgba(255,255,0,'+al+')';ctx.fill()}else if(pt.t==='bse'){ctx.beginPath();ctx.arc(pt.x,pt.y,4,0,Math.PI*2);ctx.fillStyle='rgba(255,100,100,'+al+')';ctx.fill()}else{ctx.beginPath();ctx.moveTo(pt.x-4,pt.y);ctx.lineTo(pt.x,pt.y-4);ctx.lineTo(pt.x+4,pt.y);ctx.lineTo(pt.x,pt.y+4);ctx.closePath();ctx.fillStyle='rgba(200,100,255,'+al+')';ctx.fill()}});
+particles=particles.filter(function(pt){return pt.age<pt.life&&pt.y>-10&&pt.y<430&&pt.x>-10&&pt.x<710});
+ctx.font='13px Georgia';ctx.textAlign='left';ctx.fillStyle='rgba(255,255,0,0.9)';ctx.fillText('Secondary Electrons (SE)',32,30);ctx.fillStyle='rgba(255,100,100,0.9)';ctx.fillText('Backscattered Electrons (BSE)',32,50);ctx.fillStyle='rgba(200,100,255,0.9)';ctx.fillText('Characteristic X-rays',32,70);ctx.fillStyle='rgba(0,200,255,0.9)';ctx.fillText('Interaction Volume',32,90);
+ctx.beginPath();ctx.arc(20,26,4,0,Math.PI*2);ctx.fillStyle='rgba(255,255,0,0.9)';ctx.fill();ctx.beginPath();ctx.arc(20,46,4,0,Math.PI*2);ctx.fillStyle='rgba(255,100,100,0.9)';ctx.fill();ctx.beginPath();ctx.arc(20,66,4,0,Math.PI*2);ctx.fillStyle='rgba(200,100,255,0.9)';ctx.fill();ctx.beginPath();ctx.arc(20,86,4,0,Math.PI*2);ctx.fillStyle='rgba(0,200,255,0.9)';ctx.fill();
+var rd=(p.e*0.04*(14/p.m.z)).toFixed(1);document.getElementById('semReadout').innerHTML='Interaction volume depth: ~'+rd+' \u00B5m \u2022 BSE yield: ~'+(p.m.bse*100).toFixed(0)+'% \u2022 SE yield: ~'+(p.m.se*100).toFixed(0)+'%';
+frame++;semAnimId=requestAnimationFrame(draw)}
+if(semAnimId)cancelAnimationFrame(semAnimId);particles=[];draw()}
+function resetSEM(){document.getElementById('semEnergy').value=15;document.getElementById('semSample').value='silicon';initSEM()}
+
+// AFM SIMULATION
+var afmAnimId=null;
+function initAFM(){var c=document.getElementById('afmCanvas');if(!c)return;var ctx=c.getContext('2d');var scanX=0;var profData=[];var rough=parseInt(document.getElementById('afmRoughness').value);var speed=parseInt(document.getElementById('afmSpeed').value);document.getElementById('afmRoughVal').textContent=rough;document.getElementById('afmSpeedVal').textContent=speed;
+var surf=[];var baseY=260;var y=baseY;for(var x=0;x<700;x++){y+=(Math.random()-0.5)*rough*1.2;y=Math.max(baseY-rough*15,Math.min(baseY+rough*10,y));if(x%(80+Math.floor(Math.random()*40))<20)y-=rough*3;surf.push(y)}
+function draw(){var mode=document.getElementById('afmMode').value;ctx.clearRect(0,0,700,400);ctx.fillStyle='#0d1117';ctx.fillRect(0,0,700,400);
+ctx.beginPath();ctx.moveTo(0,surf[0]);for(var i=1;i<700;i++)ctx.lineTo(i,surf[i]);ctx.lineTo(700,400);ctx.lineTo(0,400);ctx.closePath();var sg=ctx.createLinearGradient(0,200,0,400);sg.addColorStop(0,'#556677');sg.addColorStop(1,'#223344');ctx.fillStyle=sg;ctx.fill();
+if(profData.length>1){ctx.beginPath();ctx.moveTo(0,60);for(var i=0;i<profData.length;i++){var my=60+(profData[i]-220)*0.5;ctx.lineTo(i,Math.max(20,Math.min(130,my)))}ctx.strokeStyle='#00FF88';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#00FF88';ctx.font='12px Courier New';ctx.textAlign='left';ctx.fillText('TOPOGRAPHY PROFILE',10,18)}
+ctx.strokeStyle='rgba(255,255,255,0.2)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,150);ctx.lineTo(700,150);ctx.stroke();
+var tx=Math.floor(scanX);if(tx>=0&&tx<700){var sy=surf[tx];var ty=sy;if(mode==='tapping')ty=sy-5+Math.sin(Date.now()*0.03)*8;else if(mode==='noncontact')ty=sy-15+Math.sin(Date.now()*0.05)*4;
+ctx.beginPath();ctx.moveTo(tx,ty-30);ctx.lineTo(tx+80,ty-60);ctx.lineTo(tx+80,ty-55);ctx.lineTo(tx+3,ty-28);ctx.closePath();ctx.fillStyle='#AAB8C2';ctx.fill();
+ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx-6,ty-30);ctx.lineTo(tx+6,ty-30);ctx.closePath();ctx.fillStyle='#E0E0E0';ctx.fill();ctx.strokeStyle='#FFF';ctx.lineWidth=1;ctx.stroke();
+ctx.beginPath();ctx.moveTo(tx+40,ty-100);ctx.lineTo(tx+2,ty-30);ctx.strokeStyle='#FF0000';ctx.lineWidth=2;ctx.stroke();
+ctx.beginPath();ctx.moveTo(tx+2,ty-30);ctx.lineTo(tx-50,ty-100);ctx.strokeStyle='#FF4444';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+if(tx>=profData.length)profData.push(sy);
+document.getElementById('afmReadout').innerHTML='Mode: '+mode.charAt(0).toUpperCase()+mode.slice(1)+' \u2022 Tip position: '+tx+' nm \u2022 Deflection: '+(sy-260).toFixed(1)+' nm';
+ctx.strokeStyle='rgba(0,255,136,0.3)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(tx,150);ctx.lineTo(tx,400);ctx.stroke()}
+ctx.fillStyle='#8899AA';ctx.font='12px Courier New';ctx.textAlign='left';ctx.fillText('SAMPLE SURFACE',10,170);
+scanX+=speed*0.5;if(scanX<700)afmAnimId=requestAnimationFrame(draw)}
+if(afmAnimId)cancelAnimationFrame(afmAnimId);scanX=0;profData=[];draw()}
+function restartAFM(){document.getElementById('afmRoughVal').textContent=document.getElementById('afmRoughness').value;document.getElementById('afmSpeedVal').textContent=document.getElementById('afmSpeed').value;initAFM()}
+
+// QD SIMULATION
+function initQD(){var c=document.getElementById('qdCanvas');if(!c)return;var ctx=c.getContext('2d');
+function s2w(d,mat){var bg={CdSe:1.74,InP:1.35,PbS:0.41};var cs={CdSe:3.5,InP:4.0,PbS:15.0};var ebg=bg[mat]+cs[mat]/(d*d);return{wl:1240/ebg,bg:ebg}}
+function w2rgb(wl){var r=0,g=0,b=0;if(wl>=380&&wl<440){r=-(wl-440)/(440-380);b=1}else if(wl>=440&&wl<490){g=(wl-440)/(490-440);b=1}else if(wl>=490&&wl<510){g=1;b=-(wl-510)/(510-490)}else if(wl>=510&&wl<580){r=(wl-510)/(580-510);g=1}else if(wl>=580&&wl<645){r=1;g=-(wl-645)/(645-580)}else if(wl>=645&&wl<=780){r=1}else if(wl<380){r=0.4;b=0.6}else{r=0.5}return{r:Math.round(r*255),g:Math.round(g*255),b:Math.round(b*255)}}
+function draw(){var d=parseFloat(document.getElementById('qdSize').value);var mat=document.getElementById('qdMaterial').value;document.getElementById('qdSizeVal').textContent=d.toFixed(1)+' nm';
+var res=s2w(d,mat);var rgb=w2rgb(res.wl);ctx.clearRect(0,0,700,350);ctx.fillStyle='#0a0a20';ctx.fillRect(0,0,700,350);
+for(var i=0;i<9;i++){var sz=2+i;var ri=s2w(sz,mat);var ci=w2rgb(ri.wl);var x=80+i*65;var radius=sz*3;var glow=ctx.createRadialGradient(x,180,0,x,180,radius*3);glow.addColorStop(0,'rgba('+ci.r+','+ci.g+','+ci.b+',0.8)');glow.addColorStop(0.5,'rgba('+ci.r+','+ci.g+','+ci.b+',0.3)');glow.addColorStop(1,'rgba('+ci.r+','+ci.g+','+ci.b+',0)');ctx.fillStyle=glow;ctx.fillRect(x-radius*3,180-radius*3,radius*6,radius*6);
+ctx.beginPath();ctx.arc(x,180,radius,0,Math.PI*2);ctx.fillStyle='rgb('+ci.r+','+ci.g+','+ci.b+')';ctx.fill();ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1;ctx.stroke();
+ctx.fillStyle='#AAA';ctx.font='11px Courier New';ctx.textAlign='center';ctx.fillText(sz+' nm',x,180+radius+18);ctx.fillText(Math.round(ri.wl)+' nm',x,180+radius+32)}
+var selX=80+(d-2)*65/1;ctx.beginPath();ctx.moveTo(selX-8,260);ctx.lineTo(selX,250);ctx.lineTo(selX+8,260);ctx.fillStyle=res.wl>=380&&res.wl<=780?'rgb('+rgb.r+','+rgb.g+','+rgb.b+')':'#888';ctx.fill();
+ctx.fillStyle='#FFF';ctx.font='bold 16px Georgia';ctx.textAlign='center';ctx.fillText('Quantum Confinement: Smaller QDs = Higher Bandgap = Shorter Wavelength (Blue Shift)',350,30);
+ctx.font='14px Georgia';ctx.fillStyle=res.wl>=380&&res.wl<=780?'rgb('+rgb.r+','+rgb.g+','+rgb.b+')':'#888';ctx.fillText('UV \u2190 Blue \u2190 Green \u2190 Yellow \u2190 Red \u2192 IR',350,320);
+var cName='';if(res.wl<380)cName='UV';else if(res.wl<450)cName='Violet';else if(res.wl<490)cName='Blue';else if(res.wl<560)cName='Green';else if(res.wl<590)cName='Yellow';else if(res.wl<640)cName='Orange';else if(res.wl<=780)cName='Red';else cName='Infrared';
+document.getElementById('qdReadout').innerHTML='Diameter: '+d.toFixed(1)+' nm \u2022 Emission: ~'+Math.round(res.wl)+' nm ('+cName+') \u2022 Bandgap: ~'+res.bg.toFixed(2)+' eV'}
+draw();
+document.getElementById('qdSize').addEventListener('input',draw);document.getElementById('qdMaterial').addEventListener('change',draw)}
+
+function initAllSimulations(){initSEM();initAFM();initQD()}
+document.getElementById('semEnergy').addEventListener('input',function(){document.getElementById('semEnergyVal').textContent=this.value+' keV'});
+document.getElementById('semSample').addEventListener('change',function(){if(semAnimId)cancelAnimationFrame(semAnimId);initSEM()});
+
+// QUIZ
+var answers={q1:'b',q2:'b',q3:'c',q4:'c',q5:'b',q6:'b',q7:'c',q8:'b',q9:'b',q10:'b',q11:'c',q12:'b'};
+var explanations={
+q1:{c:'Correct! The STM exploits quantum mechanical tunneling between a sharp conductive tip and a conductive surface. The exponential dependence of tunneling current on distance provides exquisite sensitivity for atomic-resolution imaging.',w:'Incorrect. SEM uses scattered electrons for surface imaging (~1-10 nm resolution). AFM uses physical forces. XRD measures crystal structure. Only STM uses quantum tunneling for atomic resolution on conductive surfaces.'},
+q2:{c:'Correct! The Abbe diffraction limit prevents optical microscopes from resolving features smaller than roughly half the wavelength of visible light (~200-250 nm). This is a fundamental physics limitation, not an engineering one.',w:'Incorrect. Optical microscopes work in air, can image most materials, and do not need thin specimens. Their key limitation is the diffraction barrier (~200 nm resolution).'},
+q3:{c:'Correct! TEM forms images from electrons that pass through the sample. If the specimen is too thick, electrons are absorbed or scattered too many times, preventing image formation. Typical samples must be less than 100 nm thick.',w:'Incorrect. While vacuum and contamination are considerations, the fundamental reason is that electrons must transmit through the sample to form an image, requiring ultra-thin preparation.'},
+q4:{c:'Correct! Quantum confinement occurs when a semiconductor nanocrystal is small enough that its electron energy levels become discrete rather than forming continuous bands. Smaller dots have larger bandgaps and emit shorter-wavelength (bluer) light.',w:'Incorrect. Surface plasmon resonance applies to metal nanoparticles. Bragg diffraction relates to crystal structure. The piezoelectric effect converts mechanical stress to voltage. Quantum confinement is the principle behind size-tunable QD emission.'},
+q5:{c:'Correct! Lipid nanoparticles (LNPs) encapsulate and protect the fragile mRNA from enzymatic degradation, facilitate cellular uptake, and enable endosomal escape for cytoplasmic delivery. This nanotechnology was critical for COVID-19 vaccine success.',w:'Incorrect. While various nanocarriers exist, lipid nanoparticles (LNPs) were the specific technology used in the Pfizer-BioNTech and Moderna COVID-19 mRNA vaccines.'},
+q6:{c:'Correct! The lotus effect is a prime example of biomimicry. The lotus flower has nanometric-sized hairs on its surface that make water bead up and roll off, carrying away dirt particles. This self-cleaning principle inspires hydrophobic surface engineering.',w:'Incorrect. The lotus effect describes the self-cleaning property of the lotus leaf caused by its nanoscale surface texture. It is a classic example of bio-inspired (biomimetic) surface engineering.'},
+q7:{c:'Correct! The precautionary principle states that when potential consequences are severe and scientific understanding is incomplete, the burden of proof falls on demonstrating safety rather than proving harm. This is fundamental to EU nanotechnology regulation.',w:'Incorrect. While all these principles are important, the precautionary principle specifically addresses acting with caution when scientific understanding is incomplete.'},
+q8:{c:'Correct! Carbon nanotubes have a fibrous structure similar to asbestos fibers. Research suggests they could have similar toxicological effects when inhaled, including potential to cause mesothelioma-like responses. Their widespread use across many domains makes this a significant concern.',w:'Incorrect. The primary toxicological concern with CNTs is their fibrous structure, which resembles asbestos and could pose similar inhalation risks. They are not radioactive and do not dissolve in water.'},
+q9:{c:'Correct! Backscattered electrons (BSEs) are primary beam electrons that undergo elastic scattering from atomic nuclei. Heavier elements (higher atomic number Z) scatter more electrons, appearing brighter in BSE images and providing compositional contrast.',w:'Incorrect. Secondary electrons provide topographic contrast. Characteristic X-rays identify elements (EDS). Backscattered electrons provide compositional contrast because their yield depends on atomic number.'},
+q10:{c:'Correct! In tapping mode, the cantilever oscillates and only briefly contacts the surface at the bottom of each oscillation. This dramatically reduces lateral (shear) forces compared to contact mode, preventing damage to soft biological samples.',w:'Incorrect. Tapping mode reduces lateral forces by intermittent contact, making it ideal for soft biological samples. It does not require vacuum and does not inherently have higher resolution than contact mode.'},
+q11:{c:'Correct! Nuclear reactor control rods are macroscale mechanical devices, not MEMS. MEMS devices include accelerometers (smartphones, airbags), inkjet nozzles, micromirror displays, pressure sensors, and microfluidic lab-on-a-chip devices.',w:'Incorrect. Smartphone accelerometers, airbag sensors, and inkjet heads are all common MEMS applications. Nuclear reactor control rods are macroscale devices, not MEMS.'},
+q12:{c:'Correct! The de Broglie wavelength of 200 keV electrons (~0.0025 nm) is much smaller than typical atomic spacings (~0.1-0.3 nm). Since resolution cannot exceed the probe wavelength, this enables TEM to resolve individual atoms and crystal planes.',w:'Incorrect. The extremely small de Broglie wavelength means the electron probe can resolve features at the atomic scale. This is what makes TEM capable of sub-angstrom resolution imaging.'}
+};
+function submitQuiz(){var score=0;var total=12;for(var i=1;i<=total;i++){var sel=document.querySelector('input[name="q'+i+'"]:checked');var fb=document.getElementById('fb'+i);var qq=document.getElementById('qq'+i);if(!sel){fb.className='feedback-box show incorrect-fb';fb.textContent='Please select an answer.';qq.className='quiz-q incorrect';continue}var correct=sel.value===answers['q'+i];if(correct){score++;fb.className='feedback-box show correct-fb';fb.textContent=explanations['q'+i].c;qq.className='quiz-q correct'}else{fb.className='feedback-box show incorrect-fb';fb.textContent=explanations['q'+i].w;qq.className='quiz-q incorrect'}}
+var pct=Math.round(score/total*100);document.getElementById('quizScore').textContent=score+'/'+total;document.getElementById('quizPercent').textContent=pct+'%';var msg='';if(pct>=90)msg='Excellent! You have mastered characterization, applications, and ethics.';else if(pct>=80)msg='Very good! Solid understanding of the material.';else if(pct>=70)msg='Good work! Review the areas where you missed questions.';else msg='Additional study recommended. Review all module sections.';document.getElementById('quizMessage').textContent=msg;document.getElementById('quizResults').style.display='block';document.getElementById('submitBtn').disabled=true}
+function resetQuiz(){for(var i=1;i<=12;i++){document.getElementById('fb'+i).className='feedback-box';document.getElementById('qq'+i).className='quiz-q';var inputs=document.querySelectorAll('input[name="q'+i+'"]');inputs.forEach(function(inp){inp.checked=false})}document.getElementById('quizResults').style.display='none';document.getElementById('submitBtn').disabled=false}
+
+// INIT
+document.addEventListener('DOMContentLoaded',function(){updateProgress()});
+</script>
+</body>
+</html>
