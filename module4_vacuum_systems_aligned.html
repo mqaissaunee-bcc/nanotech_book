@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Module 4: Vacuum Systems & Assembly - Practical vacuum technology for nanofabrication including pumps, gauges, fittings, leak detection, and system assembly.">
-    <title>Module 4: Vacuum Systems & Assembly | Introduction to Nanotechnology</title>
+    <meta name="description" content="Module 4: Vacuum Systems &amp; Assembly - Practical vacuum technology for nanofabrication including pumps, gauges, fittings, leak detection, and system assembly.">
+    <title>Module 4: Vacuum Systems &amp; Assembly | Introduction to Nanotechnology</title>
     <style>
         /* ============================================================
            CSS CUSTOM PROPERTIES - Web-Safe Color Palette
@@ -600,27 +600,51 @@
             body { background: white; }
             .card { box-shadow: none; border: 1px solid #ccc; }
         }
+    
+        /* ===== STANDARD HEADER ===== */
+        header{background:linear-gradient(135deg,#001a33,#003366,#336699);color:#FFFFFF;padding:18px 20px;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+        .header-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+        .logo-section{display:flex;align-items:center;gap:15px}
+        .logo-icon{width:50px;height:50px;background:#CC9900;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;color:#003366}
+        .site-title{font-size:1.25rem;font-weight:bold;letter-spacing:0.3px}
+        .site-subtitle{font-size:0.82rem;opacity:0.85}
+        nav[aria-label="Module navigation"]{display:flex;gap:10px;flex-wrap:wrap}
+        .nav-btn{background:rgba(255,255,255,0.12);color:#FFFFFF;border:2px solid rgba(255,255,255,0.25);padding:8px 16px;border-radius:25px;text-decoration:none;font-size:0.88rem;transition:all 0.3s}
+        .nav-btn:hover,.nav-btn:focus{background:#CC9900;color:#003366;border-color:#CC9900}
+
+        
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- NAVIGATION -->
-    <nav class="site-nav" aria-label="Main navigation">
-        <div class="nav-inner">
-            <a href="index.html" class="nav-brand">NANO&middot;101</a>
-            <ul class="nav-links" role="menubar">
-                <li><a href="index.html" role="menuitem">Home</a></li>
-                <li><a href="course-outline.html" role="menuitem">Outline</a></li>
-                <li><a href="module3_cleanroom_technology.html" role="menuitem">Module 3</a></li>
-                <li><a href="#" class="active" role="menuitem" aria-current="page">Module 4</a></li>
-                <li><a href="module5_vacuum_concepts.html" role="menuitem">Module 5</a></li>
-            </ul>
+        <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true" style="font-size:18px">4</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 4: Vacuum Systems &amp; Assembly</div>
+                </div>
+            </div>
+            <nav aria-label="Module navigation">
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
+                <a href="module3_cleanroom_technology.html" class="nav-btn">&larr; Module 3</a>
+                <a href="module5_vacuum_concepts.html" class="nav-btn">Module 5 &rarr;</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- HERO -->
-    <header class="hero" role="banner">
+    <main id="main-content">
+
+        <div class="hero" role="banner">
         <div class="hero-content">
             <span class="hero-badge">Week 4 &bull; Lecture + Lab</span>
             <h1>Module 4: Vacuum Systems &amp; Assembly</h1>
@@ -1100,14 +1124,14 @@
                         <div class="pump-body">
                             <div class="pump-specs">
                                 <div class="spec-item"><span class="spec-label">Ultimate</span><span class="spec-value">10<sup>-12</sup> Torr</span></div>
-                                <div class="spec-item"><span class="spec-label">Speed (Hâ‚‚O)</span><span class="spec-value">1000&ndash;50,000 L/s</span></div>
+                                <div class="spec-item"><span class="spec-label">Speed (HÃ¢â€šâ€šO)</span><span class="spec-value">1000&ndash;50,000 L/s</span></div>
                                 <div class="spec-item"><span class="spec-label">Cost</span><span class="spec-value">$15K&ndash;80K</span></div>
                                 <div class="spec-item"><span class="spec-label">Regeneration</span><span class="spec-value">Periodic warmup</span></div>
                             </div>
                             <p class="pump-desc">Cold surfaces (10&ndash;20 K) condense and trap gas molecules. Highest water vapor pumping speed. Requires periodic regeneration.</p>
                             <div class="pump-pros-cons">
-                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>Excellent Hâ‚‚O speed</li><li>Completely clean</li><li>Vibration-free</li></ul></div>
-                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Finite capacity</li><li>Can't pump He, Hâ‚‚, Ne</li><li>High power consumption</li></ul></div>
+                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>Excellent HÃ¢â€šâ€šO speed</li><li>Completely clean</li><li>Vibration-free</li></ul></div>
+                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Finite capacity</li><li>Can't pump He, HÃ¢â€šâ€š, Ne</li><li>High power consumption</li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -1612,11 +1636,11 @@
                 <div class="tip-box">
                     <h4>&#128161; Rate-of-Rise Test Procedure</h4>
                     <ol style="margin-left: 1.25rem;">
-                        <li>Pump system to base pressure; record value (Pâ‚)</li>
+                        <li>Pump system to base pressure; record value (PÃ¢â€šÂ)</li>
                         <li>Close gate valve to isolate chamber from pump</li>
                         <li>Wait measured time interval (1&ndash;5 minutes)</li>
-                        <li>Record final pressure (Pâ‚‚)</li>
-                        <li>Calculate: Leak Rate = Chamber Volume &times; (Pâ‚‚ - Pâ‚) / Time</li>
+                        <li>Record final pressure (PÃ¢â€šâ€š)</li>
+                        <li>Calculate: Leak Rate = Chamber Volume &times; (PÃ¢â€šâ€š - PÃ¢â€šÂ) / Time</li>
                     </ol>
                     <p style="margin-top: 0.75rem;"><strong>Interpretation:</strong> If rate-of-rise is constant across multiple tests: real leak. If it decreases: outgassing or virtual leak.</p>
                 </div>
@@ -1875,7 +1899,7 @@
                 <div class="card">
                     <div class="card-header">&#127909; Video Resources</div>
                     <div class="card-body">
-                        <p style="font-size:1.05rem;margin-bottom:30px;color:var(--info);">Deepen your understanding of vacuum technology with these curated video resources. Watch any combination that suits your learning style—from basic principles to detailed pump mechanisms.</p>
+                        <p style="font-size:1.05rem;margin-bottom:30px;color:var(--info);">Deepen your understanding of vacuum technology with these curated video resources. Watch any combination that suits your learning styleâ€”from basic principles to detailed pump mechanisms.</p>
                         
                         <div class="video-grid">
                             <!-- Video 1 -->
@@ -1883,7 +1907,7 @@
                                 <div class="video-wrapper">
                                     <iframe 
                                         src="https://www.youtube.com/embed/MTIZTcptuDs" 
-                                        title="Vacuum Basics Explained – Fundamentals of vacuum technology"
+                                        title="Vacuum Basics Explained â€“ Fundamentals of vacuum technology"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen>
                                     </iframe>
@@ -1899,7 +1923,7 @@
                                 <div class="video-wrapper">
                                     <iframe 
                                         src="https://www.youtube.com/embed/NvCDu54y__k" 
-                                        title="Introduction to Vacuum Technology – lab-oriented intro"
+                                        title="Introduction to Vacuum Technology â€“ lab-oriented intro"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen>
                                     </iframe>
@@ -1915,7 +1939,7 @@
                                 <div class="video-wrapper">
                                     <iframe 
                                         src="https://www.youtube.com/embed/CAQMZPS99rw" 
-                                        title="How Do Vacuum Pumps Work? – overview of vacuum pumps"
+                                        title="How Do Vacuum Pumps Work? â€“ overview of vacuum pumps"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen>
                                     </iframe>
@@ -1931,7 +1955,7 @@
                                 <div class="video-wrapper">
                                     <iframe 
                                         src="https://www.youtube.com/embed/AkXx4_xVJ1g" 
-                                        title="Vacuum Pump Basics – main purpose of vacuum pumps"
+                                        title="Vacuum Pump Basics â€“ main purpose of vacuum pumps"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen>
                                     </iframe>
@@ -1947,7 +1971,7 @@
                                 <div class="video-wrapper">
                                     <iframe 
                                         src="https://www.youtube.com/embed/9tV6FeDR-vQ" 
-                                        title="How does a rotary vane vacuum pump work? – mechanism of a common pump"
+                                        title="How does a rotary vane vacuum pump work? â€“ mechanism of a common pump"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen>
                                     </iframe>
@@ -1963,7 +1987,7 @@
                                 <div class="video-wrapper">
                                     <iframe 
                                         src="https://www.youtube.com/embed/Iv-hL3VMBRk" 
-                                        title="High-Vacuum Basics – general high-vacuum concepts"
+                                        title="High-Vacuum Basics â€“ general high-vacuum concepts"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen>
                                     </iframe>
@@ -2016,7 +2040,7 @@
 
                     <div class="quiz-question" data-q="3" data-correct="a">
                         <div class="question-num">Question 3 of 10</div>
-                        <h4>Why should a hot cathode ion gauge NOT be operated above 10â»Â³ Torr?</h4>
+                        <h4>Why should a hot cathode ion gauge NOT be operated above 10Ã¢ÂÂ»Ã‚Â³ Torr?</h4>
                         <div class="quiz-options">
                             <label class="quiz-option"><input type="radio" name="q3" value="a"> The filament will oxidize and burn out</label>
                             <label class="quiz-option"><input type="radio" name="q3" value="b"> It will give inaccurate readings</label>
@@ -2128,18 +2152,19 @@
 
         <!-- Footer Navigation -->
         <nav class="nav-footer" aria-label="Module navigation">
-            <a href="module3_cleanroom_technology.html" class="footer-btn">&#8592; Module 3: Cleanroom Technology</a>
-            <button class="complete-btn" id="complete-btn" onclick="markComplete()">&#10004; Mark Module Complete</button>
-            <a href="module5_vacuum_concepts.html" class="footer-btn">Module 5: Vacuum Concepts &#8594;</a>
+            <a href="module3_cleanroom_technology.html">&larr; Module 3: Cleanroom Technology</a>
+            <a href="index.html">&#127968; Course Home</a>
+            <a href="module5_vacuum_concepts.html">Module 5: Vacuum Concepts &rarr;</a>
         </nav>
 
     </main>
 
     <!-- FOOTER -->
-    <footer class="site-footer" role="contentinfo">
-        <p>Introduction to Nanotechnology &mdash; Module 4: Vacuum Systems &amp; Assembly</p>
-        <p>Based on the <em>Low-Cost Nanotechnology Laboratory Manual</em></p>
-        <span class="grant-badge">Supported by NSF ATE Grant DUE 2301137</span>
+    <footer>
+        <div class="footer-content">
+            <p>Introduction to Nanotechnology &mdash; Module 4: Vacuum Systems &amp; Assembly</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
+        </div>
     </footer>
 
     <!-- ================================================================
@@ -2350,7 +2375,7 @@
                 no: { answer: 'Use a <strong>Pirani or Thermocouple gauge</strong> for economical medium vacuum indication.' }
             },
             gq3: {
-                precise: { answer: 'Use a <strong>Hot Cathode Ion Gauge</strong> for precise HV/UHV measurement. Remember: never operate above 10â»Â³ Torr!' },
+                precise: { answer: 'Use a <strong>Hot Cathode Ion Gauge</strong> for precise HV/UHV measurement. Remember: never operate above 10Ã¢ÂÂ»Ã‚Â³ Torr!' },
                 indication: { answer: 'Use a <strong>Cold Cathode Ion Gauge</strong> for robust HV indication with no filament to burn out.' }
             }
         };
@@ -2370,14 +2395,14 @@
             if (result.answer) {
                 container.innerHTML += `
                     <div class="decision-node answer">
-                        <h4>âœ“ Recommendation</h4>
+                        <h4>Ã¢Å“â€œ Recommendation</h4>
                         <p>${result.answer}</p>
                     </div>
                 `;
             } else if (result.next === 'gq2') {
                 container.innerHTML += `
                     <div class="decision-node question" id="gq2">
-                        <h4>Do you need high accuracy (Â±1% or better)?</h4>
+                        <h4>Do you need high accuracy (Ã‚Â±1% or better)?</h4>
                         <div class="decision-options">
                             <button class="decision-btn" onclick="gaugeSelect('gq2', 'yes')">Yes - High accuracy needed</button>
                             <button class="decision-btn" onclick="gaugeSelect('gq2', 'no')">No - Indication is sufficient</button>
@@ -2403,8 +2428,8 @@
                     <h4>What is your pressure range?</h4>
                     <div class="decision-options">
                         <button class="decision-btn" onclick="gaugeSelect('gq1', 'rough')">Rough (>1 Torr)</button>
-                        <button class="decision-btn" onclick="gaugeSelect('gq1', 'medium')">Medium (1â€“10â»Â³)</button>
-                        <button class="decision-btn" onclick="gaugeSelect('gq1', 'high')">High/UHV (<10â»Â³)</button>
+                        <button class="decision-btn" onclick="gaugeSelect('gq1', 'medium')">Medium (1Ã¢â‚¬â€œ10Ã¢ÂÂ»Ã‚Â³)</button>
+                        <button class="decision-btn" onclick="gaugeSelect('gq1', 'high')">High/UHV (<10Ã¢ÂÂ»Ã‚Â³)</button>
                     </div>
                 </div>
             `;
@@ -2416,13 +2441,13 @@
         const quizAnswers = {
             q1: { correct: 'b', explanation: 'Scroll pumps are oil-free and ideal for clean rough vacuum applications.' },
             q2: { correct: 'c', explanation: 'Turbo pumps cannot exhaust to atmosphere; they need a backing pump to maintain low exhaust pressure.' },
-            q3: { correct: 'a', explanation: 'The hot tungsten filament rapidly oxidizes at pressures above 10â»Â³ Torr and will burn out.' },
-            q4: { correct: 'd', explanation: 'CF flanges with copper gaskets can be baked to 450Â°C for UHV, while elastomer seals are limited to ~150Â°C.' },
+            q3: { correct: 'a', explanation: 'The hot tungsten filament rapidly oxidizes at pressures above 10Ã¢ÂÂ»Ã‚Â³ Torr and will burn out.' },
+            q4: { correct: 'd', explanation: 'CF flanges with copper gaskets can be baked to 450Ã‚Â°C for UHV, while elastomer seals are limited to ~150Ã‚Â°C.' },
             q5: { correct: 'b', explanation: 'Virtual leaks are trapped gas volumes that slowly release; the leak rate decreases over time unlike real leaks.' },
             q6: { correct: 'c', explanation: 'Helium is small (penetrates tiny leaks), inert (safe), has low atmospheric abundance (5 ppm), and mass 4 is easily detected.' },
             q7: { correct: 'a', explanation: 'At 20,000-90,000 RPM, sudden air rush causes catastrophic aerodynamic forces that destroy the rotor and bearings.' },
             q8: { correct: 'd', explanation: 'Capacitance manometers measure actual mechanical deflection from gas pressure, independent of gas species.' },
-            q9: { correct: 'b', explanation: 'Bakeout (150-250Â°C) accelerates desorption of water and other adsorbed gases from chamber surfaces.' },
+            q9: { correct: 'b', explanation: 'Bakeout (150-250Ã‚Â°C) accelerates desorption of water and other adsorbed gases from chamber surfaces.' },
             q10: { correct: 'c', explanation: 'Crossover pressure (~50 mTorr) is when you switch from roughing pump to high vacuum pump operation.' }
         };
         
@@ -2446,7 +2471,7 @@
                         score++;
                         selectedOpt.classList.add('correct');
                         feedback.className = 'quiz-feedback show correct';
-                        feedback.innerHTML = 'âœ“ Correct! ' + quizAnswers[q].explanation;
+                        feedback.innerHTML = 'Ã¢Å“â€œ Correct! ' + quizAnswers[q].explanation;
                     } else {
                         selectedOpt.classList.add('incorrect');
                         question.querySelectorAll('.quiz-option').forEach(opt => {
@@ -2455,7 +2480,7 @@
                             }
                         });
                         feedback.className = 'quiz-feedback show incorrect';
-                        feedback.innerHTML = 'âœ— Incorrect. ' + quizAnswers[q].explanation;
+                        feedback.innerHTML = 'Ã¢Å“â€” Incorrect. ' + quizAnswers[q].explanation;
                     }
                 } else {
                     feedback.className = 'quiz-feedback show incorrect';
@@ -2469,10 +2494,10 @@
             document.getElementById('final-score').textContent = score + '/' + total + ' (' + pct + '%)';
             
             let msg;
-            if (pct >= 90) msg = 'ðŸŽ‰ Excellent! You have mastered vacuum system fundamentals!';
-            else if (pct >= 70) msg = 'ðŸ‘ Good job! Review the topics you missed.';
-            else if (pct >= 50) msg = 'ðŸ“– Fair. Consider reviewing the lecture material.';
-            else msg = 'ðŸ“š More study needed. Please review all sections.';
+            if (pct >= 90) msg = 'Ã°Å¸Å½â€° Excellent! You have mastered vacuum system fundamentals!';
+            else if (pct >= 70) msg = 'Ã°Å¸â€˜Â Good job! Review the topics you missed.';
+            else if (pct >= 50) msg = 'Ã°Å¸â€œâ€“ Fair. Consider reviewing the lecture material.';
+            else msg = 'Ã°Å¸â€œÅ¡ More study needed. Please review all sections.';
             
             document.getElementById('score-message').textContent = msg;
             localStorage.setItem('module4_quiz', pct);
@@ -2497,7 +2522,7 @@
             localStorage.setItem('courseProgress', JSON.stringify(progress));
             
             const btn = document.getElementById('complete-btn');
-            btn.textContent = 'âœ“ Module 4 Completed!';
+            btn.textContent = 'Ã¢Å“â€œ Module 4 Completed!';
             btn.style.background = '#006600';
             btn.disabled = true;
         }
@@ -2507,7 +2532,7 @@
             const progress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
             if (progress.module4) {
                 const btn = document.getElementById('complete-btn');
-                btn.textContent = 'âœ“ Module 4 Completed!';
+                btn.textContent = 'Ã¢Å“â€œ Module 4 Completed!';
                 btn.style.background = '#006600';
             }
         });

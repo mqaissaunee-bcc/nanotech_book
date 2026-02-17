@@ -35,7 +35,7 @@
         header { background: linear-gradient(135deg, var(--deep-purple), var(--purple-accent)); color: var(--white); padding: 16px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); position: sticky; top: 0; z-index: 1000; }
         .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
         .logo-section { display: flex; align-items: center; gap: 14px; }
-        .logo-icon { width: 52px; height: 52px; background: var(--accent-gold); color: var(--primary-blue); font-size: 1.3rem; font-weight: bold; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
+        .logo-icon { width: 50px; height: 50px; background: var(--accent-gold); color: var(--primary-blue); font-size: 1.3rem; font-weight: bold; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
         .site-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 2px; }
         .site-subtitle { font-size: 0.95rem; opacity: 0.9; font-style: italic; }
         .nav-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -137,25 +137,33 @@
         @media (max-width: 768px) { .tabs { flex-direction: column; } .tab-btn { min-width: auto; padding: 12px; font-size: 0.85rem; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); } .module-banner h1 { font-size: 1.6rem; } .card-grid { grid-template-columns: 1fr; } main { padding: 16px; } .module-banner { margin: -16px -16px 20px -16px; padding: 30px 16px; } .header-content { flex-direction: column; align-items: flex-start; } .comparison-table { font-size: 0.82rem; } .comparison-table th, .comparison-table td { padding: 8px 10px; } }
         @media (max-width: 480px) { .module-banner h1 { font-size: 1.3rem; } .section-head h2 { font-size: 1.25rem; } }
         @media print { header, .tabs, .sim-container, footer { display: none; } .tab-content { display: block !important; } main { box-shadow: none; } }
+    
+        
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
     </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to Main Content</a>
 <header>
-    <div class="header-content">
-        <div class="logo-section">
-            <div class="logo-icon" aria-hidden="true">NT</div>
-            <div>
-                <div class="site-title">Introduction to Nanotechnology</div>
-                <div class="site-subtitle">Module 13: Characterization, Applications, Ethics &amp; Course Review</div>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true" style="font-size:15px">13</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 13: Characterization, Applications &amp; Ethics</div>
+                </div>
             </div>
+            <nav aria-label="Module navigation">
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
+                <a href="module12_self_assembly.html" class="nav-btn">&larr; Module 12</a>
+            </nav>
         </div>
-        <nav class="nav-buttons" aria-label="Module navigation">
-            <a href="index.html" class="nav-btn">&larr; Course Home</a>
-            <a href="module12_self_assembly.html" class="nav-btn">&larr; Module 12</a>
-        </nav>
-    </div>
-</header>
+    </header>
 <main id="main-content">
     <div class="module-banner">
         <h1>Module 13 &mdash; Characterization, Applications, Ethics &amp; Course Review</h1>
@@ -544,10 +552,11 @@
     </div>
 </main>
 <footer>
-    <p><strong>Introduction to Nanotechnology</strong> &mdash; Module 13: Characterization, Applications, Ethics &amp; Course Review</p>
-    <p>Penn State University &bull; <a href="index.html">Return to Course Home</a></p>
-    <p style="margin-top:10px; font-size:0.85rem; opacity:0.8;">Designed for accessible, interactive online education &bull; &copy; 2025</p>
-</footer>
+        <div class="footer-content">
+            <p>Introduction to Nanotechnology &mdash; Module 13: Characterization, Applications &amp; Ethics</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
+        </div>
+    </footer>
 <script>
 // TAB SWITCHING
 var tabKeys=['char','sim','app','eth','rev','quiz'];

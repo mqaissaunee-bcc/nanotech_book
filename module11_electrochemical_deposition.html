@@ -177,14 +177,45 @@
             .cbd{padding:1rem 1.25rem}.ps{padding-left:60px}.tt-box{width:220px;font-size:.8rem}
         }
         @media print{.tabs,.sc,.qq,.qa,.qs,.nf,.pbar,header,nav{display:none}.tc{display:block!important}}
+    
+        /* ===== STANDARD HEADER ===== */
+        header{background:linear-gradient(135deg,#001a33,#003366,#336699);color:#FFFFFF;padding:18px 20px;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+        .header-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+        .logo-section{display:flex;align-items:center;gap:15px}
+        .logo-icon{width:50px;height:50px;background:#CC9900;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;color:#003366}
+        .site-title{font-size:1.25rem;font-weight:bold;letter-spacing:0.3px}
+        .site-subtitle{font-size:0.82rem;opacity:0.85}
+        nav[aria-label="Module navigation"]{display:flex;gap:10px;flex-wrap:wrap}
+        .nav-btn{background:rgba(255,255,255,0.12);color:#FFFFFF;border:2px solid rgba(255,255,255,0.25);padding:8px 16px;border-radius:25px;text-decoration:none;font-size:0.88rem;transition:all 0.3s}
+        .nav-btn:hover,.nav-btn:focus{background:#CC9900;color:#003366;border-color:#CC9900}
+
+        
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
     </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
-<header><div class="hdr">
-<div class="logo"><div class="logo-ic" aria-hidden="true">M11</div><div><div class="st">Introduction to Nanotechnology</div><div class="ss">Module 11: Electrochemical Deposition</div></div></div>
-<nav class="nb" aria-label="Module navigation"><a href="index.html">&#127968; Course Home</a><a href="module10_pattern_transfer.html">&larr; Module 10</a><a href="module12_self_assembly.html">Module 12 &rarr;</a></nav>
-</div></header>
+<header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true" style="font-size:15px">11</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 11: Electrochemical Deposition</div>
+                </div>
+            </div>
+            <nav aria-label="Module navigation">
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
+                <a href="module10_pattern_transfer.html" class="nav-btn">&larr; Module 10</a>
+                <a href="module12_self_assembly.html" class="nav-btn">Module 12 &rarr;</a>
+            </nav>
+        </div>
+    </header>
 <main id="main-content">
 <div class="hero"><h1>Module 11 &mdash; Electrochemical Deposition</h1><p>Harness electrical current to deposit metals atom-by-atom&mdash;from gold thin films in the lab to the copper interconnects inside every modern microprocessor.</p><div class="hero-meta"><span>&#9201; 3&ndash;4 Hours</span><span>&#128218; Lecture + Lab</span><span>&#9889; Electrochemistry</span></div></div>
 
@@ -582,11 +613,16 @@
 
 <!-- FOOTER -->
 <div class="nf">
-<a href="module10_pattern_transfer.html" class="fn pv">&larr; Module 10: Pattern Transfer</a>
-<button class="cbtn" onclick="markDone()">&#9989; Mark Module Complete</button>
-<a href="module12_self_assembly.html" class="fn nx">Module 12: Self-Assembly &rarr;</a>
+<a href="module10_pattern_transfer.html">&larr; Module 10: Pattern Transfer</a>
+<a href="index.html">&#127968; Course Home</a>
+<a href="module12_self_assembly.html">Module 12: Self-Assembly &rarr;</a>
 </div>
-<div class="nsf"><div class="nsfi"><p>Penn State University. Educational use permitted with attribution.</p></div></div>
+<footer>
+        <div class="footer-content">
+            <p>Introduction to Nanotechnology &mdash; Module 11: Electrochemical Deposition</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
+        </div>
+    </footer>
 </main>
 <script>
 // ========== GLOBALS ==========

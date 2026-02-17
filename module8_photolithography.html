@@ -502,6 +502,14 @@
             .tab-content { display: block !important; }
             body { background: white; color: black; }
         }
+    
+        
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
     </style>
 </head>
 <body>
@@ -511,16 +519,16 @@
     <header>
         <div class="header-content">
             <div class="logo-section">
-                <div class="logo-icon" aria-hidden="true">M8</div>
+                <div class="logo-icon" aria-hidden="true" style="font-size:18px">8</div>
                 <div>
                     <div class="site-title">Introduction to Nanotechnology</div>
                     <div class="site-subtitle">Module 8: Photolithography</div>
                 </div>
             </div>
-            <nav class="nav-buttons" aria-label="Module navigation">
-                <a href="index.html" class="nav-btn">&#8592; Course Home</a>
-                <a href="module7_thin_film_deposition.html" class="nav-btn">&#8592; Module 7</a>
-                <a href="module9_etching.html" class="nav-btn">Module 9 &#8594;</a>
+            <nav aria-label="Module navigation">
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
+                <a href="module7_thin_film_deposition.html" class="nav-btn">&larr; Module 7</a>
+                <a href="module9_etching.html" class="nav-btn">Module 9 &rarr;</a>
             </nav>
         </div>
     </header>
@@ -1576,9 +1584,10 @@
 
     <!-- ===== FOOTER ===== -->
     <footer>
-        <p>Introduction to Nanotechnology &mdash; Module 8: Photolithography</p>
-        <p>Penn State University</p>
-        <p>&copy; 2025 &mdash; Educational use permitted with attribution</p>
+        <div class="footer-content">
+            <p>Introduction to Nanotechnology &mdash; Module 8: Photolithography</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
+        </div>
     </footer>
 
     <!-- ===== JAVASCRIPT ===== -->

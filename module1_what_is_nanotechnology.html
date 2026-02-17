@@ -212,6 +212,13 @@
         a:focus,button:focus,input:focus,[tabindex]:focus{outline:3px solid var(--gold);outline-offset:2px}
         @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
         @media print{.tabs,.sim-container,.quiz-container,.nav-footer,header,nav{display:none}.tab-content{display:block!important}}
+    
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
     </style>
 </head>
 <body>
@@ -220,14 +227,14 @@
     <header>
         <div class="header-content">
             <div class="logo-section">
-                <div class="logo-icon" aria-hidden="true">M1</div>
+                <div class="logo-icon" aria-hidden="true" style="font-size:18px">1</div>
                 <div>
                     <div class="site-title">Introduction to Nanotechnology</div>
                     <div class="site-subtitle">Module 1: What Is Nanotechnology?</div>
                 </div>
             </div>
             <nav aria-label="Module navigation">
-                <a href="index.html" class="nav-btn">&larr; Course Home</a>
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
                 <a href="module2_nanoscale_fundamentals.html" class="nav-btn">Module 2 &rarr;</a>
             </nav>
         </div>
@@ -1053,17 +1060,16 @@
 
         <!-- ===== NAVIGATION FOOTER ===== -->
         <div class="nav-footer">
-            <a href="index.html">&larr; Course Home</a>
-            <a href="module2_nanoscale_fundamentals.html">Module 2: The Nanoscale &rarr;</a>
+            <a href="index.html">&#127968; Course Home</a>
+            <a href="module2_nanoscale_fundamentals.html">Module 2: Nanoscale Fundamentals &rarr;</a>
         </div>
 
     </main>
 
     <footer>
         <div class="footer-content">
-            <p><strong>Introduction to Nanotechnology</strong> | Module 1: What Is Nanotechnology?</p>
-            <p>Penn State University</p>
-            <p>&copy; 2025 &mdash; For Educational Use</p>
+            <p>Introduction to Nanotechnology &mdash; Module 1: What Is Nanotechnology?</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
         </div>
     </footer>
 

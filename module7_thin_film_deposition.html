@@ -149,11 +149,45 @@
 
         @media(max-width:900px){.two-column,.three-column{grid-template-columns:1fr}.hero h1{font-size:1.8rem}.tabs{flex-wrap:wrap}.tab-btn{min-width:100px;font-size:0.85rem;padding:0.75rem 0.5rem}.card-body{padding:1.25rem}.data-table{font-size:0.8rem}.data-table th,.data-table td{padding:0.4rem 0.5rem}}
         @media(max-width:600px){main{padding:1rem 0.75rem 3rem}.hero{padding:2rem 1.25rem}.hero h1{font-size:1.5rem}.tab-content{padding:1.25rem}.process-flow{flex-direction:column}.process-arrow{transform:rotate(90deg)}}
+    
+        /* ===== STANDARD HEADER ===== */
+        header{background:linear-gradient(135deg,#001a33,#003366,#336699);color:#FFFFFF;padding:18px 20px;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+        .header-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+        .logo-section{display:flex;align-items:center;gap:15px}
+        .logo-icon{width:50px;height:50px;background:#CC9900;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;color:#003366}
+        .site-title{font-size:1.25rem;font-weight:bold;letter-spacing:0.3px}
+        .site-subtitle{font-size:0.82rem;opacity:0.85}
+        nav[aria-label="Module navigation"]{display:flex;gap:10px;flex-wrap:wrap}
+        .nav-btn{background:rgba(255,255,255,0.12);color:#FFFFFF;border:2px solid rgba(255,255,255,0.25);padding:8px 16px;border-radius:25px;text-decoration:none;font-size:0.88rem;transition:all 0.3s}
+        .nav-btn:hover,.nav-btn:focus{background:#CC9900;color:#003366;border-color:#CC9900}
+
+        
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
     </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
-<header><div class="header-content"><div class="logo-section"><div class="logo-icon" aria-hidden="true">NT</div><div><div class="site-title">Introduction to Nanotechnology</div><div class="site-subtitle">An Interactive Online Textbook</div></div></div><nav aria-label="Module navigation"><a href="index.html">&#127968; Home</a> <a href="module6_plasma_technology.html">&#9664; Mod 6</a> <a href="module8_photolithography.html">Mod 8 &#9654;</a> <a href="index.html">&#128218; Outline</a></nav></div></header>
+<header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true" style="font-size:18px">7</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 7: Thin Film Deposition</div>
+                </div>
+            </div>
+            <nav aria-label="Module navigation">
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
+                <a href="module6_plasma_technology.html" class="nav-btn">&larr; Module 6</a>
+                <a href="module8_photolithography.html" class="nav-btn">Module 8 &rarr;</a>
+            </nav>
+        </div>
+    </header>
 
 <main id="main-content">
 <section class="hero" aria-label="Module introduction">
@@ -593,10 +627,11 @@
 </main>
 
 <footer>
-    <p><strong>Introduction to Nanotechnology</strong> &mdash; An Interactive Online Textbook</p>
-    <p>Module 7: Thin Film Deposition</p>
-    <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.8;">Penn State University &mdash; <a href="index.html">Course Outline</a></p>
-</footer>
+        <div class="footer-content">
+            <p>Introduction to Nanotechnology &mdash; Module 7: Thin Film Deposition</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
+        </div>
+    </footer>
 
 <script>
 /* ============================================================

@@ -1365,6 +1365,14 @@
             color: var(--mid-gray);
             margin-top: 0.25rem;
         }
+    
+        
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
     </style>
 </head>
 <body>
@@ -1376,16 +1384,16 @@
     <header>
         <div class="header-content">
             <div class="logo-section">
-                <div class="logo-icon" aria-hidden="true">3</div>
+                <div class="logo-icon" aria-hidden="true" style="font-size:18px">3</div>
                 <div>
                     <div class="site-title">Introduction to Nanotechnology</div>
                     <div class="site-subtitle">Module 3: Cleanroom Technology</div>
                 </div>
             </div>
-            <nav class="nav-buttons" aria-label="Module navigation">
-                <a href="index.html" class="nav-btn">&#8592; Course Home</a>
-                <a href="module2_nanoscale_fundamentals.html" class="nav-btn">&#8592; Previous Module</a>
-                <a href="module4_vacuum_systems_aligned.html" class="nav-btn">Next Module &#8594;</a>
+            <nav aria-label="Module navigation">
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
+                <a href="module2_nanoscale_fundamentals.html" class="nav-btn">&larr; Module 2</a>
+                <a href="module4_vacuum_systems_aligned.html" class="nav-btn">Module 4 &rarr;</a>
             </nav>
         </div>
     </header>
@@ -2706,9 +2714,9 @@
         
         <!-- Navigation Footer -->
         <div class="nav-footer">
-            <a href="module2_nanoscale_fundamentals.html">&#8592; Module 2: Nanoscale Fundamentals</a>
-            <a href="index.html">Course Home</a>
-            <a href="module4_vacuum_systems_aligned.html">Module 4: Vacuum Systems &#8594;</a>
+            <a href="module2_nanoscale_fundamentals.html">&larr; Module 2: Nanoscale Fundamentals</a>
+            <a href="index.html">&#127968; Course Home</a>
+            <a href="module4_vacuum_systems_aligned.html">Module 4: Vacuum Systems & Assembly &rarr;</a>
         </div>
         
     </main>
@@ -2716,10 +2724,11 @@
     <!-- ============================================================
          FOOTER
          ============================================================ -->
-    <footer role="contentinfo">
-        <p>Introduction to Nanotechnology | Module 3: Cleanroom Technology</p>
-
-        <p>Penn State University</p>
+    <footer>
+        <div class="footer-content">
+            <p>Introduction to Nanotechnology &mdash; Module 3: Cleanroom Technology</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
+        </div>
     </footer>
     
     <!-- ============================================================

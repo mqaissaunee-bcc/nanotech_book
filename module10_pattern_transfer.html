@@ -134,14 +134,45 @@
         a:focus,button:focus,input:focus,select:focus,[tabindex]:focus{outline:3px solid var(--gold);outline-offset:2px}
         @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
         @media print{.tabs,.sc,.qc,.nf,header,nav{display:none}.tc{display:block!important}}
+    
+        /* ===== STANDARD HEADER ===== */
+        header{background:linear-gradient(135deg,#001a33,#003366,#336699);color:#FFFFFF;padding:18px 20px;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+        .header-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+        .logo-section{display:flex;align-items:center;gap:15px}
+        .logo-icon{width:50px;height:50px;background:#CC9900;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;color:#003366}
+        .site-title{font-size:1.25rem;font-weight:bold;letter-spacing:0.3px}
+        .site-subtitle{font-size:0.82rem;opacity:0.85}
+        nav[aria-label="Module navigation"]{display:flex;gap:10px;flex-wrap:wrap}
+        .nav-btn{background:rgba(255,255,255,0.12);color:#FFFFFF;border:2px solid rgba(255,255,255,0.25);padding:8px 16px;border-radius:25px;text-decoration:none;font-size:0.88rem;transition:all 0.3s}
+        .nav-btn:hover,.nav-btn:focus{background:#CC9900;color:#003366;border-color:#CC9900}
+
+        
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
     </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
-<header><div class="hdr">
-<div class="logo"><div class="logo-ic" aria-hidden="true">M10</div><div><div class="st">Introduction to Nanotechnology</div><div class="ss">Module 10: Pattern Transfer Integration</div></div></div>
-<nav class="nb" aria-label="Module navigation"><a href="index.html">&#127968; Course Home</a><a href="module9_etching.html">&larr; Module 9</a><a href="module11_electrochemical_deposition.html">Module 11 &rarr;</a></nav>
-</div></header>
+<header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true" style="font-size:15px">10</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 10: Pattern Transfer</div>
+                </div>
+            </div>
+            <nav aria-label="Module navigation">
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
+                <a href="module9_etching.html" class="nav-btn">&larr; Module 9</a>
+                <a href="module11_electrochemical_deposition.html" class="nav-btn">Module 11 &rarr;</a>
+            </nav>
+        </div>
+    </header>
 <main id="main-content">
 <div class="hero"><h1>Module 10 &mdash; Pattern Transfer Integration</h1><p>Bring it all together: combine photolithography and etching into a complete, integrated pattern transfer workflow &mdash; the fundamental sequence repeated hundreds of times in every semiconductor fabrication facility on Earth.</p><div class="hero-meta"><span>&#9201; 3&ndash;4 Hours</span><span>&#128218; Lecture + Lab</span><span>&#9881; Integration Module</span></div></div>
 
@@ -409,10 +440,15 @@
 <div class="qsc" id="qSc"></div>
 </div></div></div></div>
 
-<nav class="nf" aria-label="Module navigation"><a href="module9_etching.html">&#8592; Module 9: Etching</a><a href="index.html">&#127968; Course Home</a><a href="module11_electrochemical_deposition.html">Module 11: Electrochemical Deposition &#8594;</a></nav>
+<nav class="nf" aria-label="Module navigation"><a href="module9_etching.html">&larr; Module 9: Etching</a><a href="index.html">&#127968; Course Home</a><a href="module11_electrochemical_deposition.html">Module 11: Electrochemical Deposition &rarr;</a></nav>
 </main>
 
-<footer><p>Introduction to Nanotechnology &mdash; Module 10: Pattern Transfer Integration</p><p>Penn State University</p><p>&copy; 2025 &mdash; Educational use permitted with attribution</p></footer>
+<footer>
+        <div class="footer-content">
+            <p>Introduction to Nanotechnology &mdash; Module 10: Pattern Transfer</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
+        </div>
+    </footer>
 
 <script>
 (function(){

@@ -122,24 +122,35 @@ footer{background:linear-gradient(135deg,var(--charcoal),var(--black));color:var
 footer a{color:var(--light-amber);text-decoration:none}
 footer a:hover{text-decoration:underline}
 @media(max-width:768px){.hero h1{font-size:1.8rem}.hero{padding:2rem 1.5rem}main{padding:1rem}.two-column{grid-template-columns:1fr}.tabs{flex-direction:column}.tab-btn{min-width:auto}.lab-step{flex-direction:column}.header-content{flex-direction:column;text-align:center}.nav-buttons{justify-content:center}.data-table{font-size:0.85rem}.data-table th,.data-table td{padding:0.6rem}}
-</style>
+
+        
+        /* ===== FOOTER OVERRIDE ===== */
+        footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
+        .footer-content{max-width:1200px;margin:0 auto;text-align:center}
+        .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
+        footer a{color:#FFFFFF!important}
+        footer strong{color:#FFFFFF!important}
+    </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header>
-<div class="header-content">
-<div class="logo-section">
-<div class="logo-icon" aria-hidden="true">E</div>
-<div><div class="site-title">Introduction to Nanotechnology</div><div class="site-subtitle">Module 9: Etching Technology</div></div>
-</div>
-<nav class="nav-buttons" aria-label="Module navigation">
-<a href="module8_photolithography.html" class="nav-btn">&larr; Module 8</a>
-<a href="index.html" class="nav-btn">&#127968; Course Home</a>
-<a href="module10_pattern_transfer.html" class="nav-btn">Module 10 &rarr;</a>
-</nav>
-</div>
-</header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true" style="font-size:18px">9</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 9: Etching Technology</div>
+                </div>
+            </div>
+            <nav aria-label="Module navigation">
+                <a href="index.html" class="nav-btn">&#127968; Home</a>
+                <a href="module8_photolithography.html" class="nav-btn">&larr; Module 8</a>
+                <a href="module10_pattern_transfer.html" class="nav-btn">Module 10 &rarr;</a>
+            </nav>
+        </div>
+    </header>
 
 <main id="main-content">
 
@@ -723,10 +734,11 @@ footer a:hover{text-decoration:underline}
 
 <!-- FOOTER -->
 <footer>
-<p><strong>Introduction to Nanotechnology</strong> &mdash; Module 9: Etching Technology</p>
-<p>Content is for educational purposes. Penn State University.</p>
-<p style="margin-top:0.5rem"><a href="index.html">Course Outline</a> &bull; <a href="module8_photolithography.html">Previous Module</a> &bull; <a href="module10_pattern_transfer.html">Next Module</a></p>
-</footer>
+        <div class="footer-content">
+            <p>Introduction to Nanotechnology &mdash; Module 9: Etching Technology</p>
+            <p>&copy; 2026 &mdash; For Educational Use</p>
+        </div>
+    </footer>
 
 <!-- ================================================================
      JAVASCRIPT
