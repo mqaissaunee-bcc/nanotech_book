@@ -1232,6 +1232,21 @@
         }
         
         /* ============================================================
+           VIDEO SECTION
+           ============================================================ */
+        .video-section{background:var(--white);padding:30px;border-radius:12px;margin-bottom:30px;box-shadow:0 3px 18px rgba(0,0,0,0.1)}
+        .video-section h2{color:var(--navy);font-size:1.6rem;margin-bottom:10px;padding-bottom:12px;border-bottom:3px solid var(--teal)}
+        .video-section > p{color:var(--steel);margin-bottom:25px;font-size:1.02rem}
+        .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;margin-top:20px}
+        .video-card{background:var(--slate);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);transition:transform 0.3s,box-shadow 0.3s}
+        .video-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+        .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+        .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+        .video-info{padding:18px}
+        .video-info h3{color:var(--navy);font-size:1.08rem;margin-bottom:8px}
+        .video-badge{display:inline-block;background:var(--gold);color:var(--white);padding:4px 12px;border-radius:15px;font-size:0.8rem;font-weight:600;margin-top:6px}
+
+        /* ============================================================
            RESPONSIVE DESIGN
            ============================================================ */
         @media (max-width: 768px) {
@@ -1420,6 +1435,7 @@
         <div class="tabs" role="tablist" aria-label="Module content sections">
             <button class="tab-btn active" data-tab="lecture" role="tab" aria-selected="true" aria-controls="lecture-panel">&#128214; Lecture Content</button>
             <button class="tab-btn" data-tab="simulation" role="tab" aria-selected="false" aria-controls="simulation-panel">&#128187; Simulations</button>
+            <button class="tab-btn" data-tab="resources" role="tab" aria-selected="false" aria-controls="resources-panel">&#127909; Resources</button>
             <button class="tab-btn" data-tab="experiment" role="tab" aria-selected="false" aria-controls="experiment-panel">&#128300; Lab Experiment</button>
             <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false" aria-controls="quiz-panel">&#10003; Knowledge Check</button>
         </div>
@@ -2195,6 +2211,148 @@
                 </div>
             </div>
             
+        </div>
+        
+        <!-- ============================================================
+             RESOURCES TAB
+             ============================================================ -->
+        <div id="resources-panel" class="tab-content" role="tabpanel" aria-labelledby="resources-tab">
+            <div class="card">
+                <div class="card-header">&#127909; Video Resources</div>
+                <div class="card-body">
+                    <p style="font-size:1.05rem;margin-bottom:30px;color:var(--steel);">Enhance your understanding of cleanroom technology with these curated videos. From basic introductions to behind-the-scenes tours of world-class semiconductor fabs, these resources bring cleanroom concepts to life.</p>
+                    
+                    <div class="video-grid">
+                        <!-- Video 1 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/WVLGKq9An28" 
+                                    title="Working in the Clean Room (Inside a Fab) – Intel"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Working in the Clean Room (Inside a Fab) – Intel</h3>
+                                <span class="video-badge">Industry Tour</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 2 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/tVAZo2uhOB0" 
+                                    title="What Is a Cleanroom (Design, Construction, ISO Classes)"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>What Is a Cleanroom (Design, Construction, ISO Classes)</h3>
+                                <span class="video-badge">Design &amp; Classification</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 3 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/vcncfhV-aB0" 
+                                    title="Overview of Cleanroom Concepts and Classifications"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Overview of Cleanroom Concepts and Classifications</h3>
+                                <span class="video-badge">Concepts Overview</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 4 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/H3vLajSFz88" 
+                                    title="A Basic Introduction to Clean Rooms"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>A Basic Introduction to Clean Rooms</h3>
+                                <span class="video-badge">Introduction</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 5 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/aBDJQ9NYTEU" 
+                                    title="Inside the Cleanroom – How Computer Chips Get Made"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Inside the Cleanroom – How Computer Chips Get Made</h3>
+                                <span class="video-badge">Chip Manufacturing</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 6 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/x2X9yzNFUnY" 
+                                    title="Dive Into a World-Class Semiconductor Cleanroom"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Dive Into a World-Class Semiconductor Cleanroom</h3>
+                                <span class="video-badge">World-Class Facility</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 7 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/906Gvl6ila0" 
+                                    title="Cleanroom Operator (Micronit)"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Cleanroom Operator (Micronit)</h3>
+                                <span class="video-badge">Operator Perspective</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 8 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/B5nvSSvSnXo" 
+                                    title="A Day in the Life of a Cleanroom Technician"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>A Day in the Life of a Cleanroom Technician</h3>
+                                <span class="video-badge">Day in the Life</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- ============================================================
