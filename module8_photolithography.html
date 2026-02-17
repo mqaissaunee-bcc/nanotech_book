@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 8: Photolithography - Comprehensive coverage of photoresist chemistry, UV exposure, spin coating, Rayleigh criterion, EUV lithography, and hands-on pattern transfer for nanotechnology education">
+    <title>Module 8: Photolithography | Introduction to Nanotechnology</title>
+    <style>
+        /* ===== CSS CUSTOM PROPERTIES (Web-Safe Colors) ===== */
+        :root {
+            --navy: #000066;
+            --primary-blue: #003366;
+            --secondary-blue: #336699;
+            --light-blue: #6699CC;
+            --pale-blue: #CCEEFF;
+            --ice-blue: #E6F3FF;
+            --uv-purple: #6633CC;
+            --dark-purple: #330099;
+            --light-purple: #9966FF;
+            --pale-purple: #EDE6FF;
+            --violet: #9933FF;
+            --resist-red: #CC3333;
+            --resist-dark: #990000;
+            --resist-light: #FFE6E6;
+            --teal: #008080;
+            --dark-teal: #006666;
+            --green: #008000;
+            --dark-green: #006600;
+            --pale-green: #E6FFE6;
+            --gold: #CC9900;
+            --dark-gold: #996600;
+            --orange: #FF6600;
+            --red: #CC0000;
+            --dark-red: #990000;
+            --copper: #CC6633;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --light-gray: #E0E0E0;
+            --medium-gray: #999999;
+            --dark-gray: #666666;
+            --charcoal: #333333;
+            --black: #000000;
+            --shadow: rgba(0, 0, 0, 0.15);
+            --shadow-dark: rgba(0, 0, 0, 0.25);
+            --font-primary: Georgia, 'Times New Roman', serif;
+            --font-display: 'Trebuchet MS', Arial, sans-serif;
+            --font-mono: 'Courier New', monospace;
+            --transition: 0.3s ease;
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-primary);
+            background: linear-gradient(135deg, var(--pale-purple) 0%, var(--white) 50%, var(--ice-blue) 100%);
+            color: var(--charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        .skip-link {
+            position: absolute; top: -50px; left: 10px;
+            background: var(--uv-purple); color: var(--white);
+            padding: 12px 20px; z-index: 10000;
+            border-radius: var(--radius); font-weight: bold; text-decoration: none;
+        }
+        .skip-link:focus { top: 10px; }
+        a:focus, button:focus, input:focus, select:focus, [tabindex]:focus {
+            outline: 3px solid var(--gold); outline-offset: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+        .visually-hidden {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--dark-purple) 0%, var(--uv-purple) 50%, var(--primary-blue) 100%);
+            color: var(--white); padding: 1rem 2rem;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 20px var(--shadow-dark);
+        }
+        .header-content {
+            max-width: 1400px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .logo-section { display: flex; align-items: center; gap: 1rem; }
+        .logo-icon {
+            width: 55px; height: 55px;
+            background: linear-gradient(135deg, var(--uv-purple), var(--violet));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display); font-weight: bold; font-size: 1.2rem;
+            color: var(--white); border: 3px solid var(--gold);
+            box-shadow: 0 4px 15px var(--shadow), 0 0 20px rgba(102,51,204,0.4);
+            animation: uvGlow 3s ease-in-out infinite;
+        }
+        @keyframes uvGlow {
+            0%, 100% { box-shadow: 0 4px 15px var(--shadow), 0 0 20px rgba(102,51,204,0.4); }
+            50% { box-shadow: 0 4px 15px var(--shadow), 0 0 35px rgba(153,51,255,0.7); }
+        }
+        .site-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: bold; letter-spacing: 0.5px; }
+        .site-subtitle { font-size: 0.95rem; opacity: 0.9; margin-top: 2px; }
+        .nav-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .nav-btn {
+            background: rgba(255,255,255,0.15); color: var(--white);
+            padding: 0.6rem 1.2rem; border-radius: var(--radius);
+            text-decoration: none; font-size: 0.9rem; font-weight: 600;
+            transition: all var(--transition); border: 1px solid rgba(255,255,255,0.3);
+        }
+        .nav-btn:hover, .nav-btn:focus { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+
+        /* ===== MAIN CONTENT ===== */
+        main { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-purple) 0%, var(--uv-purple) 40%, var(--primary-blue) 100%);
+            color: var(--white); padding: 3rem; border-radius: var(--radius-lg);
+            margin-bottom: 2rem; box-shadow: 0 8px 30px var(--shadow-dark);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(153,102,255,0.25) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(102,51,204,0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); position: relative;
+        }
+        .hero p { font-size: 1.15rem; max-width: 900px; margin: 0 auto 1.5rem; opacity: 0.95; position: relative; }
+        .hero-meta {
+            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+            font-size: 0.95rem; position: relative;
+        }
+        .hero-meta span {
+            background: rgba(255,255,255,0.2); padding: 0.5rem 1rem;
+            border-radius: 25px; border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-container {
+            background: var(--white); padding: 1rem 1.5rem;
+            border-radius: var(--radius); margin-bottom: 2rem; box-shadow: 0 4px 15px var(--shadow);
+        }
+        .progress-label {
+            display: flex; justify-content: space-between; margin-bottom: 0.5rem;
+            font-weight: 600; color: var(--uv-purple);
+        }
+        .progress-bar { height: 12px; background: var(--light-gray); border-radius: 6px; overflow: hidden; }
+        .progress-fill {
+            height: 100%; background: linear-gradient(90deg, var(--uv-purple), var(--violet));
+            width: 0%; transition: width 0.5s ease; border-radius: 6px;
+        }
+
+        /* ===== LEARNING OBJECTIVES ===== */
+        .objectives {
+            background: linear-gradient(135deg, var(--pale-purple) 0%, var(--white) 100%);
+            border-left: 5px solid var(--uv-purple); padding: 2rem;
+            border-radius: var(--radius); margin-bottom: 2rem; box-shadow: 0 4px 15px var(--shadow);
+        }
+        .objectives h3 { font-family: var(--font-display); color: var(--dark-purple); font-size: 1.4rem; margin-bottom: 1rem; }
+        .objectives ul { margin-left: 1.5rem; }
+        .objectives li { margin-bottom: 0.6rem; }
+        .objectives li::marker { color: var(--uv-purple); font-weight: bold; }
+
+        /* ===== TABS NAVIGATION ===== */
+        .tabs {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+            background: var(--white); padding: 1rem; border-radius: var(--radius-lg);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        .tab-btn {
+            flex: 1; min-width: 140px; padding: 1rem 1.25rem;
+            border: 2px solid var(--light-gray); background: var(--white);
+            color: var(--charcoal); font-family: var(--font-display);
+            font-size: 0.9rem; font-weight: 600; border-radius: var(--radius);
+            cursor: pointer; transition: all var(--transition); text-align: center;
+        }
+        .tab-btn:hover { border-color: var(--uv-purple); background: var(--pale-purple); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--uv-purple), var(--dark-purple));
+            color: var(--white); border-color: var(--uv-purple);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--white); border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px var(--shadow); margin-bottom: 2rem; overflow: hidden;
+        }
+        .card-header {
+            background: linear-gradient(135deg, var(--uv-purple), var(--navy));
+            color: var(--white); padding: 1.25rem 1.5rem;
+            font-family: var(--font-display); font-size: 1.2rem; font-weight: bold;
+        }
+        .card-header.teal { background: linear-gradient(135deg, var(--teal), var(--dark-teal)); }
+        .card-header.green { background: linear-gradient(135deg, var(--green), var(--dark-green)); }
+        .card-header.orange { background: linear-gradient(135deg, var(--orange), var(--red)); }
+        .card-header.resist { background: linear-gradient(135deg, var(--resist-red), var(--resist-dark)); }
+        .card-header.gold-header { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); }
+        .card-body { padding: 2rem; }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            font-family: var(--font-display); font-size: 1.6rem; color: var(--dark-purple);
+            margin: 2rem 0 1.5rem; padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--uv-purple);
+        }
+        .subsection-header { font-family: var(--font-display); font-size: 1.3rem; color: var(--dark-teal); margin: 1.5rem 0 1rem; }
+
+        /* ===== TOOLTIP SYSTEM (Fixed positioning to prevent cutoff) ===== */
+        .tooltip-term {
+            color: var(--dark-purple); border-bottom: 2px dotted var(--uv-purple);
+            cursor: help; position: relative; font-weight: 600; display: inline;
+        }
+        .tooltip-content {
+            visibility: hidden; opacity: 0; position: fixed; z-index: 9999;
+            background: var(--charcoal); color: var(--white);
+            padding: 1rem; border-radius: var(--radius);
+            font-size: 0.9rem; font-weight: normal; line-height: 1.5;
+            width: 320px; max-width: 90vw;
+            box-shadow: 0 8px 25px var(--shadow-dark);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            pointer-events: none;
+        }
+        .tooltip-content.show { visibility: visible; opacity: 1; }
+
+        /* ===== DATA TABLES ===== */
+        .data-table {
+            width: 100%; border-collapse: collapse; margin: 1.5rem 0;
+            font-size: 0.95rem; box-shadow: 0 4px 15px var(--shadow);
+            border-radius: var(--radius); overflow: hidden;
+        }
+        .data-table thead { background: linear-gradient(135deg, var(--uv-purple), var(--navy)); color: var(--white); }
+        .data-table th { padding: 1rem; text-align: left; font-weight: 600; font-family: var(--font-display); }
+        .data-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--light-gray); }
+        .data-table tbody tr:hover { background: var(--pale-purple); }
+        .data-table tbody tr:nth-child(even) { background: var(--off-white); }
+        .data-table tbody tr:nth-child(even):hover { background: var(--pale-purple); }
+
+        /* ===== GRID LAYOUTS ===== */
+        .two-column { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin: 1.5rem 0; }
+        .three-column { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin: 1.5rem 0; }
+        .four-column { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin: 1.5rem 0; }
+
+        /* ===== INFO BOXES ===== */
+        .column-box {
+            background: var(--off-white); padding: 1.5rem; border-radius: var(--radius);
+            border-top: 4px solid var(--uv-purple);
+        }
+        .column-box h4 { font-family: var(--font-display); margin-bottom: 0.75rem; color: var(--dark-purple); }
+
+        .key-concept {
+            background: linear-gradient(135deg, var(--pale-purple), var(--white));
+            border-left: 5px solid var(--uv-purple); padding: 1.5rem;
+            border-radius: var(--radius); margin: 1.5rem 0;
+        }
+        .key-concept h4 { color: var(--dark-purple); margin-bottom: 0.75rem; font-family: var(--font-display); }
+
+        .safety-warning {
+            background: linear-gradient(135deg, #FFE6E6, #FFCCCC);
+            border-left: 5px solid var(--red); padding: 1.5rem;
+            border-radius: var(--radius); margin: 1.5rem 0;
+        }
+        .safety-warning h4 { color: var(--dark-red); margin-bottom: 0.75rem; font-family: var(--font-display); }
+        .safety-warning ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+
+        .industry-note {
+            background: linear-gradient(135deg, #FFF8E6, #FFEEBB);
+            border-left: 5px solid var(--gold); padding: 1.5rem;
+            border-radius: var(--radius); margin: 1.5rem 0;
+        }
+        .industry-note h4 { color: var(--dark-gold); margin-bottom: 0.75rem; font-family: var(--font-display); }
+
+        .formula-box {
+            background: linear-gradient(135deg, var(--pale-purple), var(--white));
+            border: 2px solid var(--uv-purple); padding: 1.5rem;
+            border-radius: var(--radius); margin: 1.5rem 0; text-align: center;
+        }
+        .formula-box h4 { color: var(--dark-purple); margin-bottom: 1rem; font-family: var(--font-display); }
+        .formula {
+            font-family: var(--font-mono); font-size: 1.3rem; color: var(--navy);
+            background: var(--white); padding: 1rem; border-radius: var(--radius);
+            display: inline-block; margin: 0.5rem 0;
+        }
+        .formula-description { font-size: 0.95rem; color: var(--dark-gray); margin-top: 1rem; text-align: left; }
+
+        /* ===== PROCESS FLOW DIAGRAMS ===== */
+        .process-flow {
+            display: flex; align-items: center; justify-content: center;
+            flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0;
+            padding: 1.5rem; background: var(--off-white); border-radius: var(--radius);
+        }
+        .process-step {
+            background: linear-gradient(135deg, var(--uv-purple), var(--dark-purple));
+            color: var(--white); padding: 0.75rem 1.25rem; border-radius: var(--radius);
+            font-weight: 600; text-align: center; min-width: 110px; font-size: 0.85rem;
+        }
+        .process-arrow { font-size: 1.5rem; color: var(--uv-purple); font-weight: bold; }
+
+        /* ===== SIMULATOR CONTAINER ===== */
+        .simulator-container {
+            background: linear-gradient(135deg, var(--off-white), var(--white));
+            border: 2px solid var(--uv-purple); border-radius: var(--radius-lg);
+            padding: 2rem; margin: 1.5rem 0;
+        }
+        .simulator-title {
+            font-family: var(--font-display); color: var(--dark-purple);
+            font-size: 1.3rem; margin-bottom: 1.5rem; text-align: center;
+        }
+        .simulator-controls {
+            display: flex; flex-wrap: wrap; gap: 1.5rem;
+            justify-content: center; margin-bottom: 1.5rem;
+        }
+        .control-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .control-group label { font-weight: 600; color: var(--charcoal); font-size: 0.9rem; }
+        .control-group input, .control-group select {
+            padding: 0.6rem 1rem; border: 2px solid var(--light-gray);
+            border-radius: var(--radius); font-size: 1rem; min-width: 150px;
+            transition: border-color var(--transition);
+        }
+        .control-group input:focus, .control-group select:focus { border-color: var(--uv-purple); }
+        .sim-btn {
+            background: linear-gradient(135deg, var(--uv-purple), var(--dark-purple));
+            color: var(--white); border: none; padding: 0.8rem 2rem;
+            border-radius: var(--radius); font-size: 1rem; font-weight: 600;
+            cursor: pointer; transition: all var(--transition);
+        }
+        .sim-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--shadow); }
+        .sim-result {
+            background: var(--pale-purple); border: 2px solid var(--uv-purple);
+            border-radius: var(--radius); padding: 1.5rem; margin-top: 1.5rem;
+            display: none; text-align: center;
+        }
+        .sim-result-value { font-size: 2rem; font-weight: bold; color: var(--dark-purple); font-family: var(--font-display); }
+        .sim-result-label { color: var(--dark-gray); margin-top: 0.5rem; font-size: 0.95rem; }
+        .sim-result-explanation { color: var(--charcoal); margin-top: 0.75rem; font-size: 0.9rem; text-align: left; }
+
+        /* ===== PHOTOLITHOGRAPHY CANVAS VISUALIZATION ===== */
+        .litho-viz {
+            background: linear-gradient(135deg, #0a0a1a, #1a1a2e);
+            border-radius: var(--radius-lg); padding: 1.5rem; margin: 1.5rem 0;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .litho-canvas-wrap {
+            max-width: 100%; overflow-x: auto;
+        }
+        .litho-canvas-wrap canvas {
+            display: block; margin: 0 auto; border-radius: var(--radius);
+        }
+        .litho-label { color: var(--white); margin-top: 1rem; font-size: 0.9rem; opacity: 0.9; }
+
+        /* ===== PROCEDURE STEPS ===== */
+        .procedure-step {
+            display: flex; gap: 1.5rem; margin: 1.5rem 0;
+            padding: 1.5rem; background: var(--off-white); border-radius: var(--radius);
+            border-left: 5px solid var(--uv-purple);
+        }
+        .step-number {
+            min-width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--uv-purple), var(--dark-purple));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-family: var(--font-display); font-weight: bold; font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .step-content h4 { font-family: var(--font-display); color: var(--dark-purple); margin-bottom: 0.5rem; }
+
+        /* ===== CHECKLIST ===== */
+        .checklist { list-style: none; margin: 1rem 0; }
+        .checklist-item {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.75rem 1rem; border-bottom: 1px solid var(--light-gray);
+        }
+        .checklist-item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--uv-purple); cursor: pointer; }
+        .checklist-item label { cursor: pointer; font-size: 0.95rem; }
+
+        /* ===== QUIZ ===== */
+        .quiz-question {
+            background: var(--white); border: 2px solid var(--light-gray);
+            border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem;
+            transition: border-color var(--transition);
+        }
+        .quiz-question:hover { border-color: var(--uv-purple); }
+        .quiz-question h4 { color: var(--dark-purple); font-family: var(--font-display); margin-bottom: 1rem; }
+        .quiz-option {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.75rem 1rem; margin: 0.5rem 0; border-radius: var(--radius);
+            border: 2px solid var(--light-gray); cursor: pointer;
+            transition: all var(--transition);
+        }
+        .quiz-option:hover { border-color: var(--uv-purple); background: var(--pale-purple); }
+        .quiz-option input[type="radio"] { accent-color: var(--uv-purple); width: 18px; height: 18px; }
+        .quiz-option.correct { border-color: var(--green); background: var(--pale-green); }
+        .quiz-option.incorrect { border-color: var(--red); background: var(--resist-light); }
+        .quiz-feedback {
+            margin-top: 1rem; padding: 0.75rem 1rem; border-radius: var(--radius);
+            font-weight: 600; display: none;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct { background: var(--pale-green); color: var(--dark-green); }
+        .quiz-feedback.incorrect { background: var(--resist-light); color: var(--dark-red); }
+        #quizScore {
+            background: linear-gradient(135deg, var(--pale-purple), var(--white));
+            border: 3px solid var(--uv-purple); border-radius: var(--radius-lg);
+            padding: 2rem; text-align: center; display: none; margin-top: 1.5rem;
+        }
+        #scoreDisplay { font-size: 3rem; font-weight: bold; color: var(--dark-purple); font-family: var(--font-display); }
+        #scoreMessage { margin-top: 0.5rem; font-size: 1.1rem; color: var(--charcoal); }
+
+        /* ===== RESIST COMPARISON ===== */
+        .resist-compare {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1.5rem 0;
+        }
+        .resist-card {
+            padding: 1.5rem; border-radius: var(--radius); text-align: center;
+        }
+        .resist-card.positive {
+            background: linear-gradient(135deg, var(--ice-blue), var(--white));
+            border: 3px solid var(--secondary-blue);
+        }
+        .resist-card.negative {
+            background: linear-gradient(135deg, var(--resist-light), var(--white));
+            border: 3px solid var(--resist-red);
+        }
+        .resist-card h4 { font-family: var(--font-display); margin-bottom: 1rem; font-size: 1.2rem; }
+        .resist-card.positive h4 { color: var(--primary-blue); }
+        .resist-card.negative h4 { color: var(--resist-red); }
+        .resist-card p { text-align: left; margin-bottom: 0.5rem; }
+        .resist-mnemonic {
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: bold;
+            padding: 0.75rem; border-radius: var(--radius); margin-top: 1rem;
+        }
+        .resist-card.positive .resist-mnemonic { background: var(--pale-blue); color: var(--primary-blue); }
+        .resist-card.negative .resist-mnemonic { background: var(--resist-light); color: var(--resist-dark); }
+
+        /* ===== WAVELENGTH TIMELINE ===== */
+        .wavelength-timeline {
+            display: flex; align-items: stretch; gap: 0; margin: 1.5rem 0;
+            background: var(--off-white); border-radius: var(--radius); overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        .wl-block {
+            flex: 1; padding: 1.25rem 0.75rem; text-align: center; position: relative;
+            border-right: 2px solid rgba(255,255,255,0.5);
+            min-width: 0;
+        }
+        .wl-block:last-child { border-right: none; }
+        .wl-name { font-family: var(--font-display); font-weight: bold; font-size: 1rem; margin-bottom: 0.5rem; }
+        .wl-value { font-family: var(--font-mono); font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .wl-feature { font-size: 0.8rem; opacity: 0.9; }
+        .wl-year { font-size: 0.75rem; opacity: 0.75; margin-top: 0.25rem; }
+
+        /* ===== NAV FOOTER ===== */
+        .nav-footer {
+            display: flex; justify-content: space-between; margin-top: 3rem;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .nav-footer a {
+            background: linear-gradient(135deg, var(--uv-purple), var(--dark-purple));
+            color: var(--white); padding: 1rem 2rem; border-radius: var(--radius);
+            text-decoration: none; font-weight: 600; transition: all var(--transition);
+        }
+        .nav-footer a:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--shadow); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--navy), var(--dark-purple));
+            color: var(--white); text-align: center; padding: 2rem; margin-top: 3rem;
+        }
+        footer p { margin: 0.5rem 0; opacity: 0.9; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) { .three-column, .four-column { grid-template-columns: repeat(2,1fr); } }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 1.8rem; }
+            .two-column, .three-column, .four-column, .resist-compare { grid-template-columns: 1fr; }
+            .tabs { flex-direction: column; }
+            .tab-btn { min-width: 100%; }
+            .process-flow { flex-direction: column; }
+            .procedure-step { flex-direction: column; text-align: center; }
+            .nav-footer { flex-direction: column; }
+            .nav-footer a { text-align: center; }
+            .simulator-controls { flex-direction: column; align-items: center; }
+            .wavelength-timeline { flex-direction: column; }
+        }
+        @media print {
+            .tabs, .simulator-container, .quiz-question, .nav-footer, header { display: none; }
+            .tab-content { display: block !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true">M8</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 8: Photolithography</div>
+                </div>
+            </div>
+            <nav class="nav-buttons" aria-label="Module navigation">
+                <a href="course-outline.html" class="nav-btn">&#8592; Course Home</a>
+                <a href="module7_thin_film_deposition.html" class="nav-btn">&#8592; Module 7</a>
+                <a href="module9_etching.html" class="nav-btn">Module 9 &#8594;</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Module 8: Photolithography</h1>
+            <p>Master the central patterning technique of semiconductor fabrication &mdash; from photoresist chemistry and spin coating to UV exposure, resolution limits, and the cutting edge of EUV lithography.</p>
+            <div class="hero-meta">
+                <span>&#9201; Duration: 3&ndash;4 Hours</span>
+                <span>&#128218; Lecture + Hands-On Lab</span>
+                <span>&#128308; UV Safety Required</span>
+                <span>&#128200; Industry Economics</span>
+            </div>
+        </section>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" role="region" aria-label="Module progress">
+            <div class="progress-label">
+                <span>Module Progress</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+        <!-- Learning Objectives -->
+        <section class="objectives" role="region" aria-label="Learning objectives">
+            <h3>&#127919; Learning Objectives</h3>
+            <p>Upon completion of this module, students will be able to:</p>
+            <ul>
+                <li>Explain why photolithography is the central patterning technique in semiconductor manufacturing</li>
+                <li>Describe the complete photolithography process flow from substrate cleaning through pattern development</li>
+                <li>Differentiate between positive and negative photoresist chemistry and predict their behavior under UV exposure</li>
+                <li>Apply the Rayleigh criterion to calculate minimum resolvable feature size for a given lithography system</li>
+                <li>Explain the relationship between spin speed, solution viscosity, and resulting film thickness</li>
+                <li>Describe the functions of HMDS adhesion promoter, photomasks, anti-reflective coatings, and developers</li>
+                <li>Trace the UV wavelength progression from g-line (436 nm) through EUV (13.5 nm) and explain its importance</li>
+                <li>Perform a hands-on photolithography experiment using UV-activated gel nail polish as a photoresist analog</li>
+                <li>Analyze pattern fidelity and troubleshoot common lithography defects</li>
+            </ul>
+        </section>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs" role="tablist" aria-label="Module content sections">
+            <button class="tab-btn active" data-tab="lecture" role="tab" aria-selected="true" aria-controls="lecture">&#128214; Lecture Content</button>
+            <button class="tab-btn" data-tab="experiment" role="tab" aria-selected="false" aria-controls="experiment">&#128300; Experiment</button>
+            <button class="tab-btn" data-tab="simulation" role="tab" aria-selected="false" aria-controls="simulation">&#128187; Simulations</button>
+            <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false" aria-controls="quiz">&#9989; Knowledge Check</button>
+        </div>
+
+        <!-- ================================================================
+             LECTURE CONTENT TAB
+             ================================================================ -->
+        <div id="lecture" class="tab-content active" role="tabpanel">
+
+            <!-- Part 1: Introduction -->
+            <div class="card">
+                <div class="card-header">Part 1: The Heart of Semiconductor Fabrication</div>
+                <div class="card-body">
+                    <h3 class="section-header">Why Photolithography Matters</h3>
+                    <p><span class="tooltip-term" tabindex="0">Photolithography<span class="tooltip-content">A microfabrication process that uses light to transfer geometric patterns from a photomask to a light-sensitive chemical (photoresist) on a substrate. Also called optical lithography or UV lithography. Approximately one-third of all semiconductor processing steps involve photolithography.</span></span> is the single most critical process in semiconductor manufacturing. Approximately <strong>one-third of all CMOS transistor processing steps</strong> relate directly to photolithography. Every transistor, interconnect, and structure on a modern microchip is defined through repeated cycles of this patterning technique.</p>
+
+                    <p>A state-of-the-art <span class="tooltip-term" tabindex="0">EUV lithography<span class="tooltip-content">Extreme Ultraviolet Lithography uses 13.5 nm wavelength light from a laser-pulsed tin plasma to pattern features below 7 nm. ASML is the sole manufacturer of EUV systems, which cost over $300 million each. The technology requires reflective optics and specialized photoresists.</span></span> scanner from ASML costs over <strong>$300 million</strong> per unit, making it among the most expensive pieces of equipment in any industry. This massive investment reflects the extraordinary precision required to print billions of transistors on a chip smaller than your fingernail.</p>
+
+                    <div class="industry-note">
+                        <h4>&#127981; Industry Scale</h4>
+                        <p>Modern processors like Apple's M4 contain over <strong>28 billion transistors</strong>. Each transistor is defined through photolithography steps that must align within a few nanometers &mdash; less than the diameter of a strand of DNA. The global lithography equipment market exceeds <strong>$20 billion annually</strong>, with ASML holding 100% of the EUV market. In December 2025, Intel deployed the world's first production-ready High-NA EUV system &mdash; the ASML TWINSCAN EXE:5200B costing approximately $400 million &mdash; achieving 8 nm resolution for its 14A process node.</p>
+                    </div>
+
+                    <h3 class="section-header">The Stencil Analogy</h3>
+                    <p>To understand photolithography, imagine painting road markings:</p>
+                    <ol style="margin-left:25px;margin-top:10px;">
+                        <li>Place a stencil (photomask) on the road (substrate)</li>
+                        <li>Spray paint (UV light) over the stencil</li>
+                        <li>Remove the stencil to reveal the pattern underneath</li>
+                    </ol>
+                    <p style="margin-top:15px;">In photolithography, the key components map as follows:</p>
+                    <div class="two-column" style="margin-top:1rem;">
+                        <div class="column-box">
+                            <h4>&#127912; Analogy</h4>
+                            <p><strong>Road</strong> = Substrate (silicon wafer)</p>
+                            <p><strong>Stencil</strong> = Photomask</p>
+                            <p><strong>Paint</strong> = Photoresist</p>
+                            <p><strong>Spray action</strong> = UV light exposure</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>&#128270; Key Difference</h4>
+                            <p>Unlike road painting, photolithography works <em>chemically</em>. The UV light changes the photoresist's molecular structure, making it either soluble or insoluble in a developer solution. This chemical change enables incredibly precise pattern transfer at the nanometer scale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 2: Complete Process Flow -->
+            <div class="card">
+                <div class="card-header teal">Part 2: The Complete Photolithography Process Flow</div>
+                <div class="card-body">
+                    <p>Industrial photolithography follows a carefully controlled sequence of eight major steps. Each step must be precisely executed because errors are cumulative and compounding.</p>
+
+                    <div class="process-flow" role="img" aria-label="Eight-step photolithography process flow">
+                        <div class="process-step">1. Clean</div>
+                        <span class="process-arrow" aria-hidden="true">&#8594;</span>
+                        <div class="process-step">2. HMDS</div>
+                        <span class="process-arrow" aria-hidden="true">&#8594;</span>
+                        <div class="process-step">3. Spin Coat</div>
+                        <span class="process-arrow" aria-hidden="true">&#8594;</span>
+                        <div class="process-step">4. Soft Bake</div>
+                        <span class="process-arrow" aria-hidden="true">&#8594;</span>
+                        <div class="process-step">5. Expose</div>
+                        <span class="process-arrow" aria-hidden="true">&#8594;</span>
+                        <div class="process-step">6. PEB</div>
+                        <span class="process-arrow" aria-hidden="true">&#8594;</span>
+                        <div class="process-step">7. Develop</div>
+                        <span class="process-arrow" aria-hidden="true">&#8594;</span>
+                        <div class="process-step">8. Hard Bake</div>
+                    </div>
+
+                    <table class="data-table" aria-label="Photolithography process steps details">
+                        <thead>
+                            <tr><th>Step</th><th>Action</th><th>Purpose</th><th>Typical Parameters</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>1. Clean</strong></td><td>Acetone &rarr; IPA &rarr; DI water rinse</td><td>Remove organic contamination &amp; particles</td><td>Ultrasonic bath, 3&ndash;5 min each</td></tr>
+                            <tr><td><strong>2. HMDS Priming</strong></td><td>Apply hexamethyldisilazane</td><td>Convert hydrophilic surface to hydrophobic for resist adhesion</td><td>Spin or vapor prime, 110&deg;C bake</td></tr>
+                            <tr><td><strong>3. Spin Coat</strong></td><td>Dispense &amp; spin photoresist</td><td>Create uniform thin film of resist</td><td>1,000&ndash;6,000 RPM, 30&ndash;60 sec</td></tr>
+                            <tr><td><strong>4. Soft Bake</strong></td><td>Hotplate bake</td><td>Drive off solvents from resist</td><td>90&ndash;110&deg;C, 60&ndash;90 sec</td></tr>
+                            <tr><td><strong>5. Expose</strong></td><td>UV light through photomask</td><td>Create latent chemical image in resist</td><td>i-line (365 nm), 5&ndash;30 sec</td></tr>
+                            <tr><td><strong>6. Post-Exposure Bake</strong></td><td>Heat treatment</td><td>Reduce standing waves, enhance contrast</td><td>110&ndash;130&deg;C, 60&ndash;90 sec</td></tr>
+                            <tr><td><strong>7. Develop</strong></td><td>Immerse in developer (TMAH or NaOH)</td><td>Dissolve soluble resist areas</td><td>30&ndash;60 sec, agitated</td></tr>
+                            <tr><td><strong>8. Hard Bake</strong></td><td>High-temperature cure</td><td>Cross-link resist, increase etch resistance</td><td>120&ndash;150&deg;C, 20&ndash;30 min</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="key-concept">
+                        <h4>&#128161; Why HMDS Matters</h4>
+                        <p><span class="tooltip-term" tabindex="0">HMDS<span class="tooltip-content">Hexamethyldisilazane, chemical formula (CH&#8323;)&#8323;SiNHSi(CH&#8323;)&#8323;. A primer applied to silicon wafers before photoresist coating. It reacts with surface hydroxyl groups to form a hydrophobic monolayer, dramatically improving resist adhesion. Without HMDS, resist can peel during development, causing pattern defects.</span></span> (hexamethyldisilazane) is like a paint primer on a wall. A clean silicon wafer surface is naturally hydrophilic &mdash; it attracts water. Photoresist is hydrophobic &mdash; it repels water. Without HMDS, the resist will not adhere properly, leading to delamination and pattern defects during development. HMDS creates a molecular bridge between the two incompatible surfaces.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 3: Photoresist Chemistry -->
+            <div class="card">
+                <div class="card-header resist">Part 3: Photoresist Chemistry</div>
+                <div class="card-body">
+                    <h3 class="section-header">What Is Photoresist?</h3>
+                    <p>A <span class="tooltip-term" tabindex="0">photoresist<span class="tooltip-content">A light-sensitive polymeric material used in photolithography to form a patterned coating on a surface. Composed of three main components: a base polymer (resin) that provides structural properties, a photoactive compound (PAC) that responds to UV light, and a solvent that controls viscosity for spin coating. Industry examples include Shipley S1813, AZ 5214, and SU-8.</span></span> is a light-sensitive polymer that undergoes chemical changes when exposed to specific wavelengths of ultraviolet light. It consists of three main components:</p>
+
+                    <div class="three-column">
+                        <div class="column-box">
+                            <h4>&#129514; Base Polymer (Resin)</h4>
+                            <p>Provides the structural backbone and mechanical properties. Determines thermal stability and etch resistance. Common polymers include novolak (for positive resists) and epoxy-based SU-8 (for negative resists).</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>&#9728;&#65039; Photoactive Compound (PAC)</h4>
+                            <p>The light-sensitive ingredient that changes the resist's solubility upon UV exposure. In positive resists, the PAC (diazonaphthoquinone, DNQ) converts from dissolution inhibitor to dissolution promoter. In chemically amplified resists, photoacid generators (PAGs) produce acid catalysts.</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>&#128167; Solvent</h4>
+                            <p>Controls viscosity for spin coating. Common solvents include PGMEA (propylene glycol monomethyl ether acetate). The solvent evaporates during the soft bake step, leaving a solid film. Solvent content determines spin-curve behavior.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-header">Positive vs. Negative Photoresist</h3>
+                    <p>The two types of photoresist produce opposite results when exposed to UV light:</p>
+
+                    <div class="resist-compare">
+                        <div class="resist-card positive">
+                            <h4>&#128309; Positive Photoresist</h4>
+                            <p><strong>Behavior:</strong> UV-exposed areas <em>become soluble</em> and wash away in developer.</p>
+                            <p><strong>Chemistry:</strong> DNQ photoactive compound absorbs UV light and converts to indenecarboxylic acid, which is soluble in aqueous base developer (TMAH).</p>
+                            <p><strong>Resolution:</strong> Higher resolution (finer features)</p>
+                            <p><strong>Use:</strong> &gt;90% of IC manufacturing</p>
+                            <p><strong>Example:</strong> Shipley S1813, AZ 1500 series</p>
+                            <div class="resist-mnemonic">&#128172; &ldquo;What Shows, Goes&rdquo;</div>
+                        </div>
+                        <div class="resist-card negative">
+                            <h4>&#128308; Negative Photoresist</h4>
+                            <p><strong>Behavior:</strong> UV-exposed areas <em>become insoluble</em> (cross-linked) and remain after development.</p>
+                            <p><strong>Chemistry:</strong> UV light initiates cross-linking reactions between polymer chains, making exposed areas resistant to solvents and developers.</p>
+                            <p><strong>Resolution:</strong> Lower resolution but better adhesion &amp; chemical resistance</p>
+                            <p><strong>Use:</strong> Thick films, MEMS, microfluidics</p>
+                            <p><strong>Example:</strong> SU-8, UV gel nail polish</p>
+                            <div class="resist-mnemonic">&#128172; &ldquo;What Shows, Stays&rdquo;</div>
+                        </div>
+                    </div>
+
+                    <div class="key-concept">
+                        <h4>&#127891; Lab Connection</h4>
+                        <p>In our hands-on lab, we use <strong>UV-curable gel nail polish</strong> as a negative photoresist analog. When exposed to UV light, the gel cross-links and hardens &mdash; the exposed areas stay on the substrate. The unexposed areas are washed away with IPA and acetone during development. This is the same fundamental principle used in SU-8 photoresist processing in industry.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 4: Spin Coating Theory -->
+            <div class="card">
+                <div class="card-header">Part 4: Spin Coating &mdash; Creating Uniform Thin Films</div>
+                <div class="card-body">
+                    <h3 class="section-header">The Physics of Spin Coating</h3>
+                    <p><span class="tooltip-term" tabindex="0">Spin coating<span class="tooltip-content">A technique to create uniform thin films by depositing liquid material on a spinning substrate. Centrifugal force spreads the liquid outward while viscous forces and solvent evaporation determine the final thickness. The process has four stages: deposition, spin-up, spin-off, and evaporation. Film thickness varies inversely with the square root of spin speed.</span></span> uses centrifugal force to spread a liquid uniformly across a spinning substrate. The technique follows four distinct stages:</p>
+
+                    <div class="four-column">
+                        <div class="column-box" style="border-top-color: var(--secondary-blue);">
+                            <h4>Stage 1: Deposition</h4>
+                            <p>Liquid photoresist is dispensed onto the center of the substrate (static or dynamic dispense). Excess material is applied to ensure complete coverage.</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--teal);">
+                            <h4>Stage 2: Spin-Up</h4>
+                            <p>The substrate accelerates to the target spin speed. Centrifugal force drives excess resist outward. Fast acceleration ensures uniform initial spreading.</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--uv-purple);">
+                            <h4>Stage 3: Spin-Off</h4>
+                            <p>At constant speed, the film thins gradually as excess resist flies off the edges. The balance between centrifugal force and viscous resistance governs thinning rate.</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--gold);">
+                            <h4>Stage 4: Evaporation</h4>
+                            <p>Solvent evaporates, increasing viscosity and &ldquo;setting&rdquo; the film. This is the dominant mechanism determining final thickness. The film gels when flow stops.</p>
+                        </div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>Empirical Spin Coating Relationship</h4>
+                        <div class="formula">t &prop; 1 / &radic;&omega;</div>
+                        <div class="formula-description">
+                            <p>Film thickness (<em>t</em>) varies <strong>inversely with the square root</strong> of the angular velocity (<em>&omega;</em>) or spin speed in RPM. Doubling the spin speed reduces thickness by approximately 30%, not 50%. This is the fundamental engineering relationship used to select spin parameters for a desired thickness.</p>
+                            <p style="margin-top:0.5rem;">A more complete semi-empirical model (Meyerhofer, 1978) accounts for viscosity and evaporation rate:</p>
+                        </div>
+                        <div class="formula" style="font-size:1.1rem;">t<sub>f</sub> = k &middot; c<sub>0</sub><sup>&gamma;</sup> &middot; &eta;<sup>1/3</sup> &middot; &omega;<sup>-1/2</sup></div>
+                        <div class="formula-description">
+                            <p>Where <em>k</em> = constant, <em>c<sub>0</sub></em> = initial concentration, <em>&gamma;</em> &asymp; 2.5 for photoresists, <em>&eta;</em> = viscosity, <em>&omega;</em> = angular velocity. In practice, engineers use <strong>spin curves</strong> &mdash; empirically measured thickness vs. RPM plots supplied by photoresist manufacturers.</p>
+                        </div>
+                    </div>
+
+                    <table class="data-table" aria-label="Typical photoresist spin coating parameters">
+                        <thead>
+                            <tr><th>Photoresist</th><th>Viscosity (cP)</th><th>Spin Speed (RPM)</th><th>Thickness (&micro;m)</th><th>Application</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Shipley S1805</td><td>~5</td><td>5,000</td><td>0.5</td><td>Fine-line IC patterning</td></tr>
+                            <tr><td>Shipley S1813</td><td>~12</td><td>5,000</td><td>1.3</td><td>General-purpose IC lithography</td></tr>
+                            <tr><td>AZ 4533</td><td>~55</td><td>4,000</td><td>3.3</td><td>Thick resist for etching</td></tr>
+                            <tr><td>AZ 9260</td><td>~600</td><td>3,000</td><td>10&ndash;15</td><td>Deep RIE masking, MEMS</td></tr>
+                            <tr><td>SU-8 2050</td><td>~12,900</td><td>3,000</td><td>50&ndash;100</td><td>MEMS structures, microfluidics</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Part 5: Photomasks and Exposure -->
+            <div class="card">
+                <div class="card-header gold-header">Part 5: Photomasks &amp; UV Exposure</div>
+                <div class="card-body">
+                    <h3 class="section-header">Photomask Design and Function</h3>
+                    <p>A <span class="tooltip-term" tabindex="0">photomask<span class="tooltip-content">A quartz or glass plate with a precisely patterned chrome (or other absorber) layer that selectively blocks UV light. In production, masks cost $100,000&ndash;$500,000+ each and require weeks to fabricate. A single advanced chip design may require 80&ndash;100 mask layers. Defects as small as a few nanometers can render a mask unusable.</span></span> is a precisely fabricated template that contains the circuit patterns to be transferred to the wafer. It works like a sophisticated stencil &mdash; opaque areas block UV light while transparent areas allow it through.</p>
+
+                    <div class="two-column">
+                        <div class="column-box">
+                            <h4>Mask Components</h4>
+                            <p><strong>Substrate:</strong> Ultra-pure fused silica (quartz) with near-zero thermal expansion</p>
+                            <p><strong>Absorber:</strong> Thin chrome layer (~100 nm) that blocks UV light</p>
+                            <p><strong>Pellicle:</strong> Protective transparent membrane that keeps particles out of the focal plane</p>
+                            <p><strong>Size:</strong> Typically 6&Prime; &times; 6&Prime; (152 mm) for 4&times; reduction stepper systems</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>Mask Types</h4>
+                            <p><strong>Binary masks:</strong> Simple opaque/transparent patterns (most common)</p>
+                            <p><strong>Phase-shift masks (PSM):</strong> Use phase differences in transmitted light to enhance resolution</p>
+                            <p><strong>Attenuated PSM:</strong> Partially transparent absorber shifts phase by 180&deg;</p>
+                            <p><strong>EUV masks:</strong> Reflective (not transmissive) due to EUV absorption by all materials</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-header">Exposure Systems</h3>
+                    <p>There are three main exposure configurations, each with different capabilities:</p>
+
+                    <div class="three-column">
+                        <div class="column-box">
+                            <h4>Contact/Proximity Printing</h4>
+                            <p><strong>Method:</strong> Mask directly contacts (or nearly contacts) the resist-coated wafer</p>
+                            <p><strong>Resolution:</strong> ~1&ndash;2 &micro;m</p>
+                            <p><strong>Advantage:</strong> Simple, low cost</p>
+                            <p><strong>Disadvantage:</strong> Mask damage, defects from contact</p>
+                            <p><strong>Used in:</strong> Research labs, our lab experiment</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>Projection (Stepper)</h4>
+                            <p><strong>Method:</strong> Lens system projects mask image at 4&times; or 5&times; reduction</p>
+                            <p><strong>Resolution:</strong> 0.25&ndash;1 &micro;m</p>
+                            <p><strong>Advantage:</strong> No mask contact, high resolution</p>
+                            <p><strong>Disadvantage:</strong> Complex optics, field-by-field exposure</p>
+                            <p><strong>Used in:</strong> Production fabs (DUV)</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>Scanner</h4>
+                            <p><strong>Method:</strong> Slit illumination scans across mask &amp; wafer simultaneously</p>
+                            <p><strong>Resolution:</strong> &lt;10 nm (with EUV)</p>
+                            <p><strong>Advantage:</strong> Highest resolution, large field size</p>
+                            <p><strong>Disadvantage:</strong> &gt;$300M cost (EUV)</p>
+                            <p><strong>Used in:</strong> Leading-edge fabs (TSMC, Samsung, Intel)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 6: Resolution Limits and the Rayleigh Criterion -->
+            <div class="card">
+                <div class="card-header">Part 6: Resolution Limits &amp; the Rayleigh Criterion</div>
+                <div class="card-body">
+                    <h3 class="section-header">What Limits How Small We Can Print?</h3>
+                    <p>The fundamental resolution of any optical lithography system is governed by the <span class="tooltip-term" tabindex="0">Rayleigh criterion<span class="tooltip-content">A formula from classical optics that defines the minimum feature size (resolution) achievable by an imaging system. For photolithography: R = k&#8321; &times; &lambda; / NA, where R is the minimum feature size, k&#8321; is a process-dependent constant (typically 0.25&ndash;0.8), &lambda; is the exposure wavelength, and NA is the numerical aperture of the projection lens.</span></span>, which relates minimum feature size to the wavelength of light and the lens optics:</p>
+
+                    <div class="formula-box">
+                        <h4>Rayleigh Resolution Equation</h4>
+                        <div class="formula">R = k<sub>1</sub> &times; &lambda; / NA</div>
+                        <div class="formula-description">
+                            <p><strong>R</strong> = minimum resolvable feature size (half-pitch)</p>
+                            <p><strong>k<sub>1</sub></strong> = process factor (0.25 &le; k<sub>1</sub> &le; 0.8; lower = more aggressive)</p>
+                            <p><strong>&lambda;</strong> = exposure wavelength</p>
+                            <p><strong>NA</strong> = numerical aperture of the projection lens</p>
+                        </div>
+                    </div>
+
+                    <p>To print smaller features, engineers have three &ldquo;knobs&rdquo; to turn:</p>
+
+                    <div class="three-column">
+                        <div class="column-box" style="border-top-color: var(--uv-purple);">
+                            <h4>1. Reduce &lambda; (Wavelength)</h4>
+                            <p>The most impactful approach. Moving from 436 nm (g-line) to 13.5 nm (EUV) allows features 30&times; smaller. Each wavelength generation required entirely new light sources, optics, and resist materials.</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--teal);">
+                            <h4>2. Increase NA (Numerical Aperture)</h4>
+                            <p>Larger lenses capture more diffracted light. Immersion lithography (water between lens and wafer) increased NA from ~0.93 to 1.35. High-NA EUV pushes NA from 0.33 to 0.55.</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--gold);">
+                            <h4>3. Reduce k<sub>1</sub> (Process Factor)</h4>
+                            <p>Computational tricks: off-axis illumination, phase-shift masks, optical proximity correction (OPC), and multi-patterning. Modern fabs operate near the theoretical limit of k<sub>1</sub> = 0.25.</p>
+                        </div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>Rayleigh Depth of Focus</h4>
+                        <div class="formula">DOF = k<sub>2</sub> &times; &lambda; / NA<sup>2</sup></div>
+                        <div class="formula-description">
+                            <p>The <span class="tooltip-term" tabindex="0">depth of focus (DOF)<span class="tooltip-content">The range of vertical distance over which the projected image remains acceptably sharp. A larger DOF is desirable because it allows for surface flatness variations and resist thickness non-uniformity. Unfortunately, increasing NA to improve resolution reduces DOF, creating a fundamental tradeoff.</span></span> defines the vertical range over which the projected image stays sharp. Notice that DOF decreases with the <em>square</em> of NA, creating a fundamental tradeoff: higher resolution means less tolerance for wafer flatness variation. This is why wafer surface planarity (via CMP) is critical in advanced nodes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 7: UV Wavelength Progression -->
+            <div class="card">
+                <div class="card-header gold-header">Part 7: The UV Wavelength Progression</div>
+                <div class="card-body">
+                    <h3 class="section-header">Five Decades of Shrinking Light</h3>
+                    <p>The history of photolithography is a story of progressively shorter wavelengths, each generation enabling smaller features and denser circuits:</p>
+
+                    <div class="wavelength-timeline" role="img" aria-label="UV wavelength progression from g-line to EUV">
+                        <div class="wl-block" style="background: linear-gradient(135deg, #4466AA, #336699); color: white;">
+                            <div class="wl-name">g-line</div>
+                            <div class="wl-value">436 nm</div>
+                            <div class="wl-feature">&ge; 350 nm features</div>
+                            <div class="wl-year">~1980s</div>
+                        </div>
+                        <div class="wl-block" style="background: linear-gradient(135deg, #5533AA, #6633CC); color: white;">
+                            <div class="wl-name">i-line</div>
+                            <div class="wl-value">365 nm</div>
+                            <div class="wl-feature">250&ndash;350 nm</div>
+                            <div class="wl-year">~1990s</div>
+                        </div>
+                        <div class="wl-block" style="background: linear-gradient(135deg, #7722BB, #9933FF); color: white;">
+                            <div class="wl-name">KrF DUV</div>
+                            <div class="wl-value">248 nm</div>
+                            <div class="wl-feature">130&ndash;250 nm</div>
+                            <div class="wl-year">~2000s</div>
+                        </div>
+                        <div class="wl-block" style="background: linear-gradient(135deg, #9900CC, #660099); color: white;">
+                            <div class="wl-name">ArF DUV</div>
+                            <div class="wl-value">193 nm</div>
+                            <div class="wl-feature">22&ndash;130 nm</div>
+                            <div class="wl-year">~2005&ndash;present</div>
+                        </div>
+                        <div class="wl-block" style="background: linear-gradient(135deg, #330066, #000033); color: #CC99FF;">
+                            <div class="wl-name">EUV</div>
+                            <div class="wl-value">13.5 nm</div>
+                            <div class="wl-feature">&le; 7 nm</div>
+                            <div class="wl-year">~2019&ndash;present</div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-header">EUV Lithography: The Current Frontier</h3>
+                    <p>Extreme Ultraviolet lithography represents a revolutionary leap. At 13.5 nm, EUV light is actually soft X-ray radiation that is <strong>absorbed by virtually all materials</strong>, including air and glass. This creates unique engineering challenges:</p>
+
+                    <div class="two-column">
+                        <div class="column-box">
+                            <h4>&#128308; EUV Challenges</h4>
+                            <p><strong>No lenses:</strong> All optics must be reflective (multilayer Mo/Si mirrors), not refractive</p>
+                            <p><strong>Vacuum required:</strong> EUV is absorbed by air; entire optical path must be in vacuum</p>
+                            <p><strong>Low source power:</strong> Only ~1% of generated light reaches the wafer after 12+ mirror reflections</p>
+                            <p><strong>Mask defects:</strong> Reflective masks require defect-free multilayer coatings</p>
+                            <p><strong>Stochastic effects:</strong> Fewer photons per feature increases shot noise and random errors</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>&#128994; EUV Breakthroughs</h4>
+                            <p><strong>Tin plasma source:</strong> 50 kHz pulsed CO<sub>2</sub> laser vaporizes tin droplets to produce EUV</p>
+                            <p><strong>Throughput:</strong> ASML NXE:3800E achieves &gt;185 wafers/hour</p>
+                            <p><strong>High-NA EUV:</strong> TWINSCAN EXE:5200B increases NA from 0.33 to 0.55. Prints 1.7x smaller features with 2.9x higher transistor density. 175 wafers/hour throughput with 0.7 nm overlay accuracy.</p>
+                            <p><strong>Single exposure:</strong> Eliminates costly multi-patterning for critical layers</p>
+                            <p><strong>AI integration:</strong> Machine learning optimizes exposure and defect detection in real time</p>
+                        </div>
+                    </div>
+
+                    <div class="industry-note">
+                        <h4>&#128176; The Economics of EUV</h4>
+                        <p>An ASML EUV scanner costs over <strong>$300 million</strong>. The High-NA version (EXE:5200B) costs approximately <strong>$400 million</strong>. A single advanced fab may contain 15&ndash;20 EUV systems. ASML currently holds <strong>100% market share</strong> for EUV lithography. The company invested over &euro;6 billion and 17 years of R&amp;D to bring EUV to production. In December 2025, Intel installed the first production-ready High-NA EUV system (TWINSCAN EXE:5200B), capable of 8 nm resolution and processing 175 wafers per hour with 0.7 nm overlay accuracy. Samsung and SK hynix also received High-NA systems in late 2025 for memory applications. High-volume manufacturing with High-NA is expected in 2027&ndash;2028, and ASML is already developing &ldquo;Hyper-NA&rdquo; at 0.75 NA for insertion after 2030.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 8: Anti-Reflective Coatings -->
+            <div class="card">
+                <div class="card-header teal">Part 8: Anti-Reflective Coatings &amp; Advanced Techniques</div>
+                <div class="card-body">
+                    <h3 class="section-header">Why Reflections Are the Enemy</h3>
+                    <p>When UV light passes through photoresist and hits a reflective substrate (like aluminum or silicon), some light bounces back up through the resist, creating <span class="tooltip-term" tabindex="0">standing waves<span class="tooltip-content">Constructive and destructive interference patterns formed when incident and reflected UV light waves interact within the photoresist layer. Standing waves create periodic thickness variations in the developed resist profile (scalloped sidewalls), degrading pattern fidelity. The post-exposure bake (PEB) helps reduce standing wave effects through thermal diffusion of the photoactive compound.</span></span> &mdash; alternating bright and dark fringes within the resist film. These standing waves cause scalloped resist sidewalls and non-uniform exposure.</p>
+
+                    <div class="two-column">
+                        <div class="column-box">
+                            <h4>BARC (Bottom Anti-Reflective Coating)</h4>
+                            <p>Applied <strong>under</strong> the photoresist, directly on the substrate. Absorbs or destructively interferes with reflected light before it can re-enter the resist.</p>
+                            <p><strong>Materials:</strong> Spin-on organic polymers or inorganic films (SiON)</p>
+                            <p><strong>Benefit:</strong> Eliminates substrate reflections, reduces CD (critical dimension) variation</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>TARC (Top Anti-Reflective Coating)</h4>
+                            <p>Applied <strong>on top</strong> of the photoresist. Reduces reflections from the resist surface itself, particularly important for highly reflective substrates.</p>
+                            <p><strong>Materials:</strong> Water-soluble polymers (removed during development)</p>
+                            <p><strong>Benefit:</strong> Improves dose uniformity across the wafer, reduces swing curve effects</p>
+                        </div>
+                    </div>
+
+                    <div class="key-concept">
+                        <h4>&#127891; Lab Connection: The Black Tape Trick</h4>
+                        <p>In our low-cost lab experiment, we place a <strong>strip of black tape underneath the glass slide</strong> during UV exposure. This serves exactly the same purpose as an industrial BARC &mdash; it absorbs UV light that would otherwise reflect off the back surface of the glass slide. Without this modification, back reflections cause diffuse exposure and poor pattern definition.</p>
+                    </div>
+
+                    <h3 class="section-header">Additional Advanced Techniques</h3>
+                    <div class="three-column">
+                        <div class="column-box">
+                            <h4>Immersion Lithography</h4>
+                            <p>Water (n = 1.44) fills the gap between the final lens element and the wafer, increasing NA beyond 1.0. This extended 193 nm lithography to 22 nm nodes, delaying the need for EUV by nearly a decade.</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>Multi-Patterning</h4>
+                            <p>Using two or more exposures to create features smaller than a single exposure can resolve. Techniques include LELE (litho-etch-litho-etch) and SADP (self-aligned double patterning). Increases cost and process complexity significantly.</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>Computational Lithography</h4>
+                            <p>Optical proximity correction (OPC) modifies mask patterns to compensate for diffraction effects. Sub-resolution assist features (SRAFs) improve pattern fidelity. Machine learning now optimizes mask designs automatically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 9: Troubleshooting Defects -->
+            <div class="card">
+                <div class="card-header orange">Part 9: Lithography Defects &amp; Troubleshooting</div>
+                <div class="card-body">
+                    <h3 class="section-header">Common Photolithography Defects</h3>
+                    <p>Understanding common defects helps diagnose process problems and improve yield:</p>
+
+                    <table class="data-table" aria-label="Common lithography defects and causes">
+                        <thead>
+                            <tr><th>Defect</th><th>Appearance</th><th>Likely Cause</th><th>Solution</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Incomplete development</strong></td><td>Resist residue in open areas</td><td>Under-exposure or under-development</td><td>Increase exposure dose or development time</td></tr>
+                            <tr><td><strong>Over-development</strong></td><td>Eroded features, thin lines</td><td>Excessive development time or concentration</td><td>Reduce development time, check solution freshness</td></tr>
+                            <tr><td><strong>Edge bead</strong></td><td>Thick resist at wafer edge</td><td>Surface tension during spin coating</td><td>Edge bead removal (EBR) with solvent dispense</td></tr>
+                            <tr><td><strong>Comets</strong></td><td>Streak patterns radiating outward</td><td>Particles on wafer during spin coat</td><td>Improve substrate cleaning, filter resist</td></tr>
+                            <tr><td><strong>Standing waves</strong></td><td>Scalloped resist sidewalls</td><td>Substrate reflections</td><td>Add BARC, optimize PEB</td></tr>
+                            <tr><td><strong>Delamination</strong></td><td>Resist peeling from substrate</td><td>Poor adhesion</td><td>Apply HMDS primer, dehydrate bake</td></tr>
+                            <tr><td><strong>Bubbles</strong></td><td>Circular voids in resist film</td><td>Air trapped during dispense</td><td>Dynamic dispense, degas resist</td></tr>
+                            <tr><td><strong>Bridging</strong></td><td>Resist connecting adjacent features</td><td>Under-exposure or contamination</td><td>Increase dose, check mask cleanliness</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Discussion Questions -->
+            <div class="card">
+                <div class="card-header green">Discussion Questions</div>
+                <div class="card-body">
+                    <ol style="margin-left: 25px;">
+                        <li style="margin-bottom:1rem;">If you could only change one parameter in the Rayleigh equation to improve resolution, which would you choose and why? What tradeoffs would you face?</li>
+                        <li style="margin-bottom:1rem;">Explain why positive photoresist dominates IC manufacturing but negative resist is preferred for MEMS and microfluidics.</li>
+                        <li style="margin-bottom:1rem;">An ASML EUV scanner costs over $300 million. What economic factors justify this investment for companies like TSMC and Intel?</li>
+                        <li style="margin-bottom:1rem;">Why does EUV lithography require reflective optics instead of transmissive lenses? What challenges does this create?</li>
+                        <li style="margin-bottom:1rem;">Approximately one-third of all CMOS processing steps involve lithography. Why is this percentage so high?</li>
+                        <li style="margin-bottom:1rem;">How does the black tape in our lab experiment relate to BARCs used in industry? Where does this analogy break down?</li>
+                        <li style="margin-bottom:1rem;">What might come after EUV for making even smaller features? Research and discuss at least two candidate technologies.</li>
+                        <li style="margin-bottom:1rem;">If you needed to create a 100 &micro;m tall structure (like a microfluidic channel), would you choose positive or negative resist? Explain your reasoning.</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================================================================
+             EXPERIMENT TAB
+             ================================================================ -->
+        <div id="experiment" class="tab-content" role="tabpanel">
+
+            <div class="safety-warning">
+                <h4>&#128721; SAFETY FIRST: Required Precautions</h4>
+                <p>This experiment involves UV light exposure, chemical solvents, and a high-speed spinning platform. <strong>All safety protocols must be followed at all times.</strong></p>
+                <ul>
+                    <li><strong>Eye Protection:</strong> Wear UV-blocking safety glasses during exposure. <em>NEVER look directly at the UV light source.</em></li>
+                    <li><strong>Skin Protection:</strong> Wear nitrile gloves when handling chemicals and photoresist</li>
+                    <li><strong>Ventilation:</strong> Work in a fume hood or well-ventilated area when using acetone and IPA</li>
+                    <li><strong>Clothing:</strong> Wear lab coat and closed-toe shoes; keep loose clothing away from spinner</li>
+                    <li><strong>Chemical Handling:</strong> Know the location of eyewash station and spill kit before beginning</li>
+                    <li><strong>Hot Surfaces:</strong> Use caution with the hotplate; handle samples with tweezers only</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Experiment Overview: Low-Cost Photolithography</div>
+                <div class="card-body">
+                    <p>In this experiment, you will perform a simplified photolithography process using <strong>UV-curable gel nail polish</strong> as a negative photoresist analog. Despite using inexpensive materials, you will execute the same fundamental steps used in billion-dollar semiconductor fabs: substrate preparation, resist application, mask alignment, UV exposure, and pattern development.</p>
+
+                    <div class="industry-note">
+                        <h4>&#128176; Cost Comparison</h4>
+                        <p><strong>Our lab:</strong> ~$15 per student using gel nail polish, glass slides, and a modified UV nail lamp. <strong>Industry equivalent:</strong> $50,000+ per wafer lot using photoresist, steppers, and automated track systems. Despite the 3,000&times; cost difference, the underlying physics and chemistry are identical.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header teal">Materials &amp; Equipment</div>
+                <div class="card-body">
+                    <div class="two-column">
+                        <div class="column-box">
+                            <h4>&#129520; Materials</h4>
+                            <ul style="margin-left:1.5rem;">
+                                <li>Glass microscope slides (substrate)</li>
+                                <li>UV-curable gel nail polish (photoresist analog)</li>
+                                <li>Isopropyl alcohol (IPA)</li>
+                                <li>Acetone (developer solvent)</li>
+                                <li>Transparency film for mask patterns</li>
+                                <li>Black electrical tape</li>
+                                <li>Lint-free wipes (Kimwipes)</li>
+                                <li>Permanent markers (for mask patterns)</li>
+                            </ul>
+                        </div>
+                        <div class="column-box">
+                            <h4>&#128295; Equipment</h4>
+                            <ul style="margin-left:1.5rem;">
+                                <li>Modified UV nail lamp (exposure source)</li>
+                                <li>Hotplate (for baking steps)</li>
+                                <li>Spin coater (or laptop fan as low-cost alternative)</li>
+                                <li>Tweezers (for sample handling)</li>
+                                <li>UV-blocking safety glasses</li>
+                                <li>Nitrile gloves</li>
+                                <li>Squirt bottles (for IPA and acetone)</li>
+                                <li>Timer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Pre-Operation Safety Checklist</div>
+                <div class="card-body">
+                    <ul class="checklist" aria-label="Safety checklist">
+                        <li class="checklist-item"><input type="checkbox" id="ck1"><label for="ck1">Safety glasses on and rated for UV protection</label></li>
+                        <li class="checklist-item"><input type="checkbox" id="ck2"><label for="ck2">Nitrile gloves worn</label></li>
+                        <li class="checklist-item"><input type="checkbox" id="ck3"><label for="ck3">Lab coat on, closed-toe shoes, no loose clothing</label></li>
+                        <li class="checklist-item"><input type="checkbox" id="ck4"><label for="ck4">Fume hood ON or adequate ventilation confirmed</label></li>
+                        <li class="checklist-item"><input type="checkbox" id="ck5"><label for="ck5">Eyewash station location identified</label></li>
+                        <li class="checklist-item"><input type="checkbox" id="ck6"><label for="ck6">Spill kit accessible</label></li>
+                        <li class="checklist-item"><input type="checkbox" id="ck7"><label for="ck7">Hotplate verified and set to correct temperature</label></li>
+                        <li class="checklist-item"><input type="checkbox" id="ck8"><label for="ck8">SDS reviewed for acetone and IPA</label></li>
+                        <li class="checklist-item"><input type="checkbox" id="ck9"><label for="ck9">Instructor has approved you to begin</label></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Step-by-Step Procedure</div>
+                <div class="card-body">
+                    <div class="procedure-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Substrate Cleaning</h4>
+                            <p>Clean the glass slide using the standard solvent cleaning sequence:</p>
+                            <ul style="margin-left:1.5rem;margin-top:0.5rem;">
+                                <li>Rinse thoroughly with <strong>acetone</strong> to remove organic contaminants</li>
+                                <li>Rinse with <strong>IPA</strong> to remove the acetone</li>
+                                <li>Dry with a lint-free wipe or blow dry with compressed air</li>
+                                <li>Handle only by edges to avoid fingerprints</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Photomask Preparation</h4>
+                            <p>Create your photomask using transparency film:</p>
+                            <ul style="margin-left:1.5rem;margin-top:0.5rem;">
+                                <li>Draw or print a pattern on the transparency film using permanent marker or laser printer</li>
+                                <li>The dark (opaque) areas will <strong>block</strong> UV light</li>
+                                <li>The clear (transparent) areas will <strong>transmit</strong> UV light</li>
+                                <li>Remember: we are using <strong>negative resist</strong> &mdash; exposed areas will remain</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Resist Application (Spin Coating)</h4>
+                            <p>Apply a thin, uniform layer of gel nail polish:</p>
+                            <ul style="margin-left:1.5rem;margin-top:0.5rem;">
+                                <li>Apply 2&ndash;3 drops of gel nail polish to the center of the clean slide</li>
+                                <li>Spin the sample at moderate speed for 30 seconds using the spin coater (or laptop fan)</li>
+                                <li>The goal is a thin, even coating &mdash; thinner coats produce better resolution</li>
+                                <li>Note: Higher spin speed = thinner film (inversely proportional to &radic;RPM)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Pre-Exposure Bake (Soft Bake)</h4>
+                            <p>Stabilize the resist film before exposure:</p>
+                            <ul style="margin-left:1.5rem;margin-top:0.5rem;">
+                                <li>Place the coated slide on the hotplate at <strong>100&deg;C</strong></li>
+                                <li>Bake for <strong>2 minutes</strong> to drive off volatile solvents</li>
+                                <li>Remove carefully using tweezers and allow to cool</li>
+                            </ul>
+                            <div class="safety-warning" style="margin-top:1rem;">
+                                <h4>&#9888;&#65039; Hot Surface Warning</h4>
+                                <p>The hotplate and sample will be very hot. Use tweezers to handle the slide. Never touch the hotplate surface directly.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Anti-Reflective Modification</h4>
+                            <p>Apply the low-cost BARC analog:</p>
+                            <ul style="margin-left:1.5rem;margin-top:0.5rem;">
+                                <li>Place a strip of <strong>black electrical tape</strong> on the bottom surface of the glass slide</li>
+                                <li>This absorbs UV light that would otherwise reflect off the back surface</li>
+                                <li>Without this step, back reflections cause diffuse exposure and poor pattern fidelity</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>UV Exposure</h4>
+                            <p>Transfer the mask pattern into the photoresist:</p>
+                            <ul style="margin-left:1.5rem;margin-top:0.5rem;">
+                                <li>Place the photomask <strong>pattern-side DOWN</strong> directly on the coated slide</li>
+                                <li>Ensure intimate contact between mask and resist (no air gap)</li>
+                                <li>Place under the UV nail lamp</li>
+                                <li>Expose for exactly <strong>5 seconds</strong></li>
+                                <li>Remove immediately after exposure</li>
+                            </ul>
+                            <div class="safety-warning" style="margin-top:1rem;">
+                                <h4>&#128721; UV Safety</h4>
+                                <p><strong>DO NOT look directly at the UV light source!</strong> UV radiation causes severe eye damage. Wear UV-blocking safety glasses throughout this step.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>Post-Exposure Bake</h4>
+                            <p>Stabilize the exposed pattern:</p>
+                            <ul style="margin-left:1.5rem;margin-top:0.5rem;">
+                                <li>Separate the mask from the exposed slide carefully</li>
+                                <li>Place on the hotplate at <strong>155&deg;C</strong></li>
+                                <li>Bake for <strong>5 minutes</strong></li>
+                                <li>Remove and allow to cool completely</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <h4>Development</h4>
+                            <p>Reveal the pattern by removing the unexposed photoresist:</p>
+                            <ul style="margin-left:1.5rem;margin-top:0.5rem;">
+                                <li>Submerge the slide in an <strong>IPA bath</strong> and agitate gently for <strong>2 minutes</strong></li>
+                                <li>Spray with <strong>acetone</strong> (may need to let it sit briefly)</li>
+                                <li>Give a second, more forceful spray if residue remains</li>
+                                <li>Rinse with IPA</li>
+                                <li>Pat dry with a lint-free wipe or blow dry</li>
+                            </ul>
+                            <div class="key-concept" style="margin-top:1rem;">
+                                <h4>&#128161; Remember: Negative Resist</h4>
+                                <p>This process uses <strong>negative lithography</strong> &mdash; the UV-exposed areas become hardened (cross-linked) and remain on the slide. The unexposed areas are washed away during development. This is &ldquo;What Shows, Stays.&rdquo;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header green">Data Recording &amp; Post-Lab Questions</div>
+                <div class="card-body">
+                    <table class="data-table" aria-label="Lab data recording table">
+                        <thead><tr><th>Parameter</th><th>Your Measurement</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>Spin speed used</td><td>_____________ RPM</td><td></td></tr>
+                            <tr><td>Soft bake temperature/time</td><td>_______ &deg;C / _______ min</td><td></td></tr>
+                            <tr><td>UV exposure time</td><td>_____________ seconds</td><td></td></tr>
+                            <tr><td>Post-exposure bake time</td><td>_____________ minutes</td><td></td></tr>
+                            <tr><td>Development time</td><td>_____________ minutes</td><td></td></tr>
+                            <tr><td>Pattern quality (1&ndash;10)</td><td>_____________</td><td></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 style="margin-top:2rem;font-family:var(--font-display);color:var(--dark-purple);">&#128221; Post-Lab Questions</h4>
+                    <ol style="margin-left:25px;margin-top:1rem;">
+                        <li style="margin-bottom:1rem;">Did the pattern successfully transfer from the photomask to the slide? Why or why not?</li>
+                        <li style="margin-bottom:1rem;">Explain in your own words the photolithography process and why it is important in nanotechnology.</li>
+                        <li style="margin-bottom:1rem;">Why must we bake the slide after coating with nail polish and again after UV exposure?</li>
+                        <li style="margin-bottom:1rem;">Explain the difference between positive and negative lithography. Which one is used more in industry? Which did we use?</li>
+                        <li style="margin-bottom:1rem;">What is the relationship between spin speed and coating thickness? How did you observe this?</li>
+                        <li style="margin-bottom:1rem;">Discuss any unexpected results or sources of error. How are these issues avoided in industrial processes?</li>
+                        <li style="margin-bottom:1rem;">Research a photoresist used in industry. Who makes it, and what is it used for?</li>
+                        <li style="margin-bottom:1rem;">Why is it important that the mask is placed pattern-side down? What happens if it is not?</li>
+                        <li style="margin-bottom:1rem;">What would happen if the slide was exposed for more than 5 seconds? What about less than 2 seconds?</li>
+                        <li style="margin-bottom:1rem;">Research TARCs and BARCs. How do anti-reflective coatings improve pattern quality in industry?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================
+             SIMULATIONS TAB
+             ================================================================ -->
+        <div id="simulation" class="tab-content" role="tabpanel">
+
+            <!-- Simulation 1: Resolution Calculator -->
+            <div class="card">
+                <div class="card-header">Simulation 1: Rayleigh Resolution Calculator</div>
+                <div class="card-body">
+                    <p>Explore how wavelength, numerical aperture, and process factor determine the minimum feature size of a lithography system. Adjust the parameters and observe their impact on resolution and depth of focus.</p>
+
+                    <div class="simulator-container">
+                        <div class="simulator-title">Rayleigh Criterion Calculator: R = k<sub>1</sub> &times; &lambda; / NA</div>
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label for="wavelength">Wavelength (&lambda;)</label>
+                                <select id="wavelength" aria-label="Select exposure wavelength">
+                                    <option value="436">g-line: 436 nm</option>
+                                    <option value="365">i-line: 365 nm</option>
+                                    <option value="248">KrF DUV: 248 nm</option>
+                                    <option value="193" selected>ArF DUV: 193 nm</option>
+                                    <option value="13.5">EUV: 13.5 nm</option>
+                                </select>
+                            </div>
+                            <div class="control-group">
+                                <label for="naValue">Numerical Aperture (NA)</label>
+                                <input type="range" id="naValue" min="0.1" max="1.35" step="0.01" value="0.93" aria-label="Numerical aperture slider">
+                                <span id="naDisplay" style="text-align:center;font-weight:600;">0.93</span>
+                            </div>
+                            <div class="control-group">
+                                <label for="k1Value">k<sub>1</sub> Process Factor</label>
+                                <input type="range" id="k1Value" min="0.25" max="0.80" step="0.01" value="0.40" aria-label="k1 process factor slider">
+                                <span id="k1Display" style="text-align:center;font-weight:600;">0.40</span>
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <button class="sim-btn" onclick="calculateResolution()" aria-label="Calculate resolution">Calculate Resolution</button>
+                        </div>
+                        <div class="sim-result" id="resolutionResult">
+                            <div class="sim-result-value" id="resValue"></div>
+                            <div class="sim-result-label" id="resLabel"></div>
+                            <div class="sim-result-explanation" id="resExplanation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulation 2: Spin Coating Calculator -->
+            <div class="card">
+                <div class="card-header teal">Simulation 2: Spin Coating Thickness Calculator</div>
+                <div class="card-body">
+                    <p>Explore the relationship between spin speed and resist thickness. Enter a known reference point from a resist datasheet and predict the thickness at different speeds using the empirical square-root relationship.</p>
+
+                    <div class="simulator-container">
+                        <div class="simulator-title">Spin Speed vs. Film Thickness: t &#8733; 1/&radic;&omega;</div>
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label for="refSpeed">Reference Spin Speed (RPM)</label>
+                                <input type="number" id="refSpeed" value="5000" min="500" max="10000" aria-label="Reference spin speed">
+                            </div>
+                            <div class="control-group">
+                                <label for="refThickness">Thickness at Reference (&micro;m)</label>
+                                <input type="number" id="refThickness" value="1.3" min="0.1" max="100" step="0.1" aria-label="Reference thickness">
+                            </div>
+                            <div class="control-group">
+                                <label for="targetSpeed">Target Spin Speed (RPM)</label>
+                                <input type="number" id="targetSpeed" value="3000" min="500" max="10000" aria-label="Target spin speed">
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <button class="sim-btn" onclick="calculateSpinThickness()" aria-label="Calculate thickness">Calculate Thickness</button>
+                        </div>
+                        <div class="sim-result" id="spinResult">
+                            <div class="sim-result-value" id="spinValue"></div>
+                            <div class="sim-result-label" id="spinLabel"></div>
+                            <div class="sim-result-explanation" id="spinExplanation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulation 3: Interactive Photolithography Process -->
+            <div class="card">
+                <div class="card-header">Simulation 3: Interactive Photolithography Process Visualization</div>
+                <div class="card-body">
+                    <p>Step through the complete photolithography process. Adjust exposure time and resist type to see how they affect the final pattern.</p>
+
+                    <div class="litho-viz">
+                        <div class="simulator-controls" style="justify-content:center;margin-bottom:1rem;">
+                            <div class="control-group">
+                                <label for="simResistType" style="color:var(--white);">Resist Type</label>
+                                <select id="simResistType">
+                                    <option value="negative">Negative (What Shows Stays)</option>
+                                    <option value="positive">Positive (What Shows Goes)</option>
+                                </select>
+                            </div>
+                            <div class="control-group">
+                                <label for="simExposure" style="color:var(--white);">Exposure Time</label>
+                                <input type="range" id="simExposure" min="1" max="10" value="5">
+                                <span id="simExpDisplay" style="color:var(--white);text-align:center;">5 sec</span>
+                            </div>
+                        </div>
+                        <div class="litho-canvas-wrap">
+                            <canvas id="lithoCanvas" width="780" height="420" aria-label="Interactive photolithography process visualization"></canvas>
+                        </div>
+                        <div style="display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap;">
+                            <button class="sim-btn" onclick="prevLithoStep()" aria-label="Previous step">&#9664; Previous</button>
+                            <button class="sim-btn" onclick="nextLithoStep()" aria-label="Next step">Next &#9654;</button>
+                            <button class="sim-btn" style="background:linear-gradient(135deg,var(--orange),var(--red));" onclick="resetLitho()" aria-label="Reset simulation">&#8634; Reset</button>
+                        </div>
+                        <div class="litho-label" id="lithoStepLabel">Step 0/7 &mdash; Click &ldquo;Next&rdquo; to begin the process</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulation 4: Wavelength Comparison -->
+            <div class="card">
+                <div class="card-header gold-header">Simulation 4: Wavelength &amp; Feature Size Comparison</div>
+                <div class="card-body">
+                    <p>Compare how different lithography generations scale in terms of minimum feature size. Select a technology node to see the resolution achievable and how many transistors can fit in a given area.</p>
+
+                    <div class="simulator-container">
+                        <div class="simulator-title">Technology Node Explorer</div>
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label for="techNode">Select Technology</label>
+                                <select id="techNode" aria-label="Select technology node">
+                                    <option value="gline">g-line (436 nm) &mdash; 1980s</option>
+                                    <option value="iline">i-line (365 nm) &mdash; 1990s</option>
+                                    <option value="krf">KrF DUV (248 nm) &mdash; 2000s</option>
+                                    <option value="arf">ArF DUV (193 nm) &mdash; 2005&ndash;present</option>
+                                    <option value="arfi">ArF Immersion (193i) &mdash; 2010&ndash;present</option>
+                                    <option value="euv" selected>EUV (13.5 nm) &mdash; 2019&ndash;present</option>
+                                    <option value="hnaeuv">High-NA EUV &mdash; 2025+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <button class="sim-btn" onclick="showTechNode()" aria-label="Show technology details">Show Details</button>
+                        </div>
+                        <div class="sim-result" id="techResult">
+                            <div class="sim-result-value" id="techValue"></div>
+                            <div class="sim-result-label" id="techLabel"></div>
+                            <div class="sim-result-explanation" id="techExplanation"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================
+             QUIZ TAB
+             ================================================================ -->
+        <div id="quiz" class="tab-content" role="tabpanel">
+            <div class="card">
+                <div class="card-header">Knowledge Check: Photolithography</div>
+                <div class="card-body">
+                    <p>Test your understanding of photolithography concepts. Select the best answer for each question.</p>
+
+                    <!-- Q1 -->
+                    <div class="quiz-question" data-correct="c">
+                        <h4>Question 1: What fraction of all CMOS processing steps involve photolithography?</h4>
+                        <label class="quiz-option"><input type="radio" name="q1" value="a"> About one-tenth</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="b"> About one-quarter</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="c"> About one-third</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="d"> About one-half</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="quiz-question" data-correct="b">
+                        <h4>Question 2: In positive photoresist, what happens to UV-exposed areas during development?</h4>
+                        <label class="quiz-option"><input type="radio" name="q2" value="a"> They cross-link and become insoluble (they stay)</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="b"> They become soluble and are washed away (&ldquo;What Shows, Goes&rdquo;)</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="c"> They change color but remain on the substrate</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="d"> They evaporate immediately during exposure</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="quiz-question" data-correct="d">
+                        <h4>Question 3: What is the purpose of HMDS in the lithography process?</h4>
+                        <label class="quiz-option"><input type="radio" name="q3" value="a"> It acts as a developer to dissolve exposed resist</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="b"> It protects the wafer from UV radiation</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="c"> It reduces the viscosity of photoresist for spin coating</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="d"> It promotes adhesion between the substrate and photoresist</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="quiz-question" data-correct="a">
+                        <h4>Question 4: According to the Rayleigh criterion, which change would most improve resolution?</h4>
+                        <label class="quiz-option"><input type="radio" name="q4" value="a"> Use a shorter wavelength of light</label>
+                        <label class="quiz-option"><input type="radio" name="q4" value="b"> Increase the k&#8321; process factor</label>
+                        <label class="quiz-option"><input type="radio" name="q4" value="c"> Decrease the numerical aperture</label>
+                        <label class="quiz-option"><input type="radio" name="q4" value="d"> Increase the exposure time</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="quiz-question" data-correct="c">
+                        <h4>Question 5: Why does EUV lithography require reflective optics instead of lenses?</h4>
+                        <label class="quiz-option"><input type="radio" name="q5" value="a"> Reflective optics are cheaper to manufacture</label>
+                        <label class="quiz-option"><input type="radio" name="q5" value="b"> EUV light travels too fast for glass to focus</label>
+                        <label class="quiz-option"><input type="radio" name="q5" value="c"> EUV light at 13.5 nm is absorbed by virtually all materials, including glass</label>
+                        <label class="quiz-option"><input type="radio" name="q5" value="d"> Glass lenses cannot be polished to the required precision</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="quiz-question" data-correct="b">
+                        <h4>Question 6: How does doubling the spin speed affect photoresist film thickness?</h4>
+                        <label class="quiz-option"><input type="radio" name="q6" value="a"> Thickness is reduced by half (50%)</label>
+                        <label class="quiz-option"><input type="radio" name="q6" value="b"> Thickness is reduced by approximately 30% (1/&radic;2 relationship)</label>
+                        <label class="quiz-option"><input type="radio" name="q6" value="c"> Thickness doubles</label>
+                        <label class="quiz-option"><input type="radio" name="q6" value="d"> Thickness is unaffected by spin speed</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="quiz-question" data-correct="d">
+                        <h4>Question 7: What is the approximate cost of a single ASML EUV lithography scanner?</h4>
+                        <label class="quiz-option"><input type="radio" name="q7" value="a"> $1 million</label>
+                        <label class="quiz-option"><input type="radio" name="q7" value="b"> $10 million</label>
+                        <label class="quiz-option"><input type="radio" name="q7" value="c"> $50 million</label>
+                        <label class="quiz-option"><input type="radio" name="q7" value="d"> Over $300 million</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="quiz-question" data-correct="a">
+                        <h4>Question 8: What type of photoresist does UV-curable gel nail polish behave as?</h4>
+                        <label class="quiz-option"><input type="radio" name="q8" value="a"> Negative resist &mdash; exposed areas cross-link and stay</label>
+                        <label class="quiz-option"><input type="radio" name="q8" value="b"> Positive resist &mdash; exposed areas dissolve and are removed</label>
+                        <label class="quiz-option"><input type="radio" name="q8" value="c"> Dual-tone resist &mdash; behaves as either depending on dose</label>
+                        <label class="quiz-option"><input type="radio" name="q8" value="d"> Chemically amplified resist &mdash; requires a catalyst</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q9 -->
+                    <div class="quiz-question" data-correct="c">
+                        <h4>Question 9: What is the purpose of the post-exposure bake (PEB)?</h4>
+                        <label class="quiz-option"><input type="radio" name="q9" value="a"> To completely dry the photoresist before exposure</label>
+                        <label class="quiz-option"><input type="radio" name="q9" value="b"> To remove the photomask from the resist surface</label>
+                        <label class="quiz-option"><input type="radio" name="q9" value="c"> To reduce standing wave effects and enhance image contrast</label>
+                        <label class="quiz-option"><input type="radio" name="q9" value="d"> To increase the substrate temperature for better adhesion</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q10 -->
+                    <div class="quiz-question" data-correct="b">
+                        <h4>Question 10: What function does a BARC serve in photolithography?</h4>
+                        <label class="quiz-option"><input type="radio" name="q10" value="a"> It acts as a protective coating on top of the resist</label>
+                        <label class="quiz-option"><input type="radio" name="q10" value="b"> It absorbs light reflected from the substrate to reduce standing waves</label>
+                        <label class="quiz-option"><input type="radio" name="q10" value="c"> It increases resist sensitivity to UV light</label>
+                        <label class="quiz-option"><input type="radio" name="q10" value="d"> It serves as a developer solvent during pattern transfer</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q11 -->
+                    <div class="quiz-question" data-correct="a">
+                        <h4>Question 11: Which photoresist type dominates integrated circuit manufacturing (&gt;90%)?</h4>
+                        <label class="quiz-option"><input type="radio" name="q11" value="a"> Positive photoresist</label>
+                        <label class="quiz-option"><input type="radio" name="q11" value="b"> Negative photoresist</label>
+                        <label class="quiz-option"><input type="radio" name="q11" value="c"> Both are used equally</label>
+                        <label class="quiz-option"><input type="radio" name="q11" value="d"> Neither &mdash; modern fabs use electron-beam lithography</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q12 -->
+                    <div class="quiz-question" data-correct="d">
+                        <h4>Question 12: Why is the photomask placed pattern-side down against the resist in contact lithography?</h4>
+                        <label class="quiz-option"><input type="radio" name="q12" value="a"> To prevent the mask from overheating during UV exposure</label>
+                        <label class="quiz-option"><input type="radio" name="q12" value="b"> To protect the chrome pattern from UV damage</label>
+                        <label class="quiz-option"><input type="radio" name="q12" value="c"> To make it easier to remove after exposure</label>
+                        <label class="quiz-option"><input type="radio" name="q12" value="d"> To minimize the gap between the pattern and resist, reducing diffraction and improving resolution</label>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div style="text-align:center;margin-top:2rem;">
+                        <button class="sim-btn" onclick="submitQuiz()" style="font-size:1.2rem;padding:1rem 3rem;" aria-label="Submit quiz">Submit Quiz</button>
+                    </div>
+
+                    <div id="quizScore">
+                        <div id="scoreDisplay"></div>
+                        <div id="scoreMessage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== MODULE NAVIGATION FOOTER ===== -->
+        <nav class="nav-footer" aria-label="Module navigation">
+            <a href="module7_thin_film_deposition.html">&#8592; Module 7: Thin Film Deposition</a>
+            <a href="course-outline.html">&#127968; Course Home</a>
+            <a href="module9_etching.html">Module 9: Etching &#8594;</a>
+        </nav>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>Introduction to Nanotechnology &mdash; Module 8: Photolithography</p>
+        <p>Developed with support from NSF ATE Grant DUE 2301137 | Penn State University</p>
+        <p>&copy; 2025 &mdash; Educational use permitted with attribution</p>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== TAB FUNCTIONALITY =====
+        var tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var targetTab = this.getAttribute('data-tab');
+                tabBtns.forEach(function(b) {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                document.querySelectorAll('.tab-content').forEach(function(tc) {
+                    tc.classList.remove('active');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                document.getElementById(targetTab).classList.add('active');
+                updateProgress();
+            });
+        });
+
+        // Tab keyboard navigation
+        document.querySelector('.tabs').addEventListener('keydown', function(e) {
+            var tabs = Array.from(this.querySelectorAll('.tab-btn'));
+            var idx = tabs.indexOf(document.activeElement);
+            if (e.key === 'ArrowRight') { e.preventDefault(); tabs[(idx + 1) % tabs.length].focus(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); tabs[(idx - 1 + tabs.length) % tabs.length].focus(); }
+        });
+
+        // ===== TOOLTIP SYSTEM (Fixed positioning to prevent cutoff) =====
+        var tooltipTerms = document.querySelectorAll('.tooltip-term');
+        tooltipTerms.forEach(function(term) {
+            var content = term.querySelector('.tooltip-content');
+            function positionTooltip() {
+                var rect = term.getBoundingClientRect();
+                var tooltipWidth = 320;
+                // Temporarily make visible off-screen to measure height
+                content.style.visibility = 'hidden';
+                content.style.opacity = '0';
+                content.style.display = 'block';
+                content.style.left = '-9999px';
+                content.style.top = '0';
+                content.classList.add('show');
+                var tooltipHeight = content.offsetHeight || 150;
+                content.classList.remove('show');
+                content.style.display = '';
+
+                var viewportW = window.innerWidth;
+                var viewportH = window.innerHeight;
+                var padding = 12;
+
+                // Horizontal: center on term, then clamp to viewport edges
+                var left = rect.left + rect.width / 2 - tooltipWidth / 2;
+                left = Math.max(padding, Math.min(left, viewportW - tooltipWidth - padding));
+
+                // Vertical: prefer below, fall back to above
+                var top = rect.bottom + 10;
+                if (top + tooltipHeight > viewportH - padding) {
+                    top = rect.top - tooltipHeight - 10;
+                }
+                // If still off-screen (above), clamp to viewport
+                if (top < padding) {
+                    top = padding;
+                }
+
+                content.style.left = left + 'px';
+                content.style.top = top + 'px';
+                content.style.visibility = '';
+                content.style.opacity = '';
+            }
+
+            function showTip() { positionTooltip(); content.classList.add('show'); }
+            function hideTip() { content.classList.remove('show'); }
+
+            term.addEventListener('mouseenter', showTip);
+            term.addEventListener('mouseleave', hideTip);
+            term.addEventListener('focus', showTip);
+            term.addEventListener('blur', hideTip);
+        });
+
+        // ===== PROGRESS TRACKING =====
+        function updateProgress() {
+            var total = 0, completed = 0;
+            var quizQs = document.querySelectorAll('.quiz-question');
+            total += quizQs.length;
+            quizQs.forEach(function(q) { if (q.classList.contains('answered')) completed++; });
+            var checks = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            total += checks.length;
+            checks.forEach(function(c) { if (c.checked) completed++; });
+            // Tabs visited count
+            total += 4;
+            tabBtns.forEach(function(b) {
+                if (b.classList.contains('active') || b.dataset.visited) { completed++; b.dataset.visited = '1'; }
+            });
+            var pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('progressPercent').textContent = pct + '%';
+        }
+
+        // ===== SIMULATION 1: RESOLUTION CALCULATOR =====
+        document.getElementById('naValue').addEventListener('input', function() {
+            document.getElementById('naDisplay').textContent = parseFloat(this.value).toFixed(2);
+        });
+        document.getElementById('k1Value').addEventListener('input', function() {
+            document.getElementById('k1Display').textContent = parseFloat(this.value).toFixed(2);
+        });
+
+        function calculateResolution() {
+            var wl = parseFloat(document.getElementById('wavelength').value);
+            var na = parseFloat(document.getElementById('naValue').value);
+            var k1 = parseFloat(document.getElementById('k1Value').value);
+            var k2 = 0.5; // typical
+
+            var resolution = k1 * wl / na;
+            var dof = k2 * wl / (na * na);
+
+            var resText, context;
+            if (resolution >= 1000) {
+                resText = (resolution / 1000).toFixed(2) + ' \u00B5m';
+            } else {
+                resText = resolution.toFixed(1) + ' nm';
+            }
+
+            context = 'Resolution: ' + resText + ' | Depth of Focus: ' + dof.toFixed(1) + ' nm';
+            var explanation = 'With \u03BB = ' + wl + ' nm, NA = ' + na.toFixed(2) + ', and k\u2081 = ' + k1.toFixed(2) + ', the minimum feature size is ' + resText + '. ';
+            explanation += 'The depth of focus is ' + dof.toFixed(1) + ' nm. ';
+
+            if (resolution < 10) {
+                explanation += 'This is cutting-edge EUV territory \u2014 only achievable with ASML\'s latest systems costing $300M+.';
+            } else if (resolution < 50) {
+                explanation += 'This resolution is typical of advanced DUV immersion or EUV lithography used in leading-edge fabs.';
+            } else if (resolution < 250) {
+                explanation += 'This is DUV lithography range, widely used in production for mature and advanced nodes.';
+            } else if (resolution < 1000) {
+                explanation += 'This resolution is achievable with i-line or g-line lithography, suitable for MEMS and older IC technology.';
+            } else {
+                explanation += 'This is a relatively coarse resolution, typical of early lithography or research applications.';
+            }
+
+            document.getElementById('resValue').textContent = resText;
+            document.getElementById('resLabel').textContent = context;
+            document.getElementById('resExplanation').textContent = explanation;
+            document.getElementById('resolutionResult').style.display = 'block';
+            updateProgress();
+        }
+
+        // ===== SIMULATION 2: SPIN COATING CALCULATOR =====
+        function calculateSpinThickness() {
+            var refSpd = parseFloat(document.getElementById('refSpeed').value);
+            var refThk = parseFloat(document.getElementById('refThickness').value);
+            var tgtSpd = parseFloat(document.getElementById('targetSpeed').value);
+
+            if (isNaN(refSpd) || isNaN(refThk) || isNaN(tgtSpd) || refSpd <= 0 || tgtSpd <= 0) {
+                alert('Please enter valid positive numbers.'); return;
+            }
+
+            // t proportional to 1/sqrt(omega)
+            var predicted = refThk * Math.sqrt(refSpd / tgtSpd);
+            var ratio = (predicted / refThk * 100).toFixed(0);
+
+            var valueText = predicted.toFixed(2) + ' \u00B5m';
+            var labelText = 'Predicted thickness at ' + tgtSpd + ' RPM (from ' + refThk + ' \u00B5m at ' + refSpd + ' RPM)';
+            var explanation = 'Using the empirical relationship t \u221D 1/\u221A\u03C9: changing from ' + refSpd + ' to ' + tgtSpd + ' RPM ';
+
+            if (tgtSpd > refSpd) {
+                explanation += 'increases spin speed, reducing thickness to ' + predicted.toFixed(2) + ' \u00B5m (' + ratio + '% of reference). ';
+                explanation += 'Faster spinning creates thinner, more uniform films with better resolution potential.';
+            } else if (tgtSpd < refSpd) {
+                explanation += 'decreases spin speed, increasing thickness to ' + predicted.toFixed(2) + ' \u00B5m (' + ratio + '% of reference). ';
+                explanation += 'Slower spinning creates thicker films, useful for deep etch masking or MEMS applications.';
+            } else {
+                explanation += 'is the same speed, so thickness remains at ' + refThk + ' \u00B5m.';
+            }
+
+            document.getElementById('spinValue').textContent = valueText;
+            document.getElementById('spinLabel').textContent = labelText;
+            document.getElementById('spinExplanation').textContent = explanation;
+            document.getElementById('spinResult').style.display = 'block';
+            updateProgress();
+        }
+
+        // ===== SIMULATION 3: LITHOGRAPHY PROCESS VISUALIZATION =====
+        var lithoStep = 0;
+        var lithoCanvas = document.getElementById('lithoCanvas');
+        var lithoCtx = lithoCanvas ? lithoCanvas.getContext('2d') : null;
+
+        document.getElementById('simExposure').addEventListener('input', function() {
+            document.getElementById('simExpDisplay').textContent = this.value + ' sec';
+            drawLithoStep();
+        });
+        document.getElementById('simResistType').addEventListener('change', function() { drawLithoStep(); });
+
+        function nextLithoStep() { if (lithoStep < 7) { lithoStep++; drawLithoStep(); } }
+        function prevLithoStep() { if (lithoStep > 0) { lithoStep--; drawLithoStep(); } }
+        function resetLitho() { lithoStep = 0; drawLithoStep(); }
+
+        function drawLithoStep() {
+            if (!lithoCtx) return;
+            var ctx = lithoCtx;
+            var W = lithoCanvas.width, H = lithoCanvas.height;
+            var isNeg = document.getElementById('simResistType').value === 'negative';
+            var exposure = parseInt(document.getElementById('simExposure').value);
+
+            ctx.clearRect(0, 0, W, H);
+
+            // Colors
+            var substrateColor = '#999999';
+            var resistColor = '#CC3366';
+            var exposedColor = isNeg ? '#993366' : '#FF99CC';
+            var maskColor = '#333333';
+            var uvColor = '#9933FF';
+            var devColor = '#00AACC';
+
+            var baseY = 320;
+            var subH = 40;
+            var resH = 35;
+
+            var steps = [
+                'Overview: Click Next to begin',
+                'Step 1: Clean substrate',
+                'Step 2: Spin coat photoresist',
+                'Step 3: Soft bake',
+                'Step 4: UV exposure through mask',
+                'Step 5: Post-exposure bake',
+                'Step 6: Develop',
+                'Step 7: Final pattern'
+            ];
+
+            // Title
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 16px Trebuchet MS, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(steps[lithoStep], W / 2, 30);
+            ctx.fillText(isNeg ? 'Negative Photoresist' : 'Positive Photoresist', W / 2, 55);
+
+            // Draw substrate (always)
+            function drawSub() {
+                ctx.fillStyle = substrateColor;
+                ctx.fillRect(60, baseY, W - 120, subH);
+                ctx.fillStyle = '#FFFFFF';
+                ctx.font = '13px Georgia';
+                ctx.fillText('Substrate (Si / Glass)', W / 2, baseY + 25);
+            }
+
+            // Draw resist layer
+            function drawResist(exposed) {
+                if (!exposed) {
+                    ctx.fillStyle = resistColor;
+                    ctx.fillRect(60, baseY - resH, W - 120, resH);
+                } else {
+                    // Unexposed left
+                    ctx.fillStyle = resistColor;
+                    ctx.fillRect(60, baseY - resH, 180, resH);
+                    // Exposed center
+                    ctx.fillStyle = exposedColor;
+                    ctx.fillRect(240, baseY - resH, 140, resH);
+                    // Unexposed middle
+                    ctx.fillStyle = resistColor;
+                    ctx.fillRect(380, baseY - resH, 100, resH);
+                    // Exposed right
+                    ctx.fillStyle = exposedColor;
+                    ctx.fillRect(480, baseY - resH, 120, resH);
+                    // Unexposed far right
+                    ctx.fillStyle = resistColor;
+                    ctx.fillRect(600, baseY - resH, W - 120 - 540, resH);
+                }
+            }
+
+            // Mask
+            function drawMask() {
+                var maskY = baseY - resH - 55;
+                ctx.fillStyle = maskColor;
+                ctx.fillRect(60, maskY, 180, 20);
+                ctx.fillRect(380, maskY, 100, 20);
+                ctx.fillRect(600, maskY, W - 120 - 540, 20);
+                // Transparent regions
+                ctx.fillStyle = 'rgba(200,200,255,0.3)';
+                ctx.fillRect(240, maskY, 140, 20);
+                ctx.fillRect(480, maskY, 120, 20);
+                // Label
+                ctx.fillStyle = '#CCCCCC';
+                ctx.font = '11px Georgia';
+                ctx.fillText('Photomask (opaque / transparent)', W / 2, maskY - 8);
+            }
+
+            // UV rays
+            function drawUV() {
+                ctx.strokeStyle = uvColor;
+                ctx.lineWidth = 2;
+                ctx.setLineDash([6, 4]);
+                var maskY = baseY - resH - 55;
+                // Through transparent regions
+                for (var x = 250; x < 380; x += 18) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 80);
+                    ctx.lineTo(x, baseY - resH);
+                    ctx.stroke();
+                }
+                for (var x2 = 490; x2 < 600; x2 += 18) {
+                    ctx.beginPath();
+                    ctx.moveTo(x2, 80);
+                    ctx.lineTo(x2, baseY - resH);
+                    ctx.stroke();
+                }
+                ctx.setLineDash([]);
+                // UV source label
+                ctx.fillStyle = uvColor;
+                ctx.font = 'bold 14px Trebuchet MS';
+                ctx.fillText('\u2193 UV Light (' + exposure + ' sec exposure) \u2193', W / 2, 75);
+            }
+
+            // Developed pattern
+            function drawDeveloped() {
+                if (isNeg) {
+                    // Negative: exposed areas stay
+                    ctx.fillStyle = resistColor;
+                    ctx.fillRect(240, baseY - resH, 140, resH);
+                    ctx.fillRect(480, baseY - resH, 120, resH);
+                } else {
+                    // Positive: unexposed areas stay
+                    ctx.fillStyle = resistColor;
+                    ctx.fillRect(60, baseY - resH, 180, resH);
+                    ctx.fillRect(380, baseY - resH, 100, resH);
+                    ctx.fillRect(600, baseY - resH, W - 120 - 540, resH);
+                }
+            }
+
+            switch (lithoStep) {
+                case 0:
+                    ctx.fillStyle = '#AAAAAA';
+                    ctx.font = '14px Georgia';
+                    ctx.fillText('Click "Next" to step through the photolithography process.', W / 2, 200);
+                    ctx.fillText('Adjust resist type and exposure time using the controls above.', W / 2, 225);
+                    break;
+                case 1:
+                    drawSub();
+                    ctx.fillStyle = '#66CCFF';
+                    ctx.font = '13px Georgia';
+                    ctx.fillText('Acetone \u2192 IPA \u2192 DI water rinse', W / 2, baseY - 30);
+                    break;
+                case 2:
+                    drawSub();
+                    drawResist(false);
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.font = '13px Georgia';
+                    ctx.fillText('Photoresist (uniform thin film)', W / 2, baseY - resH / 2 + 5);
+                    break;
+                case 3:
+                    drawSub();
+                    drawResist(false);
+                    // Heat waves
+                    ctx.strokeStyle = '#FF6633';
+                    ctx.lineWidth = 2;
+                    for (var i = 0; i < 5; i++) {
+                        var sx = 150 + i * 130;
+                        ctx.beginPath();
+                        ctx.moveTo(sx, baseY + subH + 10);
+                        ctx.quadraticCurveTo(sx + 15, baseY + subH + 25, sx, baseY + subH + 40);
+                        ctx.stroke();
+                    }
+                    ctx.fillStyle = '#FF9966';
+                    ctx.font = '13px Georgia';
+                    ctx.fillText('Hotplate: 90-110\u00B0C  \u2014  Drives off solvents', W / 2, baseY + subH + 65);
+                    break;
+                case 4:
+                    drawSub();
+                    drawResist(true);
+                    drawMask();
+                    drawUV();
+                    break;
+                case 5:
+                    drawSub();
+                    drawResist(true);
+                    ctx.fillStyle = '#FF9966';
+                    ctx.font = '13px Georgia';
+                    ctx.fillText('Hotplate: 110-130\u00B0C  \u2014  Reduces standing waves, enhances contrast', W / 2, baseY + subH + 30);
+                    break;
+                case 6:
+                    drawSub();
+                    drawDeveloped();
+                    ctx.fillStyle = devColor;
+                    ctx.font = '13px Georgia';
+                    var devMsg = isNeg ? 'Developer removes unexposed resist (cross-linked areas remain)' : 'Developer removes exposed resist (unexposed areas remain)';
+                    ctx.fillText(devMsg, W / 2, baseY + subH + 30);
+                    break;
+                case 7:
+                    drawSub();
+                    drawDeveloped();
+                    ctx.fillStyle = '#00CC66';
+                    ctx.font = 'bold 18px Trebuchet MS';
+                    ctx.fillText('\u2713 Pattern Transfer Complete!', W / 2, baseY + subH + 40);
+                    ctx.fillStyle = '#AAAAAA';
+                    ctx.font = '13px Georgia';
+                    ctx.fillText('This resist pattern can now serve as a mask for etching or deposition.', W / 2, baseY + subH + 65);
+                    break;
+            }
+
+            document.getElementById('lithoStepLabel').textContent = 'Step ' + lithoStep + '/7 \u2014 ' + steps[lithoStep];
+        }
+        drawLithoStep();
+
+        // ===== SIMULATION 4: TECHNOLOGY NODE EXPLORER =====
+        function showTechNode() {
+            var node = document.getElementById('techNode').value;
+            var data = {
+                gline: { wl: 436, na: 0.35, k1: 0.7, feat: '~350 nm', trans: '~275K (Pentium)', year: '1985-1995', cost: '$5-10M', note: 'Mercury arc lamp g-line. Used for early microprocessors and logic chips.' },
+                iline: { wl: 365, na: 0.50, k1: 0.6, feat: '~250 nm', trans: '~7.5M (Pentium III)', year: '1993-2003', cost: '$10-20M', note: 'Mercury arc lamp i-line. Workhorse of the 0.35-0.25 \u00B5m technology generation.' },
+                krf: { wl: 248, na: 0.70, k1: 0.5, feat: '~130 nm', trans: '~42M (Athlon 64)', year: '2000-2010', cost: '$20-40M', note: 'Krypton fluoride excimer laser. First DUV generation, enabled the 180-130 nm node transition.' },
+                arf: { wl: 193, na: 0.93, k1: 0.4, feat: '~65 nm', trans: '~291M (Core 2)', year: '2005-present', cost: '$40-80M', note: 'Argon fluoride excimer laser. Dominant DUV platform extended through immersion and multi-patterning.' },
+                arfi: { wl: 193, na: 1.35, k1: 0.3, feat: '~22 nm', trans: '~1.4B (Snapdragon 845)', year: '2010-present', cost: '$80-130M', note: '193 nm immersion lithography: water between lens and wafer pushes NA above 1.0. Extended by multi-patterning to 7 nm node.' },
+                euv: { wl: 13.5, na: 0.33, k1: 0.35, feat: '~13 nm', trans: '~16B (A16 Bionic)', year: '2019-present', cost: '$300M+', note: 'Laser-pulsed tin plasma EUV source. Reflective optics, vacuum environment. Single-exposure capability eliminates multi-patterning for critical layers.' },
+                hnaeuv: { wl: 13.5, na: 0.55, k1: 0.3, feat: '~8 nm', trans: '~28B+ (M4)', year: '2025+', cost: '$400M+', note: 'ASML TWINSCAN EXE:5200B. Anamorphic optics (4x/8x magnification). 175 wafers/hour at 50 mJ/cm\u00B2 dose. 0.7 nm overlay accuracy. Enables sub-2 nm nodes without multi-patterning. Intel installed first production unit Dec 2025 for 14A process. Samsung and SK hynix also received systems. HVM expected 2027-2028. ASML planning Hyper-NA (0.75 NA) for after 2030.' }
+            };
+
+            var d = data[node];
+            var res = (d.k1 * d.wl / d.na).toFixed(1);
+
+            document.getElementById('techValue').textContent = d.feat + ' features';
+            document.getElementById('techLabel').textContent = '\u03BB = ' + d.wl + ' nm | NA = ' + d.na + ' | k\u2081 = ' + d.k1 + ' | Rayleigh R = ' + res + ' nm';
+
+            var explanation = d.note + ' System cost: ' + d.cost + '. Era: ' + d.year + '. Representative transistor count: ' + d.trans + '.';
+            document.getElementById('techExplanation').textContent = explanation;
+            document.getElementById('techResult').style.display = 'block';
+            updateProgress();
+        }
+
+        // ===== QUIZ FUNCTIONALITY =====
+        var quizQuestions = document.querySelectorAll('.quiz-question');
+
+        quizQuestions.forEach(function(question) {
+            var options = question.querySelectorAll('.quiz-option');
+            var feedback = question.querySelector('.quiz-feedback');
+            var correctAnswer = question.getAttribute('data-correct');
+
+            options.forEach(function(option) {
+                option.addEventListener('click', function() {
+                    if (question.classList.contains('answered')) return;
+
+                    var radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                    var selectedValue = radio.value;
+
+                    question.classList.add('answered');
+
+                    options.forEach(function(opt) {
+                        opt.style.pointerEvents = 'none';
+                        var optValue = opt.querySelector('input[type="radio"]').value;
+                        if (optValue === correctAnswer) {
+                            opt.classList.add('correct');
+                        } else if (optValue === selectedValue) {
+                            opt.classList.add('incorrect');
+                        }
+                    });
+
+                    if (selectedValue === correctAnswer) {
+                        feedback.textContent = '\u2713 Correct! Well done.';
+                        feedback.classList.add('correct', 'show');
+                    } else {
+                        feedback.textContent = '\u2717 Incorrect. The correct answer is highlighted in green.';
+                        feedback.classList.add('incorrect', 'show');
+                    }
+                    updateProgress();
+                });
+            });
+        });
+
+        function submitQuiz() {
+            var correct = 0;
+            var total = quizQuestions.length;
+
+            quizQuestions.forEach(function(question) {
+                var correctAnswer = question.getAttribute('data-correct');
+                var selectedOption = question.querySelector('input[type="radio"]:checked');
+
+                if (selectedOption && selectedOption.value === correctAnswer) correct++;
+
+                if (!question.classList.contains('answered')) {
+                    question.classList.add('answered');
+                    var options = question.querySelectorAll('.quiz-option');
+                    options.forEach(function(opt) {
+                        opt.style.pointerEvents = 'none';
+                        var optValue = opt.querySelector('input[type="radio"]').value;
+                        if (optValue === correctAnswer) opt.classList.add('correct');
+                    });
+                    var feedback = question.querySelector('.quiz-feedback');
+                    feedback.textContent = 'Not answered. The correct answer is highlighted.';
+                    feedback.classList.add('incorrect', 'show');
+                }
+            });
+
+            var scoreDiv = document.getElementById('quizScore');
+            var scoreDisplay = document.getElementById('scoreDisplay');
+            var scoreMessage = document.getElementById('scoreMessage');
+
+            scoreDisplay.textContent = correct + '/' + total;
+
+            var percentage = (correct / total) * 100;
+            if (percentage >= 90) {
+                scoreMessage.textContent = 'Excellent! You have mastered photolithography concepts!';
+            } else if (percentage >= 70) {
+                scoreMessage.textContent = 'Good job! Review the concepts you missed and explore the simulations.';
+            } else if (percentage >= 50) {
+                scoreMessage.textContent = 'Keep studying! Re-read the lecture content and try the interactive calculators.';
+            } else {
+                scoreMessage.textContent = 'More study needed. Review all sections of this module before proceeding.';
+            }
+
+            scoreDiv.style.display = 'block';
+            scoreDiv.scrollIntoView({ behavior: 'smooth' });
+            updateProgress();
+        }
+
+        // ===== INITIALIZATION =====
+        updateProgress();
+
+        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(function(cb) {
+            cb.addEventListener('change', updateProgress);
+        });
+    </script>
+
+</body>
+</html>

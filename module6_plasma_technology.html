@@ -1,0 +1,3176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 6: Plasma Technology - Comprehensive coverage of plasma physics, generation methods, semiconductor processing applications, and surface modification for nanotechnology education">
+    <title>Module 6: Plasma Technology | Introduction to Nanotechnology</title>
+    <style>
+        /* ===== CSS CUSTOM PROPERTIES (Web-Safe Colors) ===== */
+        :root {
+            --navy: #000080;
+            --primary-blue: #003366;
+            --secondary-blue: #336699;
+            --light-blue: #6699CC;
+            --pale-blue: #CCEEFF;
+            --ice-blue: #E6F3FF;
+            --teal: #008080;
+            --dark-teal: #006666;
+            --green: #008000;
+            --dark-green: #006600;
+            --light-green: #99CC99;
+            --pale-green: #E6FFE6;
+            --gold: #CC9900;
+            --orange: #FF6600;
+            --red: #CC0000;
+            --dark-red: #990000;
+            --purple: #663399;
+            --light-purple: #E6E6FA;
+            --magenta: #990099;
+            --plasma-violet: #9966FF;
+            --plasma-glow: #CC99FF;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --light-gray: #E0E0E0;
+            --medium-gray: #999999;
+            --dark-gray: #666666;
+            --charcoal: #333333;
+            --black: #000000;
+            --shadow: rgba(0, 0, 0, 0.15);
+            --shadow-dark: rgba(0, 0, 0, 0.25);
+            --font-primary: Georgia, 'Times New Roman', serif;
+            --font-display: 'Trebuchet MS', Arial, sans-serif;
+            --font-mono: 'Courier New', monospace;
+            --transition: 0.3s ease;
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: linear-gradient(135deg, var(--light-purple) 0%, var(--white) 50%, var(--ice-blue) 100%);
+            color: var(--charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background: var(--navy);
+            color: var(--white);
+            padding: 12px 20px;
+            z-index: 10000;
+            border-radius: var(--radius);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            top: 10px;
+        }
+
+        a:focus, button:focus, input:focus, select:focus, [tabindex]:focus {
+            outline: 3px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--navy) 50%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px var(--shadow-dark);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--plasma-violet), var(--magenta));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--white);
+            border: 3px solid var(--gold);
+            box-shadow: 0 4px 15px var(--shadow), 0 0 20px rgba(153, 102, 255, 0.4);
+            animation: plasmaGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes plasmaGlow {
+            0%, 100% { box-shadow: 0 4px 15px var(--shadow), 0 0 20px rgba(153, 102, 255, 0.4); }
+            50% { box-shadow: 0 4px 15px var(--shadow), 0 0 35px rgba(153, 102, 255, 0.7); }
+        }
+
+        .site-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .site-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn:hover, .nav-btn:focus {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateY(-2px);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--navy) 50%, var(--magenta) 100%);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px var(--shadow-dark);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(153, 102, 255, 0.3) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(204, 153, 255, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .hero-meta span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-container {
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--purple);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: var(--light-gray);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--plasma-violet), var(--magenta));
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 6px;
+        }
+
+        /* ===== LEARNING OBJECTIVES ===== */
+        .objectives {
+            background: linear-gradient(135deg, var(--light-purple) 0%, var(--white) 100%);
+            border-left: 5px solid var(--purple);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .objectives h3 {
+            font-family: var(--font-display);
+            color: var(--purple);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .objectives li {
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .objectives li::marker {
+            color: var(--purple);
+            font-weight: bold;
+        }
+
+        /* ===== TABS NAVIGATION ===== */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--light-gray);
+            background: var(--white);
+            color: var(--charcoal);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition);
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--purple);
+            background: var(--light-purple);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--purple), var(--magenta));
+            color: var(--white);
+            border-color: var(--purple);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px var(--shadow);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--purple), var(--navy));
+            color: var(--white);
+            padding: 1.25rem 1.5rem;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .card-header.teal {
+            background: linear-gradient(135deg, var(--teal), var(--dark-teal));
+        }
+
+        .card-header.green {
+            background: linear-gradient(135deg, var(--green), var(--dark-green));
+        }
+
+        .card-header.orange {
+            background: linear-gradient(135deg, var(--orange), var(--red));
+        }
+
+        .card-header.magenta {
+            background: linear-gradient(135deg, var(--magenta), var(--purple));
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--purple);
+            margin: 2rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--magenta);
+        }
+
+        .subsection-header {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--dark-teal);
+            margin: 1.5rem 0 1rem;
+        }
+
+        /* ===== TOOLTIP SYSTEM (Fixed positioning to prevent cutoff) ===== */
+        .tooltip-term {
+            color: var(--purple);
+            border-bottom: 2px dotted var(--purple);
+            cursor: help;
+            position: relative;
+            font-weight: 600;
+            display: inline;
+        }
+/* ===== DATA TABLES ===== */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .data-table thead {
+            background: linear-gradient(135deg, var(--purple), var(--navy));
+            color: var(--white);
+        }
+
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-family: var(--font-display);
+        }
+
+        .data-table td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--light-purple);
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background: var(--off-white);
+        }
+
+        .data-table tbody tr:nth-child(even):hover {
+            background: var(--light-purple);
+        }
+
+        /* ===== GRID LAYOUTS ===== */
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .four-column {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* ===== INFO BOXES ===== */
+        .column-box {
+            background: var(--off-white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border-top: 4px solid var(--purple);
+        }
+
+        .column-box h4 {
+            font-family: var(--font-display);
+            margin-bottom: 0.75rem;
+            color: var(--purple);
+        }
+
+        .key-concept {
+            background: linear-gradient(135deg, var(--light-purple), var(--white));
+            border-left: 5px solid var(--purple);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+        }
+
+        .key-concept h4 {
+            color: var(--purple);
+            margin-bottom: 0.75rem;
+            font-family: var(--font-display);
+        }
+
+        .safety-warning {
+            background: linear-gradient(135deg, #FFE6E6, #FFCCCC);
+            border-left: 5px solid var(--red);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+        }
+
+        .safety-warning h4 {
+            color: var(--dark-red);
+            margin-bottom: 0.75rem;
+            font-family: var(--font-display);
+        }
+
+        .safety-warning ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .industry-note {
+            background: linear-gradient(135deg, #FFF8E6, #FFEEBB);
+            border-left: 5px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+        }
+
+        .industry-note h4 {
+            color: #996600;
+            margin-bottom: 0.75rem;
+            font-family: var(--font-display);
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, var(--light-purple), var(--white));
+            border: 2px solid var(--purple);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .formula-box h4 {
+            color: var(--purple);
+            margin-bottom: 1rem;
+            font-family: var(--font-display);
+        }
+
+        .formula {
+            font-family: var(--font-mono);
+            font-size: 1.3rem;
+            color: var(--navy);
+            background: var(--white);
+            padding: 1rem;
+            border-radius: var(--radius);
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+
+        .formula-description {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        /* ===== PROCESS FLOW DIAGRAMS ===== */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--off-white);
+            border-radius: var(--radius);
+        }
+
+        .process-step {
+            background: linear-gradient(135deg, var(--purple), var(--magenta));
+            color: var(--white);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .process-arrow {
+            font-size: 1.5rem;
+            color: var(--purple);
+            font-weight: bold;
+        }
+
+        /* ===== PLASMA VISUALIZATION ===== */
+        .plasma-visual {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plasma-chamber {
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, #0a0a15, #1a1a2e);
+            border: 4px solid #666;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(153, 102, 255, 0.3);
+        }
+
+        .plasma-glow {
+            position: absolute;
+            width: 80%;
+            height: 60%;
+            top: 20%;
+            left: 10%;
+            background: radial-gradient(ellipse, rgba(153, 102, 255, 0.6) 0%, rgba(204, 153, 255, 0.3) 40%, transparent 70%);
+            border-radius: 50%;
+            animation: plasmaFlicker 2s ease-in-out infinite;
+        }
+
+        @keyframes plasmaFlicker {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .electrode {
+            position: absolute;
+            width: 60%;
+            height: 8px;
+            left: 20%;
+            background: linear-gradient(to right, #888, #aaa, #888);
+            border-radius: 2px;
+        }
+
+        .electrode.top {
+            top: 10px;
+        }
+
+        .electrode.bottom {
+            bottom: 10px;
+        }
+
+        .plasma-label {
+            color: var(--white);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* ===== SIMULATOR CONTAINER ===== */
+        .simulator-container {
+            background: linear-gradient(135deg, var(--off-white), var(--white));
+            border: 2px solid var(--purple);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .simulator-title {
+            font-family: var(--font-display);
+            color: var(--purple);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .simulator-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            color: var(--charcoal);
+            font-size: 0.9rem;
+        }
+
+        .control-group input,
+        .control-group select {
+            padding: 0.6rem 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            min-width: 150px;
+            transition: border-color var(--transition);
+        }
+
+        .control-group input:focus,
+        .control-group select:focus {
+            border-color: var(--purple);
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, var(--purple), var(--magenta));
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-top: 1.5rem;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .result-box {
+            background: var(--white);
+            border: 2px solid var(--purple);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+        }
+
+        .result-explanation {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-gray);
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+
+        /* ===== CONTACT ANGLE DIAGRAM ===== */
+        .contact-angle-visual {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--off-white);
+            border-radius: var(--radius);
+        }
+
+        .contact-demo {
+            text-align: center;
+        }
+
+        .contact-demo svg {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .contact-demo p {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        /* ===== PROCEDURE STEPS ===== */
+        .procedure-step {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--purple);
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--purple), var(--magenta));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: bold;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-family: var(--font-display);
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== CHECKLIST ===== */
+        .checklist {
+            margin: 1.5rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            background: var(--off-white);
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background var(--transition);
+        }
+
+        .checklist-item:hover {
+            background: var(--light-purple);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--purple);
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        /* ===== QUIZ STYLES ===== */
+        .quiz-question {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question h4 {
+            font-family: var(--font-display);
+            color: var(--purple);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .quiz-option {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--purple);
+            background: var(--light-purple);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--green);
+            background: var(--pale-green);
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--red);
+            background: #FFE6E6;
+        }
+
+        .quiz-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--purple);
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            display: none;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+        }
+
+        .quiz-feedback.correct {
+            background: var(--pale-green);
+            color: var(--dark-green);
+        }
+
+        .quiz-feedback.incorrect {
+            background: #FFE6E6;
+            color: var(--dark-red);
+        }
+
+        .quiz-score {
+            background: linear-gradient(135deg, var(--purple), var(--magenta));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .quiz-score h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* ===== NAV FOOTER ===== */
+        .nav-footer {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--light-gray);
+        }
+
+        .nav-footer a {
+            background: linear-gradient(135deg, var(--purple), var(--navy));
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+
+        .nav-footer a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--navy), var(--purple));
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .three-column, .four-column {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .two-column, .three-column, .four-column {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                min-width: 100%;
+            }
+
+            .process-flow {
+                flex-direction: column;
+            }
+
+            .procedure-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-footer {
+                flex-direction: column;
+            }
+
+            .nav-footer a {
+                text-align: center;
+            }
+
+            .simulator-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-angle-visual {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media print {
+            .tabs, .simulator-container, .quiz-question, .nav-footer, header {
+                display: none;
+            }
+
+            .tab-content {
+                display: block !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
+
+        /* ===== FIXED TOOLTIP POPUP ===== */
+        .tooltip-popup {
+            position: fixed; z-index: 9999;
+            background: var(--charcoal); color: var(--white);
+            padding: 12px 16px; border-radius: var(--radius);
+            font-size: 0.85rem; line-height: 1.5;
+            max-width: 350px; width: max-content;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            pointer-events: none; opacity: 0;
+            transition: opacity 0.2s ease;
+            border: 1px solid var(--plasma-violet);
+        }
+        .tooltip-popup.show { opacity: 1; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- TOOLTIP CONTAINER -->
+    <div id="tooltipPopup" class="tooltip-popup" role="tooltip" aria-hidden="true"></div>
+
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true">M6</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 6: Plasma Technology</div>
+                </div>
+            </div>
+            <nav class="nav-buttons" aria-label="Module navigation">
+                <a href="course-outline.html" class="nav-btn">&#8592; Course Home</a>
+                <a href="module5_vacuum_concepts.html" class="nav-btn">&#8592; Module 5</a>
+                <a href="module7_thin_film_deposition.html" class="nav-btn">Module 7 &#8594;</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Module 6: Plasma Technology</h1>
+            <p>Explore the fourth state of matter and its critical role in semiconductor manufacturing. Learn how plasma enables etching, surface modification, and thin film deposition at the nanoscale through the precise control of ionized gases.</p>
+            <div class="hero-meta">
+                <span>&#9201; Duration: 3&ndash;4 Hours</span>
+                <span>&#128218; Lecture + Hands-On Lab</span>
+                <span>&#128187; Interactive Simulations</span>
+                <span>&#9889; Week 7</span>
+            </div>
+        </section>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" role="region" aria-label="Module progress">
+            <div class="progress-label">
+                <span>Module Progress</span>
+                <span id="progressText">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+        <!-- Learning Objectives -->
+        <section class="objectives" role="region" aria-label="Learning objectives">
+            <h3>&#127919; Learning Objectives</h3>
+            <p>Upon completion of this module, students will be able to:</p>
+            <ul>
+                <li>Define plasma and explain why it is called the "fourth state of matter"</li>
+                <li>Identify the key components of plasma: ions, electrons, neutral atoms, and free radicals</li>
+                <li>Compare and contrast plasma generation methods: DC discharge, RF, microwave, and ICP</li>
+                <li>Explain the difference between isotropic (chemical) and anisotropic (physical) etching</li>
+                <li>Describe industrial plasma applications including etching, ashing, PECVD, and surface modification</li>
+                <li>Define contact angle and explain the relationship between surface energy and wettability</li>
+                <li>Distinguish between hydrophobic and hydrophilic surfaces and how plasma treatment affects them</li>
+                <li>Safely generate plasma using a microwave and vacuum system</li>
+                <li>Perform a surface modification experiment and quantify contact angle changes</li>
+                <li>Explain the phenomenon of hydrophobic recovery in plasma-treated polymers</li>
+            </ul>
+        </section>
+
+        <!-- Tab Navigation -->
+        <div class="tabs" role="tablist" aria-label="Module content tabs">
+            <button class="tab-btn active" id="lecture-btn" role="tab" aria-selected="true" aria-controls="lecture-tab" onclick="showTab('lecture')">&#128214; Lecture Content</button>
+            <button class="tab-btn" id="physics-btn" role="tab" aria-selected="false" aria-controls="physics-tab" onclick="showTab('physics')">&#9889; Plasma Physics</button>
+            <button class="tab-btn" id="applications-btn" role="tab" aria-selected="false" aria-controls="applications-tab" onclick="showTab('applications')">&#127981; Applications</button>
+            <button class="tab-btn" id="simulator-btn" role="tab" aria-selected="false" aria-controls="simulator-tab" onclick="showTab('simulator')">&#128187; Simulators</button>
+            <button class="tab-btn" id="lab-btn" role="tab" aria-selected="false" aria-controls="lab-tab" onclick="showTab('lab')">&#128300; Lab Procedure</button>
+            <button class="tab-btn" id="quiz-btn" role="tab" aria-selected="false" aria-controls="quiz-tab" onclick="showTab('quiz')">&#10003; Knowledge Check</button>
+        </div>
+
+        <!-- ==================== LECTURE TAB ==================== -->
+        <div id="lecture-tab" class="tab-content active" role="tabpanel" aria-labelledby="lecture-btn">
+            
+            <div class="card">
+                <div class="card-header">Part 1: Introduction to Plasma &mdash; The Fourth State of Matter</div>
+                <div class="card-body">
+                    
+                    <p>While most people are familiar with solids, liquids, and gases, there exists a fourth state of matter called <span class="tooltip-term" tabindex="0" data-tooltip="An ionized gas consisting of positive ions, free electrons, and neutral species. Plasma is created when sufficient energy is added to a gas, causing electrons to be stripped from atoms. It is electrically conductive and responds to electromagnetic fields.">plasma</span>. Plasma is formed when enough energy is added to a gas to ionize a significant fraction of its atoms or molecules, creating a mixture of positive ions, free electrons, and neutral particles.</p>
+
+                    <div class="key-concept">
+                        <h4>&#128161; What Makes Plasma Unique?</h4>
+                        <p>Unlike ordinary gases, plasma is <strong>electrically conductive</strong> because it contains free-moving charged particles. This property allows plasma to respond to electromagnetic fields, be shaped by magnetic containment, and interact with surfaces in ways that neutral gases cannot. Plasma is often called the fourth state of matter because it has distinct properties that set it apart from solids, liquids, and gases.</p>
+                    </div>
+
+                    <h3 class="subsection-header">Plasma in Nature and Technology</h3>
+                    <p>Plasma is actually the most abundant state of ordinary matter in the visible universe &mdash; stars, including our Sun, are massive balls of plasma. On Earth, we observe natural plasma in:</p>
+                    
+                    <div class="three-column">
+                        <div class="column-box" style="border-top-color: var(--gold);">
+                            <h4 style="color: var(--gold);">&#9889; Lightning</h4>
+                            <p>Electrical discharge creates a channel of ionized air reaching temperatures of 30,000 K, five times hotter than the Sun's surface.</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--green);">
+                            <h4 style="color: var(--green);">&#127752; Aurora Borealis</h4>
+                            <p>Solar wind particles excite atmospheric gases, creating the spectacular colored displays of the Northern and Southern Lights.</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--plasma-violet);">
+                            <h4 style="color: var(--plasma-violet);">&#127774; The Sun</h4>
+                            <p>Our star is a giant sphere of hydrogen and helium plasma, sustained by nuclear fusion at its 15-million-degree core.</p>
+                        </div>
+                    </div>
+
+                    <p>In technology, plasma is harnessed in numerous applications:</p>
+                    <ul>
+                        <li><strong>Fluorescent lights and neon signs</strong> &mdash; Low-pressure gas discharge plasma</li>
+                        <li><strong>Plasma televisions</strong> &mdash; Millions of tiny plasma cells creating images</li>
+                        <li><strong>Welding torches</strong> &mdash; High-temperature plasma arcs for metal joining</li>
+                        <li><strong>Semiconductor manufacturing</strong> &mdash; Precision etching, deposition, and surface modification</li>
+                        <li><strong>Medical sterilization</strong> &mdash; Cold plasma for disinfection without heat damage</li>
+                        <li><strong>Spacecraft propulsion</strong> &mdash; Ion thrusters using accelerated plasma</li>
+                    </ul>
+
+                    <h3 class="subsection-header">States of Matter Comparison</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Solid</th>
+                                <th>Liquid</th>
+                                <th>Gas</th>
+                                <th>Plasma</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Shape</strong></td>
+                                <td>Fixed</td>
+                                <td>Takes container shape</td>
+                                <td>Fills container</td>
+                                <td>Fills container, responds to E&M fields</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Volume</strong></td>
+                                <td>Fixed</td>
+                                <td>Fixed</td>
+                                <td>Variable</td>
+                                <td>Variable</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Particle Arrangement</strong></td>
+                                <td>Ordered lattice</td>
+                                <td>Random, close</td>
+                                <td>Random, far apart</td>
+                                <td>Ionized, free-moving</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Electrical Conductivity</strong></td>
+                                <td>Variable</td>
+                                <td>Low (usually)</td>
+                                <td>Very low</td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Energy Level</strong></td>
+                                <td>Lowest</td>
+                                <td>Low</td>
+                                <td>Moderate</td>
+                                <td>Highest</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="subsection-header">The Plasma State Transition</h3>
+                    <p>Creating plasma requires adding sufficient energy to ionize gas atoms. This process follows a progression:</p>
+
+                    <div class="process-flow">
+                        <div class="process-step">Solid</div>
+                        <span class="process-arrow">&#10132;</span>
+                        <div class="process-step">Liquid</div>
+                        <span class="process-arrow">&#10132;</span>
+                        <div class="process-step">Gas</div>
+                        <span class="process-arrow">&#10132;</span>
+                        <div class="process-step" style="background: linear-gradient(135deg, var(--plasma-violet), var(--magenta));">Plasma</div>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 1rem;">
+                        <em>Add Heat</em> &#8594; <em>Add Heat</em> &#8594; <em>Add Energy (Heat, RF, Microwave)</em>
+                    </p>
+
+                    <div class="industry-note">
+                        <h4>&#127981; Why Plasma Matters in Semiconductor Manufacturing</h4>
+                        <p>The semiconductor industry relies heavily on plasma processing for fabricating integrated circuits. Every modern microprocessor, memory chip, and electronic device goes through dozens of plasma processing steps. Plasma enables:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Anisotropic etching</strong> &mdash; Creating vertical sidewalls for nanoscale features</li>
+                            <li><strong>Photoresist removal (ashing)</strong> &mdash; Clean removal of organic materials</li>
+                            <li><strong>Surface preparation</strong> &mdash; Cleaning and activating surfaces before deposition</li>
+                            <li><strong>Thin film deposition</strong> &mdash; PECVD for conformal coatings at low temperatures</li>
+                        </ul>
+                        <p style="margin-top: 0.75rem;">A modern semiconductor fab may have hundreds of plasma processing tools, each costing $500,000 to several million dollars.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Part 2: Plasma Components and Species</div>
+                <div class="card-body">
+                    
+                    <p>A processing plasma is not simply ionized gas &mdash; it is a complex mixture of multiple species, each playing different roles in surface processing. Understanding these components is essential for controlling plasma processes.</p>
+
+                    <h3 class="subsection-header">Key Plasma Species</h3>
+
+                    <div class="four-column">
+                        <div class="column-box" style="border-top-color: var(--red);">
+                            <h4 style="color: var(--red);">&#10133; Positive Ions</h4>
+                            <p>Atoms or molecules that have lost electrons. They are accelerated by electric fields toward surfaces, providing directional energy for anisotropic etching.</p>
+                            <p style="font-size: 0.85rem; color: var(--dark-gray); margin-top: 0.5rem;">Examples: Ar&#8314;, CF&#8323;&#8314;, O&#8322;&#8314;</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--secondary-blue);">
+                            <h4 style="color: var(--secondary-blue);">&#8854; Electrons</h4>
+                            <p>Light, highly mobile particles that sustain the plasma through ionizing collisions. Their energy distribution controls reaction rates.</p>
+                            <p style="font-size: 0.85rem; color: var(--dark-gray); margin-top: 0.5rem;">Typical energy: 1&ndash;10 eV</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--orange);">
+                            <h4 style="color: var(--orange);">&#9733; Free Radicals</h4>
+                            <p>Highly reactive neutral species with unpaired electrons. They provide chemical reactivity for selective, isotropic etching.</p>
+                            <p style="font-size: 0.85rem; color: var(--dark-gray); margin-top: 0.5rem;">Examples: F*, O*, Cl*, CF&#8322;*</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--medium-gray);">
+                            <h4 style="color: var(--dark-gray);">&#9675; Neutral Atoms</h4>
+                            <p>Non-ionized gas molecules that make up the bulk of the plasma. They participate in collisions and can become excited.</p>
+                            <p style="font-size: 0.85rem; color: var(--dark-gray); margin-top: 0.5rem;">Examples: Ar, N&#8322;, CF&#8324;</p>
+                        </div>
+                    </div>
+
+                    <div class="key-concept">
+                        <h4>&#128161; Degree of Ionization</h4>
+                        <p>Processing plasmas are only <strong>weakly ionized</strong>, with typically 10&#8315;&#8310; to 10&#8315;&#8308; (0.0001% to 1%) of the gas being ionized. This means neutral species far outnumber ions and electrons. However, the charged particles have a disproportionate effect because they:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Can be accelerated to high energies by electric fields</li>
+                            <li>Create the radicals that drive chemical reactions</li>
+                            <li>Make the gas electrically conductive</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="subsection-header">Plasma Chemistry Example: CF&#8324; Plasma</h3>
+                    <p>When carbon tetrafluoride (CF&#8324;) gas is excited into a plasma state, it fragments into multiple species:</p>
+
+                    <div class="plasma-visual">
+                        <div class="plasma-chamber">
+                            <div class="electrode top"></div>
+                            <div class="plasma-glow"></div>
+                            <div class="electrode bottom"></div>
+                        </div>
+                        <p class="plasma-label">
+                            CF&#8324; &#8594; CF&#8323;&#8314; + F* + CF&#8322;* + C* + e&#8315;<br>
+                            <span style="font-size: 0.8rem;">(Ions + Radicals + Fragments + Electrons)</span>
+                        </p>
+                    </div>
+
+                    <p>This "alphabet soup" of species allows CF&#8324; plasma to etch silicon dioxide through a combination of:</p>
+                    <ul>
+                        <li><strong>Fluorine radicals (F*)</strong> chemically react with SiO&#8322; to form volatile SiF&#8324;</li>
+                        <li><strong>CF&#8323;&#8314; ions</strong> physically bombard the surface, breaking bonds and enhancing etching</li>
+                        <li><strong>CFx species</strong> can deposit polymer films for sidewall passivation</li>
+                    </ul>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Species Type</th>
+                                <th>Symbol</th>
+                                <th>Role in Processing</th>
+                                <th>Typical Energy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Positive Ion</td>
+                                <td>CF&#8323;&#8314;, Ar&#8314;</td>
+                                <td>Physical bombardment, anisotropic etching</td>
+                                <td>50&ndash;500 eV</td>
+                            </tr>
+                            <tr>
+                                <td>Electron</td>
+                                <td>e&#8315;</td>
+                                <td>Sustain plasma, create radicals</td>
+                                <td>1&ndash;10 eV</td>
+                            </tr>
+                            <tr>
+                                <td>Free Radical</td>
+                                <td>F*, O*, Cl*</td>
+                                <td>Chemical etching, selectivity</td>
+                                <td>Thermal (~0.03 eV)</td>
+                            </tr>
+                            <tr>
+                                <td>Excited Neutral</td>
+                                <td>Ar*, N&#8322;*</td>
+                                <td>Energy transfer, light emission</td>
+                                <td>10&ndash;20 eV (electronic)</td>
+                            </tr>
+                            <tr>
+                                <td>Negative Ion</td>
+                                <td>F&#8315;, O&#8315;</td>
+                                <td>Present in electronegative plasmas</td>
+                                <td>Thermal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header teal">Part 3: Plasma Generation Methods</div>
+                <div class="card-body">
+                    
+                    <p>Creating plasma requires delivering sufficient energy to ionize the gas. Various methods exist, each with advantages for specific applications. The choice of excitation method affects plasma density, ion energy, uniformity, and process capabilities.</p>
+
+                    <h3 class="subsection-header">Common Plasma Generation Techniques</h3>
+
+                    <div class="two-column">
+                        <div class="column-box" style="border-top-color: var(--teal);">
+                            <h4 style="color: var(--teal);">DC Glow Discharge</h4>
+                            <p>A constant voltage (typically 300&ndash;1000 V) is applied between two electrodes. When voltage exceeds the breakdown threshold, electrons avalanche through the gas, creating a sustained glow discharge.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Advantages:</strong> Simple, inexpensive, easy to control</p>
+                            <p><strong>Limitations:</strong> Requires conductive electrodes; insulating films extinguish the discharge</p>
+                            <p><strong>Applications:</strong> Sputtering, basic cleaning, glow discharge spectroscopy</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--purple);">
+                            <h4 style="color: var(--purple);">Radio Frequency (RF) &mdash; 13.56 MHz</h4>
+                            <p>An alternating electric field at the industrial standard frequency of 13.56 MHz oscillates electrons, which collide with gas molecules to cause ionization. The AC nature allows processing of insulating materials.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Advantages:</strong> Works with insulators, independent ion energy control possible</p>
+                            <p><strong>Limitations:</strong> Requires matching network, lower plasma density than ICP</p>
+                            <p><strong>Applications:</strong> RIE etching, PECVD, sputtering</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--gold);">
+                            <h4 style="color: #996600);">Microwave &mdash; 2.45 GHz</h4>
+                            <p>Microwave energy at 2.45 GHz (same as kitchen microwaves) efficiently couples energy to electrons. High-density plasma can be generated at relatively low pressures.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Advantages:</strong> High plasma density, efficient power coupling</p>
+                            <p><strong>Limitations:</strong> Requires waveguides, non-uniform in large chambers</p>
+                            <p><strong>Applications:</strong> Diamond CVD, ashing, surface treatment</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--magenta);">
+                            <h4 style="color: var(--magenta);">Inductively Coupled Plasma (ICP)</h4>
+                            <p>RF power (typically 13.56 MHz) is coupled through a coil surrounding the chamber, inducing currents in the plasma. This creates very high plasma densities with independent control of ion flux and energy.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Advantages:</strong> Very high density (10&#185;&#185;&ndash;10&#185;&#178; cm&#8315;&#179;), excellent uniformity</p>
+                            <p><strong>Limitations:</strong> Complex and expensive, requires matching</p>
+                            <p><strong>Applications:</strong> High-aspect-ratio etching, advanced PECVD</p>
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>DC Discharge</th>
+                                <th>CCP (RF)</th>
+                                <th>ICP</th>
+                                <th>Microwave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Frequency</strong></td>
+                                <td>0 (DC)</td>
+                                <td>13.56 MHz</td>
+                                <td>13.56 MHz</td>
+                                <td>2.45 GHz</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Plasma Density</strong></td>
+                                <td>10&#8312;&ndash;10&#185;&#8304; cm&#8315;&#179;</td>
+                                <td>10&#8313;&ndash;10&#185;&#8304; cm&#8315;&#179;</td>
+                                <td>10&#185;&#185;&ndash;10&#185;&#178; cm&#8315;&#179;</td>
+                                <td>10&#185;&#8304;&ndash;10&#185;&#178; cm&#8315;&#179;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Operating Pressure</strong></td>
+                                <td>1&ndash;100 mTorr</td>
+                                <td>10&ndash;1000 mTorr</td>
+                                <td>1&ndash;100 mTorr</td>
+                                <td>0.1&ndash;10 Torr</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ion Energy Control</strong></td>
+                                <td>Limited</td>
+                                <td>Moderate</td>
+                                <td>Excellent (separate bias)</td>
+                                <td>Limited</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Uniformity</strong></td>
+                                <td>Poor</td>
+                                <td>Good</td>
+                                <td>Excellent</td>
+                                <td>Moderate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="formula-box">
+                        <h4>The Plasma Frequency</h4>
+                        <div class="formula">f<sub>p</sub> = (1/2&pi;) &times; &radic;(n<sub>e</sub>e&sup2;/&epsilon;&#8320;m<sub>e</sub>)</div>
+                        <div class="formula-description">
+                            <p>Where: f<sub>p</sub> = plasma frequency (Hz), n<sub>e</sub> = electron density (m&#8315;&#179;), e = electron charge (1.6 &times; 10&#8315;&#185;&#8313; C), &epsilon;&#8320; = permittivity of free space, m<sub>e</sub> = electron mass</p>
+                            <p style="margin-top: 0.5rem;">For a typical processing plasma (n<sub>e</sub> &asymp; 10&#185;&#8310; m&#8315;&#179;), f<sub>p</sub> &asymp; 900 MHz. Electromagnetic waves below this frequency are reflected by the plasma.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== PHYSICS TAB ==================== -->
+        <div id="physics-tab" class="tab-content" role="tabpanel" aria-labelledby="physics-btn">
+            
+            <div class="card">
+                <div class="card-header magenta">Plasma Physics Fundamentals</div>
+                <div class="card-body">
+                    
+                    <h3 class="subsection-header">Ionization and Collision Processes</h3>
+                    
+                    <p>Plasma is sustained through a dynamic balance of ionization (creation of ion-electron pairs) and recombination (loss of charged particles). Understanding these processes is key to controlling plasma behavior.</p>
+
+                    <div class="key-concept">
+                        <h4>&#128161; Electron Impact Ionization</h4>
+                        <p>The primary mechanism for creating ions in processing plasmas. When a fast electron collides with a neutral atom or molecule, it can transfer enough energy to eject an outer electron:</p>
+                        <p style="text-align: center; font-size: 1.2rem; margin: 1rem 0; font-family: var(--font-mono);">
+                            e&#8315; + Ar &#8594; Ar&#8314; + 2e&#8315;
+                        </p>
+                        <p>The threshold energy for ionization is the <strong>ionization potential</strong>, typically 10&ndash;25 eV for common gases.</p>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Gas</th>
+                                <th>Chemical Formula</th>
+                                <th>Ionization Potential (eV)</th>
+                                <th>Common Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Argon</td>
+                                <td>Ar</td>
+                                <td>15.76</td>
+                                <td>Sputtering, carrier gas</td>
+                            </tr>
+                            <tr>
+                                <td>Oxygen</td>
+                                <td>O&#8322;</td>
+                                <td>12.07</td>
+                                <td>Ashing, oxidation</td>
+                            </tr>
+                            <tr>
+                                <td>Nitrogen</td>
+                                <td>N&#8322;</td>
+                                <td>15.58</td>
+                                <td>Nitride deposition, surface treatment</td>
+                            </tr>
+                            <tr>
+                                <td>Carbon Tetrafluoride</td>
+                                <td>CF&#8324;</td>
+                                <td>15.90</td>
+                                <td>Oxide etching</td>
+                            </tr>
+                            <tr>
+                                <td>Sulfur Hexafluoride</td>
+                                <td>SF&#8326;</td>
+                                <td>15.32</td>
+                                <td>Silicon etching</td>
+                            </tr>
+                            <tr>
+                                <td>Chlorine</td>
+                                <td>Cl&#8322;</td>
+                                <td>11.48</td>
+                                <td>Metal and polysilicon etching</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="subsection-header">The Plasma Sheath</h3>
+                    
+                    <p>One of the most important concepts in plasma processing is the <span class="tooltip-term" tabindex="0" data-tooltip="A thin region of positive space charge that forms between the bulk plasma and any surface (walls, electrodes, wafers). Ions are accelerated across the sheath toward the surface, while electrons are repelled. The sheath is typically a few Debye lengths thick.">plasma sheath</span> &mdash; a thin region at the plasma boundary where the plasma meets a surface.</p>
+
+                    <div class="two-column">
+                        <div class="column-box">
+                            <h4>Why the Sheath Forms</h4>
+                            <p>Electrons move much faster than ions (due to their smaller mass). Without a sheath, electrons would quickly escape to walls, leaving excess positive charge. Instead, the plasma develops a positive potential relative to surfaces, creating an electric field that:</p>
+                            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                <li>Repels most electrons back into the plasma</li>
+                                <li>Accelerates positive ions toward surfaces</li>
+                                <li>Maintains quasi-neutrality in the bulk plasma</li>
+                            </ul>
+                        </div>
+                        <div class="column-box">
+                            <h4>Sheath Properties</h4>
+                            <p>Key characteristics of the plasma sheath:</p>
+                            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                <li><strong>Thickness:</strong> A few Debye lengths (typically 0.01&ndash;1 mm)</li>
+                                <li><strong>Voltage drop:</strong> 10&ndash;1000 V depending on configuration</li>
+                                <li><strong>Ion acceleration:</strong> Ions gain energy crossing the sheath</li>
+                                <li><strong>Directionality:</strong> Creates perpendicular ion bombardment</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>Debye Length</h4>
+                        <div class="formula">&lambda;<sub>D</sub> = &radic;(&epsilon;&#8320;k<sub>B</sub>T<sub>e</sub> / n<sub>e</sub>e&sup2;)</div>
+                        <div class="formula-description">
+                            <p>The Debye length is the characteristic screening distance in a plasma. Beyond this distance, the electric field of an individual charge is shielded by surrounding charges.</p>
+                            <p>For a typical processing plasma (T<sub>e</sub> = 3 eV, n<sub>e</sub> = 10&#185;&#8310; m&#8315;&#179;): &lambda;<sub>D</sub> &asymp; 0.13 mm</p>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-header">Isotropic vs. Anisotropic Etching</h3>
+                    
+                    <p>The dual nature of plasma &mdash; containing both reactive radicals and directional ions &mdash; enables two fundamentally different etching mechanisms:</p>
+
+                    <div class="two-column">
+                        <div class="column-box" style="border-top-color: var(--orange);">
+                            <h4 style="color: var(--orange);">&#9733; Isotropic (Chemical) Etching</h4>
+                            <p><strong>Mechanism:</strong> Reactive radicals (F*, Cl*, O*) chemically attack the surface equally in all directions.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Profile:</strong> Curved sidewalls, undercutting beneath mask</p>
+                            <p><strong>Selectivity:</strong> High &mdash; different materials etch at very different rates</p>
+                            <p><strong>Analogy:</strong> Like "weeding" a garden &mdash; selectively removing specific plants</p>
+                            <p style="margin-top: 0.75rem;"><strong>Example:</strong> XeF&#8322; etching of silicon</p>
+                        </div>
+                        <div class="column-box" style="border-top-color: var(--red);">
+                            <h4 style="color: var(--red);">&#10133; Anisotropic (Physical) Etching</h4>
+                            <p><strong>Mechanism:</strong> Energetic ions bombard the surface vertically, physically sputtering atoms or breaking bonds.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Profile:</strong> Vertical sidewalls, no undercutting</p>
+                            <p><strong>Selectivity:</strong> Low &mdash; all materials sputter at similar rates</p>
+                            <p><strong>Analogy:</strong> Like "digging holes" &mdash; removing material regardless of type</p>
+                            <p style="margin-top: 0.75rem;"><strong>Example:</strong> Argon ion milling</p>
+                        </div>
+                    </div>
+
+                    <div class="industry-note">
+                        <h4>&#127981; Reactive Ion Etching (RIE) &mdash; The Best of Both Worlds</h4>
+                        <p>Modern plasma etching combines chemical and physical mechanisms in <strong>Reactive Ion Etching (RIE)</strong>:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Chemical radicals provide selectivity and high etch rates</li>
+                            <li>Ion bombardment provides directionality (anisotropy)</li>
+                            <li>Synergy: Ion-enhanced etching rates can be 10&times; higher than chemical or physical alone</li>
+                        </ul>
+                        <p style="margin-top: 0.75rem;">By adjusting pressure, power, and gas chemistry, engineers can tune the process between more chemical (isotropic) and more physical (anisotropic) behavior.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Surface Energy and Contact Angle</div>
+                <div class="card-body">
+                    
+                    <p>One of the most important applications of plasma treatment is <strong>surface modification</strong> &mdash; changing the surface properties of materials without altering their bulk characteristics. This is quantified through <span class="tooltip-term" tabindex="0" data-tooltip="The angle at which a liquid-vapor interface meets a solid surface. It quantifies the wettability of a surface. Low contact angles (< 90Â°) indicate hydrophilic surfaces; high angles (> 90Â°) indicate hydrophobic surfaces.">contact angle</span> measurements.</p>
+
+                    <h3 class="subsection-header">Understanding Surface Energy</h3>
+                    
+                    <p><span class="tooltip-term" tabindex="0" data-tooltip="The excess energy at the surface of a material compared to its bulk. Materials with high surface energy tend to be wetted easily (hydrophilic), while low surface energy materials resist wetting (hydrophobic).">Surface energy</span> describes how strongly a surface interacts with other materials. Surfaces with:</p>
+                    <ul>
+                        <li><strong>High surface energy</strong> attract liquids and other materials (glass, metals, clean silicon)</li>
+                        <li><strong>Low surface energy</strong> repel liquids (Teflon, silicones, waxes)</li>
+                    </ul>
+
+                    <div class="contact-angle-visual">
+                        <div class="contact-demo">
+                            <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Hydrophilic surface -->
+                                <rect x="0" y="70" width="200" height="30" fill="#E0E0E0"/>
+                                <text x="100" y="95" text-anchor="middle" font-size="10" fill="#333">Surface</text>
+                                <!-- Water droplet - spread out -->
+                                <ellipse cx="100" cy="68" rx="60" ry="15" fill="#6699FF" opacity="0.8"/>
+                                <!-- Contact angle arc -->
+                                <path d="M 40 68 Q 50 68 55 60" stroke="#CC0000" stroke-width="2" fill="none"/>
+                                <text x="45" y="50" font-size="10" fill="#CC0000">Î¸ &lt; 90Â°</text>
+                            </svg>
+                            <p style="color: var(--green);">&#128167; Hydrophilic (Water-Loving)</p>
+                            <p style="font-size: 0.85rem;">High surface energy, water spreads</p>
+                        </div>
+                        <div class="contact-demo">
+                            <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Hydrophobic surface -->
+                                <rect x="0" y="70" width="200" height="30" fill="#E0E0E0"/>
+                                <text x="100" y="95" text-anchor="middle" font-size="10" fill="#333">Surface</text>
+                                <!-- Water droplet - beaded up -->
+                                <ellipse cx="100" cy="50" rx="25" ry="22" fill="#6699FF" opacity="0.8"/>
+                                <!-- Contact angle arc -->
+                                <path d="M 75 70 Q 85 55 100 50" stroke="#CC0000" stroke-width="2" fill="none"/>
+                                <text x="60" y="45" font-size="10" fill="#CC0000">Î¸ &gt; 90Â°</text>
+                            </svg>
+                            <p style="color: var(--red);">&#128167; Hydrophobic (Water-Fearing)</p>
+                            <p style="font-size: 0.85rem;">Low surface energy, water beads up</p>
+                        </div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>Young's Equation</h4>
+                        <div class="formula">cos(&theta;) = (&gamma;<sub>SV</sub> - &gamma;<sub>SL</sub>) / &gamma;<sub>LV</sub></div>
+                        <div class="formula-description">
+                            <p>Where: &theta; = contact angle, &gamma;<sub>SV</sub> = solid-vapor surface tension, &gamma;<sub>SL</sub> = solid-liquid surface tension, &gamma;<sub>LV</sub> = liquid-vapor surface tension</p>
+                            <p style="margin-top: 0.5rem;">This equation relates the contact angle to the balance of surface tensions at the three-phase contact line.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-header">How Plasma Modifies Surfaces</h3>
+                    
+                    <p>Plasma treatment can dramatically change surface properties through several mechanisms:</p>
+
+                    <div class="three-column">
+                        <div class="column-box">
+                            <h4>&#9733; Activation</h4>
+                            <p>Plasma creates reactive functional groups (OH, COOH, NH&#8322;) on the surface, increasing surface energy and promoting adhesion.</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>&#9889; Cleaning</h4>
+                            <p>Removes organic contaminants through oxidation (ashing), exposing the clean underlying surface.</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>&#128260; Crosslinking</h4>
+                            <p>Creates chemical bonds between polymer chains, hardening the surface layer and improving chemical resistance.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-header">PDMS Surface Modification</h3>
+                    
+                    <p><span class="tooltip-term" tabindex="0" data-tooltip="A silicon-based organic polymer commonly used in microfluidics, soft lithography, and medical devices. It is naturally hydrophobic with a water contact angle of ~105-115Â°. Plasma treatment can make it temporarily hydrophilic.">PDMS (Polydimethylsiloxane)</span> is a widely used silicone elastomer that is naturally hydrophobic. Plasma treatment can convert its surface from hydrophobic to hydrophilic:</p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Surface Condition</th>
+                                <th>Contact Angle</th>
+                                <th>Surface Chemistry</th>
+                                <th>Wettability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Native PDMS</td>
+                                <td>105&ndash;115Â°</td>
+                                <td>CH&#8323; groups (nonpolar)</td>
+                                <td>Hydrophobic</td>
+                            </tr>
+                            <tr>
+                                <td>Immediately after O&#8322; plasma</td>
+                                <td>5&ndash;20Â°</td>
+                                <td>Silanol (Si-OH) groups</td>
+                                <td>Highly hydrophilic</td>
+                            </tr>
+                            <tr>
+                                <td>After 1 hour in air</td>
+                                <td>40&ndash;60Â°</td>
+                                <td>Partial recovery</td>
+                                <td>Moderately hydrophilic</td>
+                            </tr>
+                            <tr>
+                                <td>After 24 hours in air</td>
+                                <td>80&ndash;100Â°</td>
+                                <td>Near original</td>
+                                <td>Hydrophobic recovery</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="key-concept">
+                        <h4>&#128161; Hydrophobic Recovery</h4>
+                        <p>The hydrophilic surface created by plasma treatment is <strong>thermodynamically unstable</strong>. Over time, the surface gradually returns to its original hydrophobic state through several mechanisms:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Chain migration:</strong> Low molecular weight silicone chains from the bulk diffuse to cover the treated surface</li>
+                            <li><strong>Surface rearrangement:</strong> Polar groups rotate away from the surface to minimize surface energy</li>
+                            <li><strong>Contamination:</strong> Airborne organic molecules adsorb onto the high-energy surface</li>
+                        </ul>
+                        <p style="margin-top: 0.75rem;">Storing treated samples in water or using them immediately can slow this recovery.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== APPLICATIONS TAB ==================== -->
+        <div id="applications-tab" class="tab-content" role="tabpanel" aria-labelledby="applications-btn">
+            
+            <div class="card">
+                <div class="card-header green">Industrial Plasma Applications</div>
+                <div class="card-body">
+                    
+                    <p>Plasma processing is essential to modern semiconductor manufacturing. Every microchip goes through multiple plasma steps during fabrication. Here are the major industrial applications:</p>
+
+                    <h3 class="subsection-header">1. Plasma Etching</h3>
+                    
+                    <p>The most critical plasma application in semiconductor manufacturing, plasma etching removes material to create patterns and structures at the nanoscale.</p>
+
+                    <div class="two-column">
+                        <div class="column-box">
+                            <h4>Dielectric Etching</h4>
+                            <p>Etching silicon dioxide (SiO&#8322;) and silicon nitride (Si&#8323;N&#8324;) using fluorocarbon plasmas:</p>
+                            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                <li>CF&#8324;/CHF&#8323; for oxide etch</li>
+                                <li>SF&#8326;/O&#8322; for high selectivity</li>
+                                <li>C&#8324;F&#8328; for high-aspect-ratio features</li>
+                            </ul>
+                        </div>
+                        <div class="column-box">
+                            <h4>Metal Etching</h4>
+                            <p>Etching aluminum, copper, and other metals using chlorine-based plasmas:</p>
+                            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                <li>Cl&#8322;/BCl&#8323; for aluminum</li>
+                                <li>Requires elevated temperature</li>
+                                <li>Corrosion control is critical</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Process Gas</th>
+                                <th>Active Species</th>
+                                <th>Target Material</th>
+                                <th>Etch Products</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CF&#8324;</td>
+                                <td>F*, CF&#8323;&#8314;</td>
+                                <td>SiO&#8322;, Si&#8323;N&#8324;</td>
+                                <td>SiF&#8324;, CO, CO&#8322;</td>
+                            </tr>
+                            <tr>
+                                <td>SF&#8326;</td>
+                                <td>F*, SF&#8325;&#8314;</td>
+                                <td>Silicon</td>
+                                <td>SiF&#8324;</td>
+                            </tr>
+                            <tr>
+                                <td>Cl&#8322;</td>
+                                <td>Cl*, Cl&#8314;, Cl&#8322;&#8314;</td>
+                                <td>Aluminum, Polysilicon</td>
+                                <td>AlCl&#8323;, SiCl&#8324;</td>
+                            </tr>
+                            <tr>
+                                <td>O&#8322;</td>
+                                <td>O*, O&#8314;, O&#8322;&#8314;</td>
+                                <td>Photoresist, organics</td>
+                                <td>CO&#8322;, H&#8322;O</td>
+                            </tr>
+                            <tr>
+                                <td>Ar</td>
+                                <td>Ar&#8314;</td>
+                                <td>Any (physical sputtering)</td>
+                                <td>Sputtered atoms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="subsection-header">2. Plasma Ashing (Photoresist Removal)</h3>
+                    
+                    <p>After photolithography and etching, the photoresist mask must be removed. <span class="tooltip-term" tabindex="0" data-tooltip="A dry process that uses oxygen plasma to oxidize and volatilize organic materials (primarily photoresist) into COâ‚‚ and Hâ‚‚O vapor. It is cleaner than wet stripping and leaves no residue.">Plasma ashing</span> uses oxygen plasma to convert organic resist into volatile products:</p>
+
+                    <div class="formula-box">
+                        <h4>Ashing Chemistry</h4>
+                        <div class="formula">Photoresist + O* &#8594; CO&#8322; + H&#8322;O + volatile products</div>
+                        <div class="formula-description">
+                            <p>The oxygen radicals attack carbon-hydrogen bonds in the organic resist, oxidizing the material into gaseous products that are pumped away. Typical ashing rates are 0.5&ndash;5 &mu;m/min depending on resist type and plasma conditions.</p>
+                        </div>
+                    </div>
+
+                    <div class="industry-note">
+                        <h4>&#127981; Downstream Ashing</h4>
+                        <p>To minimize ion damage to sensitive device structures, <strong>downstream ashers</strong> generate plasma remotely and transport only the neutral radicals to the wafer. This "chemical" ashing is gentler but may be slower than direct plasma ashing.</p>
+                    </div>
+
+                    <h3 class="subsection-header">3. Plasma-Enhanced Chemical Vapor Deposition (PECVD)</h3>
+                    
+                    <p>PECVD uses plasma to enable thin film deposition at lower temperatures than thermal CVD, making it compatible with temperature-sensitive substrates and device structures.</p>
+
+                    <div class="two-column">
+                        <div class="column-box">
+                            <h4>Common PECVD Films</h4>
+                            <ul style="margin-left: 1rem;">
+                                <li><strong>SiO&#8322;</strong> from SiH&#8324; + N&#8322;O</li>
+                                <li><strong>Si&#8323;N&#8324;</strong> from SiH&#8324; + NH&#8323;</li>
+                                <li><strong>a-Si:H</strong> from SiH&#8324; + H&#8322;</li>
+                                <li><strong>SiC</strong> from SiH&#8324; + CH&#8324;</li>
+                            </ul>
+                        </div>
+                        <div class="column-box">
+                            <h4>PECVD Advantages</h4>
+                            <ul style="margin-left: 1rem;">
+                                <li>Low deposition temperature (200&ndash;400Â°C)</li>
+                                <li>Conformal coverage over topography</li>
+                                <li>Good step coverage</li>
+                                <li>Tunable film properties</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-header">4. Surface Treatment and Cleaning</h3>
+                    
+                    <p>Plasma treatment is used throughout semiconductor manufacturing to prepare surfaces for subsequent processing:</p>
+
+                    <div class="three-column">
+                        <div class="column-box">
+                            <h4>Pre-deposition Cleaning</h4>
+                            <p>Remove native oxides and organic contaminants before metal deposition to ensure good adhesion and contact resistance.</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>Adhesion Promotion</h4>
+                            <p>Activate low-energy surfaces (polymers, PDMS) to enable bonding or coating with other materials.</p>
+                        </div>
+                        <div class="column-box">
+                            <h4>Surface Functionalization</h4>
+                            <p>Add specific chemical groups to enable subsequent processing or provide desired surface properties.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header orange">Plasma Process Parameters</div>
+                <div class="card-body">
+                    
+                    <p>Controlling plasma processes requires understanding how key parameters affect the plasma and resulting process characteristics:</p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Effect on Plasma</th>
+                                <th>Process Impact</th>
+                                <th>Typical Range</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pressure</strong></td>
+                                <td>Controls collision frequency, ion energy, mean free path</td>
+                                <td>Higher pressure: more chemical, isotropic; Lower: more physical, anisotropic</td>
+                                <td>1&ndash;1000 mTorr</td>
+                            </tr>
+                            <tr>
+                                <td><strong>RF Power</strong></td>
+                                <td>Determines plasma density and ion flux</td>
+                                <td>Higher power: faster etch rate, more damage potential</td>
+                                <td>50&ndash;2000 W</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bias Voltage</strong></td>
+                                <td>Controls ion energy at substrate</td>
+                                <td>Higher bias: more anisotropic, higher sputter yield</td>
+                                <td>0&ndash;500 V (DC bias)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gas Flow</strong></td>
+                                <td>Supplies fresh reactants, removes products</td>
+                                <td>Affects residence time and gas composition</td>
+                                <td>10&ndash;500 sccm</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature</strong></td>
+                                <td>Affects reaction rates, sticking coefficients</td>
+                                <td>Influences selectivity and profile control</td>
+                                <td>20&ndash;300Â°C</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="safety-warning">
+                        <h4>&#9888; Safety Considerations for Plasma Systems</h4>
+                        <ul>
+                            <li><strong>High Voltage:</strong> RF and DC power supplies can deliver lethal voltages. Never service equipment while powered.</li>
+                            <li><strong>Toxic Gases:</strong> Many process gases (Cl&#8322;, BCl&#8323;, fluorocarbons) are toxic. Use proper ventilation and gas monitoring.</li>
+                            <li><strong>UV Radiation:</strong> Plasma emits UV light that can damage eyes. Use proper shielding and never look directly at plasma without protection.</li>
+                            <li><strong>Vacuum Hazards:</strong> Implosion risk from glass chambers. RF burns possible from improper grounding.</li>
+                            <li><strong>Reactive Byproducts:</strong> Some etch byproducts (HF, HCl) are corrosive. Proper exhaust treatment required.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== SIMULATOR TAB ==================== -->
+        <div id="simulator-tab" class="tab-content" role="tabpanel" aria-labelledby="simulator-btn">
+            
+            <div class="card">
+                <div class="card-header">Interactive Plasma Simulators</div>
+                <div class="card-body">
+                    
+                    <p>Use these interactive tools to explore plasma physics concepts and calculate important parameters for plasma processing.</p>
+
+                    <!-- Plasma Frequency Calculator -->
+                    <div class="simulator-container">
+                        <h3 class="simulator-title">&#9889; Plasma Frequency Calculator</h3>
+                        <p style="text-align: center; margin-bottom: 1.5rem;">Calculate the plasma frequency based on electron density. Electromagnetic waves below this frequency cannot propagate through the plasma.</p>
+                        
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label for="electronDensity">Electron Density (cm&#8315;&#179;)</label>
+                                <input type="number" id="electronDensity" value="1e10" step="1e9" min="1e8" max="1e14">
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button class="calculate-btn" onclick="calculatePlasmaFrequency()">Calculate Plasma Frequency</button>
+                        </div>
+                        
+                        <div class="result-box">
+                            <div class="result-value" id="plasmaFreqValue">8.98 GHz</div>
+                            <div class="result-label">Plasma Frequency (f<sub>p</sub>)</div>
+                            <div class="result-explanation" id="plasmaFreqExplanation">
+                                At this electron density, microwaves at 2.45 GHz can penetrate the plasma, while higher frequencies will be reflected.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Angle Calculator -->
+                    <div class="simulator-container">
+                        <h3 class="simulator-title">&#128167; Contact Angle & Surface Energy Calculator</h3>
+                        <p style="text-align: center; margin-bottom: 1.5rem;">Estimate the surface energy from measured contact angle using the Owens-Wendt model (simplified).</p>
+                        
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label for="contactAngle">Water Contact Angle (degrees)</label>
+                                <input type="number" id="contactAngle" value="105" step="1" min="0" max="180">
+                            </div>
+                            <div class="control-group">
+                                <label for="surfaceType">Surface Type</label>
+                                <select id="surfaceType">
+                                    <option value="pdms">PDMS (Silicone)</option>
+                                    <option value="glass">Glass</option>
+                                    <option value="polymer">Generic Polymer</option>
+                                    <option value="metal">Metal (cleaned)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button class="calculate-btn" onclick="calculateSurfaceEnergy()">Analyze Surface</button>
+                        </div>
+                        
+                        <div class="result-box">
+                            <div class="result-value" id="surfaceEnergyValue">~21 mJ/mÂ²</div>
+                            <div class="result-label">Estimated Surface Energy</div>
+                            <div class="result-explanation" id="surfaceEnergyExplanation">
+                                This is a hydrophobic surface. Water will bead up and not wet the surface. Consider plasma treatment to increase surface energy for bonding or coating applications.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Debye Length Calculator -->
+                    <div class="simulator-container">
+                        <h3 class="simulator-title">&#128208; Debye Length Calculator</h3>
+                        <p style="text-align: center; margin-bottom: 1.5rem;">Calculate the Debye screening length for a given plasma.</p>
+                        
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label for="debyeDensity">Electron Density (cm&#8315;&#179;)</label>
+                                <input type="number" id="debyeDensity" value="1e10" step="1e9" min="1e8" max="1e14">
+                            </div>
+                            <div class="control-group">
+                                <label for="electronTemp">Electron Temperature (eV)</label>
+                                <input type="number" id="electronTemp" value="3" step="0.5" min="0.5" max="20">
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button class="calculate-btn" onclick="calculateDebyeLength()">Calculate Debye Length</button>
+                        </div>
+                        
+                        <div class="result-box">
+                            <div class="result-value" id="debyeValue">0.13 mm</div>
+                            <div class="result-label">Debye Length (&lambda;<sub>D</sub>)</div>
+                            <div class="result-explanation" id="debyeExplanation">
+                                The plasma sheath will be several Debye lengths thick. For comparison, typical feature sizes in semiconductor processing are much smaller than this.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ion Energy Calculator -->
+                    <div class="simulator-container">
+                        <h3 class="simulator-title">&#10133; Ion Energy Calculator</h3>
+                        <p style="text-align: center; margin-bottom: 1.5rem;">Calculate the maximum ion energy when crossing the plasma sheath.</p>
+                        
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label for="sheathVoltage">Sheath Voltage (V)</label>
+                                <input type="number" id="sheathVoltage" value="100" step="10" min="10" max="1000">
+                            </div>
+                            <div class="control-group">
+                                <label for="ionType">Ion Type</label>
+                                <select id="ionType">
+                                    <option value="40">Arâº (40 amu)</option>
+                                    <option value="69">CFâ‚ƒâº (69 amu)</option>
+                                    <option value="35">Clâº (35 amu)</option>
+                                    <option value="16">Oâº (16 amu)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button class="calculate-btn" onclick="calculateIonEnergy()">Calculate Ion Energy</button>
+                        </div>
+                        
+                        <div class="result-box">
+                            <div class="result-value" id="ionEnergyValue">100 eV</div>
+                            <div class="result-label">Ion Kinetic Energy</div>
+                            <div class="result-explanation" id="ionEnergyExplanation">
+                                At this energy, ions will cause significant sputtering and can penetrate several nanometers into the surface. This is in the optimal range for reactive ion etching.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== LAB TAB ==================== -->
+        <div id="lab-tab" class="tab-content" role="tabpanel" aria-labelledby="lab-btn">
+            
+            <div class="card">
+                <div class="card-header orange">Lab 6: Plasma Generation & Surface Modification</div>
+                <div class="card-body">
+                    
+                    <div class="key-concept">
+                        <h4>&#127919; Lab Objectives</h4>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Generate plasma using a microwave and vacuum system</li>
+                            <li>Observe and document plasma characteristics (color, brightness, distribution)</li>
+                            <li>Perform surface modification of glass or polymer substrates</li>
+                            <li>Measure contact angle before and after plasma treatment</li>
+                            <li>Quantify the change in surface wettability</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-header">Required Materials & Equipment</h3>
+                    
+                    <div class="two-column">
+                        <div class="column-box">
+                            <h4>&#128295; Equipment</h4>
+                            <ul style="margin-left: 1rem;">
+                                <li>Microwave oven (standard household type)</li>
+                                <li>Vacuum pump (mechanical, capable of reaching 50 mTorr)</li>
+                                <li>Vacuum flask (Erlenmeyer flask with rubber stopper)</li>
+                                <li>Vacuum gauge (thermocouple or Pirani)</li>
+                                <li>Vacuum hose and fittings</li>
+                                <li>Digital camera (for documenting)</li>
+                                <li>Pipette and dropper</li>
+                                <li>Protractor or contact angle goniometer (if available)</li>
+                            </ul>
+                        </div>
+                        <div class="column-box">
+                            <h4>&#127866; Materials</h4>
+                            <ul style="margin-left: 1rem;">
+                                <li>Glass microscope slides</li>
+                                <li>Diamond scribe and glass cutter</li>
+                                <li>Deionized water</li>
+                                <li>Paper towels or lens tissue</li>
+                                <li>Permanent marker (optional, for ashing demo)</li>
+                                <li>Safety glasses</li>
+                                <li>Lab notebook</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="safety-warning">
+                        <h4>&#9888; Critical Safety Precautions</h4>
+                        <ul>
+                            <li><strong>NEVER operate plasma at 80&ndash;120 mTorr pressure range.</strong> At these pressures, the plasma can "arc" and potentially damage the microwave magnetron or cause fire hazards.</li>
+                            <li><strong>Wear UV-protective safety glasses</strong> when observing plasma. The glow contains UV radiation.</li>
+                            <li><strong>Allow equipment to cool</strong> before handling. The flask can become very hot after plasma treatment.</li>
+                            <li><strong>Never run an empty microwave.</strong> Always have the vacuum chamber inside.</li>
+                            <li><strong>Handle glass slides carefully</strong> to avoid cuts. Use proper glass-cutting technique.</li>
+                            <li><strong>Ensure proper ventilation</strong> in the laboratory.</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-header">Experimental Procedure</h3>
+
+                    <div class="procedure-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Prepare the Vacuum Chamber</h4>
+                            <p>Create a simple vacuum chamber using an Erlenmeyer flask:</p>
+                            <ul>
+                                <li>Insert a rubber stopper with a hole drilled through it into the flask opening</li>
+                                <li>Connect vacuum tubing through the stopper to the vacuum pump</li>
+                                <li>Ensure all connections are airtight</li>
+                                <li>Test the system by pumping down and monitoring the pressure gauge</li>
+                                <li>Target base pressure: below 50 mTorr</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Prepare the Glass Substrate</h4>
+                            <p>Create a test sample for surface modification:</p>
+                            <ul>
+                                <li>Using a diamond scribe, score a glass microscope slide to create a ~2 cm wide strip</li>
+                                <li>Carefully break the glass along the scored line</li>
+                                <li>Clean the glass with deionized water and dry thoroughly</li>
+                                <li>Handle the glass by the edges to avoid contaminating the surface</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Measure Initial Contact Angle</h4>
+                            <p>Document the surface properties before plasma treatment:</p>
+                            <ul>
+                                <li>Place the glass slide on a level surface</li>
+                                <li>Using a pipette, carefully place a single water droplet (~10 &mu;L) on the surface</li>
+                                <li>Photograph the droplet from the side at eye level</li>
+                                <li>Measure the contact angle using a protractor or image analysis</li>
+                                <li>Record the angle and describe the droplet shape (spread out or beaded up)</li>
+                                <li>Dry the slide completely with a lint-free tissue</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Generate Plasma (First Observation)</h4>
+                            <p>Ignite plasma to locate the optimal microwave field position:</p>
+                            <ul>
+                                <li>Place the empty vacuum flask in the microwave</li>
+                                <li>Pump down to approximately 50 mTorr</li>
+                                <li>Disconnect the flask from the pump (if possible, use a valve)</li>
+                                <li>Position the flask on the rotating tray (if present)</li>
+                                <li>Set microwave to 60 seconds and observe through the window</li>
+                                <li>Note where the plasma ignites (typically at specific "hot spots" in the microwave field)</li>
+                                <li>The plasma should appear as a purple/pink glow</li>
+                                <li>Mark the position of maximum plasma intensity for later use</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Perform Surface Modification</h4>
+                            <p>Treat the glass substrate with plasma:</p>
+                            <ul>
+                                <li>Place the glass slide inside the flask with the test surface facing up</li>
+                                <li>Position the sample in the neck region of the flask where plasma will contact it</li>
+                                <li>Pump down to 50 mTorr</li>
+                                <li>Seal the chamber and place in the microwave at the marked position</li>
+                                <li><strong>Run the microwave for ONLY 15 seconds</strong></li>
+                                <li>Remove and allow to cool for at least 5 minutes</li>
+                                <li>Carefully check temperature before handling</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Measure Final Contact Angle</h4>
+                            <p>Quantify the surface modification effect:</p>
+                            <ul>
+                                <li>Immediately after removing the sample, place a water droplet on the treated surface</li>
+                                <li>Photograph and measure the contact angle as before</li>
+                                <li>Compare to the initial measurement</li>
+                                <li>Note the difference in droplet spreading behavior</li>
+                                <li>The treated surface should show significantly lower contact angle</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="procedure-step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>Document and Analyze Results</h4>
+                            <p>Complete your lab report with:</p>
+                            <ul>
+                                <li>Before/after photographs with contact angles labeled</li>
+                                <li>Quantitative contact angle measurements</li>
+                                <li>Description of plasma appearance (color, intensity, distribution)</li>
+                                <li>Explanation of the surface modification mechanism</li>
+                                <li>Discussion of potential applications</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="section-header">Pre-Lab Checklist</h3>
+                    
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Review safety procedures and emergency protocols</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check2">
+                            <label for="check2">Understand the 80&ndash;120 mTorr danger zone</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check3">
+                            <label for="check3">Verify vacuum system is leak-free</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check4">
+                            <label for="check4">Prepare glass substrate and clean thoroughly</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check5">
+                            <label for="check5">Have camera ready for documentation</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check6">
+                            <label for="check6">Wear UV-protective safety glasses</label>
+                        </div>
+                    </div>
+
+                    <h3 class="section-header">Discussion Questions</h3>
+                    
+                    <div class="industry-note">
+                        <h4>&#128221; Answer in Your Lab Report</h4>
+                        <ol style="margin-left: 1.5rem;">
+                            <li>What was the initial contact angle? What was it after treatment? Calculate the change.</li>
+                            <li>Describe the plasma appearance. What color was it and why?</li>
+                            <li>Explain how plasma treatment changes the surface chemistry of glass.</li>
+                            <li>Why must we avoid the 80&ndash;120 mTorr pressure range?</li>
+                            <li>If you waited 24 hours and measured the contact angle again, what would you expect? Why?</li>
+                            <li>How does this low-cost lab activity relate to industrial plasma processing?</li>
+                            <li>Suggest one industrial application where plasma surface modification would be useful.</li>
+                            <li>What would happen if you wrote on the glass with permanent marker before plasma treatment?</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== QUIZ TAB ==================== -->
+        <div id="quiz-tab" class="tab-content" role="tabpanel" aria-labelledby="quiz-btn">
+            
+            <div class="card">
+                <div class="card-header">Knowledge Check: Plasma Technology</div>
+                <div class="card-body">
+                    
+                    <p>Test your understanding of plasma physics and processing. Select the best answer for each question.</p>
+
+                    <!-- Question 1 -->
+                    <div class="quiz-question" data-correct="c">
+                        <h4>Question 1: What is plasma?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a">
+                                <span>A very hot gas that has not been ionized</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b">
+                                <span>A liquid-like state of matter found only in stars</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c">
+                                <span>An ionized gas containing positive ions, electrons, and neutral species</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="d">
+                                <span>A type of chemical reaction between gases</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="quiz-question" data-correct="b">
+                        <h4>Question 2: Which plasma generation method uses 13.56 MHz?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a">
+                                <span>DC glow discharge</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b">
+                                <span>Radio Frequency (RF)</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c">
+                                <span>Microwave</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="d">
+                                <span>Electron beam</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="quiz-question" data-correct="a">
+                        <h4>Question 3: In plasma etching, what role do free radicals play?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a">
+                                <span>Provide chemical reactivity for selective, isotropic etching</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b">
+                                <span>Provide directionality for anisotropic etching</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c">
+                                <span>Sustain the plasma through ionization</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="d">
+                                <span>Deposit thin films on the surface</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="quiz-question" data-correct="d">
+                        <h4>Question 4: A contact angle greater than 90Â° indicates the surface is:</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a">
+                                <span>Hydrophilic (water-loving)</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b">
+                                <span>High surface energy</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c">
+                                <span>Plasma-treated</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="d">
+                                <span>Hydrophobic (water-fearing)</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="quiz-question" data-correct="c">
+                        <h4>Question 5: What is plasma ashing primarily used for?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a">
+                                <span>Depositing metal films</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b">
+                                <span>Etching silicon dioxide</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c">
+                                <span>Removing photoresist and organic materials</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="d">
+                                <span>Creating anisotropic features</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="quiz-question" data-correct="b">
+                        <h4>Question 6: The plasma sheath is:</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a">
+                                <span>The hottest region of the plasma</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b">
+                                <span>A region of positive space charge where ions are accelerated toward surfaces</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c">
+                                <span>The center of the plasma where density is highest</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="d">
+                                <span>A protective layer that prevents ion bombardment</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="quiz-question" data-correct="a">
+                        <h4>Question 7: What causes hydrophobic recovery in plasma-treated PDMS?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="a">
+                                <span>Migration of low molecular weight chains from the bulk to the surface</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="b">
+                                <span>Chemical reaction with atmospheric oxygen</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="c">
+                                <span>Evaporation of the treated layer</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="d">
+                                <span>Absorption of water into the material</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="quiz-question" data-correct="d">
+                        <h4>Question 8: Which process gas is commonly used for etching silicon dioxide?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="a">
+                                <span>O&#8322; (Oxygen)</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="b">
+                                <span>Ar (Argon)</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="c">
+                                <span>Cl&#8322; (Chlorine)</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="d">
+                                <span>CF&#8324; (Carbon tetrafluoride)</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="quiz-question" data-correct="c">
+                        <h4>Question 9: Why must you avoid operating plasma at 80-120 mTorr in the microwave lab?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q9" value="a">
+                                <span>The plasma won't ignite at those pressures</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q9" value="b">
+                                <span>The contact angle measurement will be inaccurate</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q9" value="c">
+                                <span>Plasma can arc, potentially damaging the magnetron or causing fire hazards</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q9" value="d">
+                                <span>The glass substrate will melt at those pressures</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="quiz-question" data-correct="b">
+                        <h4>Question 10: Compared to thermal CVD, what is the main advantage of PECVD?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q10" value="a">
+                                <span>Higher deposition rates</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q10" value="b">
+                                <span>Lower deposition temperatures</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q10" value="c">
+                                <span>Better film purity</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q10" value="d">
+                                <span>No vacuum required</span>
+                            </label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="calculate-btn" onclick="submitQuiz()" style="background: linear-gradient(135deg, var(--green), var(--dark-green));">Submit Quiz</button>
+                    </div>
+
+                    <div class="quiz-score" id="quizScore" style="display: none;">
+                        <h3>Your Score</h3>
+                        <div class="score-display" id="scoreDisplay">0/10</div>
+                        <p id="scoreMessage"></p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Footer -->
+        <nav class="nav-footer" aria-label="Module navigation">
+            <a href="module5_vacuum_concepts.html">&#8592; Module 5: Vacuum Concepts</a>
+            <a href="course-outline.html">&#127968; Course Home</a>
+            <a href="module7_thin_film_deposition.html">Module 7: Thin Film Deposition &#8594;</a>
+        </nav>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Introduction to Nanotechnology &mdash; Module 6: Plasma Technology</p>
+        <p>Developed with support from NSF ATE Grant DUE 2301137 | Penn State University</p>
+        <p>&copy; 2025 &mdash; Educational use permitted with attribution</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+    /* ========== TAB FUNCTIONALITY ========== */
+    function showTab(tabName) {
+        document.querySelectorAll('.tab-btn').forEach(function(b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+        document.getElementById(tabName + '-tab').classList.add('active');
+        document.getElementById(tabName + '-btn').classList.add('active');
+        document.getElementById(tabName + '-btn').setAttribute('aria-selected', 'true');
+        updateProgress();
+        if (tabName === 'simulator') {
+            setTimeout(function() { drawPaschenCurve(); drawContactAngle(); }, 150);
+        }
+    }
+
+    /* Tab keyboard navigation */
+    document.querySelector('.tabs').addEventListener('keydown', function(e) {
+        var tabs = Array.from(this.querySelectorAll('.tab-btn'));
+        var idx = tabs.indexOf(document.activeElement);
+        if (idx < 0) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault(); tabs[(idx + 1) % tabs.length].focus(); tabs[(idx + 1) % tabs.length].click();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault(); tabs[(idx - 1 + tabs.length) % tabs.length].focus(); tabs[(idx - 1 + tabs.length) % tabs.length].click();
+        }
+    });
+
+    /* ========== PROGRESS TRACKING ========== */
+    function updateProgress() {
+        var total = 0, completed = 0;
+        var tabs = document.querySelectorAll('.tab-content');
+        total += tabs.length;
+        tabs.forEach(function(t) { if (t.classList.contains('active')) completed++; });
+        var quizQs = document.querySelectorAll('.quiz-question');
+        total += quizQs.length;
+        quizQs.forEach(function(q) { if (q.classList.contains('answered')) completed++; });
+        var checks = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+        total += checks.length;
+        checks.forEach(function(c) { if (c.checked) completed++; });
+        var pct = Math.round((completed / total) * 100);
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressFill').setAttribute('aria-valuenow', pct);
+        document.getElementById('progressText').textContent = pct + '%';
+    }
+
+    /* ========== TOOLTIP SYSTEM (Fixed positioning, edge-aware) ========== */
+    var tooltip = document.getElementById('tooltipPopup');
+    document.querySelectorAll('.tooltip-term').forEach(function(term) {
+        var tipText = term.getAttribute('data-tooltip');
+        if (!tipText) return;
+
+        function positionTooltip() {
+            tooltip.textContent = tipText;
+            tooltip.setAttribute('aria-hidden', 'false');
+            var rect = term.getBoundingClientRect();
+            var vw = window.innerWidth, vh = window.innerHeight;
+            tooltip.style.left = '-9999px';
+            tooltip.style.top = '-9999px';
+            tooltip.classList.add('show');
+            var tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+            var left = rect.left + (rect.width / 2) - (tw / 2);
+            var top = rect.bottom + 10;
+            if (left < 12) left = 12;
+            if (left + tw > vw - 12) left = vw - tw - 12;
+            if (top + th > vh - 12) {
+                top = rect.top - th - 10;
+            }
+            if (top < 12) {
+                top = rect.top + (rect.height / 2) - (th / 2);
+                left = rect.right + 10;
+                if (left + tw > vw - 12) left = rect.left - tw - 10;
+            }
+            if (left < 12) left = 12;
+            if (top < 12) top = 12;
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        }
+
+        term.addEventListener('mouseenter', function() { positionTooltip(); tooltip.classList.add('show'); });
+        term.addEventListener('mouseleave', function() { tooltip.classList.remove('show'); tooltip.setAttribute('aria-hidden', 'true'); });
+        term.addEventListener('focus', function() { positionTooltip(); tooltip.classList.add('show'); });
+        term.addEventListener('blur', function() { tooltip.classList.remove('show'); tooltip.setAttribute('aria-hidden', 'true'); });
+    });
+
+    /* ========== PASCHEN CURVE SIMULATOR ========== */
+    var paschenGasData = {
+        air:      { A: 15, B: 365, label: 'Air', color: '#003366' },
+        argon:    { A: 12, B: 180, label: 'Argon', color: '#663399' },
+        nitrogen: { A: 12, B: 342, label: 'Nitrogen', color: '#008080' },
+        hydrogen: { A: 5.1, B: 138.8, label: 'Hydrogen', color: '#CC0000' },
+        helium:   { A: 2.8, B: 77, label: 'Helium', color: '#CC9900' }
+    };
+
+    function paschenVB(pd, A, B, gamma) {
+        gamma = gamma || 0.01;
+        var denom = Math.log(A * pd) - Math.log(Math.log(1 + 1 / gamma));
+        if (denom <= 0.01) return 1e6;
+        return (B * pd) / denom;
+    }
+
+    function drawPaschenCurve() {
+        var canvas = document.getElementById('paschenCanvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var W = canvas.width, H = canvas.height;
+        var pad = { l: 80, r: 30, t: 40, b: 60 };
+        var pw = W - pad.l - pad.r, ph = H - pad.t - pad.b;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, W, H);
+
+        var gasKey = document.getElementById('paschenGas').value;
+        var gas = paschenGasData[gasKey];
+
+        /* Compute curve points */
+        var points = [];
+        var minV = 1e9, maxV = 0;
+        for (var i = 0; i <= 200; i++) {
+            var pd = 0.1 + (i / 200) * 99.9;
+            var vb = paschenVB(pd, gas.A, gas.B);
+            if (vb < 50000) {
+                points.push({ pd: pd, vb: vb });
+                if (vb < minV) minV = vb;
+                if (vb > maxV) maxV = vb;
+            }
+        }
+        maxV = Math.min(maxV, 8000);
+        minV = Math.max(minV - 50, 0);
+        var vRange = maxV - minV;
+
+        /* Grid */
+        ctx.strokeStyle = '#E0E0E0'; ctx.lineWidth = 1;
+        for (var g = 0; g <= 5; g++) {
+            var gy = pad.t + (g / 5) * ph;
+            ctx.beginPath(); ctx.moveTo(pad.l, gy); ctx.lineTo(W - pad.r, gy); ctx.stroke();
+            ctx.fillStyle = '#666666'; ctx.font = '11px Trebuchet MS';
+            ctx.textAlign = 'right';
+            ctx.fillText(Math.round(maxV - (g / 5) * vRange) + ' V', pad.l - 8, gy + 4);
+        }
+        for (var g = 0; g <= 5; g++) {
+            var gx = pad.l + (g / 5) * pw;
+            ctx.beginPath(); ctx.moveTo(gx, pad.t); ctx.lineTo(gx, H - pad.b); ctx.stroke();
+            ctx.fillStyle = '#666666'; ctx.textAlign = 'center';
+            ctx.fillText((0.1 + (g / 5) * 99.9).toFixed(0), gx, H - pad.b + 18);
+        }
+
+        /* Axes */
+        ctx.strokeStyle = '#333333'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, H - pad.b); ctx.lineTo(W - pad.r, H - pad.b); ctx.stroke();
+
+        /* Labels */
+        ctx.fillStyle = '#003366'; ctx.font = 'bold 13px Trebuchet MS'; ctx.textAlign = 'center';
+        ctx.fillText('p \u00D7 d (Torr\u00B7cm)', W / 2, H - 10);
+        ctx.save(); ctx.translate(18, H / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Breakdown Voltage V\u2082 (V)', 0, 0);
+        ctx.restore();
+        ctx.fillStyle = gas.color; ctx.font = 'bold 16px Trebuchet MS';
+        ctx.fillText('Paschen Curve: ' + gas.label, W / 2, 25);
+
+        /* Plot curve */
+        ctx.beginPath(); ctx.strokeStyle = gas.color; ctx.lineWidth = 3;
+        var started = false;
+        points.forEach(function(p) {
+            var x = pad.l + ((p.pd - 0.1) / 99.9) * pw;
+            var y = pad.t + ((maxV - p.vb) / vRange) * ph;
+            y = Math.max(pad.t, Math.min(H - pad.b, y));
+            if (!started) { ctx.moveTo(x, y); started = true; } else { ctx.lineTo(x, y); }
+        });
+        ctx.stroke();
+
+        /* Marker for selected pd */
+        updatePaschenMarker();
+    }
+
+    function updatePaschenMarker() {
+        var canvas = document.getElementById('paschenCanvas');
+        if (!canvas) return;
+        var pd = parseFloat(document.getElementById('paschenPD').value);
+        document.getElementById('paschenPDVal').textContent = pd.toFixed(1);
+        var gasKey = document.getElementById('paschenGas').value;
+        var gas = paschenGasData[gasKey];
+        var vb = paschenVB(pd, gas.A, gas.B);
+        if (vb > 50000) vb = NaN;
+
+        drawPaschenCurve.__lastPD = pd;
+
+        if (!isNaN(vb)) {
+            document.getElementById('paschenVB').textContent = Math.round(vb) + ' V';
+        } else {
+            document.getElementById('paschenVB').textContent = 'N/A (outside valid range)';
+        }
+
+        /* Redraw with marker - we call drawPaschenCurve then overlay */
+        /* To avoid recursion, just draw the marker overlay */
+        var ctx = canvas.getContext('2d');
+        var W = canvas.width, H = canvas.height;
+        var pad2 = { l: 80, r: 30, t: 40, b: 60 };
+        var pw2 = W - pad2.l - pad2.r, ph2 = H - pad2.t - pad2.b;
+
+        /* Recalculate range */
+        var minV2 = 1e9, maxV2 = 0;
+        for (var i = 0; i <= 200; i++) {
+            var pd2 = 0.1 + (i / 200) * 99.9;
+            var v2 = paschenVB(pd2, gas.A, gas.B);
+            if (v2 < 50000) { if (v2 < minV2) minV2 = v2; if (v2 > maxV2) maxV2 = v2; }
+        }
+        maxV2 = Math.min(maxV2, 8000); minV2 = Math.max(minV2 - 50, 0);
+        var vRange2 = maxV2 - minV2;
+
+        if (!isNaN(vb) && vb < maxV2) {
+            var mx = pad2.l + ((pd - 0.1) / 99.9) * pw2;
+            var my = pad2.t + ((maxV2 - vb) / vRange2) * ph2;
+            my = Math.max(pad2.t, Math.min(H - pad2.b, my));
+
+            ctx.beginPath(); ctx.arc(mx, my, 8, 0, 2 * Math.PI);
+            ctx.fillStyle = '#FF6600'; ctx.fill();
+            ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 2; ctx.stroke();
+
+            /* Dashed lines to axes */
+            ctx.setLineDash([4, 4]); ctx.strokeStyle = '#FF6600'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(mx, my); ctx.lineTo(mx, H - pad2.b); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(mx, my); ctx.lineTo(pad2.l, my); ctx.stroke();
+            ctx.setLineDash([]);
+        }
+    }
+
+    /* ========== CONTACT ANGLE VISUALIZER ========== */
+    function drawContactAngle() {
+        var canvas = document.getElementById('contactCanvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+
+        var angle = parseFloat(document.getElementById('contactSlider').value);
+        document.getElementById('contactAngleVal').textContent = angle + '\u00B0';
+
+        var surfY = H * 0.7;
+        var centerX = W / 2;
+        var baseR = 60;
+
+        /* Draw surface */
+        ctx.fillStyle = '#E0E0E0';
+        ctx.fillRect(0, surfY, W, H - surfY);
+        ctx.fillStyle = '#999999';
+        ctx.font = '12px Trebuchet MS'; ctx.textAlign = 'center';
+        ctx.fillText('Solid Surface', centerX, surfY + 30);
+
+        /* Draw droplet */
+        var thetaRad = angle * Math.PI / 180;
+        /* Spherical cap geometry */
+        var R, h, a;
+        if (angle <= 1) angle = 1;
+        if (angle >= 179) angle = 179;
+        a = baseR * Math.sin(thetaRad) / (1 + Math.cos(thetaRad));
+        if (angle < 90) {
+            a = baseR;
+            R = a / Math.sin(thetaRad);
+            h = R * (1 - Math.cos(thetaRad));
+        } else {
+            a = baseR;
+            R = a / Math.sin(Math.PI - thetaRad);
+            h = R + R * Math.cos(thetaRad);
+        }
+        if (h < 5) h = 5;
+        if (h > surfY - 40) h = surfY - 40;
+
+        /* Draw the cap as an arc */
+        var cY;
+        if (angle <= 90) {
+            cY = surfY - (R - h);
+            /* Gradient fill */
+            var grad = ctx.createRadialGradient(centerX - a * 0.3, surfY - h * 0.7, 2, centerX, cY, R);
+            grad.addColorStop(0, 'rgba(100,180,255,0.95)');
+            grad.addColorStop(0.6, 'rgba(50,130,220,0.85)');
+            grad.addColorStop(1, 'rgba(30,90,180,0.7)');
+            ctx.fillStyle = grad;
+        } else {
+            cY = surfY - h + R;
+            var grad = ctx.createRadialGradient(centerX - a * 0.2, surfY - h * 0.6, 3, centerX, cY, R);
+            grad.addColorStop(0, 'rgba(100,180,255,0.95)');
+            grad.addColorStop(0.5, 'rgba(50,130,220,0.85)');
+            grad.addColorStop(1, 'rgba(30,90,180,0.7)');
+            ctx.fillStyle = grad;
+        }
+
+        /* Draw droplet shape using arc */
+        var startAngle, endAngle;
+        if (angle <= 90) {
+            startAngle = Math.PI + Math.asin(a / R);
+            endAngle = 2 * Math.PI - Math.asin(a / R);
+        } else {
+            startAngle = Math.PI - Math.asin(a / R);
+            endAngle = Math.asin(a / R);
+        }
+
+        ctx.beginPath();
+        ctx.arc(centerX, cY, R, startAngle, endAngle);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(30,90,180,0.6)'; ctx.lineWidth = 1.5; ctx.stroke();
+
+        /* Reflection highlight */
+        ctx.beginPath();
+        ctx.ellipse(centerX - a * 0.25, surfY - h * 0.65, a * 0.15, h * 0.2, -0.3, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        ctx.fill();
+
+        /* Draw angle arc indicator */
+        var arcR = 35;
+        ctx.beginPath(); ctx.strokeStyle = '#CC0000'; ctx.lineWidth = 2;
+        var lineEndAngle = -thetaRad;
+        ctx.arc(centerX + a, surfY, arcR, Math.PI, Math.PI + (Math.PI - thetaRad), true);
+        ctx.stroke();
+
+        /* Angle label */
+        var labelAngle = Math.PI + (Math.PI - thetaRad) / 2;
+        var lx = centerX + a + (arcR + 15) * Math.cos(labelAngle);
+        var ly = surfY + (arcR + 15) * Math.sin(labelAngle);
+        ctx.fillStyle = '#CC0000'; ctx.font = 'bold 16px Trebuchet MS'; ctx.textAlign = 'center';
+        ctx.fillText('\u03B8 = ' + angle + '\u00B0', lx, ly);
+
+        /* Surface line through contact point */
+        ctx.beginPath(); ctx.strokeStyle = '#333333'; ctx.lineWidth = 1;
+        ctx.setLineDash([3, 3]);
+        ctx.moveTo(centerX + a - 40, surfY); ctx.lineTo(centerX + a + 50, surfY);
+        ctx.stroke(); ctx.setLineDash([]);
+
+        /* Classification */
+        var classEl = document.getElementById('contactClassification');
+        var descEl = document.getElementById('contactDescription');
+        if (angle < 10) {
+            classEl.textContent = 'Superhydrophilic'; classEl.style.color = '#003366';
+            descEl.textContent = 'Complete wetting \u2014 water forms a thin film. Freshly plasma-treated glass or silicon.';
+        } else if (angle < 45) {
+            classEl.textContent = 'Hydrophilic'; classEl.style.color = '#006600';
+            descEl.textContent = 'Water spreads readily. Plasma-treated PDMS or clean metal surfaces.';
+        } else if (angle < 90) {
+            classEl.textContent = 'Moderately Wettable'; classEl.style.color = '#996600';
+            descEl.textContent = 'Partial wetting. May indicate partial plasma treatment or some hydrophobic recovery.';
+        } else if (angle < 120) {
+            classEl.textContent = 'Hydrophobic'; classEl.style.color = '#CC6600';
+            descEl.textContent = 'Water beads up \u2014 typical of untreated PDMS (~110\u00B0) or wax surfaces.';
+        } else if (angle < 150) {
+            classEl.textContent = 'Highly Hydrophobic'; classEl.style.color = '#CC3300';
+            descEl.textContent = 'Strong water repulsion \u2014 Teflon, fluorinated coatings.';
+        } else {
+            classEl.textContent = 'Superhydrophobic'; classEl.style.color = '#990000';
+            descEl.textContent = 'Lotus effect \u2014 water rolls off immediately, self-cleaning surface.';
+        }
+    }
+
+    /* ========== DEBYE LENGTH CALCULATOR ========== */
+    function calcDebye() {
+        var teEl = document.getElementById('debyeTe') || document.getElementById('electronTemp');
+        var neEl = document.getElementById('debyeNe') || document.getElementById('debyeDensity');
+        var Te = parseFloat(teEl.value);
+        var ne = parseFloat(neEl.value);
+        if (ne < 1e6) ne = ne * 1e6; /* If entered in cm^-3, convert */
+        var eps0 = 8.854e-12, kB = 1.381e-23, e = 1.602e-19;
+        var TeK = Te * 11600;
+        var lambdaD = Math.sqrt(eps0 * kB * TeK / (ne * e * e));
+        var resDiv = document.getElementById('debyeResult');
+        if (resDiv) resDiv.style.display = 'block';
+        var valEl = document.getElementById('debyeValue');
+        if (lambdaD > 1e-3) { valEl.textContent = (lambdaD * 1000).toFixed(2) + ' mm'; }
+        else if (lambdaD > 1e-6) { valEl.textContent = (lambdaD * 1e6).toFixed(1) + ' \u00B5m'; }
+        else { valEl.textContent = lambdaD.toExponential(2) + ' m'; }
+        var ND = ne * (4 / 3) * Math.PI * Math.pow(lambdaD, 3);
+        var sheathMM = (lambdaD * 1000 * 5).toFixed(2);
+        var expEl = document.getElementById('debyeExplanation');
+        expEl.innerHTML = 'Debye sphere contains ~' + ND.toExponential(1) + ' electrons. ' +
+            (ND > 1 ? 'This satisfies the plasma condition (N_D >> 1). ' : '<strong>Warning:</strong> N_D < 1 \u2014 may not behave as a true plasma. ') +
+            'Estimated sheath thickness: ~' + sheathMM + ' mm (5 \u03BBD).';
+    }
+
+    /* Alias for old function name */
+    function calculateDebyeLength() { calcDebye(); }
+
+    /* ========== PLASMA FREQUENCY CALCULATOR ========== */
+    function calcPlasmaFreq() {
+        var neEl = document.getElementById('freqNe') || document.getElementById('electronDensity');
+        var ne = parseFloat(neEl.value);
+        if (ne < 1e6) ne = ne * 1e6;
+        var e = 1.602e-19, eps0 = 8.854e-12, me = 9.109e-31;
+        var wp = Math.sqrt(ne * e * e / (eps0 * me));
+        var fp = wp / (2 * Math.PI);
+        var resDiv = document.getElementById('freqResult');
+        if (resDiv) resDiv.style.display = 'block';
+        var valEl = document.getElementById('freqValue') || document.getElementById('plasmaFreqValue');
+        if (fp > 1e9) { valEl.textContent = (fp / 1e9).toFixed(2) + ' GHz'; }
+        else { valEl.textContent = (fp / 1e6).toFixed(1) + ' MHz'; }
+        var rfPasses = fp < 13.56e6 ? 'yes' : 'no';
+        var mwPasses = fp < 2.45e9 ? 'yes' : 'no';
+        var explanation = '';
+        if (fp < 2.45e9) {
+            explanation = 'Microwaves at 2.45 GHz CAN penetrate this plasma. This is a typical processing plasma density.';
+        } else if (fp < 13.56e9) {
+            explanation = 'High-density plasma. Microwaves will be reflected, but RF at 13.56 MHz can couple. ICP sources achieve these densities.';
+        } else {
+            explanation = 'Very high-density plasma. Only lower frequencies can propagate.';
+        }
+        var expEl = document.getElementById('freqExplanation') || document.getElementById('plasmaFreqExplanation');
+        if (expEl) expEl.textContent = explanation;
+    }
+
+    function calculatePlasmaFrequency() { calcPlasmaFreq(); }
+
+    /* ========== SURFACE ENERGY CALCULATOR ========== */
+    function calculateSurfaceEnergy() {
+        var theta = parseFloat(document.getElementById('contactAngle').value);
+        var surfaceType = document.getElementById('surfaceType').value;
+        var gammaWater = 72.8;
+        var cosTheta = Math.cos(theta * Math.PI / 180);
+        var surfaceEnergy = gammaWater * Math.pow(1 + cosTheta, 2) / 4;
+        var resultText = '~' + surfaceEnergy.toFixed(0) + ' mJ/m\u00B2';
+        var explanation;
+        if (theta > 90) {
+            explanation = 'Hydrophobic surface. Water beads up. ';
+            if (surfaceType === 'pdms') explanation += 'PDMS is naturally hydrophobic due to its methyl (CH\u2083) groups. Plasma treatment can make it hydrophilic.';
+            else explanation += 'Consider plasma treatment to increase surface energy.';
+        } else if (theta > 45) {
+            explanation = 'Moderately wettable surface. ';
+            if (surfaceType === 'pdms') explanation += 'May indicate partial plasma treatment or hydrophobic recovery.';
+        } else {
+            explanation = 'Hydrophilic surface with high surface energy. Water spreads readily. ';
+            if (surfaceType === 'pdms') explanation += 'Successful plasma treatment. Note: PDMS undergoes hydrophobic recovery over hours to days.';
+            else if (surfaceType === 'glass') explanation += 'Clean glass is naturally hydrophilic. Plasma removes organic contaminants.';
+        }
+        document.getElementById('surfaceEnergyValue').textContent = resultText;
+        document.getElementById('surfaceEnergyExplanation').textContent = explanation;
+    }
+
+    /* ========== ION ENERGY CALCULATOR ========== */
+    function calcIonEnergy() {
+        var voltEl = document.getElementById('sheathVoltage');
+        var ionEl = document.getElementById('ionType');
+        var voltage = parseFloat(voltEl.value);
+        var ionMass = parseFloat(ionEl.value);
+        var energy = voltage;
+        var e = 1.602e-19, amu = 1.66e-27;
+        var velocity = Math.sqrt(2 * energy * e / (ionMass * amu));
+        var velocity_kms = velocity / 1000;
+        var resDiv = document.getElementById('ionResult');
+        if (resDiv) resDiv.style.display = 'block';
+        var valEl = document.getElementById('ionEnergyValue');
+        valEl.textContent = energy.toFixed(0) + ' eV';
+        var explanation = 'Ion velocity: ~' + velocity_kms.toFixed(1) + ' km/s. ';
+        if (energy < 50) explanation += 'Low energy: mostly chemical etching with high selectivity.';
+        else if (energy < 200) explanation += 'Optimal RIE range: ions provide directionality, radicals provide selectivity.';
+        else if (energy < 500) explanation += 'Higher energy: significant physical sputtering. Mask erosion risk increases.';
+        else explanation += 'High energy: dominant sputtering. Used for ion milling.';
+        var expEl = document.getElementById('ionExplanation') || document.getElementById('ionEnergyExplanation');
+        if (expEl) expEl.textContent = explanation;
+    }
+
+    function calculateIonEnergy() { calcIonEnergy(); }
+
+    /* ========== QUIZ FUNCTIONALITY ========== */
+    var quizQuestions = document.querySelectorAll('.quiz-question');
+
+    quizQuestions.forEach(function(question) {
+        var options = question.querySelectorAll('.quiz-option');
+        var feedback = question.querySelector('.quiz-feedback');
+        var correctAnswer = question.getAttribute('data-correct');
+
+        options.forEach(function(option) {
+            option.addEventListener('click', function() {
+                if (question.classList.contains('answered')) return;
+                var radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+                var selectedValue = radio.value;
+                question.classList.add('answered');
+                options.forEach(function(opt) {
+                    opt.style.pointerEvents = 'none';
+                    var optValue = opt.querySelector('input[type="radio"]').value;
+                    if (optValue === correctAnswer) opt.classList.add('correct');
+                    else if (optValue === selectedValue) opt.classList.add('incorrect');
+                });
+                if (selectedValue === correctAnswer) {
+                    feedback.textContent = 'Correct! Well done.';
+                    feedback.classList.add('correct', 'show');
+                } else {
+                    feedback.textContent = 'Incorrect. The correct answer is highlighted in green.';
+                    feedback.classList.add('incorrect', 'show');
+                }
+                updateProgress();
+            });
+        });
+    });
+
+    function submitQuiz() {
+        var correct = 0, total = quizQuestions.length;
+        quizQuestions.forEach(function(question) {
+            var correctAnswer = question.getAttribute('data-correct');
+            var selectedOption = question.querySelector('input[type="radio"]:checked');
+            if (selectedOption && selectedOption.value === correctAnswer) correct++;
+            if (!question.classList.contains('answered')) {
+                question.classList.add('answered');
+                question.querySelectorAll('.quiz-option').forEach(function(opt) {
+                    opt.style.pointerEvents = 'none';
+                    if (opt.querySelector('input[type="radio"]').value === correctAnswer) opt.classList.add('correct');
+                });
+                var fb = question.querySelector('.quiz-feedback');
+                fb.textContent = 'Not answered. The correct answer is highlighted.';
+                fb.classList.add('incorrect', 'show');
+            }
+        });
+        var scoreDiv = document.getElementById('quizScore');
+        document.getElementById('scoreDisplay').textContent = correct + '/' + total;
+        var pct = (correct / total) * 100;
+        var msg = '';
+        if (pct >= 90) msg = 'Excellent! You have mastered plasma technology concepts!';
+        else if (pct >= 70) msg = 'Good job! Review the concepts you missed and try the simulators.';
+        else if (pct >= 50) msg = 'Keep studying! Re-read the lecture content and explore the tools.';
+        else msg = 'More study needed. Review all sections before proceeding.';
+        document.getElementById('scoreMessage').textContent = msg;
+        scoreDiv.style.display = 'block';
+        scoreDiv.scrollIntoView({ behavior: 'smooth' });
+        updateProgress();
+    }
+
+    /* ========== INITIALIZATION ========== */
+    updateProgress();
+    /* Initialize calculators if default values present */
+    if (document.getElementById('paschenCanvas')) {
+        setTimeout(drawPaschenCurve, 200);
+    }
+    if (document.getElementById('contactCanvas')) {
+        setTimeout(drawContactAngle, 200);
+    }
+    /* Checklist change handlers */
+    document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(function(cb) {
+        cb.addEventListener('change', updateProgress);
+    });
+    /* Initialize any existing calculators with default values */
+    try { calculatePlasmaFrequency(); } catch(e) {}
+    try { calculateSurfaceEnergy(); } catch(e) {}
+    try { calculateDebyeLength(); } catch(e) {}
+    try { calculateIonEnergy(); } catch(e) {}
+    </script>
+
+</body>
+</html>

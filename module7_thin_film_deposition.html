@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 7: Thin Film Deposition - Comprehensive coverage of PVD, CVD, thermal evaporation, sputtering, ALD, and film thickness monitoring for nanotechnology education.">
+    <title>Module 7: Thin Film Deposition | Introduction to Nanotechnology</title>
+    <style>
+        :root {
+            --navy:#000080;--primary-blue:#003366;--secondary-blue:#336699;--light-blue:#6699CC;
+            --pale-blue:#CCEEFF;--ice-blue:#E6F3FF;--steel:#4682B4;--dark-steel:#2C5F8A;
+            --silver:#708090;--light-silver:#B0C4DE;--pale-silver:#E8EEF4;
+            --teal:#008080;--dark-teal:#006666;--green:#008000;--dark-green:#006600;
+            --light-green:#99CC99;--pale-green:#E6FFE6;--gold:#CC9900;--dark-gold:#996600;
+            --orange:#FF6600;--red:#CC0000;--dark-red:#990000;--purple:#663399;--copper:#CC6633;
+            --white:#FFFFFF;--off-white:#F5F5F5;--light-gray:#E0E0E0;--medium-gray:#999999;
+            --dark-gray:#666666;--charcoal:#333333;--black:#000000;
+            --shadow:rgba(0,0,0,0.15);--shadow-dark:rgba(0,0,0,0.25);
+            --font-primary:Georgia,'Times New Roman',serif;
+            --font-display:'Trebuchet MS',Arial,sans-serif;
+            --font-mono:'Courier New',monospace;
+            --transition:0.3s ease;--radius:8px;--radius-lg:12px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{font-family:var(--font-primary);background:linear-gradient(135deg,var(--pale-silver) 0%,var(--white) 50%,var(--ice-blue) 100%);color:var(--charcoal);line-height:1.7;min-height:100vh}
+        .skip-link{position:absolute;top:-50px;left:10px;background:var(--navy);color:var(--white);padding:12px 20px;z-index:10000;border-radius:var(--radius);font-weight:bold;text-decoration:none}
+        .skip-link:focus{top:10px}
+        a:focus,button:focus,input:focus,select:focus,[tabindex]:focus{outline:3px solid var(--gold);outline-offset:2px}
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+        .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+        header{background:linear-gradient(135deg,var(--dark-steel) 0%,var(--navy) 50%,var(--primary-blue) 100%);color:var(--white);padding:1rem 2rem;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px var(--shadow-dark)}
+        .header-content{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+        .logo-section{display:flex;align-items:center;gap:1rem}
+        .logo-icon{width:55px;height:55px;background:linear-gradient(135deg,var(--steel),var(--silver));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:bold;font-size:1.2rem;color:var(--white);border:3px solid var(--gold)}
+        .site-title{font-family:var(--font-display);font-size:1.4rem;font-weight:bold}
+        .site-subtitle{font-size:0.85rem;opacity:0.8}
+        nav a{color:var(--pale-blue);text-decoration:none;margin-left:1.5rem;font-family:var(--font-display);font-size:0.9rem;transition:color var(--transition)}
+        nav a:hover,nav a:focus{color:var(--gold);text-decoration:underline}
+
+        main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+        .hero{background:linear-gradient(135deg,var(--primary-blue) 0%,var(--dark-steel) 40%,var(--teal) 100%);color:var(--white);border-radius:var(--radius-lg);padding:3rem 2.5rem;margin-bottom:2rem;text-align:center;box-shadow:0 8px 32px var(--shadow-dark);position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(255,255,255,0.06) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(204,153,0,0.08) 0%,transparent 40%);pointer-events:none}
+        .hero h1{font-family:var(--font-display);font-size:2.5rem;margin-bottom:0.5rem;position:relative}
+        .hero h1 .module-num{color:var(--gold)}
+        .hero p{font-size:1.15rem;opacity:0.9;max-width:800px;margin:0.5rem auto 1.5rem;position:relative}
+        .hero-meta{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;font-size:0.95rem;position:relative}
+        .hero-meta span{background:rgba(255,255,255,0.12);padding:0.4rem 1rem;border-radius:20px}
+
+        .progress-container{background:var(--white);border-radius:var(--radius);padding:1rem 1.5rem;margin-bottom:2rem;box-shadow:0 2px 10px var(--shadow)}
+        .progress-label{display:flex;justify-content:space-between;margin-bottom:0.5rem;font-family:var(--font-display);font-size:0.9rem}
+        .progress-bar{background:var(--light-gray);border-radius:10px;height:12px;overflow:hidden}
+        .progress-fill{height:100%;background:linear-gradient(90deg,var(--steel),var(--teal));border-radius:10px;width:0%;transition:width 0.5s ease}
+
+        .objectives{background:linear-gradient(135deg,var(--ice-blue),var(--white));border-left:5px solid var(--steel);border-radius:var(--radius);padding:1.5rem 2rem;margin-bottom:2rem;box-shadow:0 2px 10px var(--shadow)}
+        .objectives h3{font-family:var(--font-display);color:var(--primary-blue);margin-bottom:0.75rem}
+        .objectives ul{margin-left:1.5rem}
+        .objectives li{margin-bottom:0.5rem}
+
+        .tabs{display:flex;gap:0;margin-bottom:0;background:var(--white);border-radius:var(--radius-lg) var(--radius-lg) 0 0;overflow-x:auto;box-shadow:0 2px 8px var(--shadow)}
+        .tab-btn{flex:1;min-width:140px;padding:1rem 1.2rem;border:none;background:var(--off-white);font-family:var(--font-display);font-size:0.95rem;cursor:pointer;transition:all var(--transition);border-bottom:3px solid transparent;color:var(--dark-gray)}
+        .tab-btn:hover{background:var(--ice-blue);color:var(--primary-blue)}
+        .tab-btn.active{background:var(--white);color:var(--primary-blue);border-bottom-color:var(--steel);font-weight:bold}
+        .tab-content{display:none;background:var(--white);padding:2rem;border-radius:0 0 var(--radius-lg) var(--radius-lg);box-shadow:0 4px 15px var(--shadow)}
+        .tab-content.active{display:block}
+
+        .card{background:var(--white);border-radius:var(--radius);margin-bottom:2rem;overflow:hidden;box-shadow:0 3px 12px var(--shadow);border:1px solid var(--light-gray)}
+        .card-header{background:linear-gradient(135deg,var(--primary-blue),var(--dark-steel));color:var(--white);padding:1rem 1.5rem;font-family:var(--font-display);font-size:1.15rem;font-weight:bold}
+        .card-header.teal{background:linear-gradient(135deg,var(--dark-teal),var(--teal))}
+        .card-header.green{background:linear-gradient(135deg,var(--dark-green),var(--green))}
+        .card-header.copper{background:linear-gradient(135deg,#8B4513,var(--copper))}
+        .card-header.purple{background:linear-gradient(135deg,#4B0082,var(--purple))}
+        .card-header.gold{background:linear-gradient(135deg,var(--dark-gold),var(--gold))}
+        .card-body{padding:1.5rem 2rem}
+        .subsection-header{font-family:var(--font-display);color:var(--primary-blue);font-size:1.2rem;margin:1.5rem 0 0.75rem;padding-bottom:0.3rem;border-bottom:2px solid var(--pale-blue)}
+        p{margin-bottom:1rem}
+
+        .key-concept{background:linear-gradient(135deg,var(--ice-blue),#F0F8FF);border-left:5px solid var(--steel);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1.25rem 0}
+        .key-concept h4{color:var(--primary-blue);margin-bottom:0.5rem;font-family:var(--font-display)}
+        .safety-note{background:linear-gradient(135deg,#FFF8E1,#FFFDE7);border-left:5px solid var(--orange);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1.25rem 0}
+        .safety-note h4{color:var(--orange);margin-bottom:0.5rem;font-family:var(--font-display)}
+        .industry-note{background:linear-gradient(135deg,#F3E5F5,#FCE4EC);border-left:5px solid var(--purple);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1.25rem 0}
+        .industry-note h4{color:var(--purple);margin-bottom:0.5rem;font-family:var(--font-display)}
+        .did-you-know{background:linear-gradient(135deg,var(--pale-green),#F0FFF0);border-left:5px solid var(--green);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1.25rem 0}
+        .did-you-know h4{color:var(--dark-green);margin-bottom:0.5rem;font-family:var(--font-display)}
+
+        .process-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0;padding:1rem;background:var(--off-white);border-radius:var(--radius)}
+        .process-step{background:linear-gradient(135deg,var(--steel),var(--dark-steel));color:var(--white);padding:0.6rem 1.2rem;border-radius:6px;font-family:var(--font-display);font-size:0.85rem;font-weight:bold;text-align:center}
+        .process-arrow{color:var(--gold);font-size:1.4rem;font-weight:bold}
+
+        .two-column{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+        .three-column{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:1.5rem 0}
+        .column-box{background:var(--off-white);border-radius:var(--radius);padding:1.25rem;border-top:4px solid var(--steel)}
+        .column-box h4{color:var(--primary-blue);margin-bottom:0.5rem;font-family:var(--font-display)}
+        .column-box ul{margin-left:1.25rem;margin-top:0.5rem}
+        .column-box li{margin-bottom:0.3rem;font-size:0.95rem}
+
+        .data-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+        .data-table th{background:var(--primary-blue);color:var(--white);padding:0.75rem 1rem;text-align:left;font-family:var(--font-display);font-size:0.85rem}
+        .data-table td{padding:0.6rem 1rem;border-bottom:1px solid var(--light-gray)}
+        .data-table tr:nth-child(even){background:var(--off-white)}
+        .data-table tr:hover{background:var(--ice-blue)}
+
+        .tooltip-term{color:var(--primary-blue);font-weight:bold;border-bottom:2px dotted var(--light-blue);cursor:help;position:relative;display:inline}
+        .tooltip-content{visibility:hidden;opacity:0;position:absolute;z-index:9999;width:320px;max-width:90vw;background:var(--charcoal);color:var(--white);padding:12px 16px;border-radius:var(--radius);font-size:0.85rem;font-weight:normal;line-height:1.5;box-shadow:0 4px 16px var(--shadow-dark);transition:opacity 0.2s ease,visibility 0.2s ease;pointer-events:none}
+        .tooltip-term:hover .tooltip-content,.tooltip-term:focus .tooltip-content{visibility:visible;opacity:1}
+
+        .sim-container{background:var(--off-white);border-radius:var(--radius);padding:1.5rem;margin:1.5rem 0;border:2px solid var(--light-gray)}
+        .sim-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1rem 0}
+        .control-group label{display:block;font-family:var(--font-display);font-size:0.85rem;color:var(--dark-gray);margin-bottom:0.3rem}
+        .control-group input[type="range"]{width:100%;cursor:pointer;accent-color:var(--steel)}
+        .control-group input[type="number"],.control-group select{width:100%;padding:0.5rem;border:2px solid var(--light-gray);border-radius:6px;font-size:0.95rem;font-family:var(--font-primary)}
+        .control-group input[type="number"]:focus,.control-group select:focus{border-color:var(--steel)}
+        .range-value{text-align:right;font-weight:bold;color:var(--primary-blue);font-family:var(--font-mono);font-size:0.9rem}
+        canvas{display:block;margin:1rem auto;border:2px solid var(--light-gray);border-radius:var(--radius);background:#1a1a2e;max-width:100%}
+        .calculate-btn,.sim-btn{display:inline-block;padding:0.7rem 1.8rem;background:linear-gradient(135deg,var(--steel),var(--primary-blue));color:var(--white);border:none;border-radius:6px;font-family:var(--font-display);font-size:1rem;cursor:pointer;transition:all var(--transition);margin:0.5rem 0.25rem}
+        .calculate-btn:hover,.sim-btn:hover{background:linear-gradient(135deg,var(--primary-blue),var(--navy));transform:translateY(-1px);box-shadow:0 4px 12px var(--shadow)}
+        .result-box{background:linear-gradient(135deg,var(--ice-blue),var(--white));border:2px solid var(--steel);border-radius:var(--radius);padding:1.5rem;margin-top:1rem;text-align:center}
+        .result-value{font-size:1.8rem;font-weight:bold;color:var(--primary-blue);font-family:var(--font-display)}
+        .result-label{font-size:0.9rem;color:var(--dark-gray);margin:0.3rem 0}
+        .result-explanation{font-size:0.9rem;color:var(--charcoal);margin-top:0.5rem}
+
+        .materials-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin:1rem 0}
+        .material-item{background:var(--off-white);padding:1rem;border-radius:var(--radius);border-left:4px solid var(--steel);font-size:0.95rem}
+        .material-item strong{color:var(--primary-blue)}
+        .step-number{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--steel);color:var(--white);border-radius:50%;font-weight:bold;font-family:var(--font-display);font-size:0.9rem;margin-right:0.5rem;flex-shrink:0}
+        .procedure-step{display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;margin-bottom:0.75rem;background:var(--off-white);border-radius:var(--radius)}
+        .procedure-step p{margin:0}
+        .checklist-item{display:flex;align-items:center;gap:0.5rem;padding:0.5rem;background:var(--off-white);border-radius:6px;margin-bottom:0.5rem}
+        .checklist-item input[type="checkbox"]{width:18px;height:18px;accent-color:var(--steel)}
+
+        .quiz-question{margin-bottom:2rem}
+        .quiz-question h4{font-family:var(--font-display);color:var(--charcoal);margin-bottom:0.75rem}
+        .quiz-options{display:grid;gap:0.5rem}
+        .quiz-option{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--off-white);border:2px solid var(--light-gray);border-radius:var(--radius);cursor:pointer;transition:all var(--transition)}
+        .quiz-option:hover{border-color:var(--steel);background:var(--ice-blue)}
+        .quiz-option.correct{border-color:var(--green);background:var(--pale-green)}
+        .quiz-option.incorrect{border-color:var(--red);background:#FFE0E0}
+        .quiz-feedback{display:none;padding:0.75rem 1rem;border-radius:var(--radius);margin-top:0.5rem;font-weight:bold}
+        .quiz-feedback.show{display:block}
+        .quiz-feedback.correct{background:var(--pale-green);color:var(--dark-green)}
+        .quiz-feedback.incorrect{background:#FFE0E0;color:var(--dark-red)}
+        .quiz-score{text-align:center;padding:2rem;background:linear-gradient(135deg,var(--ice-blue),var(--white));border-radius:var(--radius);border:2px solid var(--steel)}
+        .quiz-score .score-display{font-size:3rem;font-weight:bold;color:var(--primary-blue);font-family:var(--font-display)}
+
+        footer{background:linear-gradient(135deg,var(--charcoal),var(--primary-blue));color:var(--white);text-align:center;padding:2rem;margin-top:3rem}
+        footer a{color:var(--pale-blue)}
+
+        @media(max-width:900px){.two-column,.three-column{grid-template-columns:1fr}.hero h1{font-size:1.8rem}.tabs{flex-wrap:wrap}.tab-btn{min-width:100px;font-size:0.85rem;padding:0.75rem 0.5rem}.card-body{padding:1.25rem}.data-table{font-size:0.8rem}.data-table th,.data-table td{padding:0.4rem 0.5rem}}
+        @media(max-width:600px){main{padding:1rem 0.75rem 3rem}.hero{padding:2rem 1.25rem}.hero h1{font-size:1.5rem}.tab-content{padding:1.25rem}.process-flow{flex-direction:column}.process-arrow{transform:rotate(90deg)}}
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header><div class="header-content"><div class="logo-section"><div class="logo-icon" aria-hidden="true">NT</div><div><div class="site-title">Introduction to Nanotechnology</div><div class="site-subtitle">An Interactive Online Textbook</div></div></div><nav aria-label="Module navigation"><a href="index.html">&#127968; Home</a> <a href="module6_plasma_technology.html">&#9664; Mod 6</a> <a href="module8_photolithography.html">Mod 8 &#9654;</a> <a href="course-outline.html">&#128218; Outline</a></nav></div></header>
+
+<main id="main-content">
+<section class="hero" aria-label="Module introduction">
+    <h1><span class="module-num">Module 7:</span> Thin Film Deposition</h1>
+    <p>From thermal evaporation to atomic layer deposition, explore how nanometer-thick films are built atom by atom onto substrates, enabling every modern semiconductor device, solar cell, and optical coating.</p>
+    <div class="hero-meta"><span>&#9201; 3&ndash;4 Hours</span><span>&#128218; Lecture + Lab</span><span>&#127891; Core Fabrication</span></div>
+</section>
+
+<div class="progress-container" role="region" aria-label="Module progress">
+    <div class="progress-label"><span>Module Progress</span><span id="progressPercent">0%</span></div>
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<div class="objectives" role="region" aria-label="Learning objectives">
+    <h3>&#127919; Learning Objectives</h3>
+    <p>After completing this module, students will be able to:</p>
+    <ul>
+        <li>Define thin film deposition and explain its critical role in semiconductor manufacturing</li>
+        <li>Classify techniques into <strong>Physical Vapor Deposition (PVD)</strong> and <strong>Chemical Vapor Deposition (CVD)</strong></li>
+        <li>Describe thermal evaporation principles: vapor pressure, mean free path, and line-of-sight transport</li>
+        <li>Identify key system components: crucible, shutter, shadow mask, and crystal thickness monitor</li>
+        <li>Apply the <strong>Sauerbrey equation</strong> to explain quartz crystal microbalance operation</li>
+        <li>Calculate required vacuum pressures using the mean free path equation</li>
+        <li>Explain nucleation modes: Volmer&ndash;Weber, Frank&ndash;van der Merwe, and Stranski&ndash;Krastanov</li>
+        <li>Compare sputtering, CVD, ALD, and MBE with thermal evaporation</li>
+        <li>Describe how <strong>ALD</strong> achieves angstrom-level control through self-limiting reactions</li>
+        <li>Perform a mock thermal evaporation experiment and analyze results</li>
+    </ul>
+</div>
+
+<div class="tabs" role="tablist" aria-label="Module content tabs">
+    <button class="tab-btn active" data-tab="lecture" role="tab" aria-selected="true" aria-controls="lecture" id="tab-lecture">&#128214; Lecture</button>
+    <button class="tab-btn" data-tab="simulation" role="tab" aria-selected="false" aria-controls="simulation" id="tab-simulation">&#128187; Simulations</button>
+    <button class="tab-btn" data-tab="experiment" role="tab" aria-selected="false" aria-controls="experiment" id="tab-experiment">&#128300; Experiment</button>
+    <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false" aria-controls="quiz" id="tab-quiz">&#9989; Quiz</button>
+</div>
+
+<!-- ====================== LECTURE TAB ====================== -->
+<div id="lecture" class="tab-content active" role="tabpanel" aria-labelledby="tab-lecture">
+
+<div class="card"><div class="card-header">Part 1: What Is a Thin Film?</div><div class="card-body">
+<p>A <span class="tooltip-term" tabindex="0">thin film<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">A layer of material ranging from a single atomic layer (~0.3 nm) to several micrometers thick, deposited onto a substrate. Thin films fundamentally alter the electrical, optical, mechanical, and chemical properties of surfaces.</span></span> is a layer of material with thickness ranging from a fraction of a nanometer to several micrometers, deposited onto a substrate. In nanotechnology and semiconductor manufacturing, this typically means layers from a single atomic monolayer (~0.3 nm) to about 1&ndash;2 &micro;m. These films are often invisible to the naked eye, yet they fundamentally determine the performance of every electronic device, solar cell, and optical component in modern technology.</p>
+
+<p>Consider the screen you are reading right now. It relies on thin films of indium tin oxide (ITO) for transparent conductivity, thin film transistors for pixel switching, and anti-reflective coatings precisely tuned to wavelengths of light. Your smartphone alone may contain more than 30 distinct thin film layers deposited during chip fabrication. The global thin film deposition equipment market was valued at over $26 billion in 2024 and is projected to exceed $70 billion by 2032, driven by demand for advanced electronics, renewable energy, and automotive applications.</p>
+
+<div class="key-concept"><h4>&#128273; Why Thin Films Matter</h4>
+<p>Bulk materials cannot provide the precise properties needed at the nanoscale. By controlling film thickness at the atomic level, engineers can tune electrical conductivity (metal interconnects), create insulating barriers (gate dielectrics), build reflective or anti-reflective coatings (optical filters), and protect surfaces from corrosion or wear. A single modern microprocessor requires <strong>over 30 distinct deposition steps</strong> during fabrication.</p></div>
+
+<h3 class="subsection-header">Thin Films in Everyday Technology</h3>
+<div class="three-column">
+    <div class="column-box"><h4>&#128187; Electronics</h4><ul><li>Metal interconnects (Cu, Al)</li><li>Gate dielectrics (HfO&#8322;, SiO&#8322;)</li><li>Barrier/adhesion layers (TiN, TaN)</li><li>Resistive memory elements</li></ul></div>
+    <div class="column-box" style="border-top-color:var(--gold);"><h4 style="color:var(--dark-gold);">&#9728; Energy</h4><ul><li>Solar cell absorbers (CdTe, CIGS)</li><li>Anti-reflective coatings</li><li>Transparent conductors (ITO)</li><li>Li-ion battery electrode coatings</li></ul></div>
+    <div class="column-box" style="border-top-color:var(--teal);"><h4 style="color:var(--dark-teal);">&#128300; Optics &amp; Sensors</h4><ul><li>Anti-reflective lens coatings</li><li>Dichroic mirrors and filters</li><li>MEMS sensor layers</li><li>Biomedical implant coatings</li></ul></div>
+</div>
+
+<h3 class="subsection-header">Overview of Deposition Methods</h3>
+<p>Thin film deposition methods are classified into two families:</p>
+<div class="two-column">
+    <div class="column-box"><h4>Physical Vapor Deposition (PVD)</h4><p>Material is physically vaporized from a source and transported through vacuum to condense on the substrate. No chemical reactions occur.</p><ul><li>Thermal evaporation</li><li>E-beam evaporation</li><li>Sputtering (DC/RF magnetron)</li><li>Pulsed laser deposition (PLD)</li><li>Molecular beam epitaxy (MBE)</li></ul></div>
+    <div class="column-box" style="border-top-color:var(--copper);"><h4 style="color:#993300;">Chemical Vapor Deposition (CVD)</h4><p>Gaseous precursors undergo chemical reactions at/near the substrate surface to form a solid film.</p><ul><li>Thermal CVD (LPCVD, APCVD)</li><li>Plasma-enhanced CVD (PECVD)</li><li>Metal-organic CVD (MOCVD)</li><li>Atomic layer deposition (ALD)</li><li>Chemical vapor infiltration (CVI)</li></ul></div>
+</div>
+<p>This module focuses primarily on <strong>PVD via thermal evaporation</strong>&mdash;the simplest technique for depositing metal thin films&mdash;while also covering sputtering, CVD, and ALD for a complete picture.</p>
+</div></div>
+
+<div class="card"><div class="card-header teal">Part 2: Thermal Evaporation &mdash; Principles</div><div class="card-body">
+<h3 class="subsection-header">The Fundamental Principle</h3>
+<p><span class="tooltip-term" tabindex="0">Thermal evaporation<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">A PVD technique where source material is heated resistively until it vaporizes. Vapor atoms travel in straight lines through vacuum and condense on a cooler substrate. One of the simplest deposition methods for metals like Al, Au, Ag, and Cu.</span></span> works by heating a source material to produce a significant vapor pressure. In vacuum, the vaporized atoms travel in straight lines (<strong>line-of-sight transport</strong>) until they strike the cooler substrate surface, lose kinetic energy, and adhere to form a solid thin film.</p>
+
+<div class="process-flow">
+    <div class="process-step">Load Source</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Evacuate Chamber</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Heat Source</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Open Shutter</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Deposit Film</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Close &amp; Vent</div>
+</div>
+
+<div class="key-concept"><h4>&#128273; Energy Transfer in Four Steps</h4>
+<ol style="margin-left:1.5rem;">
+    <li><strong>Energy input:</strong> Resistive heating (I&#178;R) raises the source container (boat or crucible) to 1000&ndash;2000&deg;C.</li>
+    <li><strong>Phase change:</strong> Source transitions solid&#8594;liquid&#8594;vapor. Some materials (Cr) <span class="tooltip-term" tabindex="0">sublime<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">Direct phase transition from solid to gas without passing through the liquid phase. Common for materials like chromium.</span></span> directly.</li>
+    <li><strong>Directional transport:</strong> In high vacuum (&lt;10&#8315;&#8308; Torr), the mean free path exceeds the chamber dimensions, so atoms travel collision-free.</li>
+    <li><strong>Condensation:</strong> Atoms arriving at the cooler substrate lose energy, adsorb, and nucleate into a thin film.</li>
+</ol></div>
+
+<h3 class="subsection-header">Vapor Pressure and Temperature</h3>
+<p>The evaporation rate depends on <span class="tooltip-term" tabindex="0">vapor pressure<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">The pressure exerted by vapor in equilibrium with its condensed phase. The source must reach a temperature where vapor pressure &#8805;1 Pa to produce a useful deposition rate.</span></span> at a given temperature, described by the Clausius&ndash;Clapeyron equation:</p>
+<div style="text-align:center;font-family:var(--font-mono);font-size:1.1rem;padding:1rem;background:var(--off-white);border-radius:var(--radius);margin:1rem 0;">ln(P) = &minus;&#916;H<sub>vap</sub> / (R &middot; T) + C</div>
+<p>Vapor pressure increases <em>exponentially</em> with temperature. Most metals need temperatures where their vapor pressure exceeds ~1 Pa for useful deposition rates.</p>
+
+<table class="data-table" aria-label="Evaporation temperatures for common materials">
+<thead><tr><th>Material</th><th>Melting Point (&deg;C)</th><th>Temp. for 1 Pa (&deg;C)</th><th>Source Type</th></tr></thead>
+<tbody>
+<tr><td>Aluminum (Al)</td><td>660</td><td>~1,010</td><td>Tungsten boat</td></tr>
+<tr><td>Gold (Au)</td><td>1,064</td><td>~1,132</td><td>W basket / Mo boat</td></tr>
+<tr><td>Silver (Ag)</td><td>962</td><td>~861</td><td>Tungsten boat</td></tr>
+<tr><td>Copper (Cu)</td><td>1,085</td><td>~1,017</td><td>Tungsten basket</td></tr>
+<tr><td>Chromium (Cr)</td><td>1,907</td><td>~1,157</td><td>W basket (sublimes)</td></tr>
+<tr><td>Titanium (Ti)</td><td>1,668</td><td>~1,453</td><td>E-beam only</td></tr>
+<tr><td>Tungsten (W)</td><td>3,422</td><td>~2,757</td><td>Cannot be thermally evaporated</td></tr>
+</tbody></table>
+
+<div class="did-you-know"><h4>&#128161; Did You Know?</h4>
+<p>Tungsten has the highest melting point of any element (3,422&deg;C), which is why it is used to <em>make</em> evaporation boats&mdash;but cannot itself be deposited by thermal evaporation. To deposit W films, use sputtering, e-beam evaporation, or CVD.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header copper">Part 3: System Components</div><div class="card-body">
+<p>A complete thermal evaporation system has several essential components working together inside a vacuum chamber.</p>
+
+<h3 class="subsection-header">Vacuum Chamber &amp; Pumping</h3>
+<p>The chamber (stainless steel bell jar or box) is evacuated to 10&#8315;&#8309;&ndash;10&#8315;&#8311; Torr using a mechanical roughing pump plus a high-vacuum pump (turbomolecular or diffusion). The vacuum provides a long mean free path for straight-line transport and prevents oxidation of the deposited film.</p>
+
+<h3 class="subsection-header">Evaporation Sources</h3>
+<div class="two-column">
+    <div class="column-box"><h4>&#9889; Resistive Sources</h4><ul><li><strong>Tungsten boats:</strong> Flat dimpled boats for Al, Au, Ag</li><li><strong>Wire baskets:</strong> Coiled W wire cradling pellets</li><li><strong>Spiral filaments:</strong> For wetting materials</li><li><strong>Crucibles:</strong> Ceramic (alumina, BN) for reactive materials</li></ul><p style="margin-top:0.5rem;">Source material is ultra-high purity (99.99%+, &ldquo;4N&rdquo;) pellets, wire, or slugs.</p></div>
+    <div class="column-box" style="border-top-color:var(--purple);"><h4 style="color:var(--purple);">&#128171; E-Beam Sources</h4><ul><li>Focused e-beam (5&ndash;10 kV) heats only the material</li><li>Achieves &gt;3,500&deg;C temperatures</li><li>Water-cooled Cu hearth prevents contamination</li><li>Required for refractory metals (Ti, W, Mo, Pt)</li><li>Multi-pocket hearths for sequential deposition</li></ul></div>
+</div>
+
+<h3 class="subsection-header">The Shutter</h3>
+<p>A <span class="tooltip-term" tabindex="0">shutter<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">A movable metal plate between source and substrate. It blocks vapor during initial heating when contaminants burn off, and is opened once a stable evaporation rate is confirmed by the CTM.</span></span> is a movable metal plate between source and substrate. During &ldquo;pre-melt/outgassing,&rdquo; surface oxides and contaminants burn off. The shutter protects the substrate, opening only when the CTM confirms stable evaporation.</p>
+
+<h3 class="subsection-header">Shadow Masks</h3>
+<p>A <span class="tooltip-term" tabindex="0">shadow mask<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">A thin metal sheet with precisely cut openings (like a stencil). Because evaporated atoms travel in straight lines, only exposed areas receive the film&mdash;enabling pattern deposition without photolithography.</span></span> functions as a stencil. Because evaporated atoms travel in straight lines, only substrate areas exposed through the mask openings receive the deposited film. Masks can sit atop the substrate or be secured with Kapton tape and hung inverted in the aperture.</p>
+
+<h3 class="subsection-header">Crystal Thickness Monitor (CTM)</h3>
+<p>The CTM / <span class="tooltip-term" tabindex="0">quartz crystal microbalance<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">Uses a quartz crystal resonating at ~6 MHz. As material deposits on it, the added mass decreases the frequency. The Sauerbrey equation converts this frequency shift to a thickness reading.</span></span> (QCM) monitors film thickness in real time:</p>
+
+<div class="key-concept"><h4>&#128273; The Sauerbrey Equation</h4>
+<p>A quartz crystal resonates at ~<strong>6 MHz</strong>. As mass deposits on its surface, the resonant frequency decreases proportionally:</p>
+<div style="text-align:center;font-family:var(--font-mono);font-size:1.05rem;padding:0.75rem;margin:0.5rem 0;">&#916;f = &minus;(2f&#8320;&#178;) / (A&middot;&#961;<sub>q</sub>&middot;&mu;<sub>q</sub>)<sup>&#189;</sup> &middot; &#916;m</div>
+<p>Because the CTM is mounted near (but not at) the substrate position, a <strong>tooling factor</strong> calibration is required. Post-deposition verification with profilometry or ellipsometry is always recommended.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header">Part 4: Mean Free Path &amp; Vacuum Requirements</div><div class="card-body">
+<p>The <span class="tooltip-term" tabindex="0">mean free path<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">Average distance a molecule travels between collisions. At 10&#8315;&#8310; Torr it is ~50 m, far exceeding chamber dimensions, ensuring collision-free transport.</span></span> (&lambda;) must be much larger than the source-to-substrate distance (typically 20&ndash;60 cm).</p>
+
+<div style="text-align:center;font-family:var(--font-mono);font-size:1.1rem;padding:1rem;background:var(--off-white);border-radius:var(--radius);margin:1rem 0;">&lambda; = k<sub>B</sub>T / (&radic;2 &middot; &pi; &middot; d&#178; &middot; P)</div>
+
+<table class="data-table" aria-label="Mean free path at different pressures">
+<thead><tr><th>Pressure (Torr)</th><th>Regime</th><th>Mean Free Path</th><th>OK for Evaporation?</th></tr></thead>
+<tbody>
+<tr><td>760</td><td>Atmosphere</td><td>~66 nm</td><td>&#10060; No</td></tr>
+<tr><td>1</td><td>Low vacuum</td><td>~50 &micro;m</td><td>&#10060; No</td></tr>
+<tr><td>10&#8315;&#179;</td><td>Medium vacuum</td><td>~5 cm</td><td>&#9888; Marginal</td></tr>
+<tr><td>10&#8315;&#8308;</td><td>High vacuum</td><td>~50 cm</td><td>&#9989; Minimum</td></tr>
+<tr><td>10&#8315;&#8310;</td><td>High vacuum</td><td>~50 m</td><td>&#9989; Ideal</td></tr>
+<tr><td>10&#8315;&#8313;</td><td>Ultra-high vacuum</td><td>~50 km</td><td>&#9989; Research</td></tr>
+</tbody></table>
+
+<div class="did-you-know"><h4>&#128161; Did You Know?</h4>
+<p>At ultra-high vacuum (10&#8315;&#8313; Torr), the MFP is ~50 km. At this pressure, a monolayer of residual gas takes ~3 hours to form on a surface&mdash;critical for MBE, which deposits perfect crystalline layers.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header purple">Part 5: Nucleation &amp; Growth Modes</div><div class="card-body">
+<p>Film formation proceeds through stages: adsorption, surface diffusion, nucleation, island growth, coalescence, and continuous film.</p>
+
+<h3 class="subsection-header">Adatom Behavior</h3>
+<p>An <span class="tooltip-term" tabindex="0">adatom<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">An atom adsorbed on a surface that can migrate (diffuse) across it seeking favorable bonding sites such as step edges or other adatoms, before becoming permanently incorporated.</span></span> arriving at the substrate retains some kinetic energy and can migrate across the surface. The diffusion distance depends on substrate temperature, activation energy, and binding sites.</p>
+
+<h3 class="subsection-header">Three Classical Growth Modes</h3>
+<div class="three-column">
+    <div class="column-box"><h4>&#127959; Volmer&ndash;Weber</h4><p>Adatom&ndash;adatom bonding &gt; adatom&ndash;substrate bonding. 3D islands form immediately, later coalescing.</p><p><strong>Example:</strong> Au on SiO&#8322;, Ag on glass.</p></div>
+    <div class="column-box" style="border-top-color:var(--green);"><h4 style="color:var(--dark-green);">&#128207; Frank&ndash;van der Merwe</h4><p>Adatom&ndash;substrate bonding &gt; adatom&ndash;adatom bonding. Growth proceeds one complete monolayer at a time.</p><p><strong>Example:</strong> GaAs on GaAs (epitaxial).</p></div>
+    <div class="column-box" style="border-top-color:var(--gold);"><h4 style="color:var(--dark-gold);">&#128200; Stranski&ndash;Krastanov</h4><p>Starts layer-by-layer, then switches to islands after 1&ndash;2 monolayers due to lattice strain.</p><p><strong>Example:</strong> InAs on GaAs (produces quantum dots!).</p></div>
+</div>
+
+<div class="industry-note"><h4>&#127981; Industry Connection: Quantum Dots</h4>
+<p>Stranski&ndash;Krastanov growth is exploited to fabricate <strong>self-assembled quantum dots</strong>. InAs on GaAs (7% lattice mismatch) produces nanoscale islands used in quantum dot lasers, single-photon emitters, and quantum computing.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header">Part 6: Sputtering &mdash; Plasma-Based PVD</div><div class="card-body">
+<p><span class="tooltip-term" tabindex="0">Sputtering<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">A PVD process using plasma to bombard a solid target with energetic ions (typically Ar+), knocking atoms from the target onto the substrate. Can deposit alloys, compounds, and high-melting-point materials.</span></span> uses a plasma to knock atoms out of a solid target:</p>
+
+<div class="process-flow">
+    <div class="process-step">Fill with Ar</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Ignite Plasma</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Ar&#8314; Hits Target</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Atoms Ejected</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step">Deposit on Substrate</div>
+</div>
+
+<p>A 300&ndash;700 V potential ionizes argon gas. Ar&#8314; ions accelerate toward the negatively charged target, ejecting atoms via momentum transfer.</p>
+
+<h3 class="subsection-header">DC vs. RF Sputtering</h3>
+<div class="two-column">
+    <div class="column-box"><h4>DC Sputtering</h4><p>Constant voltage. Works only for <strong>conductive targets</strong> (metals). Simple, cost-effective.</p></div>
+    <div class="column-box" style="border-top-color:var(--purple);"><h4 style="color:var(--purple);">RF Sputtering (13.56 MHz)</h4><p>Alternating field neutralizes charge buildup. Can sputter <strong>insulators</strong> (SiO&#8322;, Al&#8322;O&#8323;). Essential for dielectrics.</p></div>
+</div>
+
+<h3 class="subsection-header">Magnetron Sputtering</h3>
+<p><span class="tooltip-term" tabindex="0">Magnetrons<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">Magnets behind the target confine electrons near the surface, intensifying the plasma. This allows operation at lower pressures (1&ndash;10 mTorr) with higher rates.</span></span> behind the target confine electrons, intensifying the plasma for higher rates at lower pressures.</p>
+
+<h3 class="subsection-header">Sputtering vs. Evaporation</h3>
+<table class="data-table" aria-label="Sputtering vs evaporation comparison">
+<thead><tr><th>Parameter</th><th>Thermal Evaporation</th><th>Sputtering</th></tr></thead>
+<tbody>
+<tr><td><strong>Atom energy</strong></td><td>0.1&ndash;0.3 eV</td><td>5&ndash;100 eV</td></tr>
+<tr><td><strong>Adhesion</strong></td><td>Moderate</td><td>Excellent</td></tr>
+<tr><td><strong>Step coverage</strong></td><td>Poor (line-of-sight)</td><td>Good (isotropic)</td></tr>
+<tr><td><strong>Materials</strong></td><td>Low-melting metals</td><td>Almost any solid</td></tr>
+<tr><td><strong>Alloys</strong></td><td>Difficult</td><td>Preserves composition</td></tr>
+<tr><td><strong>Pressure</strong></td><td>&lt;10&#8315;&#8308; Torr</td><td>1&ndash;10 mTorr</td></tr>
+<tr><td><strong>Rate</strong></td><td>1&ndash;100 nm/s</td><td>0.1&ndash;10 nm/s</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="card-header teal">Part 7: Chemical Vapor Deposition (CVD)</div><div class="card-body">
+<p><span class="tooltip-term" tabindex="0">CVD<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">A deposition process where gaseous precursors react chemically at the substrate surface to form a solid thin film. Offers excellent step coverage and conformality for 3D structures.</span></span> relies on chemical reactions between gaseous precursors at the substrate surface.</p>
+
+<div class="key-concept"><h4>&#128273; The CVD Process</h4>
+<ol style="margin-left:1.5rem;">
+    <li><strong>Transport:</strong> Gaseous reactants carried in by N&#8322; or Ar</li>
+    <li><strong>Diffusion:</strong> Through the boundary layer above the heated substrate</li>
+    <li><strong>Adsorption:</strong> Precursors adsorb onto the surface</li>
+    <li><strong>Reaction:</strong> Chemical reaction forms the film + volatile byproducts</li>
+    <li><strong>Desorption:</strong> Byproducts leave and are pumped away</li>
+</ol></div>
+
+<h3 class="subsection-header">CVD Variants</h3>
+<div class="two-column">
+    <div class="column-box" style="border-top-color:var(--copper);"><h4 style="color:var(--copper);">Thermal CVD</h4><ul><li><strong>APCVD</strong> &ndash; Atmospheric pressure; high rates, poor uniformity</li><li><strong>LPCVD</strong> &ndash; Low pressure (0.1&ndash;1 Torr); excellent uniformity, 600&ndash;900&deg;C</li><li><strong>MOCVD</strong> &ndash; Metal-organic precursors; essential for III-V semiconductors</li></ul></div>
+    <div class="column-box" style="border-top-color:var(--teal);"><h4 style="color:var(--dark-teal);">Plasma-Enhanced CVD (PECVD)</h4><ul><li>Plasma activation allows <strong>200&ndash;400&deg;C</strong> operation</li><li>Critical when substrates can't tolerate high temps</li><li>Workhorse for SiO&#8322; and Si&#8323;N&#8324; passivation</li><li>Higher rates than thermal CVD at same temperature</li></ul></div>
+</div>
+
+<table class="data-table" aria-label="Common CVD reactions">
+<thead><tr><th>Film</th><th>Precursors</th><th>Temp.</th><th>Application</th></tr></thead>
+<tbody>
+<tr><td>SiO&#8322;</td><td>SiH&#8324; + O&#8322;</td><td>300&ndash;500&deg;C</td><td>Gate oxide, passivation</td></tr>
+<tr><td>Si&#8323;N&#8324;</td><td>SiH&#8324; + NH&#8323;</td><td>700&ndash;900&deg;C</td><td>Barrier, hard mask</td></tr>
+<tr><td>Polysilicon</td><td>SiH&#8324;</td><td>580&ndash;650&deg;C</td><td>Gate electrode</td></tr>
+<tr><td>Tungsten</td><td>WF&#8326; + H&#8322;</td><td>300&ndash;500&deg;C</td><td>Contact fill, via plug</td></tr>
+<tr><td>GaN</td><td>TMGa + NH&#8323;</td><td>1,000&ndash;1,100&deg;C</td><td>LED, power device</td></tr>
+</tbody></table>
+
+<div class="safety-note"><h4>&#9888;&#65039; CVD Precursor Safety</h4>
+<p>Many CVD precursors are <strong>highly toxic, pyrophoric, or flammable</strong>. Silane (SiH&#8324;) spontaneously ignites in air. WF&#8326; is extremely toxic. Proper gas handling, ventilation, and emergency protocols are essential.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header gold">Part 8: Atomic Layer Deposition (ALD)</div><div class="card-body">
+<p><span class="tooltip-term" tabindex="0">Atomic Layer Deposition<span class="tooltip-content" style="left:0;top:calc(100% + 8px);">A thin-film technique using sequential, self-limiting surface reactions. Two precursors alternate with purge steps, producing exactly one sub-monolayer per cycle for angstrom-level thickness control and perfect conformality.</span></span> (ALD) achieves unprecedented thickness control by splitting deposition into individual, self-limiting surface reactions. Developed in Finland in the 1970s by Tuomo Suntola, ALD became essential at Intel&rsquo;s 45 nm node for high-k gate dielectrics and has been critical at every node since.</p>
+
+<h3 class="subsection-header">The ALD Cycle</h3>
+<div class="process-flow">
+    <div class="process-step" style="background:linear-gradient(135deg,#CC6633,#8B4513);">1: Precursor A</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step" style="background:linear-gradient(135deg,var(--silver),var(--dark-gray));">2: Purge</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step" style="background:linear-gradient(135deg,var(--teal),var(--dark-teal));">3: Precursor B</div><div class="process-arrow" aria-hidden="true">&#8594;</div>
+    <div class="process-step" style="background:linear-gradient(135deg,var(--silver),var(--dark-gray));">4: Purge</div>
+</div>
+
+<div class="key-concept"><h4>&#128273; Self-Limiting Reactions</h4>
+<p>Each precursor reaction <strong>stops automatically</strong> when all surface sites are consumed. Film thickness depends <em>only</em> on the number of cycles, not dose or exposure time.</p>
+<p>Example &mdash; Al&#8322;O&#8323; from TMA + H&#8322;O:</p>
+<ol style="margin-left:1.5rem;margin-top:0.5rem;">
+    <li>TMA adsorbs on &ndash;OH groups, releasing CH&#8324;</li>
+    <li>Purge: remove excess TMA and CH&#8324;</li>
+    <li>H&#8322;O reacts with &ndash;Al(CH&#8323;)&#8322; groups, regenerating &ndash;OH</li>
+    <li>Purge: remove excess H&#8322;O and CH&#8324;</li>
+</ol>
+<p style="margin-top:0.5rem;">Each cycle deposits ~<strong>0.1&ndash;0.12 nm</strong> of Al&#8322;O&#8323;. A 10 nm film requires ~90&ndash;100 cycles.</p></div>
+
+<h3 class="subsection-header">Advantages &amp; Limitations</h3>
+<div class="two-column">
+    <div class="column-box" style="border-top-color:var(--teal);"><h4 style="color:var(--dark-teal);">&#9989; Strengths</h4><ul><li>Angstrom-level thickness control</li><li>Perfect conformality on 3D structures</li><li>Pinhole-free, dense films</li><li>Low temperature (100&ndash;350&deg;C)</li><li>Oxides, nitrides, metals</li></ul></div>
+    <div class="column-box" style="border-top-color:var(--red);"><h4 style="color:var(--dark-red);">&#10060; Limitations</h4><ul><li>Very slow (0.1&ndash;0.3 nm/cycle)</li><li>High equipment cost</li><li>Impractical for films &gt;100 nm</li><li>Limited precursor chemistry</li><li>Nucleation challenges on some surfaces</li></ul></div>
+</div>
+
+<div class="industry-note"><h4>&#127981; ALD in Advanced Semiconductor Nodes</h4>
+<p>At sub-10 nm nodes, ALD deposits high-k dielectrics (HfO&#8322;), metal barriers (TiN, TaN), and spacer dielectrics for multi-patterning. In 2024, Forge Nano introduced TEPHRA with 10x throughput, and Lam Research launched pulsed laser deposition tools for next-gen MEMS. ALD is among the fastest-growing equipment segments in semiconductor manufacturing.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header">Part 9: Comprehensive Comparison</div><div class="card-body">
+<table class="data-table" aria-label="Complete deposition method comparison">
+<thead><tr><th>Parameter</th><th>Thermal Evap.</th><th>Sputtering</th><th>CVD</th><th>ALD</th><th>MBE</th></tr></thead>
+<tbody>
+<tr><td><strong>Rate</strong></td><td>1&ndash;100 nm/s</td><td>0.1&ndash;10 nm/s</td><td>1&ndash;100 nm/min</td><td>0.1&ndash;0.3 nm/cycle</td><td>0.01&ndash;1 nm/s</td></tr>
+<tr><td><strong>Pressure</strong></td><td>&lt;10&#8315;&#8308; Torr</td><td>1&ndash;10 mTorr</td><td>0.1&ndash;760 Torr</td><td>0.1&ndash;1 Torr</td><td>&lt;10&#8315;&#8313; Torr</td></tr>
+<tr><td><strong>Substrate T</strong></td><td>RT&ndash;200&deg;C</td><td>RT&ndash;500&deg;C</td><td>200&ndash;1,100&deg;C</td><td>100&ndash;350&deg;C</td><td>400&ndash;800&deg;C</td></tr>
+<tr><td><strong>Conformality</strong></td><td>Poor</td><td>Moderate</td><td>Good&ndash;Excellent</td><td>Perfect</td><td>N/A (planar)</td></tr>
+<tr><td><strong>Thickness ctl.</strong></td><td>&plusmn;5&ndash;10%</td><td>&plusmn;2&ndash;5%</td><td>&plusmn;2&ndash;5%</td><td>&plusmn;0.1 nm</td><td>Monolayer</td></tr>
+<tr><td><strong>Cost</strong></td><td>Low</td><td>Moderate</td><td>Mod&ndash;High</td><td>High</td><td>Very High</td></tr>
+</tbody></table>
+</div></div>
+
+</div><!-- END LECTURE -->
+
+<!-- ====================== SIMULATIONS TAB ====================== -->
+<div id="simulation" class="tab-content" role="tabpanel" aria-labelledby="tab-simulation">
+
+<div class="card"><div class="card-header teal">Interactive Thermal Evaporation Chamber</div><div class="card-body">
+<p>Adjust heater power and vacuum pressure to observe atom transport. See how low vacuum causes scattering while high vacuum enables straight-line deposition.</p>
+<div class="sim-container">
+    <div class="sim-controls">
+        <div class="control-group"><label for="simPower">Heater Power (%)</label><input type="range" id="simPower" min="0" max="100" value="0"><div class="range-value" id="simPowerVal">0%</div></div>
+        <div class="control-group"><label for="simPressure">Chamber Pressure</label><select id="simPressure"><option value="760">760 Torr (Atmosphere)</option><option value="1">1 Torr (Low Vacuum)</option><option value="0.001">10&#8315;&#179; Torr (Medium)</option><option value="0.000001" selected>10&#8315;&#8310; Torr (High Vacuum)</option></select></div>
+        <div class="control-group"><label for="simShutter">Shutter</label><select id="simShutter"><option value="closed">&#128308; Closed</option><option value="open">&#128994; Open</option></select></div>
+    </div>
+    <canvas id="evapCanvas" width="700" height="420" aria-label="Evaporation chamber simulation"></canvas>
+    <div id="simStatus" style="text-align:center;font-family:var(--font-display);margin-top:0.5rem;color:var(--dark-gray);font-size:0.9rem;">Adjust heater power and open shutter to begin deposition.</div>
+</div>
+</div></div>
+
+<div class="card"><div class="card-header">Mean Free Path Calculator</div><div class="card-body">
+<p>Calculate the mean free path to understand vacuum requirements for evaporation.</p>
+<div class="sim-container">
+    <div class="sim-controls">
+        <div class="control-group"><label for="mfpPressure">Pressure (Torr)</label><input type="number" id="mfpPressure" value="0.000001" step="any" min="0.0000000001" max="760"></div>
+        <div class="control-group"><label for="mfpTemp">Temperature (K)</label><input type="number" id="mfpTemp" value="300" step="10" min="100" max="2000"></div>
+        <div class="control-group"><label for="mfpDist">Source-to-Substrate (cm)</label><input type="number" id="mfpDist" value="30" step="5" min="5" max="100"></div>
+    </div>
+    <div style="text-align:center;"><button class="calculate-btn" onclick="calculateMFP()">Calculate</button></div>
+    <div class="result-box" id="mfpResult" style="display:none;"><div class="result-value" id="mfpValue"></div><div class="result-label" id="mfpLabel"></div><div class="result-explanation" id="mfpExplanation"></div></div>
+</div>
+</div></div>
+
+<div class="card"><div class="card-header copper">QCM Film Thickness Calculator</div><div class="card-body">
+<p>See how deposited mass causes a quartz crystal&rsquo;s frequency to shift, and calculate the corresponding film thickness.</p>
+<div class="sim-container">
+    <div class="sim-controls">
+        <div class="control-group"><label for="qcmMaterial">Material</label><select id="qcmMaterial"><option value="2700">Aluminum (2,700 kg/m&#179;)</option><option value="19300" selected>Gold (19,300 kg/m&#179;)</option><option value="10490">Silver (10,490 kg/m&#179;)</option><option value="8960">Copper (8,960 kg/m&#179;)</option><option value="7190">Chromium (7,190 kg/m&#179;)</option></select></div>
+        <div class="control-group"><label for="qcmFreq">Frequency Shift (Hz)</label><input type="number" id="qcmFreq" value="500" step="50" min="1" max="100000"></div>
+    </div>
+    <div style="text-align:center;"><button class="calculate-btn" onclick="calculateQCM()">Calculate Thickness</button></div>
+    <div class="result-box" id="qcmResult" style="display:none;"><div class="result-value" id="qcmValue"></div><div class="result-label" id="qcmLabel"></div><div class="result-explanation" id="qcmExplanation"></div></div>
+</div>
+</div></div>
+
+<div class="card"><div class="card-header gold">ALD Cycle Simulator</div><div class="card-body">
+<p>Visualize how repeating self-limiting ALD cycles builds up film thickness one atomic layer at a time.</p>
+<div class="sim-container">
+    <div class="sim-controls">
+        <div class="control-group"><label for="aldCycles">Number of Cycles</label><input type="range" id="aldCycles" min="1" max="200" value="50"><div class="range-value" id="aldCyclesVal">50 cycles</div></div>
+        <div class="control-group"><label for="aldGPC">Growth per Cycle (nm)</label><input type="number" id="aldGPC" value="0.11" step="0.01" min="0.01" max="0.5"></div>
+    </div>
+    <canvas id="aldCanvas" width="700" height="300" aria-label="ALD cycle visualization"></canvas>
+    <div style="text-align:center;margin-top:0.5rem;"><button class="sim-btn" onclick="runALD()">&#9654; Run ALD</button> <button class="sim-btn" onclick="resetALD()" style="background:linear-gradient(135deg,var(--silver),var(--dark-gray));">&#8634; Reset</button></div>
+    <div class="result-box" id="aldResult" style="display:none;"><div class="result-value" id="aldValue"></div><div class="result-label" id="aldLabel"></div></div>
+</div>
+</div></div>
+
+</div><!-- END SIMULATIONS -->
+
+<!-- ====================== EXPERIMENT TAB ====================== -->
+<div id="experiment" class="tab-content" role="tabpanel" aria-labelledby="tab-experiment">
+
+<div class="card"><div class="card-header green">Mock Thermal Evaporation Experiment</div><div class="card-body">
+<p>Simulate thermal evaporation using low-cost materials. While we use wax instead of metals and a hot plate instead of a vacuum chamber, the underlying physics&mdash;heating, vaporization, line-of-sight transport, and condensation&mdash;are the same principles used in systems costing hundreds of thousands of dollars.</p>
+
+<div class="safety-note"><h4>&#9888;&#65039; Safety Disclosure</h4>
+<p>This lab involves a hot plate and heated materials. Work in a well-ventilated area. Wear <strong>safety glasses, heat-resistant gloves, and a lab coat</strong>. Never touch heated surfaces directly. Have a fire extinguisher accessible.</p></div>
+
+<h3 class="subsection-header">Materials</h3>
+<div class="materials-list">
+    <div class="material-item"><strong>Wax beads or crayons</strong> &ndash; Source material</div>
+    <div class="material-item"><strong>Hot plate</strong> &ndash; Heating source</div>
+    <div class="material-item"><strong>Aluminum foil</strong> &ndash; Boat/crucible</div>
+    <div class="material-item"><strong>Glass microscope slides</strong> &ndash; Substrates</div>
+    <div class="material-item"><strong>Cardboard/metal sheet</strong> &ndash; Shadow mask</div>
+    <div class="material-item"><strong>Index card</strong> &ndash; Shutter</div>
+    <div class="material-item"><strong>Ruler &amp; scissors</strong></div>
+    <div class="material-item"><strong>Tape (masking/Kapton)</strong></div>
+    <div class="material-item"><strong>Thermometer</strong></div>
+    <div class="material-item"><strong>Safety equipment</strong></div>
+</div>
+
+<h3 class="subsection-header">Procedure</h3>
+<div class="procedure-step"><span class="step-number">1</span><div><p><strong>Prepare the source:</strong> Create a small boat from aluminum foil (~3 cm &times; 3 cm). Place 2&ndash;3 wax beads in the boat. This simulates loading metal pellets into a crucible.</p></div></div>
+<div class="procedure-step"><span class="step-number">2</span><div><p><strong>Create shadow mask:</strong> Cut a pattern (initials or geometric shape) into cardboard. This will selectively block vapor, just like a metal shadow mask.</p></div></div>
+<div class="procedure-step"><span class="step-number">3</span><div><p><strong>Prepare substrates:</strong> Clean two glass slides with isopropyl alcohol. Tape the mask to one; leave the other uncovered for comparison.</p></div></div>
+<div class="procedure-step"><span class="step-number">4</span><div><p><strong>Set up geometry:</strong> Place the foil boat on the hot plate (OFF). Position slides 10&ndash;15 cm above the source using a ring stand. Record the distance.</p></div></div>
+<div class="procedure-step"><span class="step-number">5</span><div><p><strong>Use the shutter:</strong> Hold an index card between source and substrates. Turn hot plate to medium. Wait for wax to melt and vapor to appear (outgassing phase). Remove the card to begin &ldquo;deposition.&rdquo;</p></div></div>
+<div class="procedure-step"><span class="step-number">6</span><div><p><strong>Deposit:</strong> Allow vapor to condense on slides for 3&ndash;5 minutes. Replace shutter; turn off hot plate.</p></div></div>
+<div class="procedure-step"><span class="step-number">7</span><div><p><strong>Analyze:</strong> After cooling, remove the mask. Compare masked vs. unmasked areas. Note edge sharpness (line-of-sight indicator).</p></div></div>
+
+<h3 class="subsection-header">Lab Notebook Checklist</h3>
+<div>
+    <div class="checklist-item"><input type="checkbox" id="ck1"><label for="ck1">Recorded all materials and equipment</label></div>
+    <div class="checklist-item"><input type="checkbox" id="ck2"><label for="ck2">Measured source-to-substrate distance</label></div>
+    <div class="checklist-item"><input type="checkbox" id="ck3"><label for="ck3">Recorded hot plate temperature</label></div>
+    <div class="checklist-item"><input type="checkbox" id="ck4"><label for="ck4">Noted deposition time (shutter open to close)</label></div>
+    <div class="checklist-item"><input type="checkbox" id="ck5"><label for="ck5">Sketched/photographed the shadow mask</label></div>
+    <div class="checklist-item"><input type="checkbox" id="ck6"><label for="ck6">Sketched/photographed the deposited film</label></div>
+    <div class="checklist-item"><input type="checkbox" id="ck7"><label for="ck7">Compared masked vs. unmasked areas</label></div>
+    <div class="checklist-item"><input type="checkbox" id="ck8"><label for="ck8">Discussed connection to real evaporation</label></div>
+</div>
+
+<h3 class="subsection-header">Discussion Questions</h3>
+<ol style="margin-left:1.5rem;">
+    <li>How does this demonstrate line-of-sight deposition? Were shadow mask edges sharp or blurry?</li>
+    <li>Why must real evaporation be done in high vacuum? What would differ?</li>
+    <li>What role did the shutter play? Why is this important in real systems?</li>
+    <li>What parameters control film thickness? Relate to deposition rate control.</li>
+    <li>What is nucleation? Did you observe anything suggesting nucleation?</li>
+    <li>Research one real thermal evaporator. Report cost, capabilities, applications.</li>
+    <li>Why can&rsquo;t tungsten be thermally evaporated? What technique would you use?</li>
+    <li>Explain how a CTM measures thickness. What is the Sauerbrey equation?</li>
+    <li>Compare thermal evaporation with sputtering. When choose each?</li>
+    <li>How does ALD achieve angstrom-level control? Why &ldquo;self-limiting&rdquo;?</li>
+</ol>
+</div></div>
+
+</div><!-- END EXPERIMENT -->
+
+<!-- ====================== QUIZ TAB ====================== -->
+<div id="quiz" class="tab-content" role="tabpanel" aria-labelledby="tab-quiz">
+<div class="card"><div class="card-header green">Knowledge Check: Thin Film Deposition</div><div class="card-body">
+<p>Test your understanding. Select the best answer for each question.</p>
+
+<div class="quiz-question" data-correct="b"><h4>1. What family does thermal evaporation belong to?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q1" value="a"><span>Chemical Vapor Deposition (CVD)</span></label><label class="quiz-option"><input type="radio" name="q1" value="b"><span>Physical Vapor Deposition (PVD)</span></label><label class="quiz-option"><input type="radio" name="q1" value="c"><span>Atomic Layer Deposition (ALD)</span></label><label class="quiz-option"><input type="radio" name="q1" value="d"><span>Electrochemical Deposition</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="c"><h4>2. What is the approximate mean free path at 10&#8315;&#8310; Torr?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q2" value="a"><span>66 nanometers</span></label><label class="quiz-option"><input type="radio" name="q2" value="b"><span>5 centimeters</span></label><label class="quiz-option"><input type="radio" name="q2" value="c"><span>~50 meters</span></label><label class="quiz-option"><input type="radio" name="q2" value="d"><span>~50 kilometers</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="a"><h4>3. Why is a shutter used in thermal evaporation?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q3" value="a"><span>To block contaminants during initial heating before stable evaporation</span></label><label class="quiz-option"><input type="radio" name="q3" value="b"><span>To increase vacuum pressure</span></label><label class="quiz-option"><input type="radio" name="q3" value="c"><span>To heat the substrate</span></label><label class="quiz-option"><input type="radio" name="q3" value="d"><span>To generate sputtering plasma</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="d"><h4>4. How does a QCM measure film thickness?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q4" value="a"><span>Optical interference patterns</span></label><label class="quiz-option"><input type="radio" name="q4" value="b"><span>Electrical resistance change</span></label><label class="quiz-option"><input type="radio" name="q4" value="c"><span>Laser reflection</span></label><label class="quiz-option"><input type="radio" name="q4" value="d"><span>Frequency shift of a resonating quartz crystal (Sauerbrey equation)</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="b"><h4>5. Which growth mode produces 3D islands immediately?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q5" value="a"><span>Frank&ndash;van der Merwe (layer-by-layer)</span></label><label class="quiz-option"><input type="radio" name="q5" value="b"><span>Volmer&ndash;Weber (island growth)</span></label><label class="quiz-option"><input type="radio" name="q5" value="c"><span>Stranski&ndash;Krastanov (layer + island)</span></label><label class="quiz-option"><input type="radio" name="q5" value="d"><span>Epitaxial lateral overgrowth</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="c"><h4>6. What defines Atomic Layer Deposition (ALD)?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q6" value="a"><span>Physical bombardment with plasma ions</span></label><label class="quiz-option"><input type="radio" name="q6" value="b"><span>Heating source material until it evaporates</span></label><label class="quiz-option"><input type="radio" name="q6" value="c"><span>Sequential, self-limiting surface reactions for angstrom-level control</span></label><label class="quiz-option"><input type="radio" name="q6" value="d"><span>Atmospheric pressure operation</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="a"><h4>7. In sputtering, what ejects target atoms?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q7" value="a"><span>Momentum transfer from high-energy Ar&#8314; ions</span></label><label class="quiz-option"><input type="radio" name="q7" value="b"><span>Thermal energy from resistive heating</span></label><label class="quiz-option"><input type="radio" name="q7" value="c"><span>Chemical precursor reactions</span></label><label class="quiz-option"><input type="radio" name="q7" value="d"><span>Magnetic fields pulling atoms out</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="d"><h4>8. Why is RF sputtering needed for insulators?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q8" value="a"><span>RF increases deposition rate 10x</span></label><label class="quiz-option"><input type="radio" name="q8" value="b"><span>Only works above 1 GHz</span></label><label class="quiz-option"><input type="radio" name="q8" value="c"><span>Creates stronger magnetic field</span></label><label class="quiz-option"><input type="radio" name="q8" value="d"><span>Alternating field neutralizes charge buildup on insulating targets</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="b"><h4>9. Which technique offers BEST conformality for 3D structures?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q9" value="a"><span>Thermal evaporation</span></label><label class="quiz-option"><input type="radio" name="q9" value="b"><span>Atomic Layer Deposition (ALD)</span></label><label class="quiz-option"><input type="radio" name="q9" value="c"><span>DC magnetron sputtering</span></label><label class="quiz-option"><input type="radio" name="q9" value="d"><span>E-beam evaporation</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="c"><h4>10. Why is PECVD&rsquo;s lower temperature (300&deg;C vs. 900&deg;C LPCVD) advantageous?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q10" value="a"><span>Thicker, more uniform films</span></label><label class="quiz-option"><input type="radio" name="q10" value="b"><span>Higher film purity</span></label><label class="quiz-option"><input type="radio" name="q10" value="c"><span>Temperature-sensitive substrates survive without damage</span></label><label class="quiz-option"><input type="radio" name="q10" value="d"><span>Vacuum pump works at atmospheric pressure</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="a"><h4>11. How much Al&#8322;O&#8323; is deposited per ALD cycle (TMA + H&#8322;O)?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q11" value="a"><span>~0.1 nm (1 angstrom)</span></label><label class="quiz-option"><input type="radio" name="q11" value="b"><span>~1 nm</span></label><label class="quiz-option"><input type="radio" name="q11" value="c"><span>~10 nm</span></label><label class="quiz-option"><input type="radio" name="q11" value="d"><span>~100 nm</span></label></div><div class="quiz-feedback"></div></div>
+
+<div class="quiz-question" data-correct="d"><h4>12. Why can&rsquo;t tungsten be thermally evaporated?</h4><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q12" value="a"><span>Too expensive</span></label><label class="quiz-option"><input type="radio" name="q12" value="b"><span>Reacts with chamber walls</span></label><label class="quiz-option"><input type="radio" name="q12" value="c"><span>Vapor is too toxic</span></label><label class="quiz-option"><input type="radio" name="q12" value="d"><span>Highest melting point of any element; no resistive heater can reach sufficient temperature</span></label></div><div class="quiz-feedback"></div></div>
+
+<div style="text-align:center;margin-top:2rem;"><button class="calculate-btn" onclick="submitQuiz()" style="font-size:1.1rem;padding:0.8rem 2.5rem;">Submit All Answers</button></div>
+<div class="quiz-score" id="quizScore" style="display:none;margin-top:1.5rem;"><div class="score-display" id="scoreDisplay"></div><p id="scoreMessage" style="font-size:1.1rem;margin-top:0.5rem;"></p></div>
+</div></div>
+</div><!-- END QUIZ -->
+
+</main>
+
+<footer>
+    <p><strong>Introduction to Nanotechnology</strong> &mdash; An Interactive Online Textbook</p>
+    <p>Module 7: Thin Film Deposition</p>
+    <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.8;">Supported by NSF ATE Grant DUE 2301137 &mdash; <a href="course-outline.html">Course Outline</a></p>
+</footer>
+
+<script>
+/* ============================================================
+   TOOLTIP SMART POSITIONING
+============================================================ */
+document.querySelectorAll('.tooltip-term').forEach(function(term) {
+    var tip = term.querySelector('.tooltip-content');
+    if (!tip) return;
+    function positionTip() {
+        tip.style.left = '0';
+        tip.style.right = 'auto';
+        tip.style.top = 'calc(100% + 8px)';
+        tip.style.bottom = 'auto';
+        var rect = tip.getBoundingClientRect();
+        if (rect.right > window.innerWidth - 10) {
+            tip.style.left = 'auto';
+            tip.style.right = '0';
+        }
+        if (rect.left < 10) {
+            tip.style.left = '0';
+            tip.style.right = 'auto';
+        }
+        if (rect.bottom > window.innerHeight - 10) {
+            tip.style.top = 'auto';
+            tip.style.bottom = 'calc(100% + 8px)';
+        }
+    }
+    term.addEventListener('mouseenter', positionTip);
+    term.addEventListener('focus', positionTip);
+});
+
+/* ============================================================
+   TAB NAVIGATION
+============================================================ */
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+        this.classList.add('active');
+        this.setAttribute('aria-selected','true');
+        var tab = this.getAttribute('data-tab');
+        document.getElementById(tab).classList.add('active');
+        updateProgress();
+    });
+});
+
+/* ============================================================
+   PROGRESS TRACKING
+============================================================ */
+function updateProgress() {
+    var total = 0, done = 0;
+    var checks = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+    total += checks.length;
+    checks.forEach(function(c) { if (c.checked) done++; });
+    var quizQs = document.querySelectorAll('.quiz-question');
+    total += quizQs.length;
+    quizQs.forEach(function(q) { if (q.classList.contains('answered')) done++; });
+    total += 4; // tabs visited
+    document.querySelectorAll('.tab-btn').forEach(function(b) { if (b.classList.contains('active')) { if (!b.dataset.visited) { b.dataset.visited = 'true'; } } });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { if (b.dataset.visited) done++; });
+    var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    if (pct > 100) pct = 100;
+    document.getElementById('progressPercent').textContent = pct + '%';
+    document.getElementById('progressFill').style.width = pct + '%';
+}
+
+document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(function(cb) {
+    cb.addEventListener('change', updateProgress);
+});
+
+/* ============================================================
+   EVAPORATION CHAMBER SIMULATION
+============================================================ */
+var evapCanvas = document.getElementById('evapCanvas');
+var ectx = evapCanvas.getContext('2d');
+var particles = [];
+var filmThickness = 0;
+var evapAnim;
+
+document.getElementById('simPower').addEventListener('input', function() {
+    document.getElementById('simPowerVal').textContent = this.value + '%';
+});
+
+function drawEvapChamber() {
+    var W = evapCanvas.width, H = evapCanvas.height;
+    var power = parseInt(document.getElementById('simPower').value);
+    var pressure = parseFloat(document.getElementById('simPressure').value);
+    var shutterState = document.getElementById('simShutter').value;
+    var mfp = (pressure > 0) ? (0.005 / pressure) : 99999;
+    var scatterChance = Math.min(1, 0.3 / Math.max(mfp, 0.001));
+
+    ectx.fillStyle = '#1a1a2e';
+    ectx.fillRect(0, 0, W, H);
+
+    // Chamber walls
+    ectx.strokeStyle = '#4682B4';
+    ectx.lineWidth = 3;
+    ectx.strokeRect(50, 30, W - 100, H - 60);
+
+    // Labels
+    ectx.fillStyle = '#B0C4DE';
+    ectx.font = '12px Trebuchet MS';
+    ectx.fillText('VACUUM CHAMBER', W/2 - 55, 25);
+
+    // Substrate (top)
+    ectx.fillStyle = '#336699';
+    ectx.fillRect(150, 55, W - 300, 15);
+    ectx.fillStyle = '#CCEEFF';
+    ectx.font = '11px Trebuchet MS';
+    ectx.fillText('SUBSTRATE', W/2 - 30, 65);
+
+    // Deposited film on substrate
+    if (filmThickness > 0) {
+        var fh = Math.min(filmThickness * 0.5, 20);
+        var gradient = ectx.createLinearGradient(150, 70, 150, 70 + fh);
+        gradient.addColorStop(0, '#CC9900');
+        gradient.addColorStop(1, '#996600');
+        ectx.fillStyle = gradient;
+        if (shutterState === 'open') {
+            ectx.fillRect(150, 70, W - 300, fh);
+        } else {
+            ectx.fillRect(150, 70, (W - 300) * 0.3, fh);
+            ectx.fillRect(150 + (W - 300) * 0.7, 70, (W - 300) * 0.3, fh);
+        }
+    }
+
+    // Shutter
+    if (shutterState === 'closed') {
+        ectx.fillStyle = '#708090';
+        ectx.fillRect(W/2 - 80, 130, 160, 8);
+        ectx.fillStyle = '#CC0000';
+        ectx.font = '10px Trebuchet MS';
+        ectx.fillText('SHUTTER (CLOSED)', W/2 - 50, 155);
+    }
+
+    // Source boat (bottom)
+    var sourceGlow = power / 100;
+    var r = Math.floor(80 + 175 * sourceGlow);
+    var g = Math.floor(30 + 70 * sourceGlow);
+    var b = Math.floor(10);
+    ectx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+    ectx.beginPath();
+    ectx.moveTo(W/2 - 40, H - 70);
+    ectx.lineTo(W/2 + 40, H - 70);
+    ectx.lineTo(W/2 + 30, H - 50);
+    ectx.lineTo(W/2 - 30, H - 50);
+    ectx.closePath();
+    ectx.fill();
+    ectx.fillStyle = '#E0E0E0';
+    ectx.font = '10px Trebuchet MS';
+    ectx.fillText('SOURCE', W/2 - 22, H - 38);
+
+    // Glow effect
+    if (power > 30) {
+        ectx.beginPath();
+        ectx.arc(W/2, H - 60, 25 + power * 0.3, 0, Math.PI * 2);
+        ectx.fillStyle = 'rgba(' + r + ',' + g + ',0,' + (sourceGlow * 0.15) + ')';
+        ectx.fill();
+    }
+
+    // Spawn particles
+    if (power > 20) {
+        var spawnRate = Math.floor(power / 15);
+        for (var s = 0; s < spawnRate; s++) {
+            var angle = -Math.PI/2 + (Math.random() - 0.5) * 1.2;
+            var speed = 1.5 + Math.random() * 2.5;
+            particles.push({
+                x: W/2 + (Math.random() - 0.5) * 30,
+                y: H - 75,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                life: 200,
+                size: 2 + Math.random()
+            });
+        }
+    }
+
+    // Update particles
+    var newParticles = [];
+    for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        if (Math.random() < scatterChance) {
+            p.vx += (Math.random() - 0.5) * 2;
+            p.vy += (Math.random() - 0.5) * 1;
+        }
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life--;
+
+        // Hit substrate?
+        if (p.y < 70 && p.x > 150 && p.x < W - 150) {
+            if (shutterState === 'open' || p.y < 130) {
+                if (shutterState === 'open') {
+                    filmThickness += 0.02;
+                }
+            }
+            continue;
+        }
+        // Hit shutter?
+        if (shutterState === 'closed' && p.y < 138 && p.y > 125 && p.x > W/2 - 80 && p.x < W/2 + 80) {
+            continue;
+        }
+        if (p.x < 55 || p.x > W - 55 || p.y < 35 || p.y > H - 35 || p.life <= 0) continue;
+
+        var alpha = Math.max(0.2, p.life / 200);
+        ectx.beginPath();
+        ectx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ectx.fillStyle = 'rgba(255,200,50,' + alpha + ')';
+        ectx.fill();
+        newParticles.push(p);
+    }
+    particles = newParticles;
+
+    // Thickness readout
+    ectx.fillStyle = '#99CC99';
+    ectx.font = 'bold 13px Courier New';
+    ectx.fillText('Film: ' + (filmThickness * 2).toFixed(1) + ' nm', W - 170, H - 15);
+    ectx.fillText('Power: ' + power + '%', 60, H - 15);
+
+    // Status
+    var status = '';
+    if (power < 20) status = 'Increase heater power to begin.';
+    else if (shutterState === 'closed') status = 'Source heating... open shutter when ready.';
+    else status = 'Depositing! Film growing at ' + (power * 0.05).toFixed(1) + ' nm/s';
+    document.getElementById('simStatus').textContent = status;
+
+    evapAnim = requestAnimationFrame(drawEvapChamber);
+}
+drawEvapChamber();
+
+/* ============================================================
+   MEAN FREE PATH CALCULATOR
+============================================================ */
+function calculateMFP() {
+    var P_torr = parseFloat(document.getElementById('mfpPressure').value);
+    var T = parseFloat(document.getElementById('mfpTemp').value);
+    var dist_cm = parseFloat(document.getElementById('mfpDist').value);
+    if (isNaN(P_torr) || P_torr <= 0 || isNaN(T) || T <= 0) { alert('Enter valid values.'); return; }
+
+    var P_pa = P_torr * 133.322;
+    var kB = 1.38e-23;
+    var d = 3.7e-10;
+    var mfp = (kB * T) / (Math.sqrt(2) * Math.PI * d * d * P_pa);
+
+    var valText, label, expl;
+    var dist_m = dist_cm / 100;
+
+    if (mfp < 1e-6) valText = (mfp * 1e9).toFixed(1) + ' nm';
+    else if (mfp < 1e-3) valText = (mfp * 1e6).toFixed(1) + ' \u00B5m';
+    else if (mfp < 1) valText = (mfp * 100).toFixed(1) + ' cm';
+    else if (mfp < 1000) valText = mfp.toFixed(1) + ' m';
+    else valText = (mfp / 1000).toFixed(1) + ' km';
+
+    label = 'Mean Free Path at ' + P_torr + ' Torr, ' + T + ' K';
+    var ratio = mfp / dist_m;
+
+    if (ratio < 1) expl = 'WARNING: MFP (' + valText + ') is LESS than your ' + dist_cm + ' cm chamber. Atoms will scatter heavily. This pressure is unsuitable for evaporation.';
+    else if (ratio < 10) expl = 'MFP is ' + ratio.toFixed(1) + 'x the chamber distance. Marginal \u2014 some scattering will occur. Film uniformity may be poor.';
+    else expl = 'Excellent! MFP is ' + ratio.toFixed(0) + 'x the chamber distance. Atoms travel in straight lines with negligible scattering. Ideal for evaporation.';
+
+    document.getElementById('mfpValue').textContent = valText;
+    document.getElementById('mfpLabel').textContent = label;
+    document.getElementById('mfpExplanation').textContent = expl;
+    document.getElementById('mfpResult').style.display = 'block';
+}
+
+/* ============================================================
+   QCM CALCULATOR
+============================================================ */
+function calculateQCM() {
+    var rho = parseFloat(document.getElementById('qcmMaterial').value);
+    var df = parseFloat(document.getElementById('qcmFreq').value);
+    if (isNaN(rho) || isNaN(df) || df <= 0) { alert('Enter valid values.'); return; }
+
+    // Sauerbrey: df = -2*f0^2 * dm / (A * sqrt(rho_q * mu_q))
+    // Simplified: thickness(nm) ~= df * 17.7 / (rho/1000)  for 6MHz AT-cut quartz
+    var Cf = 17.7; // ng/(cm2*Hz) for 6MHz
+    var massPerArea = df * Cf; // ng/cm2
+    var thickness_cm = (massPerArea * 1e-9) / (rho * 1e-3); // cm
+    var thickness_nm = thickness_cm * 1e7;
+
+    var matNames = {'2700':'Aluminum','19300':'Gold','10490':'Silver','8960':'Copper','7190':'Chromium'};
+    var matName = matNames['' + Math.round(rho)] || 'Selected material';
+
+    document.getElementById('qcmValue').textContent = thickness_nm.toFixed(1) + ' nm';
+    document.getElementById('qcmLabel').textContent = matName + ' film thickness for \u0394f = ' + df + ' Hz';
+
+    var expl = 'A frequency shift of ' + df + ' Hz on a 6 MHz quartz crystal corresponds to approximately ' + thickness_nm.toFixed(1) + ' nm of ' + matName + ' (\u03C1 = ' + (rho/1000).toFixed(1) + ' g/cm\u00B3). ';
+    if (thickness_nm < 5) expl += 'This is an ultra-thin film \u2014 just a few atomic layers.';
+    else if (thickness_nm < 50) expl += 'Typical thickness for adhesion layers or seed layers.';
+    else if (thickness_nm < 200) expl += 'Common range for metal contacts and interconnects.';
+    else expl += 'This is a relatively thick film by thin-film standards.';
+
+    document.getElementById('qcmExplanation').textContent = expl;
+    document.getElementById('qcmResult').style.display = 'block';
+}
+
+/* ============================================================
+   ALD SIMULATOR
+============================================================ */
+var aldAnim = null;
+document.getElementById('aldCycles').addEventListener('input', function() {
+    document.getElementById('aldCyclesVal').textContent = this.value + ' cycles';
+});
+
+function runALD() {
+    var canvas = document.getElementById('aldCanvas');
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width, H = canvas.height;
+    var nCycles = parseInt(document.getElementById('aldCycles').value);
+    var gpc = parseFloat(document.getElementById('aldGPC').value);
+    var totalThickness = nCycles * gpc;
+    var currentCycle = 0;
+
+    if (aldAnim) cancelAnimationFrame(aldAnim);
+
+    function drawFrame() {
+        ctx.fillStyle = '#1a1a2e';
+        ctx.fillRect(0, 0, W, H);
+
+        // Substrate
+        ctx.fillStyle = '#336699';
+        ctx.fillRect(50, H - 60, W - 100, 40);
+        ctx.fillStyle = '#CCEEFF';
+        ctx.font = '11px Trebuchet MS';
+        ctx.fillText('SUBSTRATE', W/2 - 30, H - 35);
+
+        // Film layers
+        var maxVisLayers = Math.min(currentCycle, 80);
+        var layerH = Math.min(3, (H - 120) / Math.max(maxVisLayers, 1));
+        for (var i = 0; i < maxVisLayers; i++) {
+            var y = H - 60 - (i + 1) * layerH;
+            if (y < 40) break;
+            var hue = (i % 2 === 0) ? '#CC9900' : '#CC6633';
+            ctx.fillStyle = hue;
+            ctx.globalAlpha = 0.6 + 0.4 * (i / maxVisLayers);
+            ctx.fillRect(50, y, W - 100, layerH - 0.5);
+        }
+        ctx.globalAlpha = 1;
+
+        // Cycle indicator
+        var phase = currentCycle % 4;
+        var phaseNames = ['Precursor A Pulse', 'Purge', 'Precursor B Pulse', 'Purge'];
+        var phaseColors = ['#CC6633', '#708090', '#008080', '#708090'];
+        ctx.fillStyle = phaseColors[phase];
+        ctx.fillRect(50, 10, W - 100, 25);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 12px Trebuchet MS';
+        ctx.fillText('Cycle ' + Math.ceil((currentCycle + 1) / 4) + '/' + nCycles + ' \u2014 ' + phaseNames[phase], 60, 27);
+
+        // Progress bar
+        var progress = currentCycle / (nCycles * 4);
+        ctx.fillStyle = '#333';
+        ctx.fillRect(50, H - 15, W - 100, 8);
+        ctx.fillStyle = '#CC9900';
+        ctx.fillRect(50, H - 15, (W - 100) * progress, 8);
+
+        // Thickness readout
+        var currentT = (Math.ceil((currentCycle + 1) / 4)) * gpc;
+        ctx.fillStyle = '#99CC99';
+        ctx.font = 'bold 13px Courier New';
+        ctx.fillText('Thickness: ' + currentT.toFixed(2) + ' nm', W - 210, 27);
+
+        currentCycle++;
+        if (currentCycle < nCycles * 4) {
+            aldAnim = requestAnimationFrame(drawFrame);
+        } else {
+            document.getElementById('aldValue').textContent = totalThickness.toFixed(2) + ' nm';
+            document.getElementById('aldLabel').textContent = nCycles + ' cycles \u00D7 ' + gpc + ' nm/cycle = ' + totalThickness.toFixed(2) + ' nm total film';
+            document.getElementById('aldResult').style.display = 'block';
+        }
+    }
+    drawFrame();
+}
+
+function resetALD() {
+    if (aldAnim) cancelAnimationFrame(aldAnim);
+    var canvas = document.getElementById('aldCanvas');
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#1a1a2e';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#336699';
+    ctx.fillRect(50, canvas.height - 60, canvas.width - 100, 40);
+    ctx.fillStyle = '#CCEEFF';
+    ctx.font = '11px Trebuchet MS';
+    ctx.fillText('SUBSTRATE', canvas.width/2 - 30, canvas.height - 35);
+    document.getElementById('aldResult').style.display = 'none';
+}
+resetALD();
+
+/* ============================================================
+   QUIZ
+============================================================ */
+var quizQuestions = document.querySelectorAll('.quiz-question');
+quizQuestions.forEach(function(question) {
+    var options = question.querySelectorAll('.quiz-option');
+    var feedback = question.querySelector('.quiz-feedback');
+    var correctAnswer = question.getAttribute('data-correct');
+    options.forEach(function(option) {
+        option.addEventListener('click', function() {
+            if (question.classList.contains('answered')) return;
+            var radio = this.querySelector('input[type="radio"]');
+            radio.checked = true;
+            var sel = radio.value;
+            question.classList.add('answered');
+            options.forEach(function(opt) {
+                opt.style.pointerEvents = 'none';
+                var v = opt.querySelector('input[type="radio"]').value;
+                if (v === correctAnswer) opt.classList.add('correct');
+                else if (v === sel) opt.classList.add('incorrect');
+            });
+            feedback.textContent = sel === correctAnswer ? 'Correct! Well done.' : 'Incorrect. The correct answer is highlighted in green.';
+            feedback.classList.add(sel === correctAnswer ? 'correct' : 'incorrect', 'show');
+            updateProgress();
+        });
+    });
+});
+
+function submitQuiz() {
+    var correct = 0, total = quizQuestions.length;
+    quizQuestions.forEach(function(q) {
+        var ca = q.getAttribute('data-correct');
+        var sel = q.querySelector('input[type="radio"]:checked');
+        if (sel && sel.value === ca) correct++;
+        if (!q.classList.contains('answered')) {
+            q.classList.add('answered');
+            q.querySelectorAll('.quiz-option').forEach(function(opt) {
+                opt.style.pointerEvents = 'none';
+                if (opt.querySelector('input[type="radio"]').value === ca) opt.classList.add('correct');
+            });
+            var fb = q.querySelector('.quiz-feedback');
+            fb.textContent = 'Not answered. Correct answer highlighted.';
+            fb.classList.add('incorrect', 'show');
+        }
+    });
+    document.getElementById('scoreDisplay').textContent = correct + '/' + total;
+    var pct = (correct / total) * 100;
+    var msg;
+    if (pct >= 90) msg = 'Excellent! You have mastered thin film deposition concepts!';
+    else if (pct >= 70) msg = 'Good job! Review the concepts you missed.';
+    else if (pct >= 50) msg = 'Keep studying! Re-read the lecture content.';
+    else msg = 'More study needed. Review all sections before proceeding.';
+    document.getElementById('scoreMessage').textContent = msg;
+    document.getElementById('quizScore').style.display = 'block';
+    document.getElementById('quizScore').scrollIntoView({behavior:'smooth'});
+    updateProgress();
+}
+
+updateProgress();
+</script>
+</body>
+</html>

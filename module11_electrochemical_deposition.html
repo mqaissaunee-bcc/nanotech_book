@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 11: Electrochemical Deposition — Comprehensive coverage of electrochemistry fundamentals, redox reactions, Faraday's laws, Nernst equation, copper damascene process, gold electrodeposition, and hands-on laboratory experiments for nanotechnology education.">
+    <title>Module 11: Electrochemical Deposition | Introduction to Nanotechnology</title>
+    <style>
+        :root {
+            --navy:#000033;--pri:#CC9900;--pri-dk:#996600;--pri-lt:#FFCC33;--pri-pale:#FFFDE7;
+            --sec:#003366;--sec-lt:#336699;--sec-pale:#E3F2FD;
+            --teal:#006666;--teal-dk:#004D4D;--teal-lt:#009999;--teal-pale:#E0F7FA;
+            --emer:#006633;--emer-dk:#004D26;--emer-pale:#E8F5E9;
+            --cop:#CC6633;--cop-dk:#993300;--cop-pale:#FFF3E0;
+            --purp:#663399;--purp-pale:#F3E8FF;
+            --red:#CC0000;--red-dk:#990000;--red-pale:#FFEBEE;
+            --orange:#FF6600;
+            --wht:#FFFFFF;--off:#F5F5F5;--lgr:#E0E0E0;--mgr:#999999;--dgr:#666666;--char:#333333;--blk:#000000;
+            --shd:rgba(0,0,0,0.15);--shd2:rgba(0,0,0,0.25);
+            --fp:Georgia,'Times New Roman',serif;--fd:'Trebuchet MS',Arial,sans-serif;--fm:'Courier New',monospace;
+            --tr:0.3s ease;--r:8px;--rl:12px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{font-family:var(--fp);background:linear-gradient(135deg,var(--pri-pale) 0%,var(--wht) 50%,var(--sec-pale) 100%);color:var(--char);line-height:1.7;min-height:100vh}
+        .skip-link{position:absolute;top:-50px;left:10px;background:var(--sec);color:var(--wht);padding:12px 20px;z-index:10000;border-radius:var(--r);font-weight:bold;text-decoration:none}
+        .skip-link:focus{top:10px}
+        a:focus,button:focus,input:focus,select:focus,[tabindex]:focus{outline:3px solid var(--pri);outline-offset:2px}
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+        .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+        header{background:linear-gradient(135deg,var(--navy) 0%,var(--sec) 40%,var(--pri-dk) 100%);color:var(--wht);padding:1rem 2rem;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px var(--shd2)}
+        .hdr{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+        .logo{display:flex;align-items:center;gap:1rem}
+        .logo-ic{width:55px;height:55px;background:linear-gradient(135deg,var(--pri),var(--cop));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:bold;font-size:1rem;color:var(--wht);border:3px solid var(--pri-lt);box-shadow:0 4px 15px var(--shd),0 0 20px rgba(204,153,0,0.4);animation:gGlow 3s ease-in-out infinite}
+        @keyframes gGlow{0%,100%{box-shadow:0 4px 15px var(--shd),0 0 20px rgba(204,153,0,0.4)}50%{box-shadow:0 4px 15px var(--shd),0 0 35px rgba(204,153,0,0.7)}}
+        .st{font-family:var(--fd);font-size:1.3rem;font-weight:bold;letter-spacing:.5px}
+        .ss{font-size:.95rem;opacity:.9;margin-top:2px}
+        nav.nb{display:flex;gap:.75rem;flex-wrap:wrap}
+        nav.nb a{background:rgba(255,255,255,.15);color:var(--wht);padding:.6rem 1.2rem;border-radius:var(--r);text-decoration:none;font-size:.9rem;font-weight:600;transition:all var(--tr);border:1px solid rgba(255,255,255,.3)}
+        nav.nb a:hover,nav.nb a:focus{background:var(--pri);color:var(--navy);transform:translateY(-2px)}
+
+        .hero{background:linear-gradient(135deg,var(--sec) 0%,var(--pri-dk) 50%,var(--cop-dk) 100%);color:var(--wht);padding:3rem 2rem;border-radius:var(--rl);margin:2rem auto;max-width:1400px;text-align:center;box-shadow:0 8px 32px var(--shd2);position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(204,153,0,0.3)'/%3E%3C/svg%3E");opacity:.5}
+        .hero h1{font-family:var(--fd);font-size:2.2rem;margin-bottom:.5rem;position:relative}
+        .hero>p{font-size:1.15rem;opacity:.9;max-width:800px;margin:0 auto;position:relative}
+        .hero-meta{display:flex;gap:1.5rem;justify-content:center;margin-top:1rem;flex-wrap:wrap;position:relative}
+        .hero-meta span{background:rgba(255,255,255,.15);padding:.4rem 1rem;border-radius:20px;font-size:.9rem}
+
+        .pbar{max-width:1400px;margin:1rem auto;padding:0 2rem}
+        .pbi{background:var(--wht);border-radius:var(--r);padding:1rem 1.5rem;box-shadow:0 2px 8px var(--shd)}
+        .pbt{display:flex;justify-content:space-between;margin-bottom:.5rem;font-size:.9rem;font-weight:600;color:var(--sec)}
+        .pbk{height:10px;background:var(--lgr);border-radius:5px;overflow:hidden}
+        .pbf{height:100%;background:linear-gradient(90deg,var(--pri),var(--cop));border-radius:5px;width:0%;transition:width .8s ease}
+
+        .obj{max-width:1400px;margin:1.5rem auto;padding:0 2rem}
+        .obj-in{background:linear-gradient(135deg,var(--pri-pale),var(--wht));border:2px solid var(--pri);border-radius:var(--rl);padding:2rem;box-shadow:0 4px 16px var(--shd)}
+        .obj-in h3{font-family:var(--fd);color:var(--pri-dk);font-size:1.3rem;margin-bottom:.75rem}
+        .obj-in ul{margin-left:1.5rem;margin-top:.5rem}
+        .obj-in li{margin-bottom:.5rem}.obj-in li::marker{color:var(--pri)}
+
+        .tabs{max-width:1400px;margin:1.5rem auto;padding:0 2rem;display:flex;gap:.5rem;flex-wrap:wrap}
+        .tab-btn{flex:1;min-width:130px;padding:1rem 1.5rem;border:2px solid var(--lgr);background:var(--wht);color:var(--dgr);font-family:var(--fd);font-size:1rem;font-weight:600;border-radius:var(--r) var(--r) 0 0;cursor:pointer;transition:all var(--tr);text-align:center}
+        .tab-btn:hover{border-color:var(--pri);color:var(--pri-dk);background:var(--pri-pale)}
+        .tab-btn.active{background:var(--sec);color:var(--wht);border-color:var(--sec);box-shadow:0 -4px 12px var(--shd)}
+
+        .tc{display:none;max-width:1400px;margin:0 auto;padding:0 2rem 2rem}.tc.active{display:block}
+        main{max-width:1500px;margin:0 auto;padding:0 1rem}
+
+        .card{background:var(--wht);border-radius:var(--rl);box-shadow:0 4px 16px var(--shd);margin-bottom:2rem;overflow:hidden;border:1px solid var(--lgr)}
+        .chd{padding:1.25rem 1.5rem;font-family:var(--fd);font-size:1.2rem;font-weight:bold;color:var(--wht);display:flex;align-items:center;gap:.75rem}
+        .chd.gold{background:linear-gradient(135deg,var(--pri-dk),var(--pri))}
+        .chd.blue{background:linear-gradient(135deg,var(--sec),var(--sec-lt))}
+        .chd.teal{background:linear-gradient(135deg,var(--teal-dk),var(--teal))}
+        .chd.cop{background:linear-gradient(135deg,var(--cop-dk),var(--cop))}
+        .chd.emer{background:linear-gradient(135deg,var(--emer-dk),var(--emer))}
+        .chd.purp{background:linear-gradient(135deg,#4B0082,var(--purp))}
+        .chd.red{background:linear-gradient(135deg,var(--red-dk),var(--red))}
+        .cbd{padding:1.5rem 2rem}
+        .cbd p{margin-bottom:1rem}.cbd h3{color:var(--sec);font-size:1.15rem;margin:1.5rem 0 .75rem;font-family:var(--fd)}.cbd h4{color:var(--teal-dk);margin:1rem 0 .5rem}
+
+        .tt{position:relative;color:var(--sec);font-weight:600;border-bottom:2px dotted var(--pri);cursor:help;display:inline}
+        .tt-box{visibility:hidden;opacity:0;position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:var(--navy);color:var(--wht);padding:12px 16px;border-radius:var(--r);font-size:.85rem;font-weight:normal;line-height:1.5;width:280px;z-index:9999;box-shadow:0 8px 24px var(--shd2);pointer-events:none;transition:opacity .2s;border:1px solid var(--pri)}
+        .tt-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:8px solid transparent;border-top-color:var(--navy)}
+        .tt:hover .tt-box,.tt:focus .tt-box{visibility:visible;opacity:1}
+
+        .eq-box{background:linear-gradient(135deg,var(--pri-pale),var(--wht));border:2px solid var(--pri);border-radius:var(--r);padding:1.25rem;margin:1.25rem 0;text-align:center}
+        .eq{font-family:var(--fm);font-size:1.3rem;font-weight:bold;color:var(--sec);margin-bottom:.5rem;letter-spacing:1px}
+        .eq-lbl{font-size:.9rem;color:var(--dgr);line-height:1.6}
+
+        .dtbl{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.95rem}
+        .dtbl th{background:var(--sec);color:var(--wht);padding:12px 15px;text-align:left;font-family:var(--fd)}
+        .dtbl td{padding:10px 15px;border-bottom:1px solid var(--lgr)}
+        .dtbl tr:nth-child(even){background:var(--off)}
+        .dtbl tr:hover{background:var(--pri-pale)}
+
+        .kc{background:linear-gradient(135deg,var(--teal-pale),var(--wht));border-left:5px solid var(--teal);border-radius:0 var(--r) var(--r) 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+        .kc h4{color:var(--teal-dk);font-family:var(--fd);margin-bottom:.5rem}
+        .ind{background:linear-gradient(135deg,var(--cop-pale),var(--wht));border-left:5px solid var(--cop);border-radius:0 var(--r) var(--r) 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+        .ind h4{color:var(--cop-dk);font-family:var(--fd);margin-bottom:.5rem}
+        .saf{background:linear-gradient(135deg,var(--red-pale),var(--wht));border-left:5px solid var(--red);border-radius:0 var(--r) var(--r) 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+        .saf h4{color:var(--red-dk);font-family:var(--fd);margin-bottom:.5rem}
+
+        .mnem{background:linear-gradient(135deg,var(--purp-pale),var(--wht));border:3px solid var(--purp);border-radius:var(--rl);padding:2rem;margin:1.5rem 0;text-align:center}
+        .mnem h3{color:var(--purp);font-family:var(--fd);font-size:1.5rem;margin-bottom:1rem}
+        .mg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:600px;margin:0 auto}
+        .mi{padding:1.25rem;border-radius:var(--r);text-align:center}
+        .mi.ox{background:var(--red-pale);border:2px solid var(--red)}
+        .mi.rd{background:var(--emer-pale);border:2px solid var(--emer)}
+        .mi .big{font-size:2rem;font-weight:bold;font-family:var(--fd)}
+        .mi.ox .big{color:var(--red)}.mi.rd .big{color:var(--emer)}
+
+        .cmp{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+        .cb{border-radius:var(--r);padding:1.5rem;border-top:5px solid}
+        .cb h4{font-family:var(--fd);margin-bottom:.75rem}.cb ul{margin-left:1.25rem}.cb li{margin-bottom:.4rem}
+
+        .ps{position:relative;padding:1.5rem 1.5rem 1.5rem 70px;margin:1rem 0;background:var(--wht);border-radius:var(--r);border:1px solid var(--lgr);box-shadow:0 2px 8px var(--shd)}
+        .ps::before{content:attr(data-step);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:42px;height:42px;background:linear-gradient(135deg,var(--pri),var(--cop));color:var(--wht);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:bold;font-size:1.1rem}
+        .ps h4{color:var(--sec);font-family:var(--fd);margin-bottom:.5rem}
+
+        .sc{text-align:center;margin:1.5rem 0}
+        .scanv{width:100%;max-width:800px;border:2px solid var(--sec);border-radius:var(--r);background:var(--wht);display:block;margin:0 auto}
+        .sctrl{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem;max-width:800px;margin-left:auto;margin-right:auto}
+        .sg{display:flex;flex-direction:column;gap:.3rem}
+        .sg label{font-weight:600;font-size:.9rem;color:var(--sec)}
+        .sg input[type=range]{width:100%;accent-color:var(--pri)}
+        .sg select{padding:.5rem;border:2px solid var(--lgr);border-radius:var(--r);font-size:.95rem}
+        .sg .val{text-align:center;font-weight:bold;color:var(--pri-dk);font-family:var(--fm)}
+        .sbtn{padding:.75rem 1.5rem;border:none;border-radius:var(--r);font-family:var(--fd);font-weight:bold;font-size:1rem;cursor:pointer;transition:all var(--tr)}
+        .sbtn.go{background:var(--emer);color:var(--wht)}.sbtn.go:hover{background:var(--emer-dk)}
+        .sbtn.rst{background:var(--mgr);color:var(--wht)}.sbtn.rst:hover{background:var(--dgr)}
+        .sbr{display:flex;gap:1rem;justify-content:center;margin-top:1rem}
+        .sstat{margin-top:1rem;font-size:1.05rem;font-weight:bold;color:var(--sec);font-family:var(--fd)}
+
+        .cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1rem 0}
+        .cgi{display:flex;flex-direction:column;gap:.3rem}
+        .cgi label{font-weight:600;font-size:.9rem;color:var(--sec)}
+        .cgi select,.cgi input{padding:.6rem;border:2px solid var(--lgr);border-radius:var(--r);font-size:1rem;font-family:var(--fp)}
+        .cgi select:focus,.cgi input:focus{border-color:var(--pri)}
+        .cr{background:var(--pri-pale);border:2px solid var(--pri);border-radius:var(--r);padding:1.5rem;margin-top:1rem}
+        .cr h4{color:var(--pri-dk);font-family:var(--fd);margin-bottom:.75rem}
+        .crw{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px dashed var(--lgr)}
+        .crw:last-child{border-bottom:none}
+        .crv{font-weight:bold;color:var(--sec);font-family:var(--fm)}
+
+        .qq{background:var(--wht);border-radius:var(--r);padding:1.5rem;margin:1rem 0;border:2px solid var(--lgr);box-shadow:0 2px 8px var(--shd)}
+        .qq h4{color:var(--sec);font-family:var(--fd);margin-bottom:1rem}
+        .qo{display:block;padding:.75rem 1rem;margin:.4rem 0;border:2px solid var(--lgr);border-radius:var(--r);cursor:pointer;transition:all var(--tr)}
+        .qo:hover{border-color:var(--pri);background:var(--pri-pale)}
+        .qo input{margin-right:.75rem;accent-color:var(--pri)}
+        .qo.ok{border-color:var(--emer);background:var(--emer-pale)}.qo.no{border-color:var(--red);background:var(--red-pale)}
+        .qfb{margin-top:.75rem;padding:.75rem;border-radius:var(--r);font-size:.9rem;display:none}
+        .qfb.show{display:block}
+        .qfb.ok{background:var(--emer-pale);border:1px solid var(--emer);color:var(--emer-dk)}
+        .qfb.no{background:var(--red-pale);border:1px solid var(--red);color:var(--red-dk)}
+        .qa{text-align:center;margin:2rem 0}
+        .qa button{padding:1rem 2.5rem;background:var(--sec);color:var(--wht);border:none;border-radius:var(--r);font-family:var(--fd);font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all var(--tr)}
+        .qa button:hover{background:var(--pri-dk);transform:translateY(-2px)}
+        .qs{text-align:center;padding:2rem;background:var(--pri-pale);border-radius:var(--rl);border:3px solid var(--pri);margin-top:1.5rem;display:none}
+        .qs .big{font-size:3rem;font-weight:bold;color:var(--pri-dk);font-family:var(--fd)}
+
+        .nf{max-width:1400px;margin:2rem auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+        .fn{padding:.75rem 1.5rem;border-radius:var(--r);text-decoration:none;font-family:var(--fd);font-weight:bold;font-size:.95rem;transition:all var(--tr)}
+        .fn.pv{background:var(--sec);color:var(--wht)}.fn.pv:hover{background:var(--pri-dk);transform:translateX(-3px)}
+        .fn.nx{background:var(--pri);color:var(--navy)}.fn.nx:hover{background:var(--pri-lt);transform:translateX(3px)}
+        .cbtn{padding:.75rem 2rem;background:var(--emer);color:var(--wht);border:none;border-radius:var(--r);font-family:var(--fd);font-weight:bold;font-size:1rem;cursor:pointer;transition:all var(--tr)}.cbtn:hover{background:var(--emer-dk);transform:translateY(-2px)}
+
+        .nsf{max-width:1400px;margin:1rem auto 2rem;padding:0 2rem}
+        .nsfi{background:var(--wht);border-radius:var(--r);padding:1.5rem;text-align:center;font-size:.85rem;color:var(--dgr);box-shadow:0 2px 8px var(--shd);border-top:3px solid var(--sec)}
+
+        @media(max-width:768px){
+            .hdr{flex-direction:column;text-align:center}nav.nb{justify-content:center}
+            .hero h1{font-size:1.6rem}.hero-meta{flex-direction:column;align-items:center}
+            .tabs{flex-direction:column}.tab-btn{min-width:unset}
+            .cmp,.mg{grid-template-columns:1fr}.sctrl,.cg{grid-template-columns:1fr}
+            .nf{flex-direction:column;align-items:stretch;text-align:center}
+            .cbd{padding:1rem 1.25rem}.ps{padding-left:60px}.tt-box{width:220px;font-size:.8rem}
+        }
+        @media print{.tabs,.sc,.qq,.qa,.qs,.nf,.pbar,header,nav{display:none}.tc{display:block!important}}
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header><div class="hdr">
+<div class="logo"><div class="logo-ic" aria-hidden="true">M11</div><div><div class="st">Introduction to Nanotechnology</div><div class="ss">Module 11: Electrochemical Deposition</div></div></div>
+<nav class="nb" aria-label="Module navigation"><a href="course-outline.html">&#127968; Course Home</a><a href="module10_pattern_transfer.html">&larr; Module 10</a><a href="module12_self_assembly.html">Module 12 &rarr;</a></nav>
+</div></header>
+<main id="main-content">
+<div class="hero"><h1>Module 11 &mdash; Electrochemical Deposition</h1><p>Harness electrical current to deposit metals atom-by-atom&mdash;from gold thin films in the lab to the copper interconnects inside every modern microprocessor.</p><div class="hero-meta"><span>&#9201; 3&ndash;4 Hours</span><span>&#128218; Lecture + Lab</span><span>&#9889; Electrochemistry</span></div></div>
+
+<div class="pbar" role="region" aria-label="Module progress"><div class="pbi"><div class="pbt"><span>Module Progress</span><span id="pPct">0%</span></div><div class="pbk" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="pbf" id="pFill"></div></div></div></div>
+
+<div class="obj" role="region" aria-label="Learning objectives"><div class="obj-in"><h3>&#127919; Learning Objectives</h3><p>After completing this module, students will be able to:</p><ul>
+<li>Explain <strong>oxidation-reduction reactions</strong> and electron transfer in electrochemistry</li>
+<li>Apply the <strong>OIL RIG</strong> mnemonic and identify anode/cathode roles</li>
+<li>Distinguish between <strong>galvanic</strong> (spontaneous) and <strong>electrolytic</strong> (non-spontaneous) cells</li>
+<li>Calculate deposited mass using <strong>Faraday&rsquo;s first and second laws</strong> of electrolysis</li>
+<li>Apply the <strong>Nernst equation</strong> to predict electrode potentials under non-standard conditions</li>
+<li>Describe the <strong>copper damascene process</strong> in semiconductor manufacturing</li>
+<li>Control film thickness through <strong>current density, time, and electrolyte</strong> parameters</li>
+<li>Compare electrodeposition to <strong>PVD, CVD, and ALD</strong></li>
+<li>Analyze <strong>film thickness vs. optical properties</strong> in nanoscale metallic films</li>
+</ul></div></div>
+
+<div class="tabs" role="tablist" aria-label="Module content tabs">
+<button class="tab-btn active" onclick="switchTab('lecture')" role="tab" aria-selected="true" aria-controls="lecture" id="tab-lecture">&#128214; Lecture</button>
+<button class="tab-btn" onclick="switchTab('sim')" role="tab" aria-selected="false" aria-controls="sim" id="tab-sim">&#128300; Simulation</button>
+<button class="tab-btn" onclick="switchTab('procedure')" role="tab" aria-selected="false" aria-controls="procedure" id="tab-procedure">&#128248; Procedure</button>
+<button class="tab-btn" onclick="switchTab('quiz')" role="tab" aria-selected="false" aria-controls="quiz" id="tab-quiz">&#9989; Quiz</button>
+</div>
+
+<!-- ============ LECTURE TAB ============ -->
+<div id="lecture" class="tc active" role="tabpanel" aria-labelledby="tab-lecture">
+
+<div class="card"><div class="chd gold">&#9889; Part 1: Introduction to Electrochemical Deposition</div><div class="cbd">
+<p><span class="tt" tabindex="0">Electrochemical deposition<span class="tt-box">A process using electrical current to reduce dissolved metal ions onto a conductive surface (cathode), building thin films atom by atom with precise thickness control.</span></span> (also called electroplating or electrodeposition) operates at <strong>atmospheric pressure</strong> and near <strong>room temperature</strong>, making it fundamentally different from the vacuum-based PVD and CVD methods studied previously. Luigi Brugnatelli first electrodeposited gold in 1805 using a voltaic pile. Today, electrodeposition creates the <span class="tt" tabindex="0">copper interconnects<span class="tt-box">Miles of nanoscale copper wiring inside modern microprocessors connecting billions of transistors. Copper replaced aluminum starting in 1997 due to its 40% lower resistance.</span></span> inside every modern microprocessor.</p>
+<h3>Why Electrodeposition Matters</h3>
+<p>Electrodeposition occupies a unique niche among thin film techniques: precise thickness control via Faraday&rsquo;s laws, no vacuum equipment needed, selective deposition on conductors only, ability to fill high-aspect-ratio trenches and vias, and scalability from benchtop demonstrations to full-wafer manufacturing. In 1997, IBM shipped the first processor with electroplated copper wiring, launching the &ldquo;copper revolution.&rdquo;</p>
+<div class="ind"><h4>&#127981; Industry Scale</h4><p>A modern processor contains <strong>over 10 copper metal layers</strong>, with the finest wires just 20&ndash;30&thinsp;nm wide. Total copper wiring per chip can exceed <strong>100 kilometers</strong>&mdash;all deposited via electroplating using the same fundamental chemistry explored in this module.</p></div>
+</div></div>
+
+<div class="card"><div class="chd blue">&#128300; Part 2: Oxidation-Reduction (Redox) Chemistry</div><div class="cbd">
+<p>Every electrochemical process is built upon <span class="tt" tabindex="0">redox reactions<span class="tt-box">Reactions involving electron transfer between species. One species loses electrons (oxidation) while another gains them (reduction). These paired half-reactions always occur together.</span></span>&mdash;reactions in which electrons transfer between species.</p>
+<h3>The OIL RIG Mnemonic</h3>
+<div class="mnem"><h3>OIL RIG</h3><div class="mg">
+<div class="mi ox"><div class="big">OIL</div><p><strong>O</strong>xidation <strong>I</strong>s <strong>L</strong>oss</p><p style="font-size:.9rem;color:var(--dgr)">Loss of electrons<br>Occurs at the <strong>Anode</strong><br>(<strong>An Ox</strong>)</p></div>
+<div class="mi rd"><div class="big">RIG</div><p><strong>R</strong>eduction <strong>I</strong>s <strong>G</strong>ain</p><p style="font-size:.9rem;color:var(--dgr)">Gain of electrons<br>Occurs at the <strong>Cathode</strong><br>(<strong>Red Cat</strong>)</p></div>
+</div></div>
+
+<h3>Half-Reactions in Electrodeposition</h3>
+<p>At the cathode, metal ions gain electrons and deposit as solid metal:</p>
+<div class="eq-box"><div class="eq">M<sup>n+</sup>(aq) + ne<sup>&minus;</sup> &rarr; M<sup>0</sup>(s)</div><div class="eq-lbl">General reduction half-reaction at the cathode</div></div>
+
+<h4>Gold Electrodeposition (Our Lab)</h4>
+<div class="eq-box"><div class="eq">AuCl<sub>4</sub><sup>&minus;</sup> + 3e<sup>&minus;</sup> &rarr; Au<sup>0</sup> + 4Cl<sup>&minus;</sup></div><div class="eq-lbl">Gold(III) chloride reduction &mdash; E&deg; = +1.002 V vs. SHE</div></div>
+
+<h4>Copper Electrodeposition (Industry)</h4>
+<div class="eq-box"><div class="eq">Cu<sup>2+</sup>(aq) + 2e<sup>&minus;</sup> &rarr; Cu<sup>0</sup>(s)</div><div class="eq-lbl">Copper(II) reduction &mdash; E&deg; = +0.342 V vs. SHE</div></div>
+
+<h3>Standard Reduction Potentials</h3>
+<p>The <span class="tt" tabindex="0">standard reduction potential<span class="tt-box">Voltage measured for a half-cell under standard conditions (1 M, 298 K, 1 atm) relative to the Standard Hydrogen Electrode (SHE). More positive E&deg; means a stronger tendency to be reduced.</span></span> (E&deg;) indicates how readily a species undergoes reduction:</p>
+<table class="dtbl" aria-label="Standard reduction potentials"><thead><tr><th>Half-Reaction</th><th>E&deg; (V)</th><th>Tendency</th></tr></thead><tbody>
+<tr><td>Au&sup3;&#8314; + 3e&minus; &rarr; Au</td><td>+1.50</td><td>Very easily reduced</td></tr>
+<tr><td>Ag&#8314; + e&minus; &rarr; Ag</td><td>+0.80</td><td>Easily reduced</td></tr>
+<tr><td>Cu&sup2;&#8314; + 2e&minus; &rarr; Cu</td><td>+0.34</td><td>Moderately reduced</td></tr>
+<tr><td>2H&#8314; + 2e&minus; &rarr; H&sub2;</td><td>0.00</td><td>Reference (SHE)</td></tr>
+<tr><td>Ni&sup2;&#8314; + 2e&minus; &rarr; Ni</td><td>&minus;0.26</td><td>Requires energy</td></tr>
+<tr><td>Zn&sup2;&#8314; + 2e&minus; &rarr; Zn</td><td>&minus;0.76</td><td>Difficult to reduce</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="chd teal">&#128267; Part 3: Electrochemical Cells</div><div class="cbd">
+<p>Two fundamental cell types, distinguished by whether the reaction is spontaneous or driven externally:</p>
+<div class="cmp">
+<div class="cb" style="background:var(--emer-pale);border-top-color:var(--emer)"><h4 style="color:var(--emer-dk)">&#128267; Galvanic (Voltaic) Cell</h4><ul>
+<li><strong>Reaction:</strong> Spontaneous</li><li><strong>Energy:</strong> Chemical &rarr; Electrical</li><li><strong>Purpose:</strong> Generate electricity</li><li><strong>Examples:</strong> Batteries, fuel cells</li><li><strong>&Delta;G:</strong> Negative</li><li><strong>E&deg;<sub>cell</sub>:</strong> Positive</li></ul></div>
+<div class="cb" style="background:var(--sec-pale);border-top-color:var(--sec)"><h4 style="color:var(--sec)">&#9889; Electrolytic Cell</h4><ul>
+<li><strong>Reaction:</strong> Non-spontaneous</li><li><strong>Energy:</strong> Electrical &rarr; Chemical</li><li><strong>Purpose:</strong> Drive desired reactions</li><li><strong>Examples:</strong> Electroplating, electrolysis</li><li><strong>&Delta;G:</strong> Positive</li><li><strong>E&deg;<sub>cell</sub>:</strong> Negative (needs external V)</li></ul></div>
+</div>
+<p>Electrodeposition uses an <strong>electrolytic cell</strong>: external power forces a non-spontaneous reduction to deposit metal atoms onto the cathode.</p>
+
+<!-- Interactive SVG Diagram -->
+<div style="background:var(--off);border:2px solid var(--lgr);border-radius:var(--r);padding:1rem;margin:1.25rem 0;text-align:center">
+<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Electrolytic cell diagram">
+<rect x="250" y="8" width="200" height="45" rx="8" fill="#003366" stroke="#CC9900" stroke-width="2"/>
+<text x="350" y="36" text-anchor="middle" fill="#FFF" font-size="14" font-weight="bold" font-family="Trebuchet MS">DC Power Supply</text>
+<text x="275" y="68" text-anchor="middle" fill="#CC0000" font-size="16" font-weight="bold">&minus;</text>
+<text x="425" y="68" text-anchor="middle" fill="#006633" font-size="16" font-weight="bold">+</text>
+<line x1="280" y1="53" x2="280" y2="105" stroke="#333" stroke-width="3"/>
+<line x1="420" y1="53" x2="420" y2="105" stroke="#333" stroke-width="3"/>
+<rect x="150" y="105" width="400" height="180" rx="8" fill="#E3F2FD" stroke="#336699" stroke-width="3"/>
+<text x="350" y="280" text-anchor="middle" fill="#336699" font-size="12" font-weight="bold">Electrolyte (AuCl&#8324;&minus; ions)</text>
+<rect x="258" y="95" width="44" height="150" rx="3" fill="#777" stroke="#333" stroke-width="2"/>
+<text x="280" y="262" text-anchor="middle" fill="#003366" font-size="11" font-weight="bold">CATHODE (&minus;)</text>
+<rect x="398" y="95" width="44" height="150" rx="3" fill="#444" stroke="#333" stroke-width="2"/>
+<text x="420" y="262" text-anchor="middle" fill="#003366" font-size="11" font-weight="bold">ANODE (+)</text>
+<defs><marker id="ae" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#CC9900"/></marker></defs>
+<line x1="310" y1="82" x2="390" y2="82" stroke="#CC9900" stroke-width="2" marker-end="url(#ae)"/>
+<text x="350" y="77" text-anchor="middle" fill="#996600" font-size="10" font-weight="bold">e&minus; flow</text>
+<circle cx="345" cy="150" r="5" fill="#CC9900" opacity=".8"><animate attributeName="cx" values="380;300" dur="3s" repeatCount="indefinite"/></circle>
+<circle cx="355" cy="185" r="5" fill="#CC9900" opacity=".8"><animate attributeName="cx" values="395;300" dur="4s" repeatCount="indefinite"/></circle>
+<circle cx="340" cy="215" r="5" fill="#CC9900" opacity=".8"><animate attributeName="cx" values="370;300" dur="3.5s" repeatCount="indefinite"/></circle>
+<text x="350" y="143" text-anchor="middle" fill="#996600" font-size="10">Au&sup3;&#8314; ions migrate</text>
+<rect x="258" y="180" width="7" height="65" rx="2" fill="#CC9900" opacity=".7"/>
+<text x="240" y="215" text-anchor="end" fill="#996600" font-size="10" font-weight="bold">Au&deg; film</text>
+<text x="350" y="310" text-anchor="middle" fill="#333" font-size="11" font-style="italic">Figure 11.1: Electrolytic cell for gold electrodeposition</text>
+</svg></div>
+
+<div class="kc"><h4>&#128273; Electrode Identification</h4><p>In an <strong>electrolytic cell</strong>: cathode connects to the <strong>negative</strong> terminal (attracting positive ions); anode connects to <strong>positive</strong>. Remember <strong>&ldquo;Red Cat&rdquo;</strong> (reduction at cathode) and <strong>&ldquo;An Ox&rdquo;</strong> (oxidation at anode).</p></div>
+</div></div>
+<div class="card"><div class="chd cop">&#128220; Part 4: Faraday&rsquo;s Laws of Electrolysis</div><div class="cbd">
+<p>Michael Faraday&rsquo;s 1830s experiments established the quantitative link between electrical charge and chemical change, enabling <strong>precise prediction</strong> of deposited mass.</p>
+<h3>Faraday&rsquo;s First Law</h3>
+<p>Mass deposited is <strong>directly proportional</strong> to total electric charge:</p>
+<div class="eq-box"><div class="eq">m = Z &times; Q = Z &times; I &times; t</div><div class="eq-lbl">m = mass (g), Z = electrochemical equivalent (g/C), Q = charge (C), I = current (A), t = time (s)</div></div>
+<h3>Faraday&rsquo;s Second Law</h3>
+<p>Masses deposited from different electrolytes by the same charge are proportional to their <span class="tt" tabindex="0">equivalent weights<span class="tt-box">Molar mass divided by number of electrons. For Cu&sup2;&#8314; (M=63.55, n=2): 31.78 g/eq. For Au&sup3;&#8314; (M=196.97, n=3): 65.66 g/eq.</span></span>:</p>
+<div class="eq-box"><div class="eq">m = (I &times; t &times; M) / (n &times; F)</div><div class="eq-lbl">M = molar mass (g/mol), n = electrons transferred, F = 96,485 C/mol</div></div>
+<h3>The Faraday Constant</h3>
+<div class="eq-box"><div class="eq">F = N<sub>A</sub> &times; e = 96,485 C/mol</div><div class="eq-lbl">N<sub>A</sub> = 6.022 &times; 10&sup2;&sup3; (Avogadro), e = 1.602 &times; 10&minus;&sup1;&sup9; C (elementary charge)</div></div>
+<h3>Current Efficiency</h3>
+<p>Side reactions (hydrogen evolution, etc.) consume some current, so actual yield is always less than theoretical:</p>
+<div class="eq-box"><div class="eq">&eta; = (m<sub>actual</sub> / m<sub>theoretical</sub>) &times; 100%</div><div class="eq-lbl">Typical: Gold ~90&ndash;99%, Copper ~95&ndash;99%, Chromium ~10&ndash;25%</div></div>
+<div class="kc"><h4>&#128221; Worked Example</h4>
+<p><strong>Problem:</strong> Mass of gold deposited at 5.0 mA for 10 min, 95% efficiency?</p>
+<p>m = (0.005 &times; 600 &times; 196.97) / (3 &times; 96485) = 590.91 / 289455 = <strong>2.04 mg</strong> (theoretical)</p>
+<p>Actual: 2.04 &times; 0.95 = <strong>1.94 mg</strong></p></div>
+</div></div>
+
+<div class="card"><div class="chd purp">&#128202; Part 5: The Nernst Equation</div><div class="cbd">
+<p>Standard potentials apply only at 1 M, 298 K. In real baths, concentrations vary. The <span class="tt" tabindex="0">Nernst equation<span class="tt-box">Relates electrode potential to ion concentration under non-standard conditions. Developed by Walther Nernst (1889), connecting thermodynamics to electrochemistry.</span></span> gives the actual potential:</p>
+<div class="eq-box"><div class="eq">E = E&deg; &minus; (RT / nF) &times; ln Q</div><div class="eq-lbl">General Nernst equation</div></div>
+<p>At 25&deg;C (298 K):</p>
+<div class="eq-box"><div class="eq">E = E&deg; &minus; (0.0592 / n) &times; log Q</div><div class="eq-lbl">E = actual potential (V), n = electrons, Q = reaction quotient</div></div>
+<h3>Practical Implications</h3>
+<p>As deposition proceeds, ion concentration near the cathode <strong>drops</strong>, shifting the potential. Bath agitation (stirring) replenishes ions and maintains uniform deposition. The Nernst equation also connects to thermodynamics:</p>
+<div class="eq-box"><div class="eq">&Delta;G = &minus;nFE<sub>cell</sub></div><div class="eq-lbl">&Delta;G &lt; 0: spontaneous (galvanic) | &Delta;G &gt; 0: non-spontaneous (electrolytic)</div></div>
+</div></div>
+
+<div class="card"><div class="chd emer">&#127793; Part 6: Film Growth &amp; Optical Properties</div><div class="cbd">
+<p>Electrodeposited films grow through stages similar to PVD but in a liquid environment:</p>
+<div class="cmp" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+<div class="cb" style="background:var(--sec-pale);border-top-color:var(--sec)"><h4 style="color:var(--sec)">1. Ion Transport</h4><p>Cations migrate to cathode via diffusion, convection, and electromigration.</p></div>
+<div class="cb" style="background:var(--teal-pale);border-top-color:var(--teal)"><h4 style="color:var(--teal-dk)">2. Charge Transfer</h4><p>Ions accept electrons at the surface and reduce to metal adatoms.</p></div>
+<div class="cb" style="background:var(--pri-pale);border-top-color:var(--pri)"><h4 style="color:var(--pri-dk)">3. Nucleation</h4><p>Adatoms cluster at favorable sites (defects, grain boundaries) to form nuclei.</p></div>
+<div class="cb" style="background:var(--emer-pale);border-top-color:var(--emer)"><h4 style="color:var(--emer-dk)">4. Coalescence</h4><p>Nuclei grow into islands that merge into a continuous polycrystalline film.</p></div>
+</div>
+<h3>Gold Film Color vs. Thickness</h3>
+<table class="dtbl" aria-label="Gold film color at different thicknesses"><thead><tr><th>Thickness</th><th>Color</th><th>Explanation</th></tr></thead><tbody>
+<tr><td>&lt; 5 nm</td><td>Transparent / faint gray</td><td>Island film; light passes through gaps</td></tr>
+<tr><td>5&ndash;15 nm</td><td>Pinkish / rose</td><td>Surface plasmon resonance effects</td></tr>
+<tr><td>15&ndash;30 nm</td><td>Blue-purple</td><td>Partial transmission &amp; interference</td></tr>
+<tr><td>30&ndash;80 nm</td><td>Greenish-gold</td><td>Bulk-like reflection emerging</td></tr>
+<tr><td>&gt; 80 nm</td><td>Gold / reflective</td><td>Full metallic reflection</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="chd cop">&#127981; Part 7: The Copper Damascene Process</div><div class="cbd">
+<p>The most critical industrial application: the <span class="tt" tabindex="0">damascene process<span class="tt-box">Named after ancient metal inlaying art from Damascus, Syria. Copper is electroplated into pre-etched trenches in dielectric, then excess is polished away by CMP&mdash;an additive metallization approach.</span></span> for copper interconnects.</p>
+<h3>Why Copper Replaced Aluminum</h3>
+<table class="dtbl"><thead><tr><th>Property</th><th>Aluminum</th><th>Copper</th><th>Advantage</th></tr></thead><tbody>
+<tr><td>Resistivity (&mu;&Omega;&middot;cm)</td><td>2.65</td><td>1.68</td><td>Cu: 37% lower</td></tr>
+<tr><td>Electromigration</td><td>Lower resistance</td><td>Higher resistance</td><td>Cu wires last longer</td></tr>
+<tr><td>Thermal conductivity</td><td>237 W/m&middot;K</td><td>401 W/m&middot;K</td><td>Cu dissipates heat better</td></tr>
+</tbody></table>
+<h3>Dual Damascene Process Steps</h3>
+<div class="ps" data-step="1"><h4>Deposit &amp; Pattern Dielectric</h4><p>Low-k dielectric deposited and patterned via lithography + etching to create trenches and vias.</p></div>
+<div class="ps" data-step="2"><h4>Barrier Layer (Ta/TaN)</h4><p>PVD-deposited barrier prevents copper diffusion into silicon that would destroy transistors.</p></div>
+<div class="ps" data-step="3"><h4>Copper Seed Layer</h4><p>Thin (~50&ndash;150 nm) PVD copper provides the conductive surface for electroplating.</p></div>
+<div class="ps" data-step="4"><h4>Electroplate Copper</h4><p>Wafer immersed in CuSO&sub4; bath with additives (accelerators, suppressors, levelers) enabling bottom-up <strong>superfilling</strong> of features.</p></div>
+<div class="ps" data-step="5"><h4>CMP Planarization</h4><p>Chemical-mechanical polishing removes excess copper, leaving perfectly inlaid wiring in trenches.</p></div>
+<div class="kc"><h4>&#128273; Superfilling</h4><p>The &ldquo;magic&rdquo; of damascene: bath additives make deposition <em>faster</em> at trench bottoms than tops, enabling void-free filling of 20&thinsp;nm features&mdash;a remarkable electrochemical engineering achievement.</p></div>
+</div></div>
+
+<div class="card"><div class="chd blue">&#128203; Part 8: Deposition Methods Comparison</div><div class="cbd">
+<table class="dtbl" aria-label="Deposition method comparison"><thead><tr><th>Parameter</th><th>Electrodep.</th><th>PVD</th><th>CVD</th><th>ALD</th></tr></thead><tbody>
+<tr><td><strong>Pressure</strong></td><td>Atmospheric</td><td>High vacuum</td><td>Low pressure</td><td>Low pressure</td></tr>
+<tr><td><strong>Temperature</strong></td><td>Room temp</td><td>RT&ndash;300&deg;C</td><td>200&ndash;900&deg;C</td><td>100&ndash;400&deg;C</td></tr>
+<tr><td><strong>Conformality</strong></td><td>Excellent</td><td>Poor</td><td>Good</td><td>Excellent</td></tr>
+<tr><td><strong>Materials</strong></td><td>Metals only</td><td>Metals, some oxides</td><td>Many</td><td>Many</td></tr>
+<tr><td><strong>Equipment cost</strong></td><td>Low</td><td>High</td><td>Very high</td><td>Very high</td></tr>
+<tr><td><strong>Key strength</strong></td><td>Fill high-AR features</td><td>High purity</td><td>Versatile</td><td>Atomic precision</td></tr>
+</tbody></table>
+</div></div>
+
+</div><!-- /lecture -->
+<!-- ============ SIMULATION TAB ============ -->
+<div id="sim" class="tc" role="tabpanel" aria-labelledby="tab-sim">
+
+<div class="card"><div class="chd gold">&#9889; Simulation 1: Electrodeposition Chamber</div><div class="cbd">
+<p>Watch metal ions migrate and deposit on the cathode. Adjust current to observe effects on deposition rate and film growth.</p>
+<div class="sc">
+<canvas id="depoCanvas" width="780" height="420" class="scanv" aria-label="Interactive electrodeposition simulation"></canvas>
+<div class="sctrl">
+<div class="sg"><label for="simI">Current (mA):</label><input type="range" id="simI" min="1" max="20" value="5"><div class="val" id="simIV">5 mA</div></div>
+<div class="sg"><label for="simM">Metal:</label><select id="simM"><option value="gold">Gold (Au&sup3;&#8314;)</option><option value="copper">Copper (Cu&sup2;&#8314;)</option><option value="silver">Silver (Ag&#8314;)</option><option value="nickel">Nickel (Ni&sup2;&#8314;)</option></select></div>
+</div>
+<div class="sbr"><button class="sbtn go" id="startD" onclick="toggleDepo()">&#9654; Start Deposition</button><button class="sbtn rst" onclick="resetDepo()">&#8634; Reset</button></div>
+<div class="sstat" id="dStat">Ready &mdash; Set parameters and click Start</div>
+</div></div></div>
+
+<div class="card"><div class="chd teal">&#128220; Simulation 2: Faraday&rsquo;s Law Calculator</div><div class="cbd">
+<p>Explore how current, time, and metal affect deposited mass. Adjust any parameter for instant results.</p>
+<div class="cg">
+<div class="cgi"><label for="cM">Metal:</label><select id="cM" onchange="calc()"><option value="gold">Gold (Au, M=196.97, n=3)</option><option value="copper">Copper (Cu, M=63.55, n=2)</option><option value="silver">Silver (Ag, M=107.87, n=1)</option><option value="nickel">Nickel (Ni, M=58.69, n=2)</option><option value="zinc">Zinc (Zn, M=65.38, n=2)</option></select></div>
+<div class="cgi"><label for="cI">Current (mA):</label><input type="number" id="cI" value="5" min="0.1" max="1000" step="0.1" oninput="calc()"></div>
+<div class="cgi"><label for="cT">Time (min):</label><input type="number" id="cT" value="10" min="0.1" max="180" step="0.1" oninput="calc()"></div>
+<div class="cgi"><label for="cE">Efficiency (%):</label><input type="number" id="cE" value="95" min="1" max="100" step="1" oninput="calc()"></div>
+<div class="cgi"><label for="cA">Area (cm&sup2;):</label><input type="number" id="cA" value="1" min="0.1" max="100" step="0.1" oninput="calc()"></div>
+</div>
+<div class="cr" id="cR"><h4>&#128202; Calculation Results</h4>
+<div class="crw"><span>Total Charge (Q):</span><span class="crv" id="rQ">3.00 C</span></div>
+<div class="crw"><span>Theoretical Mass:</span><span class="crv" id="rMt">2.04 mg</span></div>
+<div class="crw"><span>Actual Mass:</span><span class="crv" id="rMa">1.94 mg</span></div>
+<div class="crw"><span>Moles Deposited:</span><span class="crv" id="rMo">9.8e-6 mol</span></div>
+<div class="crw"><span>Est. Thickness:</span><span class="crv" id="rTh">~101 nm</span></div>
+<div class="crw"><span>Expected Color:</span><span class="crv" id="rCo">Gold / reflective</span></div>
+</div></div></div>
+
+<div class="card"><div class="chd purp">&#128202; Simulation 3: Nernst Equation Explorer</div><div class="cbd">
+<p>See how changing ion concentration affects electrode potential at 25&deg;C.</p>
+<div class="cg">
+<div class="cgi"><label for="nM">Half-Reaction:</label><select id="nM" onchange="nernst()"><option value="au">Au&sup3;&#8314;+3e&minus;&rarr;Au (E&deg;=+1.50V)</option><option value="cu">Cu&sup2;&#8314;+2e&minus;&rarr;Cu (E&deg;=+0.34V)</option><option value="ag">Ag&#8314;+e&minus;&rarr;Ag (E&deg;=+0.80V)</option><option value="ni">Ni&sup2;&#8314;+2e&minus;&rarr;Ni (E&deg;=&minus;0.26V)</option><option value="zn">Zn&sup2;&#8314;+2e&minus;&rarr;Zn (E&deg;=&minus;0.76V)</option></select></div>
+<div class="cgi"><label for="nC">Ion Concentration (log M):</label><input type="range" id="nC" min="-4" max="0" step="0.1" value="-0.3" oninput="nernst()"><div class="val" id="nCV">0.50 M</div></div>
+</div>
+<div class="cr"><h4>&#9889; Nernst Result</h4>
+<div class="crw"><span>Standard E&deg;:</span><span class="crv" id="nE0">+1.50 V</span></div>
+<div class="crw"><span>Concentration:</span><span class="crv" id="nCv">0.50 M</span></div>
+<div class="crw"><span>Actual Potential E:</span><span class="crv" id="nE" style="font-size:1.2rem">+1.494 V</span></div>
+<div class="crw"><span>Shift from E&deg;:</span><span class="crv" id="nS">&minus;6.0 mV</span></div>
+</div></div></div>
+
+</div><!-- /sim -->
+
+<!-- ============ PROCEDURE TAB ============ -->
+<div id="procedure" class="tc" role="tabpanel" aria-labelledby="tab-procedure">
+
+<div class="card"><div class="chd red">&#9888; Safety Requirements</div><div class="cbd">
+<div class="saf"><h4>&#9888; Required PPE</h4><ul style="margin-left:1.5rem;margin-top:.5rem">
+<li><strong>Safety goggles</strong> &mdash; gold chloride can irritate eyes</li>
+<li><strong>Nitrile gloves</strong> &mdash; prevent skin contact</li>
+<li><strong>Lab coat</strong> &mdash; protect clothing</li>
+<li><strong>Closed-toe shoes</strong></li>
+</ul><p style="margin-top:.75rem"><strong>Hazards:</strong> HAuCl&sub4; is an irritant and stains skin. KCl is a mild irritant. Wash hands thoroughly after experiment.</p></div>
+</div></div>
+
+<div class="card"><div class="chd gold">&#128295; Materials &amp; Equipment</div><div class="cbd">
+<div class="cmp">
+<div class="cb" style="background:var(--pri-pale);border-top-color:var(--pri)"><h4 style="color:var(--pri-dk)">Equipment</h4><ul>
+<li>DC power supply (or 1.5V battery)</li><li>Alligator clip leads (2)</li><li>50 mL beakers (2)</li><li>Hot plate</li><li>Timer / stopwatch</li><li>Multimeter (optional)</li></ul></div>
+<div class="cb" style="background:var(--sec-pale);border-top-color:var(--sec)"><h4 style="color:var(--sec)">Materials</h4><ul>
+<li>FTO glass slides (3)</li><li>Graphite electrode</li><li>HAuCl&sub4; solution (~5 mM)</li><li>1.0 M KCl solution (30 mL)</li><li>Distilled water</li><li>Kimwipes</li></ul></div>
+</div></div></div>
+
+<div class="card"><div class="chd blue">&#128221; Experimental Procedure</div><div class="cbd">
+<h3>Part A: Gold Electrodeposition</h3>
+<div class="ps" data-step="1"><h4>Prepare Electrolyte</h4><p>Pour ~30 mL gold(III) chloride solution into a clean beaker. Solution should appear pale yellow and cover at least 2 cm of immersed electrode.</p></div>
+<div class="ps" data-step="2"><h4>Assemble Cell</h4><p>Connect <strong>negative</strong> terminal &rarr; FTO glass (cathode). Connect <strong>positive</strong> terminal &rarr; graphite (anode). Ensure FTO <strong>conductive side</strong> faces the solution (test with multimeter).</p></div>
+<div class="ps" data-step="3"><h4>Deposition #1: 10 min</h4><p>Immerse electrodes, apply voltage, start timer. Observe color changes. After 10 min, remove, rinse with DI water. <strong>Record color.</strong></p></div>
+<div class="ps" data-step="4"><h4>Deposition #2: 10 min (replicate)</h4><p>Fresh FTO slide, same conditions, 10 min. This sample will be used for oxidation. <strong>Record color.</strong></p></div>
+<div class="ps" data-step="5"><h4>Deposition #3: ~1 hour</h4><p>Third FTO slide, extended deposition. Watch progressive color changes. <strong>Record final color.</strong></p></div>
+
+<h3 style="margin-top:2rem">Part B: Oxidation</h3>
+<div class="ps" data-step="6"><h4>Electrical Oxidation</h4><p>Sample #1 in 1.0 M KCl. Connect <strong>positive</strong> lead to gold film (now the anode). Apply voltage 5&ndash;10 min. <strong>Record color changes.</strong></p></div>
+<div class="ps" data-step="7"><h4>Thermal Oxidation</h4><p>Place samples #2 and #3 on hot plate (~150&ndash;200&deg;C) for 10&ndash;15 min. <strong>Record before/after colors.</strong></p></div>
+
+<h3 style="margin-top:2rem">Data Collection</h3>
+<table class="dtbl"><thead><tr><th>Electrode</th><th>Time</th><th>As-Deposited</th><th>After Oxidation</th></tr></thead><tbody>
+<tr><td>FTO #1</td><td>10 min</td><td style="border:2px dashed var(--mgr);min-width:100px">&nbsp;</td><td style="border:2px dashed var(--mgr)">Electrical:</td></tr>
+<tr><td>FTO #2</td><td>10 min</td><td style="border:2px dashed var(--mgr)">&nbsp;</td><td style="border:2px dashed var(--mgr)">Thermal:</td></tr>
+<tr><td>FTO #3</td><td>~1 hr</td><td style="border:2px dashed var(--mgr)">&nbsp;</td><td style="border:2px dashed var(--mgr)">Thermal:</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="card"><div class="chd emer">&#128161; Discussion Questions</div><div class="cbd"><ol style="margin-left:1.5rem">
+<li style="margin-bottom:.75rem">Why is the gold film <em>not</em> golden after 10 min? Relate to nanoscale optical properties.</li>
+<li style="margin-bottom:.75rem">Calculate theoretical gold mass for 10 min at 5 mA using Faraday&rsquo;s law.</li>
+<li style="margin-bottom:.75rem">What are the roles of cathode and anode? What reaction occurs at each?</li>
+<li style="margin-bottom:.75rem">Why must the <em>conductive side</em> of FTO face the solution?</li>
+<li style="margin-bottom:.75rem">Compare electrodeposition to thermal evaporation (Module 7): advantages and limitations.</li>
+<li style="margin-bottom:.75rem">Explain color changes after electrical oxidation in KCl.</li>
+<li style="margin-bottom:.75rem">How does thermal vs. electrical oxidation differ in mechanism?</li>
+<li style="margin-bottom:.75rem">What would a 9V battery (vs. 1.5V) do to rate and film quality?</li>
+<li style="margin-bottom:.75rem">Describe copper damascene. Why can&rsquo;t copper be plasma-etched like aluminum?</li>
+<li style="margin-bottom:.75rem">At what approximate time does the 1-hour sample first look golden? What thickness does that imply?</li>
+</ol></div></div>
+</div><!-- /procedure -->
+<!-- ============ QUIZ TAB ============ -->
+<div id="quiz" class="tc" role="tabpanel" aria-labelledby="tab-quiz">
+<div class="card"><div class="chd blue">&#128221; Module 11 Knowledge Assessment</div><div class="cbd"><p>Select the best answer for each question, then click &ldquo;Check Answers.&rdquo;</p></div></div>
+<div id="qBox">
+
+<div class="qq" data-correct="b"><h4>1. In OIL RIG, &ldquo;RIG&rdquo; means:</h4>
+<label class="qo"><input type="radio" name="q1" value="a"><span>Reduction Is Gone</span></label>
+<label class="qo"><input type="radio" name="q1" value="b"><span>Reduction Is Gain (of electrons)</span></label>
+<label class="qo"><input type="radio" name="q1" value="c"><span>Resistance Is Grounded</span></label>
+<label class="qo"><input type="radio" name="q1" value="d"><span>Reaction Is Galvanic</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="c"><h4>2. In an electrolytic cell, reduction occurs at the:</h4>
+<label class="qo"><input type="radio" name="q2" value="a"><span>Anode, connected to positive terminal</span></label>
+<label class="qo"><input type="radio" name="q2" value="b"><span>Anode, connected to negative terminal</span></label>
+<label class="qo"><input type="radio" name="q2" value="c"><span>Cathode, connected to negative terminal</span></label>
+<label class="qo"><input type="radio" name="q2" value="d"><span>Cathode, connected to positive terminal</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="b"><h4>3. The Faraday constant (96,485 C/mol) represents:</h4>
+<label class="qo"><input type="radio" name="q3" value="a"><span>Number of atoms in one gram</span></label>
+<label class="qo"><input type="radio" name="q3" value="b"><span>Charge carried by one mole of electrons</span></label>
+<label class="qo"><input type="radio" name="q3" value="c"><span>Charge of a single electron</span></label>
+<label class="qo"><input type="radio" name="q3" value="d"><span>Universal gas constant</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="a"><h4>4. Which metal requires the MOST charge to deposit 1 mole?</h4>
+<label class="qo"><input type="radio" name="q4" value="a"><span>Gold (Au&sup3;&#8314;, n=3): needs 3 mol electrons</span></label>
+<label class="qo"><input type="radio" name="q4" value="b"><span>Copper (Cu&sup2;&#8314;, n=2): needs 2 mol electrons</span></label>
+<label class="qo"><input type="radio" name="q4" value="c"><span>Silver (Ag&#8314;, n=1): needs 1 mol electrons</span></label>
+<label class="qo"><input type="radio" name="q4" value="d"><span>All require the same charge</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="d"><h4>5. A galvanic cell differs from an electrolytic cell because it:</h4>
+<label class="qo"><input type="radio" name="q5" value="a"><span>Uses external power to drive reactions</span></label>
+<label class="qo"><input type="radio" name="q5" value="b"><span>Has positive &Delta;G (non-spontaneous)</span></label>
+<label class="qo"><input type="radio" name="q5" value="c"><span>Cannot produce current</span></label>
+<label class="qo"><input type="radio" name="q5" value="d"><span>Converts chemical energy to electrical energy spontaneously</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="c"><h4>6. Why did semiconductors switch from Al to Cu interconnects?</h4>
+<label class="qo"><input type="radio" name="q6" value="a"><span>Copper is cheaper</span></label>
+<label class="qo"><input type="radio" name="q6" value="b"><span>Copper can be plasma-etched</span></label>
+<label class="qo"><input type="radio" name="q6" value="c"><span>Copper has ~37% lower resistivity and better electromigration resistance</span></label>
+<label class="qo"><input type="radio" name="q6" value="d"><span>Copper evaporates more easily</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="b"><h4>7. The Ta/TaN barrier layer in damascene processing prevents:</h4>
+<label class="qo"><input type="radio" name="q7" value="a"><span>Increased copper conductivity</span></label>
+<label class="qo"><input type="radio" name="q7" value="b"><span>Copper diffusion into silicon, which would damage transistors</span></label>
+<label class="qo"><input type="radio" name="q7" value="c"><span>Mechanical stress in dielectric</span></label>
+<label class="qo"><input type="radio" name="q7" value="d"><span>Photoresist adhesion problems</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="a"><h4>8. A 10-min gold film on FTO looks pinkish (not gold) because:</h4>
+<label class="qo"><input type="radio" name="q8" value="a"><span>The nanoscale film exhibits surface plasmon resonance, not bulk metallic reflection</span></label>
+<label class="qo"><input type="radio" name="q8" value="b"><span>Gold is contaminated by electrolyte impurities</span></label>
+<label class="qo"><input type="radio" name="q8" value="c"><span>The FTO substrate changes color from current heating</span></label>
+<label class="qo"><input type="radio" name="q8" value="d"><span>Gold deposited amorphously rather than crystallinely</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="c"><h4>9. The Nernst equation predicts that as ion concentration decreases:</h4>
+<label class="qo"><input type="radio" name="q9" value="a"><span>Electrode potential increases, making reduction easier</span></label>
+<label class="qo"><input type="radio" name="q9" value="b"><span>Potential is unchanged (only temperature matters)</span></label>
+<label class="qo"><input type="radio" name="q9" value="c"><span>Potential shifts, making reduction harder (needs more driving force)</span></label>
+<label class="qo"><input type="radio" name="q9" value="d"><span>Current efficiency automatically compensates</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="d"><h4>10. What makes electrodeposition essential for damascene?</h4>
+<label class="qo"><input type="radio" name="q10" value="a"><span>High-temperature copper deposition</span></label>
+<label class="qo"><input type="radio" name="q10" value="b"><span>Zero-defect deposition on any surface</span></label>
+<label class="qo"><input type="radio" name="q10" value="c"><span>Highest deposition rates available</span></label>
+<label class="qo"><input type="radio" name="q10" value="d"><span>Superfilling: additives enable void-free bottom-up trench filling</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="b"><h4>11. 10 mA for 30 min = total charge of:</h4>
+<label class="qo"><input type="radio" name="q11" value="a"><span>0.3 C</span></label>
+<label class="qo"><input type="radio" name="q11" value="b"><span>18 C</span></label>
+<label class="qo"><input type="radio" name="q11" value="c"><span>300 C</span></label>
+<label class="qo"><input type="radio" name="q11" value="d"><span>1800 C</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="a"><h4>12. Current efficiency &lt; 100% because:</h4>
+<label class="qo"><input type="radio" name="q12" value="a"><span>Side reactions (e.g., H&sub2; evolution) consume some current</span></label>
+<label class="qo"><input type="radio" name="q12" value="b"><span>The Faraday constant is approximate</span></label>
+<label class="qo"><input type="radio" name="q12" value="c"><span>Power supply can&rsquo;t maintain constant voltage</span></label>
+<label class="qo"><input type="radio" name="q12" value="d"><span>Metal ions are too heavy to reach the cathode</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="c"><h4>13. Best conformality for high-aspect-ratio features?</h4>
+<label class="qo"><input type="radio" name="q13" value="a"><span>Thermal evaporation</span></label>
+<label class="qo"><input type="radio" name="q13" value="b"><span>E-beam evaporation</span></label>
+<label class="qo"><input type="radio" name="q13" value="c"><span>Electrodeposition with superfilling additives</span></label>
+<label class="qo"><input type="radio" name="q13" value="d"><span>Sputtering</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="d"><h4>14. FTO glass is used as cathode substrate because it is:</h4>
+<label class="qo"><input type="radio" name="q14" value="a"><span>The cheapest glass available</span></label>
+<label class="qo"><input type="radio" name="q14" value="b"><span>Resistant to all acids/bases</span></label>
+<label class="qo"><input type="radio" name="q14" value="c"><span>Able to withstand 1000&deg;C+</span></label>
+<label class="qo"><input type="radio" name="q14" value="d"><span>Both electrically conductive and optically transparent</span></label>
+<div class="qfb"></div></div>
+
+<div class="qq" data-correct="b"><h4>15. In AuCl&sub4;&minus; + 3e&minus; &rarr; Au&deg; + 4Cl&minus;, gold is being:</h4>
+<label class="qo"><input type="radio" name="q15" value="a"><span>Oxidized (gains electrons)</span></label>
+<label class="qo"><input type="radio" name="q15" value="b"><span>Reduced (gains electrons, Au&sup3;&#8314; &rarr; Au&deg;)</span></label>
+<label class="qo"><input type="radio" name="q15" value="c"><span>Oxidized (oxidation state decreases)</span></label>
+<label class="qo"><input type="radio" name="q15" value="d"><span>Neither; it is a catalyst</span></label>
+<div class="qfb"></div></div>
+
+</div>
+<div class="qa"><button onclick="checkQuiz()">&#9989; Check Answers</button></div>
+<div class="qs" id="qScore"><h3>Quiz Complete!</h3><div class="big" id="sDisp">0/15</div><p id="sMsg"></p></div>
+</div><!-- /quiz -->
+
+<!-- FOOTER -->
+<div class="nf">
+<a href="module10_pattern_transfer.html" class="fn pv">&larr; Module 10: Pattern Transfer</a>
+<button class="cbtn" onclick="markDone()">&#9989; Mark Module Complete</button>
+<a href="module12_self_assembly.html" class="fn nx">Module 12: Self-Assembly &rarr;</a>
+</div>
+<div class="nsf"><div class="nsfi"><p>Developed with support from the <strong>National Science Foundation</strong> ATE program, Grant No. <strong>DUE-2301137</strong>. Opinions expressed are those of the author(s) and do not necessarily reflect NSF views.</p></div></div>
+</main>
+<script>
+// ========== GLOBALS ==========
+const vis=new Set(['lecture']);let dRun=false,dAnim=null,dParts=[],fThick=0,dTime=0;
+
+// ========== TOOLTIP POSITIONING ==========
+document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.tt').forEach(t=>{
+        function pos(){
+            const b=t.querySelector('.tt-box');if(!b)return;
+            b.style.left='50%';b.style.transform='translateX(-50%)';b.style.bottom='calc(100% + 10px)';b.style.top='auto';
+            requestAnimationFrame(()=>{
+                const r=b.getBoundingClientRect(),vw=window.innerWidth;
+                if(r.right>vw-12){b.style.left=`calc(50% - ${r.right-vw+20}px)`}
+                if(r.left<12){b.style.left=`calc(50% + ${12-r.left}px)`}
+                if(r.top<10){b.style.bottom='auto';b.style.top='calc(100% + 10px)'}
+            });
+        }
+        t.addEventListener('mouseenter',pos);t.addEventListener('focus',pos);
+    });
+    calc();nernst();drawDepoStatic();
+});
+
+// ========== TABS ==========
+function switchTab(n){
+    document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.tc').forEach(t=>t.classList.remove('active'));
+    document.getElementById(n).classList.add('active');
+    document.getElementById('tab-'+n).classList.add('active');
+    document.getElementById('tab-'+n).setAttribute('aria-selected','true');
+    vis.add(n);updProg();
+    window.scrollTo({top:document.querySelector('.tabs').offsetTop-80,behavior:'smooth'});
+}
+
+// ========== PROGRESS ==========
+function updProg(){
+    const p=Math.round(vis.size/4*100);
+    document.getElementById('pPct').textContent=p+'%';
+    document.getElementById('pFill').style.width=p+'%';
+}
+function markDone(){
+    ['lecture','sim','procedure','quiz'].forEach(t=>vis.add(t));updProg();
+    const b=document.querySelector('.cbtn');b.textContent='\u2705 Module Complete!';b.style.background='#006633';
+}
+
+// ========== FARADAY CALCULATOR ==========
+function calc(){
+    const M={gold:{M:196.97,n:3,rho:19.32},copper:{M:63.55,n:2,rho:8.96},silver:{M:107.87,n:1,rho:10.49},nickel:{M:58.69,n:2,rho:8.908},zinc:{M:65.38,n:2,rho:7.14}};
+    const s=document.getElementById('cM').value,I=parseFloat(document.getElementById('cI').value)/1000,
+          t=parseFloat(document.getElementById('cT').value)*60,eff=parseFloat(document.getElementById('cE').value)/100,
+          A=parseFloat(document.getElementById('cA').value),m=M[s],F=96485;
+    if(isNaN(I)||isNaN(t)||I<=0||t<=0)return;
+    const Q=I*t,mt=(I*t*m.M)/(m.n*F),ma=mt*eff,mo=ma/m.M,tcm=ma/(m.rho*A),tnm=tcm*1e7;
+    let col;
+    if(s==='gold'){col=tnm>80?'Gold / reflective':tnm>30?'Greenish-gold':tnm>15?'Blue-purple':tnm>5?'Pinkish / rose':'Transparent'}
+    else{col=tnm>50?'Metallic':tnm>10?'Semi-transparent':'Very thin'}
+    document.getElementById('rQ').textContent=Q.toFixed(3)+' C';
+    document.getElementById('rMt').textContent=(mt*1000).toFixed(3)+' mg';
+    document.getElementById('rMa').textContent=(ma*1000).toFixed(3)+' mg';
+    document.getElementById('rMo').textContent=mo.toExponential(2)+' mol';
+    document.getElementById('rTh').textContent='\u2248'+tnm.toFixed(1)+' nm';
+    document.getElementById('rCo').textContent=col;
+}
+
+// ========== NERNST ==========
+function nernst(){
+    const D={au:{E0:1.50,n:3},cu:{E0:0.34,n:2},ag:{E0:0.80,n:1},ni:{E0:-0.26,n:2},zn:{E0:-0.76,n:2}};
+    const s=document.getElementById('nM').value,lC=parseFloat(document.getElementById('nC').value),c=Math.pow(10,lC),m=D[s];
+    const E=m.E0+(0.0592/m.n)*lC,sh=E-m.E0;
+    document.getElementById('nCV').textContent=c<0.01?c.toExponential(2)+' M':c.toFixed(4)+' M';
+    document.getElementById('nE0').textContent=(m.E0>=0?'+':'')+m.E0.toFixed(2)+' V';
+    document.getElementById('nCv').textContent=c<0.01?c.toExponential(2)+' M':c.toFixed(4)+' M';
+    document.getElementById('nE').textContent=(E>=0?'+':'')+E.toFixed(4)+' V';
+    document.getElementById('nS').textContent=(sh>=0?'+':'')+(sh*1000).toFixed(1)+' mV';
+}
+
+// ========== DEPOSITION SIMULATION ==========
+function getCanvasCtx(){
+    const c=document.getElementById('depoCanvas');
+    const dpr=window.devicePixelRatio||1;
+    if(!c._init){
+        const r=c.getBoundingClientRect();
+        c.width=r.width*dpr;c.height=420*dpr;
+        c.getContext('2d').scale(dpr,dpr);
+        c._w=r.width;c._h=420;c._init=true;
+    }
+    return{c:c,ctx:c.getContext('2d'),w:c._w,h:c._h};
+}
+function drawDepoStatic(){
+    const{c,ctx,w,h}=getCanvasCtx();
+    ctx.clearRect(0,0,w,h);
+    drawDepoFrame(ctx,w,h,'#CC9900','rgba(204,153,0,0.1)',0);
+}
+function drawDepoFrame(ctx,w,h,mc,fc,thick){
+    // Background
+    ctx.fillStyle='#F0F8FF';ctx.fillRect(0,0,w,h);
+    // Power supply
+    const pw=140,px=w/2-pw/2;
+    ctx.fillStyle='#003366';ctx.beginPath();ctx.roundRect(px,8,pw,36,6);ctx.fill();
+    ctx.fillStyle='#FFF';ctx.font='bold 12px Trebuchet MS';ctx.textAlign='center';
+    ctx.fillText('DC Power Supply',w/2,30);
+    // Terminals
+    ctx.font='bold 14px Trebuchet MS';
+    ctx.fillStyle='#CC0000';ctx.fillText('\u2212',w*0.28,56);
+    ctx.fillStyle='#006633';ctx.fillText('+',w*0.72,56);
+    // Wires
+    ctx.strokeStyle='#555';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(w*0.28,44);ctx.lineTo(w*0.28,80);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(w*0.72,44);ctx.lineTo(w*0.72,80);ctx.stroke();
+    // Beaker
+    ctx.fillStyle='#E3F2FD';ctx.fillRect(w*0.08,80,w*0.84,h-110);
+    ctx.strokeStyle='#336699';ctx.lineWidth=3;ctx.strokeRect(w*0.08,80,w*0.84,h-110);
+    // Electrolyte label
+    ctx.fillStyle='#336699';ctx.font='bold 11px Trebuchet MS';ctx.textAlign='center';
+    ctx.fillText('Electrolyte Solution',w/2,h-22);
+    // Cathode
+    const cx0=w*0.22,cw=30,cy=72,ch=h-120;
+    ctx.fillStyle='#888';ctx.fillRect(cx0,cy,cw,ch);
+    ctx.strokeStyle='#555';ctx.lineWidth=1;ctx.strokeRect(cx0,cy,cw,ch);
+    // Gold film on cathode
+    const filmW=Math.min(thick*0.3,25);
+    if(filmW>0){ctx.fillStyle=fc;ctx.fillRect(cx0+cw,cy+10,filmW,ch-20);}
+    // Anode
+    ctx.fillStyle='#555';ctx.fillRect(w*0.7,cy,cw,ch);
+    ctx.strokeStyle='#444';ctx.strokeRect(w*0.7,cy,cw,ch);
+    // Labels
+    ctx.fillStyle='#003366';ctx.font='bold 10px Trebuchet MS';ctx.textAlign='center';
+    ctx.fillText('CATHODE (\u2212)',cx0+cw/2,h-35);
+    ctx.fillText('ANODE (+)',w*0.7+cw/2,h-35);
+    // Particles
+    dParts.forEach(p=>{
+        if(p.dep)return;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c;ctx.globalAlpha=0.85;ctx.fill();ctx.globalAlpha=1;
+        // + sign on ion
+        ctx.fillStyle='#FFF';ctx.font='bold 8px Arial';ctx.textAlign='center';ctx.fillText('+',p.x,p.y+3);
+    });
+}
+function toggleDepo(){
+    if(dRun){dRun=false;cancelAnimationFrame(dAnim);document.getElementById('startD').textContent='\u25B6 Resume';return;}
+    dRun=true;document.getElementById('startD').textContent='\u23F8 Pause';runDepo();
+}
+function resetDepo(){
+    dRun=false;cancelAnimationFrame(dAnim);dParts=[];fThick=0;dTime=0;
+    document.getElementById('startD').textContent='\u25B6 Start Deposition';
+    document.getElementById('dStat').textContent='Ready \u2014 Set parameters and click Start';
+    drawDepoStatic();
+}
+function runDepo(){
+    if(!dRun)return;
+    const{c,ctx,w,h}=getCanvasCtx();
+    const cur=parseInt(document.getElementById('simI').value);
+    document.getElementById('simIV').textContent=cur+' mA';
+    const mSel=document.getElementById('simM').value;
+    const mCol={gold:'#CC9900',copper:'#CC6633',silver:'#C0C0C0',nickel:'#999'}[mSel];
+    // Spawn particles
+    if(Math.random()<cur/12){
+        dParts.push({x:w*0.68,y:90+Math.random()*(h-170),vx:-(0.5+Math.random()*cur/8),vy:(Math.random()-0.5)*0.8,r:4+Math.random()*3,c:mCol,dep:false});
+    }
+    const cathR=w*0.22+30+fThick*0.3;
+    dParts.forEach(p=>{
+        if(p.dep)return;
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.y<90||p.y>h-90)p.vy*=-1;
+        if(p.x<=cathR+5){p.dep=true;fThick+=0.06*(cur/8);}
+    });
+    dParts=dParts.filter(p=>!p.dep&&p.x>0);
+    dTime+=1/60;
+    let fCol;
+    if(mSel==='gold'){fCol=fThick<5?'rgba(204,153,0,0.15)':fThick<15?'#CC8899':fThick<30?'#7766AA':fThick<50?'#99AA66':'#CC9900';}
+    else{fCol=fThick<10?'rgba(150,150,150,0.2)':fThick<40?'rgba(180,180,180,0.5)':mCol;}
+    ctx.clearRect(0,0,w,h);
+    drawDepoFrame(ctx,w,h,mCol,fCol,fThick);
+    const mm=Math.floor(dTime/60),ss=Math.floor(dTime%60);
+    document.getElementById('dStat').textContent=
+        'Depositing... Time: '+mm+':'+String(ss).padStart(2,'0')+' | Film: '+fThick.toFixed(1)+' nm ('+Math.min(fThick/80*100,100).toFixed(0)+'%)';
+    dAnim=requestAnimationFrame(runDepo);
+}
+
+// ========== QUIZ ==========
+function checkQuiz(){
+    const fb={
+        q1:{ok:'Correct! RIG = Reduction Is Gain of electrons.',no:'RIG stands for Reduction Is Gain (of electrons).'},
+        q2:{ok:'Correct! Cathode (negative terminal) is where reduction occurs.',no:'In electrolytic cells, reduction occurs at the cathode (negative terminal).'},
+        q3:{ok:'Correct! F = 96,485 C/mol is the charge of one mole of electrons.',no:'96,485 C/mol is the charge carried by one mole of electrons.'},
+        q4:{ok:'Correct! Au\u00B3\u207A needs 3 moles of electrons (3 \u00D7 96,485 C).',no:'Au\u00B3\u207A (n=3) requires 3\u00D796,485 = 289,455 C per mole\u2014the most of the choices.'},
+        q5:{ok:'Correct! Galvanic cells produce electricity from spontaneous reactions.',no:'Galvanic cells spontaneously convert chemical to electrical energy (\u0394G < 0).'},
+        q6:{ok:'Correct! Cu has 37% lower resistivity and superior electromigration resistance.',no:'Copper\'s 37% lower resistivity and better electromigration resistance drove the switch.'},
+        q7:{ok:'Correct! The barrier prevents Cu atoms from diffusing into and damaging Si.',no:'Ta/TaN barriers block copper diffusion into silicon, which would destroy transistor performance.'},
+        q8:{ok:'Correct! Nanoscale gold films exhibit plasmon resonance, producing non-gold colors.',no:'Ultra-thin gold films show surface plasmon resonance effects rather than bulk metallic color.'},
+        q9:{ok:'Correct! Lower concentration shifts the potential, requiring more driving force.',no:'The Nernst equation shows that decreasing ion concentration makes reduction more difficult.'},
+        q10:{ok:'Correct! Superfilling additives enable void-free bottom-up trench filling.',no:'Superfilling\u2014where additives make deposition faster at trench bottoms\u2014is the key capability.'},
+        q11:{ok:'Correct! Q = 0.010 A \u00D7 1800 s = 18 C.',no:'Q = I \u00D7 t = 0.010 A \u00D7 (30\u00D760 s) = 18 C.'},
+        q12:{ok:'Correct! Side reactions like hydrogen evolution consume current without depositing metal.',no:'Side reactions (e.g., H\u2082 gas evolution) consume current without contributing to deposition.'},
+        q13:{ok:'Correct! Electrodeposition with superfilling additives provides the best conformality.',no:'Electrodeposition with superfilling additives achieves superior conformal filling of high-AR features.'},
+        q14:{ok:'Correct! FTO is both conductive and transparent\u2014perfect for observing deposited films.',no:'FTO glass is uniquely both electrically conductive and optically transparent.'},
+        q15:{ok:'Correct! Gold gains 3 electrons (Au\u00B3\u207A \u2192 Au\u2070)\u2014that\u2019s reduction.',no:'Gaining electrons is reduction. Au\u00B3\u207A gains 3e\u207B to become Au\u2070.'}
+    };
+    let score=0;const total=15;
+    for(let i=1;i<=total;i++){
+        const q=document.querySelector('.qq:nth-child('+i+')');
+        const correct=q.dataset.correct;
+        const sel=q.querySelector('input:checked');
+        const fbDiv=q.querySelector('.qfb');
+        q.querySelectorAll('.qo').forEach(o=>o.classList.remove('ok','no'));
+        if(sel){
+            const lbl=sel.closest('.qo');
+            if(sel.value===correct){
+                score++;lbl.classList.add('ok');fbDiv.className='qfb show ok';fbDiv.textContent=fb['q'+i].ok;
+            }else{
+                lbl.classList.add('no');fbDiv.className='qfb show no';fbDiv.textContent=fb['q'+i].no;
+                q.querySelector('input[value="'+correct+'"]').closest('.qo').classList.add('ok');
+            }
+        }else{
+            fbDiv.className='qfb show no';fbDiv.textContent='No answer selected. '+fb['q'+i].no;
+            q.querySelector('input[value="'+correct+'"]').closest('.qo').classList.add('ok');
+        }
+    }
+    const sd=document.getElementById('qScore');sd.style.display='block';
+    document.getElementById('sDisp').textContent=score+'/'+total;
+    const pct=Math.round(score/total*100);
+    let msg;
+    if(pct>=90)msg='\ud83c\udf1f Outstanding! You have mastered electrochemical deposition concepts.';
+    else if(pct>=70)msg='\ud83d\udc4d Good work! Review the topics you missed for a stronger understanding.';
+    else if(pct>=50)msg='\ud83d\udcda Decent start. Re-read the lecture material and try again.';
+    else msg='\ud83d\udcd6 Review the lecture content carefully, then retake the quiz.';
+    document.getElementById('sMsg').textContent=msg;
+    sd.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ========== CANVAS ROUNDRECT POLYFILL ==========
+if(!CanvasRenderingContext2D.prototype.roundRect){
+    CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
+        if(typeof r==='number')r=[r,r,r,r];
+        this.moveTo(x+r[0],y);this.lineTo(x+w-r[1],y);this.quadraticCurveTo(x+w,y,x+w,y+r[1]);
+        this.lineTo(x+w,y+h-r[2]);this.quadraticCurveTo(x+w,y+h,x+w-r[2],y+h);
+        this.lineTo(x+r[3],y+h);this.quadraticCurveTo(x,y+h,x,y+h-r[3]);
+        this.lineTo(x,y+r[0]);this.quadraticCurveTo(x,y,x+r[0],y);this.closePath();return this;
+    };
+}
+</script>
+</body>
+</html>

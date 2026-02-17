@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 10: Pattern Transfer Integration - Comprehensive coverage of integrated lithography-etching workflows, subtractive and additive patterning, overlay alignment, cluster tools, yield analysis, defect classification, and hands-on experiments for nanotechnology education.">
+    <title>Module 10: Pattern Transfer Integration | Introduction to Nanotechnology</title>
+    <style>
+        :root{--em:#006633;--em-dk:#004D26;--em-lt:#E6F5EC;--gold:#CC9900;--ind:#333399;--ind-dk:#1A1A66;--purp:#663399;--teal:#009999;--coral:#CC3333;--wh:#FFFFFF;--off:#F5F5F5;--lg:#F0F0F0;--mg:#CCCCCC;--dg:#666666;--ch:#333333;--tx:#2B2B2B;--fb:Georgia,'Times New Roman',serif;--fd:'Trebuchet MS','Segoe UI',Arial,sans-serif;--mw:1120px;--r:10px;--sh:0 4px 16px rgba(0,0,0,.12)}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:var(--fb);line-height:1.75;color:var(--tx);background:var(--off);min-height:100vh;overflow-x:hidden}
+        .skip-link{position:absolute;top:-100px;left:50%;transform:translateX(-50%);background:var(--em);color:#fff;padding:12px 28px;text-decoration:none;border-radius:0 0 8px 8px;z-index:10000;font-weight:bold;font-family:var(--fd)}
+        .skip-link:focus{top:0;outline:3px solid var(--gold)}
+        header{background:linear-gradient(135deg,var(--em-dk),var(--em) 60%,var(--teal));color:#fff;padding:16px 24px;box-shadow:var(--sh);position:sticky;top:0;z-index:1000}
+        .hdr{max-width:var(--mw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+        .logo{display:flex;align-items:center;gap:14px}
+        .logo-ic{width:52px;height:52px;background:rgba(255,255,255,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:1.15rem;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25)}
+        .st{font-family:var(--fd);font-size:1.15rem;font-weight:700}.ss{font-size:.88rem;opacity:.88}
+        .nb{display:flex;gap:8px;flex-wrap:wrap}
+        .nb a{color:#fff;text-decoration:none;padding:7px 16px;border:1px solid rgba(255,255,255,.4);border-radius:6px;font-size:.82rem;font-family:var(--fd);transition:all .2s}
+        .nb a:hover,.nb a:focus{background:rgba(255,255,255,.2);border-color:#fff}
+        .hero{background:linear-gradient(160deg,var(--em-dk),var(--em) 50%,#008855);color:#fff;padding:48px 28px 42px;text-align:center}
+        .hero h1{font-family:var(--fd);font-size:2.4rem;font-weight:800;margin-bottom:16px;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+        .hero p{max-width:780px;margin:0 auto 22px;font-size:1.1rem;line-height:1.65;opacity:.95}
+        .hero-meta{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;font-family:var(--fd);font-size:.9rem;opacity:.9}
+        main{max-width:var(--mw);margin:0 auto;padding:0 20px 40px}
+        .pbar{background:#fff;border-radius:var(--r);padding:16px 24px;margin:24px 0;box-shadow:var(--sh)}
+        .pbar-l{display:flex;justify-content:space-between;font-family:var(--fd);font-size:.88rem;color:var(--dg);margin-bottom:8px}
+        .pbar-b{height:10px;background:var(--lg);border-radius:5px;overflow:hidden}
+        .pbar-f{height:100%;width:0%;background:linear-gradient(90deg,var(--em),var(--teal));border-radius:5px;transition:width .5s}
+        .obj{background:linear-gradient(135deg,var(--em-lt),#D4EDDA);border-left:5px solid var(--em);border-radius:var(--r);padding:28px 32px;margin:24px 0}
+        .obj h3{font-family:var(--fd);color:var(--em-dk);margin-bottom:12px;font-size:1.25rem}
+        .obj ul{margin:12px 0 0 22px}.obj li{margin-bottom:8px;line-height:1.6}
+        .tabs{display:flex;flex-wrap:wrap;gap:4px;background:#fff;padding:8px;border-radius:var(--r);margin:24px 0 0;box-shadow:var(--sh)}
+        .tab-btn{flex:1;min-width:130px;padding:14px 10px;border:2px solid transparent;border-radius:8px;background:transparent;font-family:var(--fd);font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--dg);text-align:center}
+        .tab-btn:hover{background:var(--em-lt);color:var(--em-dk)}
+        .tab-btn.active{background:var(--em);color:#fff;border-color:var(--em-dk)}
+        .tab-btn:focus{outline:3px solid var(--gold);outline-offset:2px}
+        .tc{display:none;animation:ft .4s ease}.tc.active{display:block}
+        @keyframes ft{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        .card{background:#fff;border-radius:var(--r);box-shadow:var(--sh);margin:20px 0;overflow:hidden}
+        .ch{padding:18px 28px;font-family:var(--fd);font-size:1.15rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--em-dk),var(--em))}
+        .ch.ind{background:linear-gradient(135deg,var(--ind-dk),var(--ind))}
+        .ch.purp{background:linear-gradient(135deg,#4A1A80,var(--purp))}
+        .ch.tl{background:linear-gradient(135deg,#006666,var(--teal))}
+        .cb{padding:28px 32px}
+        .sh{font-family:var(--fd);font-size:1.35rem;color:var(--em-dk);margin:32px 0 16px;padding-bottom:8px;border-bottom:3px solid var(--em)}
+        .ssh{font-family:var(--fd);font-size:1.1rem;color:var(--ind);margin:24px 0 12px}
+        .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0}
+        .sb{background:linear-gradient(135deg,var(--em-lt),#D4F5E0);padding:22px 18px;border-radius:var(--r);text-align:center;border-top:4px solid var(--em)}
+        .sv{font-family:var(--fd);font-size:2rem;font-weight:800;color:var(--em-dk)}.sl{font-size:.88rem;color:var(--dg);margin-top:4px}
+        .kc{background:linear-gradient(135deg,#FFF8E1,#FFF3CC);border-left:5px solid var(--gold);border-radius:var(--r);padding:22px 26px;margin:22px 0}
+        .kc h4{font-family:var(--fd);color:#996600;margin-bottom:8px}
+        .in{background:linear-gradient(135deg,#E6E6FF,#D4D4F5);border-left:5px solid var(--ind);border-radius:var(--r);padding:22px 26px;margin:22px 0}
+        .in h4{font-family:var(--fd);color:var(--ind-dk);margin-bottom:8px}
+        .sf{background:linear-gradient(135deg,#FFE6E6,#FFCCCC);border-left:5px solid var(--coral);border-radius:var(--r);padding:22px 26px;margin:22px 0}
+        .sf h4{font-family:var(--fd);color:#990000;margin-bottom:8px}
+        .g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0}
+        .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:20px 0}
+        .bx{background:var(--off);border-radius:var(--r);padding:22px;border-top:4px solid var(--em)}
+        .bx.it{border-top-color:var(--ind)}.bx.tt{border-top-color:var(--teal)}.bx.gt{border-top-color:var(--gold)}.bx.ct{border-top-color:var(--coral)}
+        .bx h4{font-family:var(--fd);color:var(--ch);margin-bottom:10px;font-size:1.02rem}
+        .pf{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:24px 0;padding:20px;background:var(--off);border-radius:var(--r)}
+        .fs{background:linear-gradient(135deg,var(--em),var(--teal));color:#fff;padding:12px 18px;border-radius:8px;font-family:var(--fd);font-size:.88rem;font-weight:600;text-align:center;min-width:90px}
+        .fs.alt{background:linear-gradient(135deg,var(--ind),var(--purp))}
+        .fa{font-size:1.4rem;color:var(--dg);font-weight:bold}
+        .fb{background:#F5F0FF;border:2px solid var(--ind);border-radius:var(--r);padding:22px 26px;margin:22px 0}
+        .fb h4{font-family:var(--fd);color:var(--ind-dk);margin-bottom:10px}
+        .fm{font-family:'Courier New',monospace;font-size:1.25rem;color:var(--ind);padding:14px;background:#fff;border-radius:6px;text-align:center;margin:10px 0}
+        .fd{font-size:.92rem;color:var(--dg);margin-top:8px}
+        .dt{width:100%;border-collapse:collapse;margin:20px 0;font-size:.92rem}
+        .dt th{background:var(--em);color:#fff;padding:12px 14px;text-align:left;font-family:var(--fd);font-weight:600}
+        .dt td{padding:11px 14px;border-bottom:1px solid var(--mg)}
+        .dt tr:nth-child(even){background:var(--em-lt)}.dt tr:hover{background:#C8E6C9}
+        .dt.idt th{background:var(--ind)}.dt.idt tr:nth-child(even){background:#E8E8F5}
+        .tt-t{position:relative;color:var(--em);font-weight:600;border-bottom:2px dotted var(--em);cursor:help;display:inline}
+        .tt-c{visibility:hidden;opacity:0;position:absolute;z-index:9999;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);width:300px;max-width:85vw;background:var(--ch);color:#fff;padding:14px 18px;border-radius:8px;font-size:.85rem;font-weight:400;line-height:1.55;box-shadow:0 8px 32px rgba(0,0,0,.18);pointer-events:none;transition:opacity .25s,visibility .25s}
+        .tt-c::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:8px solid transparent;border-top-color:var(--ch)}
+        .tt-t:hover .tt-c,.tt-t:focus .tt-c{visibility:visible;opacity:1;pointer-events:auto}
+        .sc{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:28px;margin:24px 0;border-top:4px solid var(--teal)}
+        .sc h3{font-family:var(--fd);color:var(--em-dk);margin-bottom:12px}
+        .scg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:16px 0;padding:18px;background:var(--off);border-radius:8px}
+        .cg label{display:block;font-family:var(--fd);font-size:.85rem;font-weight:600;color:var(--ch);margin-bottom:6px}
+        .cg select,.cg input[type=range]{width:100%}
+        .cg select{padding:8px 12px;border:2px solid var(--mg);border-radius:6px;font-size:.9rem}
+        .cg input[type=range]{-webkit-appearance:none;height:6px;background:var(--mg);border-radius:3px;outline:none}
+        .cg input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:var(--em);border-radius:50%;cursor:pointer}
+        .vd{color:var(--em);font-weight:700}
+        .scw{margin:16px 0;text-align:center;overflow-x:auto}
+        .scw canvas{max-width:100%;border:1px solid var(--mg);border-radius:8px;background:#fff}
+        .rd{padding:16px 20px;background:var(--em-lt);border-radius:8px;font-size:.95rem;margin-top:12px;border-left:4px solid var(--em)}
+        .rd.fail{background:#FFE6E6;border-left-color:var(--coral)}
+        .qc{max-width:800px}
+        .qq{background:var(--off);border-radius:var(--r);padding:22px;margin:16px 0;border-left:4px solid var(--em)}
+        .qt{font-weight:600;font-family:var(--fd);margin-bottom:14px;color:var(--ch);font-size:1rem}
+        .qo{display:flex;flex-direction:column;gap:8px}
+        .qop{display:flex;align-items:center;gap:10px;padding:10px 14px;border:2px solid var(--mg);border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95rem}
+        .qop:hover{border-color:var(--em);background:var(--em-lt)}
+        .qop input{accent-color:var(--em);width:18px;height:18px;cursor:pointer}
+        .qop.correct{border-color:#009933;background:#E6F5EC}
+        .qop.incorrect{border-color:var(--coral);background:#FFE6E6}
+        .qfb{margin-top:10px;padding:12px 16px;border-radius:8px;font-size:.9rem;display:none}
+        .qfb.show{display:block}
+        .qfb.correct{background:#E6F5EC;color:#006633;border-left:4px solid #009933}
+        .qfb.incorrect{background:#FFE6E6;color:#990000;border-left:4px solid var(--coral)}
+        .qsub{background:var(--em);color:#fff;border:none;padding:14px 36px;border-radius:8px;font-family:var(--fd);font-size:1rem;font-weight:700;cursor:pointer;margin-top:20px;transition:all .2s}
+        .qsub:hover{background:var(--em-dk)}.qsub:focus{outline:3px solid var(--gold);outline-offset:2px}
+        .qsc{margin-top:20px;padding:22px;background:linear-gradient(135deg,var(--em-lt),#D4EDDA);border-radius:var(--r);text-align:center;font-family:var(--fd);display:none}
+        .qsc.show{display:block}
+        .qsc .scv{font-size:2.5rem;font-weight:800;color:var(--em-dk)}
+        .ls{display:flex;gap:18px;margin:18px 0;padding:20px;background:var(--off);border-radius:var(--r);border-left:4px solid var(--em)}
+        .sn{width:44px;height:44px;background:var(--em);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:1.1rem;flex-shrink:0}
+        .lsc h4{font-family:var(--fd);color:var(--em-dk);margin-bottom:6px}
+        .nf{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:40px 0 0;padding:20px;background:#fff;border-radius:var(--r);box-shadow:var(--sh)}
+        .nf a{color:var(--em);text-decoration:none;font-family:var(--fd);font-weight:600;padding:10px 18px;border:2px solid var(--em);border-radius:8px;transition:all .2s}
+        .nf a:hover,.nf a:focus{background:var(--em);color:#fff}
+        footer{background:var(--ch);color:#fff;padding:32px 20px;margin-top:50px;text-align:center}
+        footer p{margin-bottom:6px;font-size:.9rem;opacity:.85}
+        .cmp{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}
+        .cc{padding:24px;border-radius:var(--r);border-top:5px solid var(--em)}
+        .cc.sub{background:linear-gradient(180deg,#E6F5EC,#fff);border-top-color:var(--em)}
+        .cc.add{background:linear-gradient(180deg,#E6E6FF,#fff);border-top-color:var(--ind)}
+        .cc h4{font-family:var(--fd);margin-bottom:10px;font-size:1.08rem}
+        .cc ul{margin:10px 0 0 18px}.cc li{margin-bottom:6px}
+        .sid{display:flex;justify-content:center;gap:6px;margin:16px 0}
+        .sd{width:14px;height:14px;border-radius:50%;background:var(--mg);transition:all .3s}
+        .sd.active{background:var(--em);transform:scale(1.3)}.sd.done{background:var(--teal)}
+        @media(max-width:768px){
+            .hdr{flex-direction:column;text-align:center}.hero h1{font-size:1.8rem}.hero{padding:30px 18px}
+            .tab-btn{padding:11px 8px;font-size:.82rem;min-width:0}
+            .g2,.g3,.cmp{grid-template-columns:1fr}.sg{grid-template-columns:repeat(2,1fr)}
+            .nf{justify-content:center}.pf{flex-direction:column}.fa{transform:rotate(90deg)}
+        }
+        a:focus,button:focus,input:focus,select:focus,[tabindex]:focus{outline:3px solid var(--gold);outline-offset:2px}
+        @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+        @media print{.tabs,.sc,.qc,.nf,header,nav{display:none}.tc{display:block!important}}
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header><div class="hdr">
+<div class="logo"><div class="logo-ic" aria-hidden="true">M10</div><div><div class="st">Introduction to Nanotechnology</div><div class="ss">Module 10: Pattern Transfer Integration</div></div></div>
+<nav class="nb" aria-label="Module navigation"><a href="course-outline.html">&#127968; Course Home</a><a href="module9_etching.html">&larr; Module 9</a><a href="module11_electrochemical_deposition.html">Module 11 &rarr;</a></nav>
+</div></header>
+<main id="main-content">
+<div class="hero"><h1>Module 10 &mdash; Pattern Transfer Integration</h1><p>Bring it all together: combine photolithography and etching into a complete, integrated pattern transfer workflow &mdash; the fundamental sequence repeated hundreds of times in every semiconductor fabrication facility on Earth.</p><div class="hero-meta"><span>&#9201; 3&ndash;4 Hours</span><span>&#128218; Lecture + Lab</span><span>&#9881; Integration Module</span></div></div>
+
+<div class="pbar" role="region" aria-label="Module progress"><div class="pbar-l"><span>Module Progress</span><span id="pPct">0%</span></div><div class="pbar-b" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="pbar-f" id="pFill"></div></div></div>
+
+<div class="obj" role="region" aria-label="Learning objectives"><h3>&#127919; Learning Objectives</h3><p>After completing this module, students will be able to:</p><ul>
+<li>Execute and explain the <strong>complete pattern transfer process</strong> from photomask design to final etched features</li>
+<li>Distinguish between <strong>subtractive (etch-based)</strong> and <strong>additive (lift-off)</strong> patterning approaches</li>
+<li>Describe the role of <strong>alignment marks</strong> and <strong>overlay metrology</strong> in multi-layer semiconductor fabrication</li>
+<li>Explain how <strong>cluster tools</strong> integrate multiple process steps to maintain vacuum integrity</li>
+<li>Calculate <strong>critical dimension (CD) bias</strong>, <strong>etch factor</strong>, and <strong>overlay error budgets</strong></li>
+<li>Identify, classify, and troubleshoot common <strong>pattern transfer defects</strong></li>
+<li>Apply <strong>yield analysis</strong> concepts including Poisson and Murphy&rsquo;s models</li>
+<li>Perform a hands-on pattern transfer experiment integrating photolithography and wet etching</li>
+</ul></div>
+
+<div class="tabs" role="tablist" aria-label="Module sections">
+<button class="tab-btn active" onclick="showTab('lecture')" role="tab" aria-selected="true" aria-controls="lecture" id="tab-lecture">&#128214; Lecture</button>
+<button class="tab-btn" onclick="showTab('theory')" role="tab" aria-selected="false" aria-controls="theory" id="tab-theory">&#128300; Theory</button>
+<button class="tab-btn" onclick="showTab('sim')" role="tab" aria-selected="false" aria-controls="sim" id="tab-sim">&#128187; Simulations</button>
+<button class="tab-btn" onclick="showTab('lab')" role="tab" aria-selected="false" aria-controls="lab" id="tab-lab">&#129514; Lab</button>
+<button class="tab-btn" onclick="showTab('quiz')" role="tab" aria-selected="false" aria-controls="quiz" id="tab-quiz">&#9989; Quiz</button>
+</div>
+
+<!-- ===== LECTURE TAB ===== -->
+<div id="lecture" class="tc active" role="tabpanel" aria-labelledby="tab-lecture">
+<div class="card"><div class="ch">Introduction: Why Integration Matters</div><div class="cb">
+<p>In previous modules you learned <span class="tt-t" tabindex="0">photolithography<span class="tt-c">The process of transferring geometric patterns from a photomask to a light-sensitive photoresist coating on a substrate using UV light (Module 8).</span></span> and <span class="tt-t" tabindex="0">etching<span class="tt-c">The selective removal of material from a substrate using chemical (wet) or plasma-based (dry) methods to transfer resist patterns into underlying layers (Module 9).</span></span> as separate processes. In a real fabrication facility, however, they are never performed in isolation. Every functioning semiconductor device exists because lithography and etching were <strong>integrated</strong> into a seamless, repeatable workflow called <span class="tt-t" tabindex="0">pattern transfer<span class="tt-c">The complete process of replicating geometric features from a master template (photomask) into a target material on a substrate through the combined action of lithography and material removal or addition.</span></span>.</p>
+<p>A modern <span class="tt-t" tabindex="0">integrated circuit<span class="tt-c">A set of electronic circuits on a small flat piece of semiconductor material, usually silicon. Modern ICs can contain billions of transistors.</span></span> may undergo the lithography&ndash;etch cycle <strong>20 to 100+ times</strong>, with each cycle creating a new layer that must align precisely with all previous layers.</p>
+
+<div class="sg"><div class="sb"><div class="sv">100+</div><div class="sl">pattern transfer steps in an advanced logic chip</div></div><div class="sb"><div class="sv">~35%</div><div class="sl">of total wafer cost from lithography</div></div><div class="sb"><div class="sv">&lt;1 nm</div><div class="sl">overlay accuracy in modern EUV scanners</div></div><div class="sb"><div class="sv">$1T+</div><div class="sl">projected semiconductor market by 2030</div></div></div>
+
+<h3 class="sh">The Complete Pattern Transfer Workflow</h3>
+<p>Pattern transfer transforms an abstract circuit design into physical features on a substrate through two fundamental stages: <strong>pattern definition</strong> (lithography) and <strong>pattern replication</strong> (etching or deposition).</p>
+<div class="pf" role="img" aria-label="Pattern transfer process flow"><div class="fs">Design/CAD</div><div class="fa" aria-hidden="true">&rarr;</div><div class="fs">Photomask</div><div class="fa" aria-hidden="true">&rarr;</div><div class="fs">Coat Resist</div><div class="fa" aria-hidden="true">&rarr;</div><div class="fs alt">Expose</div><div class="fa" aria-hidden="true">&rarr;</div><div class="fs alt">Develop</div><div class="fa" aria-hidden="true">&rarr;</div><div class="fs">Etch/Deposit</div><div class="fa" aria-hidden="true">&rarr;</div><div class="fs">Strip</div><div class="fa" aria-hidden="true">&rarr;</div><div class="fs alt">Inspect</div></div>
+
+<h3 class="sh">Subtractive vs. Additive Pattern Transfer</h3>
+<p>There are two fundamental strategies for transferring a pattern into a material.</p>
+<div class="cmp"><div class="cc sub"><h4>&#9881; Subtractive Patterning (Etch-Based)</h4><p><strong>Principle:</strong> Deposit the target film <em>first</em>, then selectively remove material.</p><ul><li>Deposit uniform thin film onto substrate</li><li>Apply and pattern photoresist on top</li><li>Etch exposed regions of the film</li><li>Strip remaining resist to reveal features</li></ul><p style="margin-top:12px"><strong>Best for:</strong> Silicon, oxides, aluminum, polysilicon &mdash; materials with well-characterized etchants.</p></div>
+<div class="cc add"><h4>&#10024; Additive Patterning (Lift-Off)</h4><p><strong>Principle:</strong> Pattern the resist <em>first</em>, then deposit material only in openings.</p><ul><li>Pattern resist with undercut profile</li><li>Deposit target material over entire surface</li><li>Dissolve resist &mdash; material on resist lifts off</li><li>Patterned features remain on substrate</li></ul><p style="margin-top:12px"><strong>Best for:</strong> Gold, platinum, and noble metals difficult to etch.</p></div></div>
+
+<div class="kc"><h4>&#128161; When to Choose Which Method?</h4><p><strong>Use subtractive</strong> when a highly selective etchant exists and vertical sidewalls are critical. Most CMOS processing uses subtractive patterning. <strong>Use additive (lift-off)</strong> when the target material lacks a suitable etchant (e.g., gold) or when process temperatures must remain low. Lift-off requires a resist profile with an <em>undercut</em> (re-entrant) sidewall.</p></div>
+
+<h3 class="sh">Alignment and Overlay in Multi-Layer Processing</h3>
+<p>Real semiconductor devices are built from many layers stacked on top of each other. <span class="tt-t" tabindex="0">Overlay<span class="tt-c">The positional accuracy with which a new pattern layer is aligned to a previously patterned layer. Measured in nanometers. Modern EUV scanners achieve overlay below 1 nm.</span></span> refers to how precisely a new lithography layer lines up with existing patterns. The industry rule of thumb is that overlay tolerance should be approximately <strong>one-third</strong> of the minimum feature size.</p>
+<div class="g2"><div class="bx"><h4>&#127919; Alignment Marks</h4><p>Special cross-shaped or grating patterns are etched into the first layer. These serve as reference points for all subsequent lithography steps. The stepper&rsquo;s alignment system uses lasers to detect these marks.</p></div>
+<div class="bx it"><h4>&#128207; Overlay Error Budget</h4><p>Multiple factors contribute to overlay error: tool accuracy, lens distortion, wafer distortion, and process-induced shifts. These combine via <strong>RSS</strong>:</p><div style="text-align:center;font-family:monospace;font-size:1.1rem;color:var(--ind);margin:10px 0">OV<sub>total</sub> = &radic;(OV<sub>1</sub>&sup2; + OV<sub>2</sub>&sup2; + &hellip;)</div></div></div>
+
+<h3 class="sh">Cluster Tools and Process Integration</h3>
+<p>In a modern fab, wafers are processed inside <span class="tt-t" tabindex="0">cluster tools<span class="tt-c">Integrated multi-chamber processing systems where a central robotic handler moves wafers between different process chambers without breaking vacuum. Over 50% of fab equipment consists of cluster tools.</span></span> &mdash; sealed, automated systems combining multiple process chambers around a central robotic handler.</p>
+<div class="g3"><div class="bx"><h4>&#128737; Contamination Control</h4><p>Keeping wafers under vacuum prevents native oxide formation that occurs in seconds of atmospheric exposure.</p></div><div class="bx tt"><h4>&#9889; Throughput</h4><p>A typical cluster tool processes 25&ndash;50 wafers/hr by pipelining operations across chambers.</p></div><div class="bx it"><h4>&#128200; Repeatability</h4><p>Automated recipe execution eliminates human variation with precise timing and temperature control.</p></div></div>
+
+<!-- Cluster Tool SVG -->
+<div style="text-align:center;margin:28px 0"><svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cluster tool schematic with central robot and surrounding chambers" style="max-width:520px;width:100%">
+<rect x="0" y="0" width="600" height="380" fill="#F5F5F5" rx="12"/>
+<text x="300" y="28" text-anchor="middle" font-family="Trebuchet MS" font-size="15" font-weight="bold" fill="#004D26">Cluster Tool Architecture</text>
+<circle cx="300" cy="195" r="52" fill="#E6F5EC" stroke="#006633" stroke-width="3"/><text x="300" y="190" text-anchor="middle" font-family="Trebuchet MS" font-size="12" font-weight="bold" fill="#006633">Central</text><text x="300" y="206" text-anchor="middle" font-family="Trebuchet MS" font-size="12" font-weight="bold" fill="#006633">Robot</text>
+<rect x="235" y="48" width="130" height="44" rx="8" fill="#006633"/><text x="300" y="75" text-anchor="middle" font-family="Trebuchet MS" font-size="11" fill="#fff" font-weight="bold">Etch Chamber</text>
+<rect x="435" y="110" width="120" height="44" rx="8" fill="#333399"/><text x="495" y="137" text-anchor="middle" font-family="Trebuchet MS" font-size="11" fill="#fff" font-weight="bold">Deposition</text>
+<rect x="435" y="235" width="120" height="44" rx="8" fill="#009999"/><text x="495" y="262" text-anchor="middle" font-family="Trebuchet MS" font-size="11" fill="#fff" font-weight="bold">Clean / Ash</text>
+<rect x="45" y="110" width="120" height="44" rx="8" fill="#CC9900"/><text x="105" y="137" text-anchor="middle" font-family="Trebuchet MS" font-size="11" fill="#fff" font-weight="bold">Cool-Down</text>
+<rect x="45" y="235" width="120" height="44" rx="8" fill="#666"/><text x="105" y="262" text-anchor="middle" font-family="Trebuchet MS" font-size="11" fill="#fff" font-weight="bold">Metrology</text>
+<rect x="225" y="320" width="150" height="40" rx="8" fill="#CC3333"/><text x="300" y="345" text-anchor="middle" font-family="Trebuchet MS" font-size="11" fill="#fff" font-weight="bold">Load Locks (In/Out)</text>
+<line x1="300" y1="143" x2="300" y2="92" stroke="#006633" stroke-width="2" stroke-dasharray="6,3"/>
+<line x1="352" y1="180" x2="435" y2="132" stroke="#333399" stroke-width="2" stroke-dasharray="6,3"/>
+<line x1="352" y1="215" x2="435" y2="257" stroke="#009999" stroke-width="2" stroke-dasharray="6,3"/>
+<line x1="248" y1="180" x2="165" y2="132" stroke="#CC9900" stroke-width="2" stroke-dasharray="6,3"/>
+<line x1="248" y1="215" x2="165" y2="257" stroke="#666" stroke-width="2" stroke-dasharray="6,3"/>
+<line x1="300" y1="247" x2="300" y2="320" stroke="#CC3333" stroke-width="2" stroke-dasharray="6,3"/>
+</svg></div>
+
+<h3 class="sh">Yield Analysis and Defect Classification</h3>
+<p><span class="tt-t" tabindex="0">Yield<span class="tt-c">The percentage of functional chips (dies) from a processed wafer. The single most important metric for fab profitability.</span></span> is the ultimate measure of how well all processes work together.</p>
+<div class="fb"><h4>Poisson Yield Model</h4><div class="fm">Y = e<sup>&minus;D &times; A</sup></div><div class="fd"><strong>Y</strong>=yield, <strong>D</strong>=defect density (defects/cm&sup2;), <strong>A</strong>=die area (cm&sup2;). Example: 1 cm&sup2; die, D=0.5 &rarr; Y=e<sup>&minus;0.5</sup>&asymp;60.7%</div></div>
+<div class="fb"><h4>Murphy&rsquo;s Yield Model</h4><div class="fm">Y = [(1 &minus; e<sup>&minus;DA</sup>) / (DA)]&sup2;</div><div class="fd">Accounts for clustered defects. More conservative and realistic for large-area dies.</div></div>
+
+<h4 class="ssh">Common Pattern Transfer Defects</h4>
+<table class="dt" aria-label="Pattern transfer defect types"><thead><tr><th>Defect</th><th>Description</th><th>Cause</th><th>Impact</th></tr></thead><tbody>
+<tr><td><strong>Bridging</strong></td><td>Unwanted material connects two features</td><td>Under-etching, resist scum</td><td>Short circuit</td></tr>
+<tr><td><strong>Open/Break</strong></td><td>Conductor line is broken</td><td>Over-etching, mask defect</td><td>Open circuit</td></tr>
+<tr><td><strong>CD Variation</strong></td><td>Feature width off target</td><td>Dose non-uniformity, etch loading</td><td>Performance shift</td></tr>
+<tr><td><strong>Undercut</strong></td><td>Material removed beneath resist</td><td>Isotropic wet etch</td><td>CD loss</td></tr>
+<tr><td><strong>Overlay Error</strong></td><td>Misalignment between layers</td><td>Scanner drift, wafer distortion</td><td>Device failure</td></tr>
+<tr><td><strong>Residue</strong></td><td>Material remaining after etch</td><td>Incomplete etch</td><td>Contact resistance</td></tr>
+<tr><td><strong>Particles</strong></td><td>Foreign material on surface</td><td>Equipment contamination</td><td>Random defects</td></tr>
+</tbody></table>
+
+<h3 class="sh">Industrial Pattern Transfer at Advanced Nodes</h3>
+<div class="g2"><div class="bx"><h4>&#127776; Multiple Patterning</h4><p>When desired feature pitch is smaller than single-exposure resolution, engineers use <strong>double patterning</strong> (LELE) or <strong>self-aligned double patterning</strong> (SADP). At advanced nodes, <strong>quadruple patterning</strong> (SAQP) achieves even tighter pitches.</p></div>
+<div class="bx it"><h4>&#9889; EUV Lithography</h4><p><strong>Extreme ultraviolet</strong> (13.5 nm wavelength) prints features below 7 nm in a single exposure. Each scanner costs $200&ndash;$400M. Only six companies operate EUV in high-volume production as of 2025.</p></div></div>
+<div class="g2"><div class="bx tt"><h4>&#128296; Atomic Layer Etching</h4><p>ALE removes material one atomic layer at a time (&lt;1 nm/cycle). Essential for FinFET and gate-all-around architectures.</p></div>
+<div class="bx gt"><h4>&#128301; High-NA EUV</h4><p>ASML&rsquo;s EXE:5200B uses 0.55 NA optics achieving 8 nm resolution &mdash; 2.9&times; higher transistor density than standard EUV. Intel deployed the first production unit for their 14A process node.</p></div></div>
+
+<div class="in"><h4>&#128176; The Economics of Pattern Transfer</h4><p>At the 3 nm node, a single wafer undergoes <strong>over 1,000 process steps</strong>. Processing cost exceeds <strong>$15,000&ndash;$20,000 per wafer</strong>. ASML projects the global semiconductor market will surpass <strong>$1 trillion by 2030</strong>, with EUV spending showing double-digit annual growth.</p></div>
+</div></div></div>
+
+<!-- ===== THEORY TAB ===== -->
+<div id="theory" class="tc" role="tabpanel" aria-labelledby="tab-theory">
+<div class="card"><div class="ch ind">Theory Deep Dive: Pattern Transfer Mathematics</div><div class="cb">
+<h3 class="sh">Critical Dimension (CD) Control</h3>
+<p>The <span class="tt-t" tabindex="0">critical dimension<span class="tt-c">The smallest feature size in a pattern, usually the width of the narrowest line or space. CD control is the most important metric for pattern transfer fidelity.</span></span> (CD) is the target feature width.</p>
+<div class="fb"><h4>CD Bias</h4><div class="fm">CD<sub>bias</sub> = CD<sub>final</sub> &minus; CD<sub>mask</sub></div><div class="fd">Positive bias = features wider than designed; negative = narrower. Isotropic wet etching typically gives negative bias (undercut). Anisotropic dry etching can achieve near-zero bias.</div></div>
+<div class="fb"><h4>Etch Factor (EF)</h4><div class="fm">EF = 1 &minus; (lateral etch rate / vertical etch rate)</div><div class="fd">EF=1.0 = perfectly anisotropic. EF=0.0 = perfectly isotropic. Most RIE achieves EF &gt; 0.9.</div></div>
+
+<h3 class="sh">Selectivity in Pattern Transfer</h3>
+<div class="g2"><div class="bx"><h4>Film-to-Mask Selectivity</h4><div style="text-align:center;font-family:monospace;font-size:1.1rem;color:var(--ind);margin:10px 0">S<sub>mask</sub> = Rate<sub>film</sub> / Rate<sub>resist</sub></div><p>Must be high enough that resist survives. Typical: 3:1 to 10:1 (dry), &gt;100:1 (wet).</p></div>
+<div class="bx it"><h4>Film-to-Substrate Selectivity</h4><div style="text-align:center;font-family:monospace;font-size:1.1rem;color:var(--ind);margin:10px 0">S<sub>sub</sub> = Rate<sub>film</sub> / Rate<sub>substrate</sub></div><p>Must stop cleanly at underlying layer. Critical for multi-layer stacks.</p></div></div>
+
+<h3 class="sh">Overlay Error Budget Analysis</h3>
+<div class="fb"><h4>RSS Overlay Combination</h4><div class="fm">OV<sub>total</sub> = &radic;(OV<sub>tool</sub>&sup2; + OV<sub>lens</sub>&sup2; + OV<sub>wafer</sub>&sup2; + OV<sub>process</sub>&sup2; + OV<sub>met</sub>&sup2;)</div><div class="fd"><strong>Typical sources:</strong> Tool accuracy: 1&ndash;3 nm | Lens distortion: 0.5&ndash;2 nm | Wafer distortion: 1&ndash;4 nm | Process shift: 0.5&ndash;2 nm | Metrology: 0.3&ndash;1 nm</div></div>
+
+<h3 class="sh">Yield Mathematics in Depth</h3>
+<table class="dt idt" aria-label="Yield model comparison"><thead><tr><th>Model</th><th>Formula</th><th>Assumption</th><th>Best For</th></tr></thead><tbody>
+<tr><td><strong>Poisson</strong></td><td>Y = e<sup>&minus;DA</sup></td><td>Random, uniform defects</td><td>Small die, low D</td></tr>
+<tr><td><strong>Murphy</strong></td><td>Y = [(1&minus;e<sup>&minus;DA</sup>)/(DA)]&sup2;</td><td>Clustered defects</td><td>Large die, realistic</td></tr>
+<tr><td><strong>Seeds</strong></td><td>Y = 1/(1+DA)</td><td>Highly clustered</td><td>Conservative estimates</td></tr>
+<tr><td><strong>Neg. Binomial</strong></td><td>Y = (1+DA/&alpha;)<sup>&minus;&alpha;</sup></td><td>Adjustable clustering</td><td>Production forecasting</td></tr>
+</tbody></table>
+
+<h3 class="sh">The Lift-Off Profile Requirement</h3>
+<p>Successful lift-off requires a resist <strong>undercut</strong> (re-entrant) profile &mdash; the bottom of the opening is wider than the top. This creates a shadow during deposition preventing continuous film connection.</p>
+<div class="kc"><h4>&#128161; Why Undercut Matters</h4><p>Without undercut, deposited film coats the sidewalls creating a continuous &ldquo;fence&rdquo; that survives lift-off. A bilayer resist (e.g., PMGI/PMMA or LOR/photoresist) creates the necessary undercut &mdash; the bottom layer develops faster.</p></div>
+</div></div></div>
+
+<!-- ===== SIMULATION TAB ===== -->
+<div id="sim" class="tc" role="tabpanel" aria-labelledby="tab-sim">
+
+<div class="sc"><h3>&#9881; Simulation 1: Pattern Transfer Process Visualizer</h3>
+<p>Select a patterning method and step through the process.</p>
+<div class="scg">
+<div class="cg"><label for="ptM">Patterning Method</label><select id="ptM" onchange="updPV()"><option value="sub">Subtractive (Etch-Based)</option><option value="add">Additive (Lift-Off)</option></select></div>
+<div class="cg"><label for="ptE">Etch Type (Subtractive Only)</label><select id="ptE" onchange="updPV()"><option value="aniso">Anisotropic (RIE)</option><option value="iso">Isotropic (Wet)</option></select></div>
+<div class="cg"><label for="ptS">Step: <span class="vd" id="ptSL">1 &mdash; Start</span></label><input type="range" id="ptS" min="1" max="6" value="1" oninput="updPV()"></div>
+</div>
+<div class="sid" id="sDots" aria-hidden="true"></div>
+<div class="scw"><canvas id="pC" width="700" height="300" aria-label="Pattern transfer step visualization"></canvas></div>
+<div class="rd" id="pR"></div></div>
+
+<div class="sc"><h3>&#128200; Simulation 2: Yield vs. Defect Density</h3>
+<p>Explore how defect density and die area affect yield.</p>
+<div class="scg">
+<div class="cg"><label for="yD">Defect Density: <span class="vd" id="yDV">0.50</span> /cm&sup2;</label><input type="range" id="yD" min="0.01" max="3" step="0.01" value="0.5" oninput="updY()"></div>
+<div class="cg"><label for="yA">Die Area: <span class="vd" id="yAV">1.0</span> cm&sup2;</label><input type="range" id="yA" min="0.1" max="8" step="0.1" value="1.0" oninput="updY()"></div>
+<div class="cg"><label for="yM">Model</label><select id="yM" onchange="updY()"><option value="poisson">Poisson</option><option value="murphy">Murphy</option><option value="seeds">Seeds</option></select></div>
+</div>
+<div class="scw"><canvas id="yC" width="700" height="340" aria-label="Yield curve chart"></canvas></div>
+<div class="rd" id="yR"></div></div>
+
+<div class="sc"><h3>&#128207; Simulation 3: Overlay Error Budget</h3>
+<p>Adjust error sources and check whether total overlay meets the budget.</p>
+<div class="scg">
+<div class="cg"><label for="oT">Tool: <span class="vd" id="oTV">2.0</span> nm</label><input type="range" id="oT" min="0" max="5" step="0.1" value="2" oninput="updO()"></div>
+<div class="cg"><label for="oL">Lens: <span class="vd" id="oLV">1.5</span> nm</label><input type="range" id="oL" min="0" max="5" step="0.1" value="1.5" oninput="updO()"></div>
+<div class="cg"><label for="oW">Wafer: <span class="vd" id="oWV">2.5</span> nm</label><input type="range" id="oW" min="0" max="8" step="0.1" value="2.5" oninput="updO()"></div>
+<div class="cg"><label for="oP">Process: <span class="vd" id="oPV">1.0</span> nm</label><input type="range" id="oP" min="0" max="5" step="0.1" value="1" oninput="updO()"></div>
+<div class="cg"><label for="oMe">Metrology: <span class="vd" id="oMV">0.5</span> nm</label><input type="range" id="oMe" min="0" max="3" step="0.1" value="0.5" oninput="updO()"></div>
+<div class="cg"><label for="oN">Node</label><select id="oN" onchange="updO()"><option value="28">28 nm (~9 nm budget)</option><option value="14" selected>14 nm (~5 nm)</option><option value="7">7 nm (~2.5 nm)</option><option value="3">3 nm (~1.2 nm)</option></select></div>
+</div>
+<div class="scw"><canvas id="oC" width="700" height="300" aria-label="Overlay error budget chart"></canvas></div>
+<div class="rd" id="oR"></div></div>
+</div>
+
+<!-- ===== LAB TAB ===== -->
+<div id="lab" class="tc" role="tabpanel" aria-labelledby="tab-lab">
+<div class="card"><div class="ch tl">Lab 10: Complete Pattern Transfer Experiment</div><div class="cb">
+<p>Perform a <strong>complete pattern transfer</strong> integrating photolithography (Module 8) with wet etching (Module 9) on aluminum disks &mdash; replicating the fundamental semiconductor fab workflow.</p>
+<div class="kc"><h4>&#127919; Objective</h4><p>Execute a complete lithography &rarr; etch &rarr; strip sequence. Evaluate pattern fidelity by comparing the transferred pattern to the original photomask.</p></div>
+<div class="sf"><h4>&#9888; Safety Requirements</h4><p><strong>PPE:</strong> Safety glasses, nitrile gloves, lab coat. <strong>Chemicals:</strong> Etchant is corrosive &mdash; avoid skin contact. Acetone is flammable &mdash; keep from heat. Have spill kit available. Review all SDS before beginning.</p></div>
+
+<h3 class="sh">Materials</h3>
+<div class="g2"><div class="bx"><h4>&#128296; Equipment</h4><ul><li>UV light source (365&ndash;405 nm; UV nail lamp works)</li><li>Aluminum disks (wafer analogs)</li><li>Transparency film photomask</li><li>Shallow trays for etching</li><li>Tweezers, timer, magnifying glass</li></ul></div>
+<div class="bx tt"><h4>&#129514; Chemicals</h4><ul><li>UV gel nail polish (photoresist analog)</li><li>Isopropyl alcohol (developer)</li><li>Ferric chloride or Al etchant</li><li>Acetone (resist strip)</li><li>DI water, lint-free wipes, black tape (BARC)</li></ul></div></div>
+
+<h3 class="sh">Procedure</h3>
+<div class="ls"><div class="sn">1</div><div class="lsc"><h4>Substrate Preparation</h4><p>Clean aluminum disk with IPA and lint-free wipe. Remove all fingerprints, dust, oils. <em>Equivalent to fab wafer cleaning (RCA clean).</em></p></div></div>
+<div class="ls"><div class="sn">2</div><div class="lsc"><h4>Resist Coating</h4><p>Apply thin, uniform UV gel nail polish layer. Not so thin you can see through it, not so thick it pools. <em>Fab equivalent: spin coating at 2,000&ndash;5,000 RPM.</em></p></div></div>
+<div class="ls"><div class="sn">3</div><div class="lsc"><h4>Soft Bake</h4><p>Brief 10&ndash;15 second UV exposure to partially set resist, preventing mask sticking. <em>Fab: 90&ndash;110&deg;C hotplate for 60&ndash;90s.</em></p></div></div>
+<div class="ls"><div class="sn">4</div><div class="lsc"><h4>UV Exposure</h4><p>Place photomask on resist. Add black tape underneath (BARC analog). Expose 60&ndash;120 seconds. <em>Fab: &lt;1 second per die with stepper.</em></p></div></div>
+<div class="ls"><div class="sn">5</div><div class="lsc"><h4>Development</h4><p>Remove mask. Use IPA to dissolve unexposed resist. Rinse with DI water and inspect. <em>Fab: automated TMAH developer.</em></p></div></div>
+<div class="ls"><div class="sn">6</div><div class="lsc"><h4>Wet Etching</h4><p>Immerse in etchant 2&ndash;10 minutes. Exposed aluminum dissolves; resist-protected areas remain. Rinse thoroughly. <em>This is the pattern transfer step!</em></p></div></div>
+<div class="ls"><div class="sn">7</div><div class="lsc"><h4>Strip &amp; Inspect</h4><p>Soak in acetone to remove resist. Rinse. Inspect with magnifier. Compare to original mask. <em>Fab: O<sub>2</sub> plasma ashing + automated inspection.</em></p></div></div>
+
+<h3 class="sh">Post-Lab Questions</h3>
+<ol style="margin-left:20px"><li>Measure final feature width vs. mask. Calculate CD bias. Why the difference?</li><li>What defects did you observe? Root causes and improvements?</li><li>How would you modify the process for lift-off instead?</li><li>Three key differences between this experiment and industrial pattern transfer?</li><li>If etch time doubled, predict the pattern change. Sketch the cross-section.</li></ol>
+<div class="in" style="margin-top:24px"><h4>&#128161; Connecting to Industry</h4><p>The sequence you performed &mdash; coat, expose, develop, etch, strip, inspect &mdash; is the same one creating every microchip on Earth, repeated 50&ndash;100+ times per chip with nanometer alignment precision.</p></div>
+</div></div></div>
+
+<!-- ===== QUIZ TAB ===== -->
+<div id="quiz" class="tc" role="tabpanel" aria-labelledby="tab-quiz">
+<div class="card"><div class="ch purp">Knowledge Check &mdash; Module 10</div><div class="cb">
+<p>Select the best answer for each question, then submit.</p>
+<div class="qc" id="qF">
+
+<div class="qq" data-question="q1"><div class="qt">1. In subtractive pattern transfer, what is the correct order?</div><div class="qo">
+<label class="qop"><input type="radio" name="q1" value="a"><span>Pattern resist &rarr; Deposit film &rarr; Dissolve resist</span></label>
+<label class="qop"><input type="radio" name="q1" value="b"><span>Deposit film &rarr; Pattern resist &rarr; Etch film &rarr; Strip resist</span></label>
+<label class="qop"><input type="radio" name="q1" value="c"><span>Pattern resist &rarr; Etch substrate &rarr; Deposit film</span></label>
+<label class="qop"><input type="radio" name="q1" value="d"><span>Deposit film &rarr; Etch film &rarr; Pattern resist</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q2"><div class="qt">2. Lift-off is preferred over subtractive etching when:</div><div class="qo">
+<label class="qop"><input type="radio" name="q2" value="a"><span>Vertical sidewalls are critical</span></label>
+<label class="qop"><input type="radio" name="q2" value="b"><span>No suitable etchant exists for the target material</span></label>
+<label class="qop"><input type="radio" name="q2" value="c"><span>The substrate is SiO<sub>2</sub></span></label>
+<label class="qop"><input type="radio" name="q2" value="d"><span>Maximum throughput is needed</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q3"><div class="qt">3. Overlay tolerance is approximately what fraction of minimum feature size?</div><div class="qo">
+<label class="qop"><input type="radio" name="q3" value="a"><span>One-half (1/2)</span></label>
+<label class="qop"><input type="radio" name="q3" value="b"><span>One-third (1/3)</span></label>
+<label class="qop"><input type="radio" name="q3" value="c"><span>One-tenth (1/10)</span></label>
+<label class="qop"><input type="radio" name="q3" value="d"><span>Equal to feature size</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q4"><div class="qt">4. Primary advantage of cluster tools?</div><div class="qo">
+<label class="qop"><input type="radio" name="q4" value="a"><span>Eliminates photolithography</span></label>
+<label class="qop"><input type="radio" name="q4" value="b"><span>Maintains vacuum between steps, reducing contamination</span></label>
+<label class="qop"><input type="radio" name="q4" value="c"><span>Replaces all manual inspections</span></label>
+<label class="qop"><input type="radio" name="q4" value="d"><span>Allows simultaneous wet and dry etching</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q5"><div class="qt">5. Poisson yield for 2.0 cm&sup2; die, D=0.3 defects/cm&sup2;?</div><div class="qo">
+<label class="qop"><input type="radio" name="q5" value="a"><span>~55%</span></label>
+<label class="qop"><input type="radio" name="q5" value="b"><span>~75%</span></label>
+<label class="qop"><input type="radio" name="q5" value="c"><span>~85%</span></label>
+<label class="qop"><input type="radio" name="q5" value="d"><span>~95%</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q6"><div class="qt">6. An etch factor of 1.0 indicates:</div><div class="qo">
+<label class="qop"><input type="radio" name="q6" value="a"><span>Perfectly isotropic etching</span></label>
+<label class="qop"><input type="radio" name="q6" value="b"><span>Zero lateral etch (perfectly anisotropic)</span></label>
+<label class="qop"><input type="radio" name="q6" value="c"><span>Etch rate of 1 nm/min</span></label>
+<label class="qop"><input type="radio" name="q6" value="d"><span>Selectivity of 1:1</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q7"><div class="qt">7. A &ldquo;bridging&rdquo; defect causes:</div><div class="qo">
+<label class="qop"><input type="radio" name="q7" value="a"><span>An open circuit</span></label>
+<label class="qop"><input type="radio" name="q7" value="b"><span>Excessive undercut</span></label>
+<label class="qop"><input type="radio" name="q7" value="c"><span>A short circuit from unwanted material connection</span></label>
+<label class="qop"><input type="radio" name="q7" value="d"><span>Layer misalignment</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q8"><div class="qt">8. RSS of 2.0 nm and 3.0 nm overlay errors?</div><div class="qo">
+<label class="qop"><input type="radio" name="q8" value="a"><span>5.0 nm</span></label>
+<label class="qop"><input type="radio" name="q8" value="b"><span>~3.6 nm</span></label>
+<label class="qop"><input type="radio" name="q8" value="c"><span>~2.5 nm</span></label>
+<label class="qop"><input type="radio" name="q8" value="d"><span>1.0 nm</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q9"><div class="qt">9. Approximate pattern transfer cycles in an advanced logic chip?</div><div class="qo">
+<label class="qop"><input type="radio" name="q9" value="a"><span>5&ndash;10</span></label>
+<label class="qop"><input type="radio" name="q9" value="b"><span>15&ndash;25</span></label>
+<label class="qop"><input type="radio" name="q9" value="c"><span>60&ndash;100+</span></label>
+<label class="qop"><input type="radio" name="q9" value="d"><span>500&ndash;1,000</span></label>
+</div><div class="qfb"></div></div>
+
+<div class="qq" data-question="q10"><div class="qt">10. Which technique uses block copolymers for nanoscale self-organization?</div><div class="qo">
+<label class="qop"><input type="radio" name="q10" value="a"><span>SADP</span></label>
+<label class="qop"><input type="radio" name="q10" value="b"><span>Atomic layer etching</span></label>
+<label class="qop"><input type="radio" name="q10" value="c"><span>Immersion lithography</span></label>
+<label class="qop"><input type="radio" name="q10" value="d"><span>Directed self-assembly (DSA)</span></label>
+</div><div class="qfb"></div></div>
+
+<button class="qsub" onclick="gradeQuiz()" type="button">Submit Answers</button>
+<div class="qsc" id="qSc"></div>
+</div></div></div></div>
+
+<nav class="nf" aria-label="Module navigation"><a href="module9_etching.html">&#8592; Module 9: Etching</a><a href="course-outline.html">&#127968; Course Home</a><a href="module11_electrochemical_deposition.html">Module 11: Electrodeposition &#8594;</a></nav>
+</main>
+
+<footer><p>Introduction to Nanotechnology &mdash; Module 10: Pattern Transfer Integration</p><p>Developed with support from NSF ATE Grant DUE 2301137 | Penn State University</p><p>&copy; 2025 &mdash; Educational use permitted with attribution</p></footer>
+
+<script>
+(function(){
+'use strict';
+// TAB SYSTEM
+window.showTab=function(id){document.querySelectorAll('.tc').forEach(function(t){t.classList.remove('active')});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false')});var el=document.getElementById(id);if(el)el.classList.add('active');var btn=document.getElementById('tab-'+id);if(btn){btn.classList.add('active');btn.setAttribute('aria-selected','true')}updProg();window.scrollTo({top:document.querySelector('.tabs').offsetTop-80,behavior:'smooth'})};
+
+// PROGRESS
+var vis=new Set(['lecture']);
+function updProg(){var a=document.querySelector('.tc.active');if(a)vis.add(a.id);var p=Math.round(vis.size/5*100);document.getElementById('pPct').textContent=p+'%';var f=document.getElementById('pFill');f.style.width=p+'%';f.parentElement.setAttribute('aria-valuenow',p)}updProg();
+
+// SMART TOOLTIPS
+document.querySelectorAll('.tt-t').forEach(function(t){var tip=t.querySelector('.tt-c');if(!tip)return;function repos(){tip.style.left='50%';tip.style.right='auto';tip.style.transform='translateX(-50%)';tip.style.bottom='calc(100% + 10px)';tip.style.top='auto';requestAnimationFrame(function(){var r=tip.getBoundingClientRect();var vw=window.innerWidth;if(r.left<8){tip.style.left='0';tip.style.transform='translateX(0)'}else if(r.right>vw-8){tip.style.left='auto';tip.style.right='0';tip.style.transform='translateX(0)'}if(r.top<8){tip.style.bottom='auto';tip.style.top='calc(100% + 10px)'}})}t.addEventListener('mouseenter',repos);t.addEventListener('focus',repos)});
+
+// SIM 1: PROCESS VISUALIZER
+var pC=document.getElementById('pC'),px=pC?pC.getContext('2d'):null;
+function mkDots(n){var c=document.getElementById('sDots');if(!c)return;c.innerHTML='';for(var i=0;i<n;i++){var d=document.createElement('div');d.className='sd';c.appendChild(d)}}mkDots(6);
+
+window.updPV=function(){if(!px)return;var m=document.getElementById('ptM').value,e=document.getElementById('ptE').value,s=+document.getElementById('ptS').value;var W=pC.width,H=pC.height;px.clearRect(0,0,W,H);
+var cS='#AAAAAA',cF='#006633',cR='#CC3333',cD='#FFD700';var bY=160,sH=55,fH=28,rH=22;var gL=270,gR=430;
+var subN=['Start','Film Deposited','Resist Patterned','Etching','Resist Stripped','Complete'];
+var addN=['Start','Resist Patterned','Material Deposited','Lift-Off','Clean','Complete'];
+var names=m==='sub'?subN:addN;
+document.getElementById('ptSL').textContent=s+' \u2014 '+names[s-1];
+var dots=document.querySelectorAll('.sd');dots.forEach(function(d,i){d.className='sd'+(i<s-1?' done':'')+(i===s-1?' active':'')});
+
+function drawSub(){px.fillStyle=cS;px.fillRect(60,bY,W-120,sH);px.fillStyle='#888';px.font='11px Trebuchet MS';px.textAlign='center';px.fillText('Substrate',W/2,bY+sH+15)}
+
+if(m==='sub'){
+switch(s){
+case 1:drawSub();break;
+case 2:drawSub();px.fillStyle=cF;px.fillRect(60,bY-fH,W-120,fH);px.fillStyle='#004D26';px.font='12px Trebuchet MS';px.textAlign='center';px.fillText('Thin Film',W/2,bY-fH-8);break;
+case 3:drawSub();px.fillStyle=cF;px.fillRect(60,bY-fH,W-120,fH);px.fillStyle=cR;px.fillRect(60,bY-fH-rH,gL-60,rH);px.fillRect(gR,bY-fH-rH,W-60-gR,rH);px.fillStyle='#006633';px.font='11px Trebuchet MS';px.textAlign='center';px.fillText('\u2190 Exposed \u2192',W/2,bY-fH-4);break;
+case 4:drawSub();var uc=e==='iso'?14:0;px.fillStyle=cF;px.fillRect(60,bY-fH,gL-60-uc,fH);px.fillRect(gR+uc,bY-fH,W-60-gR-uc,fH);px.fillStyle=cR;px.fillRect(60,bY-fH-rH,gL-60,rH);px.fillRect(gR,bY-fH-rH,W-60-gR,rH);if(uc){px.strokeStyle='#FF6600';px.setLineDash([4,3]);px.beginPath();px.moveTo(gL-uc,bY-fH);px.lineTo(gL-uc,bY);px.moveTo(gR+uc,bY-fH);px.lineTo(gR+uc,bY);px.stroke();px.setLineDash([]);px.fillStyle='#FF6600';px.font='11px Trebuchet MS';px.fillText('Undercut',W/2,bY+sH+30)}break;
+case 5:case 6:drawSub();var u2=e==='iso'?14:0;px.fillStyle=cF;px.fillRect(60,bY-fH,gL-60-u2,fH);px.fillRect(gR+u2,bY-fH,W-60-gR-u2,fH);if(s===6){px.fillStyle='#006633';px.font='bold 16px Trebuchet MS';px.textAlign='center';px.fillText('\u2713 Pattern Transfer Complete!',W/2,bY-fH-28)}break;
+}}else{
+switch(s){
+case 1:drawSub();break;
+case 2:drawSub();px.fillStyle=cR;px.fillRect(60,bY-rH*1.4,gL-60+8,rH*1.4);px.fillRect(gR-8,bY-rH*1.4,W-60-gR+16,rH*1.4);px.fillStyle='#990000';px.font='11px Trebuchet MS';px.textAlign='center';px.fillText('Resist (undercut profile)',W/2,bY-rH*1.4-10);break;
+case 3:drawSub();px.fillStyle=cR;px.fillRect(60,bY-rH*1.4,gL-60+8,rH*1.4);px.fillRect(gR-8,bY-rH*1.4,W-60-gR+16,rH*1.4);px.fillStyle=cD;px.fillRect(gL+8,bY-10,gR-gL-16,10);px.fillRect(60,bY-rH*1.4-8,gL-60+8,8);px.fillRect(gR-8,bY-rH*1.4-8,W-60-gR+16,8);break;
+case 4:drawSub();px.fillStyle=cD;px.fillRect(gL+8,bY-10,gR-gL-16,10);px.globalAlpha=0.2;px.fillStyle=cR;px.fillRect(60,bY-rH*1.4,gL-60+8,rH*1.4);px.fillRect(gR-8,bY-rH*1.4,W-60-gR+16,rH*1.4);px.globalAlpha=1;px.fillStyle='#333399';px.font='12px Trebuchet MS';px.textAlign='center';px.fillText('Solvent dissolves resist \u2014 unwanted material lifts off',W/2,bY-rH*1.4-14);break;
+case 5:case 6:drawSub();px.fillStyle=cD;px.fillRect(gL+8,bY-10,gR-gL-16,10);if(s===6){px.fillStyle='#006633';px.font='bold 16px Trebuchet MS';px.textAlign='center';px.fillText('\u2713 Lift-Off Complete!',W/2,bY-36)}break;
+}}
+
+var desc=m==='sub'?['Clean substrate.','Uniform thin film deposited.','Resist patterned via UV + development. Gap exposes film.','Etchant removes exposed film. '+(e==='aniso'?'RIE gives vertical walls.':'Wet etch creates isotropic undercut.'),'Resist stripped, patterned film revealed.','Pattern transfer complete!']:['Clean substrate.','Resist patterned with undercut profile.','Material deposited over everything; undercut prevents sidewall coating.','Solvent dissolves resist; unwanted material lifts away.','Only substrate-deposited material remains.','Lift-off complete!'];
+document.getElementById('pR').innerHTML='<strong>Step '+s+':</strong> '+desc[s-1]};
+if(pC)updPV();
+
+// SIM 2: YIELD
+var yC=document.getElementById('yC'),yx=yC?yC.getContext('2d'):null;
+window.updY=function(){if(!yx)return;var D=+document.getElementById('yD').value,A=+document.getElementById('yA').value,mod=document.getElementById('yM').value;document.getElementById('yDV').textContent=D.toFixed(2);document.getElementById('yAV').textContent=A.toFixed(1);
+var W=yC.width,H=yC.height;yx.clearRect(0,0,W,H);var pL=70,pR=30,pT=40,pB=55,gW=W-pL-pR,gH=H-pT-pB;
+yx.strokeStyle='#666';yx.lineWidth=1;yx.beginPath();yx.moveTo(pL,pT);yx.lineTo(pL,pT+gH);yx.lineTo(pL+gW,pT+gH);yx.stroke();
+yx.fillStyle='#333';yx.font='13px Trebuchet MS';yx.textAlign='center';yx.fillText('Defect Density (defects/cm\u00B2)',pL+gW/2,H-8);
+yx.save();yx.translate(16,pT+gH/2);yx.rotate(-Math.PI/2);yx.fillText('Yield (%)',0,0);yx.restore();
+yx.strokeStyle='#E0E0E0';yx.fillStyle='#888';yx.font='11px Trebuchet MS';
+for(var y=0;y<=100;y+=20){var py=pT+gH-(y/100)*gH;yx.beginPath();yx.moveTo(pL,py);yx.lineTo(pL+gW,py);yx.stroke();yx.textAlign='right';yx.fillText(y+'%',pL-8,py+4)}
+var mD=3;for(var d=0;d<=mD;d+=0.5){yx.textAlign='center';yx.fillText(d.toFixed(1),pL+(d/mD)*gW,pT+gH+16)}
+function pY(dd,aa){return Math.exp(-dd*aa)}function mY(dd,aa){var da=dd*aa;return da===0?1:Math.pow((1-Math.exp(-da))/da,2)}function sY(dd,aa){return 1/(1+dd*aa)}
+var fn=mod==='poisson'?pY:mod==='murphy'?mY:sY;
+var areas=[0.5,A,4],cols=['#009999','#006633','#CC3333'],labs=['0.5 cm\u00B2',A.toFixed(1)+' cm\u00B2 (selected)','4.0 cm\u00B2'];
+areas.forEach(function(a,i){yx.strokeStyle=cols[i];yx.lineWidth=i===1?3:1.5;if(i!==1)yx.setLineDash([6,4]);else yx.setLineDash([]);yx.beginPath();for(var di=0;di<=mD;di+=0.02){var xp=pL+(di/mD)*gW,yp=pT+gH-fn(di,a)*gH;if(di===0)yx.moveTo(xp,yp);else yx.lineTo(xp,yp)}yx.stroke();yx.setLineDash([])});
+yx.font='11px Trebuchet MS';areas.forEach(function(a,i){var lx=pL+20,ly=pT+16+i*17;yx.fillStyle=cols[i];yx.fillRect(lx,ly-5,22,3);yx.fillStyle='#333';yx.textAlign='left';yx.fillText(labs[i],lx+28,ly)});
+var cY=fn(D,A),cx=pL+(D/mD)*gW,cy=pT+gH-cY*gH;yx.fillStyle='#006633';yx.beginPath();yx.arc(cx,cy,7,0,Math.PI*2);yx.fill();yx.fillStyle='#fff';yx.beginPath();yx.arc(cx,cy,3,0,Math.PI*2);yx.fill();
+var pct=(cY*100).toFixed(1);var mn=mod==='poisson'?'Poisson':mod==='murphy'?'Murphy':'Seeds';var dies=Math.round(707/A);
+document.getElementById('yR').innerHTML='<strong>'+mn+' Yield:</strong> '+pct+'% (D='+D.toFixed(2)+', A='+A.toFixed(1)+' cm\u00B2) | ~<strong>'+Math.round(dies*cY)+'</strong> good dies of '+dies+' on a 300mm wafer.'};
+if(yC)updY();
+
+// SIM 3: OVERLAY
+var oC=document.getElementById('oC'),ox=oC?oC.getContext('2d'):null;
+window.updO=function(){if(!ox)return;var t=+document.getElementById('oT').value,l=+document.getElementById('oL').value,w=+document.getElementById('oW').value,p=+document.getElementById('oP').value,me=+document.getElementById('oMe').value,nv=+document.getElementById('oN').value;
+document.getElementById('oTV').textContent=t.toFixed(1);document.getElementById('oLV').textContent=l.toFixed(1);document.getElementById('oWV').textContent=w.toFixed(1);document.getElementById('oPV').textContent=p.toFixed(1);document.getElementById('oMV').textContent=me.toFixed(1);
+var rss=Math.sqrt(t*t+l*l+w*w+p*p+me*me),bud={28:9,14:5,7:2.5,3:1.2}[nv]||5;
+var W=oC.width,H=oC.height;ox.clearRect(0,0,W,H);var pL=55,pR=25,pT=35,pB=65,gW=W-pL-pR,gH=H-pT-pB;
+var src=[{n:'Tool',v:t,c:'#006633'},{n:'Lens',v:l,c:'#333399'},{n:'Wafer',v:w,c:'#009999'},{n:'Process',v:p,c:'#CC9900'},{n:'Metrology',v:me,c:'#666'},{n:'RSS Total',v:rss,c:rss<=bud?'#006633':'#CC3333'}];
+var mx=Math.max(bud+1,rss+1,10),bW=gW/src.length-14;
+var bLine=pT+gH-(bud/mx)*gH;ox.strokeStyle='#CC0000';ox.lineWidth=2;ox.setLineDash([8,4]);ox.beginPath();ox.moveTo(pL,bLine);ox.lineTo(pL+gW,bLine);ox.stroke();ox.setLineDash([]);ox.fillStyle='#CC0000';ox.font='bold 11px Trebuchet MS';ox.textAlign='left';ox.fillText('Budget: '+bud+' nm',pL+gW-95,bLine-5);
+src.forEach(function(s,i){var bx=pL+i*(gW/src.length)+7,bh=(s.v/mx)*gH,by=pT+gH-bh;ox.fillStyle=s.c;ox.fillRect(bx,by,bW,bh);ox.fillStyle=bh>22?'#fff':s.c;ox.font='bold 12px Trebuchet MS';ox.textAlign='center';ox.fillText(s.v.toFixed(1),bx+bW/2,bh>22?by+bh/2+5:by-5);ox.fillStyle='#333';ox.font='11px Trebuchet MS';ox.save();ox.translate(bx+bW/2,pT+gH+14);ox.rotate(-0.35);ox.fillText(s.n,0,0);ox.restore()});
+ox.fillStyle='#888';ox.font='11px Trebuchet MS';ox.textAlign='right';for(var v=0;v<=mx;v+=2){ox.fillText(v+' nm',pL-6,pT+gH-(v/mx)*gH+4)}
+var pass=rss<=bud;var rEl=document.getElementById('oR');rEl.className='rd'+(pass?'':' fail');
+rEl.innerHTML='<strong>RSS:</strong> '+rss.toFixed(2)+' nm | <strong>Budget:</strong> '+bud+' nm ('+nv+' nm node)<br>'+(pass?'<span style="color:#006633;font-weight:bold">\u2713 PASS</span>':'<span style="color:#CC0000;font-weight:bold">\u2717 FAIL</span> \u2014 Reduce error sources!')};
+if(oC)updO();
+
+// QUIZ
+var qA={q1:{c:'b',e:'Film deposited first, then resist patterned, then exposed film etched away.'},q2:{c:'b',e:'Lift-off is ideal when no etchant exists for the target material (e.g., gold).'},q3:{c:'b',e:'Overlay tolerance is ~1/3 of minimum feature size.'},q4:{c:'b',e:'Cluster tools maintain vacuum between steps, preventing contamination.'},q5:{c:'a',e:'Y=e^(-0.6)\u22480.549\u224855%.'},q6:{c:'b',e:'EF=1.0 means zero lateral etch (perfectly anisotropic).'},q7:{c:'c',e:'Bridging creates unwanted connections causing short circuits.'},q8:{c:'b',e:'RSS=\u221A(4+9)=\u221A13\u22483.6 nm.'},q9:{c:'c',e:'Advanced chips need 60-100+ pattern transfer cycles.'},q10:{c:'d',e:'DSA uses block copolymers for spontaneous nanoscale pattern formation.'}};
+
+window.gradeQuiz=function(){var tot=0,cor=0;Object.keys(qA).forEach(function(k){tot++;var sel=document.querySelector('input[name="'+k+'"]:checked');var qd=document.querySelector('[data-question="'+k+'"]');var fb=qd.querySelector('.qfb');qd.querySelectorAll('.qop').forEach(function(o){o.classList.remove('correct','incorrect')});
+if(sel&&sel.value===qA[k].c){cor++;sel.closest('.qop').classList.add('correct');fb.className='qfb show correct';fb.textContent='\u2713 Correct! '+qA[k].e}else{if(sel)sel.closest('.qop').classList.add('incorrect');qd.querySelectorAll('.qop').forEach(function(o){if(o.querySelector('input').value===qA[k].c)o.classList.add('correct')});fb.className='qfb show incorrect';fb.textContent='\u2717 '+qA[k].e}});
+var p=Math.round(cor/tot*100),sc=document.getElementById('qSc');sc.className='qsc show';
+sc.innerHTML='<div class="scv">'+cor+'/'+tot+'</div><p>'+p+'% '+(p>=80?'\u2014 Excellent!':p>=60?'\u2014 Good. Review missed areas.':'\u2014 Review lecture before retrying.')+'</p>';
+sc.scrollIntoView({behavior:'smooth',block:'center'})};
+})();
+</script>
+</body></html>

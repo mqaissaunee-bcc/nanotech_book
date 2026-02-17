@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 4: Vacuum Systems & Assembly - Practical vacuum technology for nanofabrication including pumps, gauges, fittings, leak detection, and system assembly.">
+    <title>Module 4: Vacuum Systems & Assembly | Introduction to Nanotechnology</title>
+    <style>
+        /* ============================================================
+           CSS CUSTOM PROPERTIES - Web-Safe Color Palette
+           ============================================================ */
+        :root {
+            --navy: #003366;
+            --navy-deep: #001a33;
+            --teal: #006666;
+            --teal-light: #009999;
+            --cyan: #00CCCC;
+            --cyan-pale: #CCFFFF;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --light-gray: #E0E0E0;
+            --mid-gray: #999999;
+            --dark-gray: #333333;
+            --near-black: #1A1A1A;
+            --success: #009933;
+            --success-light: #E8F5E9;
+            --warning: #FF6600;
+            --warning-light: #FFF3E0;
+            --danger: #CC0000;
+            --danger-light: #FFEBEE;
+            --info: #336699;
+            --info-light: #E3F2FD;
+            --gold: #CC9900;
+            --gold-light: #FFF8E1;
+            --purple: #660099;
+            --purple-light: #F3E5F5;
+            --font-display: Georgia, "Times New Roman", serif;
+            --font-body: Verdana, Geneva, Tahoma, sans-serif;
+            --font-mono: "Courier New", Courier, monospace;
+            --max-width: 1200px;
+            --radius: 8px;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.18);
+            --transition: 0.3s ease;
+            --focus-ring: 0 0 0 3px #00CCCC, 0 0 0 5px #003366;
+        }
+
+        /* ============================================================
+           RESET & BASE STYLES
+           ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+            background: var(--off-white);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================================
+           ACCESSIBILITY (ADA Compliance)
+           ============================================================ */
+        .skip-link {
+            position: absolute; top: -100%; left: 1rem;
+            background: var(--cyan); color: var(--navy-deep);
+            padding: 0.75rem 1.5rem; border-radius: var(--radius);
+            font-weight: bold; z-index: 10000; text-decoration: none;
+        }
+        .skip-link:focus { top: 1rem; outline: none; box-shadow: var(--focus-ring); }
+        :focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        .visually-hidden {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .site-nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+            border-bottom: 3px solid var(--teal);
+            padding: 0;
+        }
+        .nav-inner {
+            max-width: var(--max-width); margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.5rem; flex-wrap: wrap;
+        }
+        .nav-brand {
+            color: var(--cyan); font-family: var(--font-display);
+            font-size: 1.1rem; font-weight: bold; text-decoration: none;
+            padding: 0.75rem 0;
+        }
+        .nav-brand:hover { color: var(--white); }
+        .nav-links { list-style: none; display: flex; gap: 0; flex-wrap: wrap; }
+        .nav-links li a {
+            display: block; color: var(--light-gray); text-decoration: none;
+            font-size: 0.85rem; padding: 0.9rem 1rem;
+            transition: background var(--transition), color var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--white); background: rgba(0, 204, 204, 0.1);
+            border-bottom-color: var(--cyan);
+        }
+
+        /* ============================================================
+           HERO SECTION
+           ============================================================ */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 40%, var(--teal) 100%);
+            color: var(--white); padding: 4rem 1.5rem; text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(0,204,204,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(0,153,153,0.06) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero-badge {
+            display: inline-block; background: rgba(0,204,204,0.2);
+            padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.9rem;
+            margin-bottom: 1rem; border: 1px solid rgba(0,204,204,0.3);
+        }
+        .hero h1 { font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero .subtitle { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto 2rem; }
+        .hero-stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .hero-stat {
+            background: rgba(255,255,255,0.1); padding: 1rem 1.5rem;
+            border-radius: var(--radius); min-width: 100px;
+        }
+        .stat-number { display: block; font-size: 2rem; font-weight: bold; color: var(--cyan); }
+        .stat-label { font-size: 0.85rem; opacity: 0.8; }
+
+        /* ============================================================
+           MAIN CONTENT
+           ============================================================ */
+        main { max-width: var(--max-width); margin: 0 auto; padding: 2rem 1.5rem; }
+
+        /* ============================================================
+           LEARNING OBJECTIVES
+           ============================================================ */
+        .objectives {
+            background: var(--white); border-radius: var(--radius);
+            padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow);
+            border-left: 5px solid var(--gold);
+        }
+        .objectives h2 { color: var(--navy); margin-bottom: 1.5rem; font-family: var(--font-display); }
+        .objectives-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;
+        }
+        .objective-item {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 1rem; background: var(--info-light); border-radius: var(--radius);
+        }
+        .objective-num {
+            background: var(--teal); color: var(--white);
+            width: 28px; height: 28px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.85rem; flex-shrink: 0;
+        }
+
+        /* ============================================================
+           PROGRESS TRACKER
+           ============================================================ */
+        .progress-section {
+            background: var(--white); border-radius: var(--radius);
+            padding: 1.5rem 2rem; margin-bottom: 2rem; box-shadow: var(--shadow);
+        }
+        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+        .progress-header h3 { color: var(--navy); font-size: 1rem; }
+        .progress-pct { color: var(--teal); font-weight: bold; }
+        .progress-bar { background: var(--light-gray); border-radius: 10px; height: 12px; overflow: hidden; }
+        .progress-fill {
+            background: linear-gradient(90deg, var(--teal), var(--success));
+            height: 100%; border-radius: 10px; transition: width 0.5s ease;
+        }
+
+        /* ============================================================
+           TABS
+           ============================================================ */
+        .tabs-container { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+        .tabs { display: flex; background: var(--navy); flex-wrap: wrap; }
+        .tab-btn {
+            flex: 1; min-width: 120px; padding: 1rem 0.5rem;
+            background: transparent; border: none; color: rgba(255,255,255,0.8);
+            font-family: var(--font-body); font-size: 0.85rem; cursor: pointer;
+            transition: all var(--transition); position: relative;
+        }
+        .tab-btn:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+        .tab-btn.active { background: var(--teal); color: var(--white); font-weight: bold; }
+        .tab-btn.active::after {
+            content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%);
+            border: 8px solid transparent; border-bottom-color: var(--white);
+        }
+        .tab-panel { display: none; padding: 2rem; animation: fadeIn 0.4s ease; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ============================================================
+           CARDS
+           ============================================================ */
+        .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; overflow: hidden; }
+        .card-header {
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+            color: var(--white); padding: 1.25rem 1.5rem;
+            font-family: var(--font-display); font-size: 1.2rem; font-weight: bold;
+        }
+        .card-header.green { background: linear-gradient(135deg, var(--success), #00AA44); }
+        .card-header.orange { background: linear-gradient(135deg, var(--warning), #FF8833); }
+        .card-header.purple { background: linear-gradient(135deg, var(--purple), #9933CC); }
+        .card-body { padding: 1.5rem; }
+
+        /* ============================================================
+           SECTION HEADERS
+           ============================================================ */
+        .section-header {
+            color: var(--navy); font-family: var(--font-display);
+            font-size: 1.4rem; margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem; border-bottom: 3px solid var(--teal);
+        }
+        .subsection-header {
+            color: var(--teal); font-size: 1.15rem; margin: 1.5rem 0 1rem;
+            padding-left: 1rem; border-left: 4px solid var(--gold);
+        }
+
+        /* ============================================================
+           COLORED BOXES
+           ============================================================ */
+        .key-concept {
+            background: var(--info-light); border-left: 5px solid var(--info);
+            padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .key-concept h4 { color: var(--info); margin-bottom: 0.75rem; }
+        .safety-warning {
+            background: var(--danger-light); border-left: 5px solid var(--danger);
+            padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .safety-warning h4 { color: var(--danger); margin-bottom: 0.75rem; }
+        .tip-box {
+            background: var(--success-light); border-left: 5px solid var(--success);
+            padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .tip-box h4 { color: var(--success); margin-bottom: 0.75rem; }
+        .industry-note {
+            background: var(--purple-light); border-left: 5px solid var(--purple);
+            padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .industry-note h4 { color: var(--purple); margin-bottom: 0.75rem; }
+        .caution-box {
+            background: var(--warning-light); border-left: 5px solid var(--warning);
+            padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .caution-box h4 { color: var(--warning); margin-bottom: 0.75rem; }
+
+        /* ============================================================
+           GRIDS
+           ============================================================ */
+        .two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .three-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+        .four-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .column-box {
+            background: var(--off-white); padding: 1.25rem; border-radius: var(--radius);
+            border-top: 4px solid var(--teal);
+        }
+        .column-box h4 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1rem; }
+
+        /* ============================================================
+           TABLES
+           ============================================================ */
+        .table-container { overflow-x: auto; margin: 1.5rem 0; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .data-table th, .data-table td { padding: 0.875rem 1rem; text-align: left; border: 1px solid var(--light-gray); }
+        .data-table th { background: var(--navy); color: var(--white); font-weight: 600; }
+        .data-table tr:nth-child(even) { background: var(--off-white); }
+        .data-table tr:hover { background: var(--gold-light); }
+
+        /* ============================================================
+           PUMP CARDS
+           ============================================================ */
+        .pump-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .pump-card {
+            background: var(--white); border-radius: var(--radius);
+            box-shadow: var(--shadow); overflow: hidden;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .pump-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .pump-header {
+            padding: 1rem 1.25rem; color: var(--white); font-weight: bold;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .pump-header.roughing { background: linear-gradient(135deg, #339933, #66CC66); }
+        .pump-header.high-vac { background: linear-gradient(135deg, #663399, #9966CC); }
+        .pump-header.uhv { background: linear-gradient(135deg, #993366, #CC6699); }
+        .pump-body { padding: 1.25rem; }
+        .pump-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+        .spec-item { background: var(--off-white); padding: 0.5rem 0.75rem; border-radius: 4px; }
+        .spec-label { font-size: 0.7rem; color: var(--mid-gray); text-transform: uppercase; letter-spacing: 0.5px; }
+        .spec-value { font-weight: bold; color: var(--dark-gray); }
+        .pump-desc { font-size: 0.9rem; color: var(--dark-gray); margin-bottom: 1rem; }
+        .pump-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        .pros { background: var(--success-light); padding: 0.75rem; border-radius: 4px; }
+        .cons { background: var(--danger-light); padding: 0.75rem; border-radius: 4px; }
+        .pros h5 { color: var(--success); font-size: 0.8rem; margin-bottom: 0.5rem; }
+        .cons h5 { color: var(--danger); font-size: 0.8rem; margin-bottom: 0.5rem; }
+        .pros ul, .cons ul { margin-left: 1rem; font-size: 0.8rem; }
+
+        /* ============================================================
+           GAUGE VISUALIZATION
+           ============================================================ */
+        .gauge-range-bar {
+            background: var(--light-gray); height: 40px; border-radius: var(--radius);
+            margin: 1rem 0; overflow: hidden; display: flex; position: relative;
+        }
+        .gauge-segment {
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-size: 0.8rem; font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .gauge-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--mid-gray); padding: 0 0.5rem; }
+
+        /* ============================================================
+           FITTING CARDS
+           ============================================================ */
+        .fitting-card {
+            background: var(--white); border-radius: var(--radius);
+            box-shadow: var(--shadow); overflow: hidden; text-align: center;
+        }
+        .fitting-header { padding: 1rem; font-weight: bold; color: var(--white); }
+        .fitting-header.kf { background: var(--success); }
+        .fitting-header.cf { background: var(--purple); }
+        .fitting-header.vcr { background: var(--info); }
+        .fitting-body { padding: 1.25rem; }
+        .fitting-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+        .fitting-specs { text-align: left; font-size: 0.85rem; }
+        .fitting-specs dt { font-weight: bold; color: var(--dark-gray); margin-top: 0.5rem; }
+        .fitting-specs dd { margin-left: 0; color: var(--mid-gray); }
+
+        /* ============================================================
+           PROCEDURE STEPS
+           ============================================================ */
+        .procedure-step {
+            display: flex; gap: 1rem; margin-bottom: 1.5rem;
+            padding: 1.25rem; background: var(--off-white); border-radius: var(--radius);
+            border-left: 4px solid var(--teal);
+        }
+        .step-num {
+            background: var(--teal); color: var(--white);
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; flex-shrink: 0;
+        }
+        .step-content h4 { color: var(--navy); margin-bottom: 0.5rem; }
+        .step-content p { font-size: 0.95rem; }
+
+        /* ============================================================
+           INTERACTIVE SIMULATION
+           ============================================================ */
+        .simulation-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: var(--radius); padding: 2rem; margin: 1.5rem 0; color: var(--white);
+        }
+        .simulation-container h3 { color: var(--gold); margin-bottom: 1rem; }
+        .simulation-desc { color: #CCC; margin-bottom: 1.5rem; }
+        .canvas-wrapper {
+            background: var(--white); border-radius: var(--radius);
+            padding: 1rem; margin-bottom: 1.5rem; text-align: center;
+        }
+        .sim-canvas { border: 2px solid var(--light-gray); border-radius: 4px; max-width: 100%; }
+        .sim-controls { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1rem; }
+        .sim-btn {
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            color: var(--white); border: none; padding: 0.75rem 1.5rem;
+            border-radius: var(--radius); font-size: 1rem; cursor: pointer;
+            transition: all var(--transition); font-family: var(--font-body);
+        }
+        .sim-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,204,204,0.4); }
+        .sim-btn.danger { background: linear-gradient(135deg, var(--danger), #FF4444); }
+        .sim-readout {
+            background: rgba(0,0,0,0.3); border-radius: var(--radius); padding: 1rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;
+        }
+        .readout-item { text-align: center; }
+        .readout-label { font-size: 0.75rem; color: #AAA; text-transform: uppercase; letter-spacing: 1px; }
+        .readout-value { font-size: 1.5rem; font-weight: bold; color: var(--gold); font-family: var(--font-mono); }
+
+        /* ============================================================
+           DECISION TREE
+           ============================================================ */
+        .decision-tree { background: var(--off-white); border-radius: var(--radius); padding: 2rem; margin: 1.5rem 0; }
+        .decision-tree h3 { color: var(--navy); text-align: center; margin-bottom: 1.5rem; }
+        .decision-node {
+            background: var(--white); border-radius: var(--radius); padding: 1.5rem;
+            max-width: 500px; margin: 1rem auto; box-shadow: var(--shadow); text-align: center;
+        }
+        .decision-node.question { border-top: 4px solid var(--info); }
+        .decision-node.answer { border-top: 4px solid var(--success); background: var(--success-light); }
+        .decision-node h4 { color: var(--navy); margin-bottom: 1rem; }
+        .decision-options { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .decision-btn {
+            padding: 0.75rem 1.5rem; background: var(--white); border: 2px solid var(--info);
+            color: var(--info); border-radius: 25px; cursor: pointer;
+            transition: all var(--transition); font-family: var(--font-body); font-size: 0.9rem;
+        }
+        .decision-btn:hover { background: var(--info); color: var(--white); }
+        .reset-btn {
+            display: block; margin: 1.5rem auto 0; padding: 0.5rem 1rem;
+            background: var(--mid-gray); color: var(--white); border: none;
+            border-radius: var(--radius); cursor: pointer; font-family: var(--font-body);
+        }
+
+        /* ============================================================
+           ACCORDION
+           ============================================================ */
+        .accordion-item { background: var(--white); border-radius: var(--radius); margin-bottom: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .accordion-header {
+            width: 100%; padding: 1rem 1.25rem; background: var(--off-white);
+            border: none; text-align: left; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+            color: var(--dark-gray); transition: background var(--transition);
+        }
+        .accordion-header:hover { background: var(--light-gray); }
+        .accordion-icon { transition: transform var(--transition); }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .accordion-item.open .accordion-content { max-height: 500px; }
+        .accordion-body { padding: 1.25rem; color: var(--dark-gray); line-height: 1.7; }
+
+        /* ============================================================
+           QUIZ
+           ============================================================ */
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .quiz-progress { background: var(--light-gray); border-radius: 10px; height: 10px; margin-bottom: 2rem; overflow: hidden; }
+        .quiz-progress-fill { background: linear-gradient(90deg, var(--teal), var(--success)); height: 100%; border-radius: 10px; transition: width 0.4s; }
+        .quiz-question { background: var(--white); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+        .question-num { color: var(--teal); font-size: 0.85rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .quiz-question h4 { color: var(--dark-gray); margin-bottom: 1rem; line-height: 1.5; }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .quiz-option {
+            display: flex; align-items: center; padding: 1rem;
+            background: var(--off-white); border-radius: var(--radius);
+            cursor: pointer; transition: all var(--transition); border: 2px solid transparent;
+        }
+        .quiz-option:hover { background: var(--info-light); border-color: var(--info); }
+        .quiz-option input { width: 18px; height: 18px; margin-right: 1rem; cursor: pointer; }
+        .quiz-option.correct { background: var(--success-light); border-color: var(--success); }
+        .quiz-option.incorrect { background: var(--danger-light); border-color: var(--danger); }
+        .quiz-feedback { margin-top: 1rem; padding: 1rem; border-radius: var(--radius); display: none; }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct { background: var(--success-light); border-left: 4px solid var(--success); }
+        .quiz-feedback.incorrect { background: var(--danger-light); border-left: 4px solid var(--danger); }
+        .quiz-score {
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+            color: var(--white); border-radius: var(--radius); padding: 2rem;
+            text-align: center; margin-top: 2rem;
+        }
+        .quiz-score h3 { margin-bottom: 1rem; }
+        .score-number { font-size: 3rem; font-weight: bold; display: block; margin: 1rem 0; }
+        .quiz-buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+
+        /* ============================================================
+           FOOTER NAV
+           ============================================================ */
+        .nav-footer {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 2rem 0; margin-top: 2rem; border-top: 2px solid var(--light-gray);
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-btn {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.875rem 1.5rem; background: var(--navy); color: var(--white);
+            text-decoration: none; border-radius: var(--radius); font-weight: 600;
+            transition: all var(--transition);
+        }
+        .footer-btn:hover { background: var(--teal); transform: translateY(-2px); }
+        .complete-btn {
+            padding: 0.875rem 1.5rem; background: var(--success); color: var(--white);
+            border: none; border-radius: var(--radius); font-size: 1rem;
+            font-weight: 600; cursor: pointer; font-family: var(--font-body);
+            transition: all var(--transition);
+        }
+        .complete-btn:hover { background: #00AA44; transform: translateY(-2px); }
+
+        /* ============================================================
+           SITE FOOTER
+           ============================================================ */
+        .site-footer {
+            background: var(--navy-deep); color: rgba(255,255,255,0.8);
+            padding: 2rem; text-align: center; font-size: 0.9rem;
+        }
+        .site-footer a { color: var(--cyan); }
+        .grant-badge {
+            display: inline-block; background: rgba(0,204,204,0.2);
+            padding: 0.5rem 1rem; border-radius: 25px; margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-stats { gap: 1rem; }
+            .tabs { flex-wrap: wrap; }
+            .tab-btn { min-width: 80px; font-size: 0.75rem; padding: 0.75rem 0.25rem; }
+            .tab-panel { padding: 1.25rem; }
+            .pump-grid, .two-column, .three-column { grid-template-columns: 1fr; }
+            .pump-specs, .pump-pros-cons { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            .site-nav, .tabs, .simulation-container, .quiz-container, .nav-footer, .progress-section { display: none !important; }
+            .tab-panel { display: block !important; }
+            body { background: white; }
+            .card { box-shadow: none; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- NAVIGATION -->
+    <nav class="site-nav" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">NANO&middot;101</a>
+            <ul class="nav-links" role="menubar">
+                <li><a href="index.html" role="menuitem">Home</a></li>
+                <li><a href="course-outline.html" role="menuitem">Outline</a></li>
+                <li><a href="module3_cleanroom_technology.html" role="menuitem">Module 3</a></li>
+                <li><a href="#" class="active" role="menuitem" aria-current="page">Module 4</a></li>
+                <li><a href="module5_vacuum_concepts.html" role="menuitem">Module 5</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" role="banner">
+        <div class="hero-content">
+            <span class="hero-badge">Week 4 &bull; Lecture + Lab</span>
+            <h1>Module 4: Vacuum Systems &amp; Assembly</h1>
+            <p class="subtitle">Master the essential vacuum technologies that enable nanofabrication. Learn pump operation, pressure measurement, fitting standards, leak detection, and hands-on system assembly.</p>
+            <div class="hero-stats" role="list" aria-label="Module statistics">
+                <div class="hero-stat" role="listitem">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Pump Types</span>
+                </div>
+                <div class="hero-stat" role="listitem">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Gauge Types</span>
+                </div>
+                <div class="hero-stat" role="listitem">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Fitting Standards</span>
+                </div>
+                <div class="hero-stat" role="listitem">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Hands-On Lab</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+        <!-- Learning Objectives -->
+        <section class="objectives" aria-labelledby="objectives-heading">
+            <h2 id="objectives-heading">&#127919; Learning Objectives</h2>
+            <div class="objectives-grid">
+                <div class="objective-item">
+                    <span class="objective-num">1</span>
+                    <span>Explain why vacuum environments are essential for nanofabrication processes</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-num">2</span>
+                    <span>Identify and compare different vacuum pump technologies and their operating ranges</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-num">3</span>
+                    <span>Select appropriate pressure measurement gauges for different vacuum ranges</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-num">4</span>
+                    <span>Demonstrate proper vacuum fitting assembly using KF, CF, and VCR standards</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-num">5</span>
+                    <span>Distinguish between real leaks, virtual leaks, and permeation</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-num">6</span>
+                    <span>Apply proper safety protocols when working with vacuum equipment</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Tracker -->
+        <div class="progress-section" role="region" aria-label="Module progress">
+            <div class="progress-header">
+                <h3>Module Progress</h3>
+                <span class="progress-pct" id="progress-text">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+        <!-- Tabs Container -->
+        <div class="tabs-container">
+            <div class="tabs" role="tablist" aria-label="Module content sections">
+                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="lecture-panel" id="lecture-tab" onclick="switchTab('lecture')">&#128218; Lecture</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="pumps-panel" id="pumps-tab" onclick="switchTab('pumps')">&#9881; Pumps</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="gauges-panel" id="gauges-tab" onclick="switchTab('gauges')">&#128200; Gauges</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="fittings-panel" id="fittings-tab" onclick="switchTab('fittings')">&#128295; Fittings</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="leaks-panel" id="leaks-tab" onclick="switchTab('leaks')">&#128269; Leaks</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="lab-panel" id="lab-tab" onclick="switchTab('lab')">&#129514; Lab</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="quiz-panel" id="quiz-tab" onclick="switchTab('quiz')">&#10004; Quiz</button>
+            </div>
+
+            <!-- ==================== LECTURE TAB ==================== -->
+            <div id="lecture-panel" class="tab-panel active" role="tabpanel" aria-labelledby="lecture-tab">
+                
+                <div class="card">
+                    <div class="card-header">Part 1: Why Vacuum Matters in Nanotechnology</div>
+                    <div class="card-body">
+                        
+                        <p>Vacuum environments are the foundation of nearly all nanofabrication processes. From thin film deposition to plasma etching, vacuum provides the controlled atmosphere necessary for manipulating matter at the atomic scale. Understanding vacuum technology is essential for any nanotechnology practitioner.</p>
+
+                        <h3 class="subsection-header">The Three Critical Functions of Vacuum</h3>
+
+                        <div class="three-column">
+                            <div class="column-box" style="border-top-color: var(--teal);">
+                                <h4>&#128737; Contamination Control</h4>
+                                <p>At atmospheric pressure, there are approximately <strong>2.5 &times; 10<sup>19</sup></strong> molecules per cm&sup3;. By reducing pressure, we dramatically reduce the number of potential contaminants that can interfere with nanoscale processes.</p>
+                            </div>
+                            <div class="column-box" style="border-top-color: var(--info);">
+                                <h4>&#128296; Extended Mean Free Path</h4>
+                                <p>The mean free path&mdash;the distance molecules travel before collision&mdash;is extended as pressure decreases. This enables precise control during material deposition. <em>(Physics covered in Module 5)</em></p>
+                            </div>
+                            <div class="column-box" style="border-top-color: var(--warning);">
+                                <h4>&#9889; Enabling New Physics</h4>
+                                <p>Many quantum effects and analytical techniques only work in vacuum, where particles can be controlled without interference from air molecules. This enables electron microscopy, ion implantation, and surface analysis.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-header">Vacuum Pressure Ranges</h3>
+
+                        <p>The vacuum spectrum spans over 15 orders of magnitude. Different applications require different vacuum levels:</p>
+
+                        <div class="gauge-range-bar">
+                            <div class="gauge-segment" style="background: linear-gradient(135deg, #66CC66, #339933); flex: 1;">Rough</div>
+                            <div class="gauge-segment" style="background: linear-gradient(135deg, #3399FF, #0066CC); flex: 1.5;">Medium</div>
+                            <div class="gauge-segment" style="background: linear-gradient(135deg, #9966CC, #663399); flex: 2;">High</div>
+                            <div class="gauge-segment" style="background: linear-gradient(135deg, #CC6699, #993366); flex: 1.5;">Ultra-High</div>
+                        </div>
+                        <div class="gauge-labels">
+                            <span>760 Torr</span>
+                            <span>25 Torr</span>
+                            <span>10&sup-3; Torr</span>
+                            <span>10&sup-9; Torr</span>
+                            <span>&lt;10&sup-9; Torr</span>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="data-table" aria-label="Vacuum pressure ranges">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Range</th>
+                                        <th scope="col">Pressure (Torr)</th>
+                                        <th scope="col">Typical Applications</th>
+                                        <th scope="col">Pump Types Used</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Rough (Low)</strong></td>
+                                        <td>760 &ndash; 1</td>
+                                        <td>Vacuum packaging, degassing, initial pump-down</td>
+                                        <td>Rotary vane, scroll, diaphragm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Medium</strong></td>
+                                        <td>1 &ndash; 10<sup>-3</sup></td>
+                                        <td>Plasma processing, sputtering, CVD</td>
+                                        <td>Rotary vane + Roots blower</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>High (HV)</strong></td>
+                                        <td>10<sup>-3</sup> &ndash; 10<sup>-9</sup></td>
+                                        <td>Thermal evaporation, e-beam, SEM</td>
+                                        <td>Turbomolecular, diffusion</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ultra-High (UHV)</strong></td>
+                                        <td>&lt;10<sup>-9</sup></td>
+                                        <td>MBE, surface science, particle physics</td>
+                                        <td>Ion pump, cryopump, TSP</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="key-concept">
+                            <h4>&#128161; Key Concept: Pressure Units</h4>
+                            <p>Vacuum pressures are commonly expressed in several units:</p>
+                            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><strong>Torr</strong> &ndash; 1 Torr = 1 mmHg (most common in US)</li>
+                                <li><strong>millibar (mbar)</strong> &ndash; 1 mbar &asymp; 0.75 Torr (common in Europe)</li>
+                                <li><strong>Pascal (Pa)</strong> &ndash; SI unit; 1 Torr = 133.3 Pa</li>
+                                <li><strong>Atmosphere (atm)</strong> &ndash; 1 atm = 760 Torr</li>
+                            </ul>
+                            <p style="margin-top: 0.75rem;"><em>Detailed conversions and calculations are covered in Module 5.</em></p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Part 2: Vacuum System Overview</div>
+                    <div class="card-body">
+
+                        <p>A complete vacuum system consists of several integrated components working together. Understanding each component's role is essential for proper system operation and troubleshooting.</p>
+
+                        <h3 class="subsection-header">Essential System Components</h3>
+
+                        <div class="four-column">
+                            <div class="column-box">
+                                <h4>&#128230; Chamber</h4>
+                                <p>The sealed vessel where processes occur. Materials include stainless steel (304/316L), aluminum, or glass.</p>
+                            </div>
+                            <div class="column-box">
+                                <h4>&#9881; Pumps</h4>
+                                <p>Create and maintain vacuum. Usually requires multiple pump types working together (roughing + high vacuum).</p>
+                            </div>
+                            <div class="column-box">
+                                <h4>&#128200; Gauges</h4>
+                                <p>Measure pressure. Different gauge types cover different pressure ranges with varying accuracy.</p>
+                            </div>
+                            <div class="column-box">
+                                <h4>&#128295; Fittings</h4>
+                                <p>Connect components leak-tight. Standards include KF (quick), CF (UHV), and VCR (gas delivery).</p>
+                            </div>
+                        </div>
+
+                        <div class="two-column">
+                            <div class="column-box">
+                                <h4>&#128682; Valves</h4>
+                                <ul style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                                    <li><strong>Gate valves:</strong> Isolate chamber from pumps</li>
+                                    <li><strong>Vent valves:</strong> Controlled air admission</li>
+                                    <li><strong>Throttle valves:</strong> Pressure control</li>
+                                    <li><strong>Leak valves:</strong> Fine gas metering</li>
+                                </ul>
+                            </div>
+                            <div class="column-box">
+                                <h4>&#128268; Feedthroughs</h4>
+                                <ul style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                                    <li><strong>Electrical:</strong> Power and signals into chamber</li>
+                                    <li><strong>Motion:</strong> Rotary and linear manipulation</li>
+                                    <li><strong>Gas:</strong> Process gas introduction</li>
+                                    <li><strong>Optical:</strong> Windows for viewing/lasers</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="industry-note">
+                            <h4>&#127981; Industry Insight: Pump Staging</h4>
+                            <p>No single pump can efficiently cover the full range from atmosphere to high vacuum. Industrial systems use <strong>staged pumping</strong>:</p>
+                            <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><strong>Roughing pump</strong> brings system from 760 Torr to ~10<sup>-2</sup> Torr</li>
+                                <li><strong>High vacuum pump</strong> takes over at "crossover pressure" (~50 mTorr)</li>
+                                <li>Roughing pump continues as <strong>backing pump</strong> for turbo/diffusion pumps</li>
+                            </ol>
+                        </div>
+
+                        <div class="safety-warning">
+                            <h4>&#9888; Critical Safety Rules</h4>
+                            <ul style="margin-left: 1.25rem;">
+                                <li><strong>Never vent a turbomolecular pump at full speed</strong> &ndash; catastrophic rotor failure</li>
+                                <li><strong>Never operate ion gauges above 10<sup>-3</sup> Torr</strong> &ndash; filament burnout</li>
+                                <li><strong>Always wear safety glasses</strong> when working with vacuum systems</li>
+                                <li><strong>Use proper lifting techniques</strong> &ndash; vacuum chambers are heavy</li>
+                                <li><strong>Watch for pinch points</strong> when making/breaking connections</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Part 3: System Bakeout &amp; Maintenance</div>
+                    <div class="card-body">
+
+                        <p>Achieving and maintaining good vacuum requires proper procedures and regular maintenance.</p>
+
+                        <h3 class="subsection-header">Bakeout Procedures</h3>
+
+                        <p>Water vapor is the most common contaminant limiting vacuum performance. <strong>Bakeout</strong>&mdash;heating the system while pumping&mdash;accelerates water desorption:</p>
+
+                        <div class="two-column">
+                            <div class="tip-box">
+                                <h4>&#128293; Typical Bakeout Parameters</h4>
+                                <ul style="margin-left: 1.25rem;">
+                                    <li><strong>Temperature:</strong> 150&ndash;250&deg;C</li>
+                                    <li><strong>Duration:</strong> 24&ndash;48 hours</li>
+                                    <li><strong>Ramp rate:</strong> 1&ndash;2&deg;C/minute</li>
+                                    <li><strong>Required for:</strong> UHV systems</li>
+                                </ul>
+                            </div>
+                            <div class="caution-box">
+                                <h4>&#9888; Bakeout Precautions</h4>
+                                <ul style="margin-left: 1.25rem;">
+                                    <li>Remove all elastomer O-rings (max ~150&deg;C)</li>
+                                    <li>Use metal gaskets (copper, aluminum)</li>
+                                    <li>Cover with heating tapes/blankets uniformly</li>
+                                    <li>Monitor all thermocouples during process</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-header">Routine Maintenance Checklist</h3>
+
+                        <div class="table-container">
+                            <table class="data-table" aria-label="Maintenance schedule">
+                                <thead>
+                                    <tr>
+                                        <th>Component</th>
+                                        <th>Check Frequency</th>
+                                        <th>Action Items</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rotary vane pump oil</td>
+                                        <td>Weekly</td>
+                                        <td>Check level and color; change if milky or dark</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O-rings and seals</td>
+                                        <td>Before each use</td>
+                                        <td>Inspect for cracks, cuts, debris; replace if damaged</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Turbo pump bearings</td>
+                                        <td>Per manufacturer</td>
+                                        <td>Listen for unusual sounds; check rotor speed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gauge filaments</td>
+                                        <td>As needed</td>
+                                        <td>Replace when emission current drops; keep spares</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Foreline trap</td>
+                                        <td>Monthly</td>
+                                        <td>Regenerate or replace molecular sieve/alumina</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==================== PUMPS TAB ==================== -->
+            <div id="pumps-panel" class="tab-panel" role="tabpanel" aria-labelledby="pumps-tab">
+                
+                <div class="card">
+                    <div class="card-header">Vacuum Pump Technologies</div>
+                    <div class="card-body">
+                        <p>Different pump types use different physical principles to move gas molecules. Understanding each type helps you select the right pump and troubleshoot problems.</p>
+
+                        <div class="two-column">
+                            <div class="key-concept">
+                                <h4>&#128256; Gas Transfer Pumps</h4>
+                                <p>Move gas from inlet to exhaust:</p>
+                                <ul style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                                    <li><strong>Positive displacement:</strong> Rotary vane, scroll, diaphragm</li>
+                                    <li><strong>Momentum transfer:</strong> Turbomolecular, diffusion</li>
+                                </ul>
+                            </div>
+                            <div class="key-concept">
+                                <h4>&#10052; Capture Pumps</h4>
+                                <p>Trap gas molecules permanently:</p>
+                                <ul style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                                    <li><strong>Cryopumps:</strong> Freeze gas on cold surfaces</li>
+                                    <li><strong>Ion pumps:</strong> Ionize and bury in titanium</li>
+                                    <li><strong>Getters:</strong> Chemical reaction with reactive metals</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-header">Roughing Pumps (Atmosphere to ~10<sup>-3</sup> Torr)</h2>
+
+                <div class="pump-grid">
+                    <div class="pump-card">
+                        <div class="pump-header roughing">
+                            <span>&#9881; Rotary Vane Pump</span>
+                            <span style="font-size: 0.8rem;">Oil-Sealed</span>
+                        </div>
+                        <div class="pump-body">
+                            <div class="pump-specs">
+                                <div class="spec-item"><span class="spec-label">Ultimate</span><span class="spec-value">10<sup>-3</sup> Torr</span></div>
+                                <div class="spec-item"><span class="spec-label">Speed</span><span class="spec-value">2&ndash;600 L/min</span></div>
+                                <div class="spec-item"><span class="spec-label">Cost</span><span class="spec-value">$500&ndash;5K</span></div>
+                                <div class="spec-item"><span class="spec-label">Maintenance</span><span class="spec-value">Oil changes</span></div>
+                            </div>
+                            <p class="pump-desc">Workhorse of vacuum technology. Eccentric rotor with spring-loaded vanes traps and compresses gas. Oil provides sealing and lubrication.</p>
+                            <div class="pump-pros-cons">
+                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>Reliable, proven</li><li>High pumping speed</li><li>Low cost per L/s</li></ul></div>
+                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Oil backstreaming</li><li>Regular oil changes</li><li>Exhaust filtration needed</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pump-card">
+                        <div class="pump-header roughing">
+                            <span>&#128260; Scroll Pump</span>
+                            <span style="font-size: 0.8rem;">Oil-Free</span>
+                        </div>
+                        <div class="pump-body">
+                            <div class="pump-specs">
+                                <div class="spec-item"><span class="spec-label">Ultimate</span><span class="spec-value">10<sup>-2</sup> Torr</span></div>
+                                <div class="spec-item"><span class="spec-label">Speed</span><span class="spec-value">5&ndash;50 L/min</span></div>
+                                <div class="spec-item"><span class="spec-label">Cost</span><span class="spec-value">$3K&ndash;15K</span></div>
+                                <div class="spec-item"><span class="spec-label">Maintenance</span><span class="spec-value">Tip seal replacement</span></div>
+                            </div>
+                            <p class="pump-desc">Two interleaved spiral scrolls trap and compress gas. Tip seals are the only wearing parts. Ideal for clean applications.</p>
+                            <div class="pump-pros-cons">
+                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>Completely oil-free</li><li>Very quiet operation</li><li>Low vibration</li></ul></div>
+                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Higher ultimate pressure</li><li>Higher initial cost</li><li>Sensitive to particles</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pump-card">
+                        <div class="pump-header roughing">
+                            <span>&#128168; Diaphragm Pump</span>
+                            <span style="font-size: 0.8rem;">Oil-Free</span>
+                        </div>
+                        <div class="pump-body">
+                            <div class="pump-specs">
+                                <div class="spec-item"><span class="spec-label">Ultimate</span><span class="spec-value">1&ndash;10 Torr</span></div>
+                                <div class="spec-item"><span class="spec-label">Speed</span><span class="spec-value">1&ndash;10 L/min</span></div>
+                                <div class="spec-item"><span class="spec-label">Cost</span><span class="spec-value">$500&ndash;3K</span></div>
+                                <div class="spec-item"><span class="spec-label">Maintenance</span><span class="spec-value">Diaphragm replacement</span></div>
+                            </div>
+                            <p class="pump-desc">Flexible diaphragm creates pumping action. Chemical resistant options available. Often used for corrosive gas applications.</p>
+                            <div class="pump-pros-cons">
+                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>Oil-free, clean</li><li>Chemical resistant</li><li>Compact size</li></ul></div>
+                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Limited ultimate vacuum</li><li>Low pumping speed</li><li>Diaphragm wear</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-header">High Vacuum Pumps (10<sup>-3</sup> to 10<sup>-10</sup> Torr)</h2>
+
+                <div class="pump-grid">
+                    <div class="pump-card">
+                        <div class="pump-header high-vac">
+                            <span>&#128296; Turbomolecular Pump</span>
+                            <span style="font-size: 0.8rem;">Momentum Transfer</span>
+                        </div>
+                        <div class="pump-body">
+                            <div class="pump-specs">
+                                <div class="spec-item"><span class="spec-label">Ultimate</span><span class="spec-value">10<sup>-10</sup> Torr</span></div>
+                                <div class="spec-item"><span class="spec-label">Speed</span><span class="spec-value">50&ndash;5000 L/s</span></div>
+                                <div class="spec-item"><span class="spec-label">Cost</span><span class="spec-value">$5K&ndash;50K</span></div>
+                                <div class="spec-item"><span class="spec-label">Backing Required</span><span class="spec-value">Yes (~0.1 Torr)</span></div>
+                            </div>
+                            <p class="pump-desc">High-speed rotating blades (20,000&ndash;90,000 RPM) impart momentum to gas molecules, directing them toward the exhaust. Modern workhorse for clean HV.</p>
+                            <div class="pump-pros-cons">
+                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>Oil-free at inlet</li><li>Pumps all gases</li><li>Instant on/off</li></ul></div>
+                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Needs backing pump</li><li>Particle damage risk</li><li>Never vent while running!</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pump-card">
+                        <div class="pump-header high-vac">
+                            <span>&#128167; Diffusion Pump</span>
+                            <span style="font-size: 0.8rem;">Oil Vapor Jet</span>
+                        </div>
+                        <div class="pump-body">
+                            <div class="pump-specs">
+                                <div class="spec-item"><span class="spec-label">Ultimate</span><span class="spec-value">10<sup>-9</sup> Torr</span></div>
+                                <div class="spec-item"><span class="spec-label">Speed</span><span class="spec-value">100&ndash;50,000 L/s</span></div>
+                                <div class="spec-item"><span class="spec-label">Cost</span><span class="spec-value">$2K&ndash;20K</span></div>
+                                <div class="spec-item"><span class="spec-label">Backing Required</span><span class="spec-value">Yes (~0.5 Torr)</span></div>
+                            </div>
+                            <p class="pump-desc">Hot oil jets entrain gas molecules. No moving parts means high reliability. Requires cold trap to prevent oil contamination.</p>
+                            <div class="pump-pros-cons">
+                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>Very high speed</li><li>No moving parts</li><li>Lower cost than turbo</li></ul></div>
+                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Oil backstreaming</li><li>Needs cold trap/baffle</li><li>Long startup time</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-header">UHV Pumps (&lt;10<sup>-9</sup> Torr)</h2>
+
+                <div class="pump-grid">
+                    <div class="pump-card">
+                        <div class="pump-header uhv">
+                            <span>&#10052; Cryopump</span>
+                            <span style="font-size: 0.8rem;">Capture</span>
+                        </div>
+                        <div class="pump-body">
+                            <div class="pump-specs">
+                                <div class="spec-item"><span class="spec-label">Ultimate</span><span class="spec-value">10<sup>-12</sup> Torr</span></div>
+                                <div class="spec-item"><span class="spec-label">Speed (H₂O)</span><span class="spec-value">1000&ndash;50,000 L/s</span></div>
+                                <div class="spec-item"><span class="spec-label">Cost</span><span class="spec-value">$15K&ndash;80K</span></div>
+                                <div class="spec-item"><span class="spec-label">Regeneration</span><span class="spec-value">Periodic warmup</span></div>
+                            </div>
+                            <p class="pump-desc">Cold surfaces (10&ndash;20 K) condense and trap gas molecules. Highest water vapor pumping speed. Requires periodic regeneration.</p>
+                            <div class="pump-pros-cons">
+                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>Excellent H₂O speed</li><li>Completely clean</li><li>Vibration-free</li></ul></div>
+                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Finite capacity</li><li>Can't pump He, H₂, Ne</li><li>High power consumption</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pump-card">
+                        <div class="pump-header uhv">
+                            <span>&#9889; Ion Pump</span>
+                            <span style="font-size: 0.8rem;">Capture</span>
+                        </div>
+                        <div class="pump-body">
+                            <div class="pump-specs">
+                                <div class="spec-item"><span class="spec-label">Ultimate</span><span class="spec-value">10<sup>-12</sup> Torr</span></div>
+                                <div class="spec-item"><span class="spec-label">Speed</span><span class="spec-value">1&ndash;1000 L/s</span></div>
+                                <div class="spec-item"><span class="spec-label">Cost</span><span class="spec-value">$3K&ndash;25K</span></div>
+                                <div class="spec-item"><span class="spec-label">Starting Pressure</span><span class="spec-value">&lt;10<sup>-5</sup> Torr</span></div>
+                            </div>
+                            <p class="pump-desc">Ionizes gas molecules and buries them in titanium cathodes. No moving parts, no fluids. Current indicates pressure.</p>
+                            <div class="pump-pros-cons">
+                                <div class="pros"><h5>&#10004; Pros</h5><ul><li>No moving parts</li><li>Built-in gauge</li><li>Very long life</li></ul></div>
+                                <div class="cons"><h5>&#10008; Cons</h5><ul><li>Needs pre-evacuation</li><li>Low noble gas speed</li><li>High voltage hazard</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="safety-warning">
+                    <h4>&#9888; Turbomolecular Pump Safety</h4>
+                    <p>A turbo pump rotor spins at 20,000&ndash;90,000 RPM. If air suddenly enters:</p>
+                    <ul style="margin-left: 1.25rem;">
+                        <li><strong>Catastrophic failure</strong> &ndash; Blades can shatter, bearings destroyed instantly</li>
+                        <li><strong>Shrapnel hazard</strong> &ndash; Metal fragments can penetrate pump housing</li>
+                        <li><strong>Always wait</strong> for full spin-down before venting (2&ndash;10 minutes)</li>
+                        <li><strong>Use interlocks</strong> &ndash; Never rely on manual procedures alone</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- ==================== GAUGES TAB ==================== -->
+            <div id="gauges-panel" class="tab-panel" role="tabpanel" aria-labelledby="gauges-tab">
+                
+                <div class="card">
+                    <div class="card-header">Pressure Measurement Technologies</div>
+                    <div class="card-body">
+                        <p>No single gauge covers the entire vacuum range. Understanding gauge principles helps you select the right one and interpret readings correctly.</p>
+
+                        <div class="two-column">
+                            <div class="key-concept">
+                                <h4>&#128207; Direct Measurement Gauges</h4>
+                                <p>Measure actual force from gas molecules:</p>
+                                <ul style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                                    <li>Bourdon tube (mechanical)</li>
+                                    <li>Capacitance manometer (diaphragm)</li>
+                                    <li>Spinning rotor gauge</li>
+                                </ul>
+                                <p style="margin-top: 0.5rem;"><strong>Advantage:</strong> Gas-independent readings</p>
+                            </div>
+                            <div class="key-concept">
+                                <h4>&#128161; Indirect Measurement Gauges</h4>
+                                <p>Measure properties that vary with pressure:</p>
+                                <ul style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                                    <li>Thermocouple / Pirani (thermal)</li>
+                                    <li>Hot cathode ion gauge</li>
+                                    <li>Cold cathode ion gauge</li>
+                                </ul>
+                                <p style="margin-top: 0.5rem;"><strong>Note:</strong> Gas-dependent readings</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-header">Gauge Operating Ranges</h2>
+
+                <div class="simulation-container">
+                    <h3>Interactive Gauge Range Visualization</h3>
+                    <p class="simulation-desc">This chart shows which gauges work at different pressure ranges. Hover over sections for details.</p>
+                    
+                    <div class="canvas-wrapper">
+                        <canvas id="gauge-canvas" width="700" height="200" class="sim-canvas" aria-label="Gauge operating ranges chart"></canvas>
+                    </div>
+                    
+                    <div class="sim-readout">
+                        <div class="readout-item"><span class="readout-label">Selected Pressure</span><span class="readout-value" id="g-pressure">--</span></div>
+                        <div class="readout-item"><span class="readout-label">Recommended Gauge</span><span class="readout-value" id="g-gauge" style="font-size: 1rem;">Hover on chart</span></div>
+                        <div class="readout-item"><span class="readout-label">Vacuum Range</span><span class="readout-value" id="g-range">--</span></div>
+                    </div>
+                </div>
+
+                <div class="three-column">
+                    <div class="column-box">
+                        <h4 style="color: var(--success);">&#127777; Thermocouple Gauge</h4>
+                        <p><strong>Range:</strong> 1 mTorr &ndash; 1 Torr</p>
+                        <p><strong>Principle:</strong> Heated wire loses heat to gas; thermocouple measures temperature</p>
+                        <p><strong>Best for:</strong> Simple foreline monitoring</p>
+                    </div>
+                    <div class="column-box">
+                        <h4 style="color: var(--warning);">&#128293; Pirani/Convection Gauge</h4>
+                        <p><strong>Range:</strong> 0.5 mTorr &ndash; 1000 Torr</p>
+                        <p><strong>Principle:</strong> Heated filament resistance changes with gas cooling</p>
+                        <p><strong>Best for:</strong> Wide-range rough vacuum</p>
+                    </div>
+                    <div class="column-box">
+                        <h4 style="color: var(--info);">&#128207; Capacitance Manometer</h4>
+                        <p><strong>Range:</strong> 10<sup>-5</sup> &ndash; 1000 Torr</p>
+                        <p><strong>Principle:</strong> Diaphragm deflection measured by capacitance</p>
+                        <p><strong>Best for:</strong> Accurate process control</p>
+                    </div>
+                </div>
+
+                <div class="two-column">
+                    <div class="column-box">
+                        <h4 style="color: var(--purple);">&#9889; Hot Cathode Ion Gauge</h4>
+                        <p><strong>Range:</strong> 10<sup>-3</sup> &ndash; 10<sup>-11</sup> Torr</p>
+                        <p><strong>Principle:</strong> Hot filament emits electrons that ionize gas; ion current measured</p>
+                        <p><strong>Best for:</strong> HV/UHV measurement</p>
+                        <div class="safety-warning" style="margin-top: 0.75rem; padding: 0.75rem;">
+                            <h4 style="font-size: 0.9rem;">&#9888; Never operate above 10<sup>-3</sup> Torr!</h4>
+                            <p style="font-size: 0.85rem;">Filament will burn out within seconds from oxidation.</p>
+                        </div>
+                    </div>
+                    <div class="column-box">
+                        <h4 style="color: var(--teal);">&#128165; Cold Cathode Ion Gauge</h4>
+                        <p><strong>Range:</strong> 10<sup>-2</sup> &ndash; 10<sup>-9</sup> Torr</p>
+                        <p><strong>Principle:</strong> High voltage + magnetic field creates self-sustaining plasma discharge</p>
+                        <p><strong>Best for:</strong> Robust HV indication/interlock</p>
+                        <div class="tip-box" style="margin-top: 0.75rem; padding: 0.75rem;">
+                            <h4 style="font-size: 0.9rem;">&#10004; More robust than hot cathode</h4>
+                            <p style="font-size: 0.85rem;">No filament to burn out. Can tolerate brief high pressure.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" aria-label="Gauge selection guide">
+                        <thead>
+                            <tr>
+                                <th>Gauge Type</th>
+                                <th>Range (Torr)</th>
+                                <th>Accuracy</th>
+                                <th>Gas Dependent?</th>
+                                <th>Cost</th>
+                                <th>Best Application</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bourdon</td>
+                                <td>Atm &ndash; 10</td>
+                                <td>&plusmn;2%</td>
+                                <td>No</td>
+                                <td>$50&ndash;200</td>
+                                <td>Rough indication</td>
+                            </tr>
+                            <tr>
+                                <td>Capacitance Manometer</td>
+                                <td>1000 &ndash; 10<sup>-5</sup></td>
+                                <td>&plusmn;0.15&ndash;1%</td>
+                                <td>No</td>
+                                <td>$1K&ndash;5K</td>
+                                <td>Process control</td>
+                            </tr>
+                            <tr>
+                                <td>Pirani/Convection</td>
+                                <td>1000 &ndash; 10<sup>-4</sup></td>
+                                <td>&plusmn;5&ndash;15%</td>
+                                <td>Yes</td>
+                                <td>$200&ndash;800</td>
+                                <td>Wide-range indication</td>
+                            </tr>
+                            <tr>
+                                <td>Thermocouple</td>
+                                <td>1 &ndash; 10<sup>-3</sup></td>
+                                <td>&plusmn;10&ndash;20%</td>
+                                <td>Yes</td>
+                                <td>$100&ndash;300</td>
+                                <td>Foreline monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Hot Cathode Ion</td>
+                                <td>10<sup>-3</sup> &ndash; 10<sup>-11</sup></td>
+                                <td>&plusmn;5&ndash;20%</td>
+                                <td>Yes</td>
+                                <td>$500&ndash;2K</td>
+                                <td>HV/UHV measurement</td>
+                            </tr>
+                            <tr>
+                                <td>Cold Cathode Ion</td>
+                                <td>10<sup>-2</sup> &ndash; 10<sup>-9</sup></td>
+                                <td>&plusmn;20&ndash;50%</td>
+                                <td>Yes</td>
+                                <td>$300&ndash;1K</td>
+                                <td>HV interlock/indication</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Decision Tree for Gauge Selection -->
+                <div class="decision-tree">
+                    <h3>&#129302; Interactive Gauge Selection Guide</h3>
+                    <p style="text-align: center; color: var(--mid-gray); margin-bottom: 1rem;">Answer questions to find the best gauge for your application.</p>
+                    
+                    <div id="gauge-tree-container">
+                        <div class="decision-node question" id="gq1">
+                            <h4>What is your pressure range?</h4>
+                            <div class="decision-options">
+                                <button class="decision-btn" onclick="gaugeSelect('gq1', 'rough')">Rough (&gt;1 Torr)</button>
+                                <button class="decision-btn" onclick="gaugeSelect('gq1', 'medium')">Medium (1&ndash;10<sup>-3</sup>)</button>
+                                <button class="decision-btn" onclick="gaugeSelect('gq1', 'high')">High/UHV (&lt;10<sup>-3</sup>)</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="reset-btn" onclick="resetGaugeTree()">&#8635; Start Over</button>
+                </div>
+
+            </div>
+
+            <!-- ==================== FITTINGS TAB ==================== -->
+            <div id="fittings-panel" class="tab-panel" role="tabpanel" aria-labelledby="fittings-tab">
+                
+                <div class="card">
+                    <div class="card-header">Vacuum Fitting Standards</div>
+                    <div class="card-body">
+                        <p>Vacuum fittings create leak-tight connections between system components. Choosing the right fitting type depends on the vacuum level, temperature requirements, and ease of assembly needed.</p>
+                    </div>
+                </div>
+
+                <div class="three-column">
+                    <div class="fitting-card">
+                        <div class="fitting-header kf">KF (Quick Flange)</div>
+                        <div class="fitting-body">
+                            <div class="fitting-icon">&#128295;</div>
+                            <dl class="fitting-specs">
+                                <dt>Also Known As</dt><dd>ISO-KF, QF, NW</dd>
+                                <dt>Vacuum Range</dt><dd>Atm to 10<sup>-8</sup> Torr</dd>
+                                <dt>Seal Type</dt><dd>Elastomer O-ring in centering ring</dd>
+                                <dt>Sizes</dt><dd>KF10, KF16, KF25, KF40, KF50</dd>
+                                <dt>Max Temp</dt><dd>~150&deg;C (Viton)</dd>
+                                <dt>Assembly</dt><dd>Clamp, no tools needed</dd>
+                            </dl>
+                            <div class="tip-box" style="margin-top: 1rem; padding: 0.75rem;">
+                                <p><strong>Best for:</strong> HV systems with frequent access. Most common in research labs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fitting-card">
+                        <div class="fitting-header cf">CF (ConFlat)</div>
+                        <div class="fitting-body">
+                            <div class="fitting-icon">&#128296;</div>
+                            <dl class="fitting-specs">
+                                <dt>Also Known As</dt><dd>ConFlat, Conflat</dd>
+                                <dt>Vacuum Range</dt><dd>Atm to 10<sup>-12</sup> Torr</dd>
+                                <dt>Seal Type</dt><dd>OFHC copper gasket (knife edge)</dd>
+                                <dt>Sizes</dt><dd>CF16 to CF400+</dd>
+                                <dt>Max Temp</dt><dd>450&deg;C (bakeable)</dd>
+                                <dt>Assembly</dt><dd>Bolts, torque sequence required</dd>
+                            </dl>
+                            <div class="industry-note" style="margin-top: 1rem; padding: 0.75rem;">
+                                <p><strong>Required for:</strong> UHV systems. Copper gaskets are single-use.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fitting-card">
+                        <div class="fitting-header vcr">VCR (Face Seal)</div>
+                        <div class="fitting-body">
+                            <div class="fitting-icon">&#128168;</div>
+                            <dl class="fitting-specs">
+                                <dt>Also Known As</dt><dd>Cajon, Metal Face Seal</dd>
+                                <dt>Vacuum Range</dt><dd>Atm to 10<sup>-9</sup> Torr</dd>
+                                <dt>Seal Type</dt><dd>Metal gasket (silver-plated SS)</dd>
+                                <dt>Sizes</dt><dd>1/8" to 1" tube OD</dd>
+                                <dt>Max Temp</dt><dd>450&deg;C</dd>
+                                <dt>Assembly</dt><dd>Wrench, finger-tight + 1/8 turn</dd>
+                            </dl>
+                            <div class="tip-box" style="margin-top: 1rem; padding: 0.75rem;">
+                                <p><strong>Best for:</strong> Gas delivery lines, high-purity applications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-header">KF Fitting Assembly Procedure</h2>
+
+                <div class="procedure-step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>Inspect Components</h4>
+                        <p>Check flanges for scratches, dents, or contamination. Inspect O-ring for cuts, cracks, or embedded particles. Ensure centering ring is not bent.</p>
+                    </div>
+                </div>
+
+                <div class="procedure-step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>Seat O-Ring in Centering Ring</h4>
+                        <p>Place O-ring into the groove of the centering ring. It should sit flat without twisting. Apply a very thin layer of vacuum grease if specified.</p>
+                    </div>
+                </div>
+
+                <div class="procedure-step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>Align Flanges</h4>
+                        <p>Place centering ring between the two flanges. The O-ring should contact both sealing surfaces evenly. Components should align without forcing.</p>
+                    </div>
+                </div>
+
+                <div class="procedure-step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h4>Install Clamp</h4>
+                        <p>Slide the clamp over both flanges. For hinged clamps, close and secure the toggle. For wing-nut clamps, hand-tighten until snug&mdash;do not over-tighten.</p>
+                    </div>
+                </div>
+
+                <div class="procedure-step">
+                    <div class="step-num">5</div>
+                    <div class="step-content">
+                        <h4>Verify Freedom of Movement</h4>
+                        <p>The connection should allow slight rotation. If frozen, the O-ring may be pinched. Disassemble and inspect if needed.</p>
+                    </div>
+                </div>
+
+                <div class="caution-box">
+                    <h4>&#9888; Common Fitting Mistakes</h4>
+                    <ul style="margin-left: 1.25rem;">
+                        <li><strong>Over-tightening:</strong> Can crush O-rings or deform copper gaskets</li>
+                        <li><strong>Dirty sealing surfaces:</strong> Particles create leak paths</li>
+                        <li><strong>Reusing copper gaskets:</strong> CF gaskets are single-use only</li>
+                        <li><strong>Wrong O-ring material:</strong> Use Viton for most applications, Kalrez for high temp</li>
+                        <li><strong>Skipping inspection:</strong> A 1-minute check prevents hours of leak hunting</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-header">O-Ring Best Practices</h2>
+
+                <div class="two-column">
+                    <div class="tip-box">
+                        <h4>&#10004; DO:</h4>
+                        <ul style="margin-left: 1.25rem;">
+                            <li>Inspect every O-ring before each use</li>
+                            <li>Store O-rings away from UV light and ozone</li>
+                            <li>Use the correct size for the application</li>
+                            <li>Apply thin grease film for easier seating</li>
+                            <li>Keep spare O-rings on hand</li>
+                        </ul>
+                    </div>
+                    <div class="safety-warning">
+                        <h4>&#10008; DON'T:</h4>
+                        <ul style="margin-left: 1.25rem;">
+                            <li>Reuse O-rings that show any damage</li>
+                            <li>Stretch O-rings over sharp edges</li>
+                            <li>Use excessive vacuum grease</li>
+                            <li>Touch O-rings with dirty hands</li>
+                            <li>Store O-rings in sunlight</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==================== LEAKS TAB ==================== -->
+            <div id="leaks-panel" class="tab-panel" role="tabpanel" aria-labelledby="leaks-tab">
+                
+                <div class="card">
+                    <div class="card-header">Understanding Vacuum Leaks</div>
+                    <div class="card-body">
+                        <p>A vacuum leak is any unwanted gas entry into the system. Leaks are often the most frustrating problem in vacuum work. Understanding leak types helps with both prevention and diagnosis.</p>
+                    </div>
+                </div>
+
+                <h2 class="section-header">Types of Vacuum Leaks</h2>
+
+                <div class="three-column">
+                    <div class="column-box" style="border-top-color: var(--danger);">
+                        <h4 style="color: var(--danger);">&#128308; Real Leaks</h4>
+                        <p><strong>Definition:</strong> Actual holes allowing gas flow from atmosphere to vacuum.</p>
+                        <p><strong>Causes:</strong> Cracks, poor welds, damaged O-rings, loose fittings</p>
+                        <p><strong>Behavior:</strong> Constant leak rate regardless of pump time</p>
+                        <p><strong>Detection:</strong> Responds immediately to helium spray</p>
+                    </div>
+                    <div class="column-box" style="border-top-color: var(--warning);">
+                        <h4 style="color: var(--warning);">&#128992; Virtual Leaks</h4>
+                        <p><strong>Definition:</strong> Trapped gas volumes that slowly release.</p>
+                        <p><strong>Causes:</strong> Blind holes, double O-rings, porous materials, trapped air</p>
+                        <p><strong>Behavior:</strong> Leak rate decreases over time</p>
+                        <p><strong>Detection:</strong> No response to helium; improves with pump time</p>
+                    </div>
+                    <div class="column-box" style="border-top-color: var(--purple);">
+                        <h4 style="color: var(--purple);">&#128994; Permeation</h4>
+                        <p><strong>Definition:</strong> Gas diffusing through solid materials.</p>
+                        <p><strong>Causes:</strong> O-rings, gaskets, thin-walled tubing</p>
+                        <p><strong>Behavior:</strong> Steady, temperature-dependent rate</p>
+                        <p><strong>Detection:</strong> Process of elimination after fixing others</p>
+                    </div>
+                </div>
+
+                <h2 class="section-header">Helium Leak Detection</h2>
+
+                <div class="card">
+                    <div class="card-body">
+                        <p><strong>Helium mass spectrometer leak detection (MSLD)</strong> is the gold standard for finding vacuum leaks. A mass spectrometer tuned to mass 4 (helium) detects trace amounts entering the vacuum system.</p>
+
+                        <h3 class="subsection-header">Why Helium?</h3>
+
+                        <div class="four-column">
+                            <div class="column-box">
+                                <h4>&#128301; Small Size</h4>
+                                <p>Second smallest atom (after H). Penetrates tiny leaks easily.</p>
+                            </div>
+                            <div class="column-box">
+                                <h4>&#128168; Inert &amp; Safe</h4>
+                                <p>Non-toxic, non-flammable, won't react with anything.</p>
+                            </div>
+                            <div class="column-box">
+                                <h4>&#127777; Low Background</h4>
+                                <p>Only ~5 ppm in atmosphere. Low false positive rate.</p>
+                            </div>
+                            <div class="column-box">
+                                <h4>&#128200; Easy Detection</h4>
+                                <p>Mass 4 is easily separated from other gases by mass spectrometer.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-header">Leak Detection Methods</h3>
+
+                        <div class="two-column">
+                            <div class="key-concept">
+                                <h4>&#128269; Spray Probe Method (Outside-In)</h4>
+                                <ol style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                                    <li>Connect leak detector to vacuum system</li>
+                                    <li>Evacuate system to operating pressure</li>
+                                    <li>Spray helium at suspected leak points from outside</li>
+                                    <li>If helium enters, detector signals leak location</li>
+                                </ol>
+                                <p style="margin-top: 0.75rem;"><strong>Tips:</strong> Start at top (He rises), use small controlled flow, wait for signal response between sprays.</p>
+                            </div>
+                            <div class="key-concept">
+                                <h4>&#128168; Sniffer Probe Method (Inside-Out)</h4>
+                                <ol style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                                    <li>Pressurize system with helium (or He/air mix)</li>
+                                    <li>Move sniffer probe along outside surfaces</li>
+                                    <li>Detector measures escaping helium</li>
+                                    <li>Higher signal indicates leak location</li>
+                                </ol>
+                                <p style="margin-top: 0.75rem;"><strong>Best for:</strong> Large chambers, systems that can be pressurized, gross leak location.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-header">Leak Troubleshooting Guide</h2>
+
+                <div class="table-container">
+                    <table class="data-table" aria-label="Leak troubleshooting">
+                        <thead>
+                            <tr>
+                                <th>Symptom</th>
+                                <th>Likely Cause</th>
+                                <th>Diagnostic Test</th>
+                                <th>Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Can't reach base pressure</td>
+                                <td>Real leak or outgassing</td>
+                                <td>Rate-of-rise test, He leak check</td>
+                                <td>Find and fix leak; longer pump time</td>
+                            </tr>
+                            <tr>
+                                <td>Pressure rises when pump isolated</td>
+                                <td>Real or virtual leak</td>
+                                <td>Compare rates over time</td>
+                                <td>If constant: real leak. If decreasing: virtual</td>
+                            </tr>
+                            <tr>
+                                <td>Pressure worse after opening chamber</td>
+                                <td>Water vapor adsorption</td>
+                                <td>RGA shows mass 18 peak</td>
+                                <td>Longer pump time; bakeout if UHV</td>
+                            </tr>
+                            <tr>
+                                <td>Pressure varies with room temperature</td>
+                                <td>Virtual leak or permeation</td>
+                                <td>Temperature correlation</td>
+                                <td>Find trapped volume; upgrade seals</td>
+                            </tr>
+                            <tr>
+                                <td>New fitting won't seal</td>
+                                <td>Damaged O-ring or surface</td>
+                                <td>Visual inspection</td>
+                                <td>Replace O-ring; clean sealing surfaces</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tip-box">
+                    <h4>&#128161; Rate-of-Rise Test Procedure</h4>
+                    <ol style="margin-left: 1.25rem;">
+                        <li>Pump system to base pressure; record value (P₁)</li>
+                        <li>Close gate valve to isolate chamber from pump</li>
+                        <li>Wait measured time interval (1&ndash;5 minutes)</li>
+                        <li>Record final pressure (P₂)</li>
+                        <li>Calculate: Leak Rate = Chamber Volume &times; (P₂ - P₁) / Time</li>
+                    </ol>
+                    <p style="margin-top: 0.75rem;"><strong>Interpretation:</strong> If rate-of-rise is constant across multiple tests: real leak. If it decreases: outgassing or virtual leak.</p>
+                </div>
+
+            </div>
+
+            <!-- ==================== LAB TAB ==================== -->
+            <div id="lab-panel" class="tab-panel" role="tabpanel" aria-labelledby="lab-tab">
+                
+                <div class="card">
+                    <div class="card-header green">Hands-On Laboratory: Vacuum System Assembly &amp; Testing</div>
+                    <div class="card-body">
+                        
+                        <div class="safety-warning">
+                            <h4>&#9888; Safety Precautions &mdash; Read Before Starting</h4>
+                            <ul style="margin-left: 1.25rem; line-height: 2;">
+                                <li><strong>Eye protection required</strong> at all times when working with vacuum systems</li>
+                                <li>Handle vacuum pump oil carefully&mdash;wipe up spills immediately</li>
+                                <li><strong>Never vent a vacuum system rapidly</strong>&mdash;always use controlled venting</li>
+                                <li>Ensure all connections are secure before operating pumps</li>
+                                <li>Keep hands and loose clothing away from rotating pump components</li>
+                                <li>Report any unusual sounds, smells, or gauge readings to instructor</li>
+                            </ul>
+                        </div>
+
+                        <h2 class="section-header">Experiment Overview</h2>
+
+                        <p>In this lab, you will assemble a vacuum training system, learn to identify components, make proper KF connections, perform leak checks, and achieve target pressures. This hands-on experience provides essential skills for working with real nanofabrication equipment.</p>
+
+                        <div class="two-column">
+                            <div class="column-box">
+                                <h4>&#127919; Learning Goals</h4>
+                                <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                    <li>Identify all vacuum system components</li>
+                                    <li>Assemble KF fittings properly</li>
+                                    <li>Operate roughing and high-vacuum pumps</li>
+                                    <li>Read and interpret gauge measurements</li>
+                                    <li>Perform basic leak checking</li>
+                                    <li>Follow proper pump-down sequences</li>
+                                </ul>
+                            </div>
+                            <div class="column-box">
+                                <h4>&#128230; Required Materials</h4>
+                                <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                    <li>Kurt J. Lesker vacuum trainer (~$5,500)</li>
+                                    <li>KF fittings, centering rings, clamps</li>
+                                    <li>Viton O-rings</li>
+                                    <li>Vacuum grease</li>
+                                    <li>Lint-free wipes</li>
+                                    <li>Safety glasses</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Part 1: System Assembly</div>
+                    <div class="card-body">
+
+                        <div class="procedure-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Inventory Components</h4>
+                                <p>Before assembly, verify all components are present and in good condition. Check O-rings for damage, ensure flanges are clean, and confirm gauge and valve functionality.</p>
+                            </div>
+                        </div>
+
+                        <div class="procedure-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Prepare Work Area</h4>
+                                <p>Clean the work surface with lint-free wipes. Arrange components in assembly order. Put on safety glasses. Ensure adequate lighting.</p>
+                            </div>
+                        </div>
+
+                        <div class="procedure-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Inspect O-Rings and Centering Rings</h4>
+                                <p>Examine each O-ring for cuts, cracks, or embedded particles. Place O-rings in centering rings, ensuring they seat properly in the groove.</p>
+                            </div>
+                        </div>
+
+                        <div class="procedure-step">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h4>Assemble KF Connections</h4>
+                                <p>Align flanges with centering ring between them. Slide clamp over the junction. Tighten wing nut firmly but do not over-tighten.</p>
+                            </div>
+                        </div>
+
+                        <div class="procedure-step">
+                            <div class="step-num">5</div>
+                            <div class="step-content">
+                                <h4>Connect Gauges and Valves</h4>
+                                <p>Attach thermocouple gauge to foreline port. Install vent valve. Connect gate valve between chamber and pump. Verify all connections.</p>
+                            </div>
+                        </div>
+
+                        <div class="procedure-step">
+                            <div class="step-num">6</div>
+                            <div class="step-content">
+                                <h4>Final Inspection</h4>
+                                <p>Check each connection. Ensure no O-rings are pinched or displaced. Verify valves are in correct starting positions (usually closed).</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Part 2: Pump-Down Procedure</div>
+                    <div class="card-body">
+
+                        <div class="procedure-step">
+                            <div class="step-num">7</div>
+                            <div class="step-content">
+                                <h4>Initial Pump-Down (Roughing)</h4>
+                                <p>Close all valves. Start the roughing pump. Slowly open the roughing valve. Monitor the thermocouple gauge. Wait until pressure drops below 100 mTorr.</p>
+                            </div>
+                        </div>
+
+                        <div class="procedure-step">
+                            <div class="step-num">8</div>
+                            <div class="step-content">
+                                <h4>Crossover to High Vacuum</h4>
+                                <p>Once at crossover pressure (~50 mTorr), close roughing valve. Start turbo pump or open gate valve to diffusion pump. Monitor for normal operation.</p>
+                            </div>
+                        </div>
+
+                        <div class="procedure-step">
+                            <div class="step-num">9</div>
+                            <div class="step-content">
+                                <h4>Achieve Base Pressure</h4>
+                                <p>Open gate valve to chamber. Monitor ion gauge as pressure drops. Record time to reach target pressures.</p>
+                            </div>
+                        </div>
+
+                        <div class="procedure-step">
+                            <div class="step-num">10</div>
+                            <div class="step-content">
+                                <h4>System Shutdown</h4>
+                                <p>Close gate valve. Allow turbo pump to spin down completely. Slowly vent system using vent valve&mdash;never rapid venting! Turn off roughing pump after venting.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Lab Data Recording</div>
+                    <div class="card-body">
+                        
+                        <div class="table-container">
+                            <table class="data-table" aria-label="Lab data table">
+                                <thead>
+                                    <tr>
+                                        <th>Measurement</th>
+                                        <th>Expected</th>
+                                        <th>Your Value</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Starting pressure</td>
+                                        <td>~760 Torr</td>
+                                        <td><input type="text" style="width: 100px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Starting pressure"></td>
+                                        <td><input type="text" style="width: 150px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Notes"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time to 100 mTorr</td>
+                                        <td>2&ndash;5 minutes</td>
+                                        <td><input type="text" style="width: 100px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Time to 100 mTorr"></td>
+                                        <td><input type="text" style="width: 150px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Notes"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Crossover pressure</td>
+                                        <td>~50 mTorr</td>
+                                        <td><input type="text" style="width: 100px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Crossover pressure"></td>
+                                        <td><input type="text" style="width: 150px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Notes"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time to 10<sup>-5</sup> Torr</td>
+                                        <td>10&ndash;30 minutes</td>
+                                        <td><input type="text" style="width: 100px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Time to base"></td>
+                                        <td><input type="text" style="width: 150px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Notes"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ultimate base pressure</td>
+                                        <td>&lt;10<sup>-6</sup> Torr</td>
+                                        <td><input type="text" style="width: 100px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Base pressure"></td>
+                                        <td><input type="text" style="width: 150px; padding: 0.5rem; border: 1px solid var(--light-gray); border-radius: 4px;" aria-label="Notes"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header orange">Discussion Questions</div>
+                    <div class="card-body">
+                        
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+                                <span>1. Why must the turbo pump have a backing pump?</span>
+                                <span class="accordion-icon">&#9660;</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">Turbomolecular pumps can only operate efficiently at low pressures (below ~0.1 Torr). They cannot exhaust directly to atmosphere because they rely on molecular flow regime. The backing pump maintains the low exhaust pressure needed for the turbo to function.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+                                <span>2. What happens if you open the chamber vent while the turbo is spinning?</span>
+                                <span class="accordion-icon">&#9660;</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">Catastrophic failure. Air rushing into the spinning rotor (20,000&ndash;90,000 RPM) creates massive aerodynamic forces that can shatter the blades, destroy the bearings, and potentially eject metal fragments. Always wait for complete spin-down before venting.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+                                <span>3. Your system won't reach base pressure. What do you check?</span>
+                                <span class="accordion-icon">&#9660;</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">Systematic troubleshooting: (1) Check all O-rings and fittings for damage; (2) Perform rate-of-rise test to distinguish real leak from outgassing; (3) Check pump oil level and condition; (4) Verify all valves are in correct positions; (5) Use helium leak detector if available; (6) Consider longer pump time for water vapor outgassing.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+                                <span>4. Why does it take longer to pump down after the chamber was open to air?</span>
+                                <span class="accordion-icon">&#9660;</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">Water vapor from the atmosphere adsorbs onto all internal surfaces. This water slowly desorbs (outgasses) during pumping, limiting the achievable pressure. The effect is worse at higher humidity and with longer exposure times. This is why UHV systems require bakeout.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==================== QUIZ TAB ==================== -->
+            <div id="quiz-panel" class="tab-panel" role="tabpanel" aria-labelledby="quiz-tab">
+                
+                <h2 class="section-header">Module 4 Knowledge Check</h2>
+
+                <div class="quiz-container">
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-fill" id="quiz-progress" style="width: 0%;"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="1" data-correct="b">
+                        <div class="question-num">Question 1 of 10</div>
+                        <h4>Which pump type is best for oil-free rough vacuum pumping?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q1" value="a"> Rotary vane pump</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="b"> Scroll pump</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="c"> Diffusion pump</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="d"> Ion pump</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="2" data-correct="c">
+                        <div class="question-num">Question 2 of 10</div>
+                        <h4>A turbomolecular pump requires:</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q2" value="a"> No backing pump</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="b"> Cooling water only</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="c"> A backing (roughing) pump</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="d"> Liquid nitrogen</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="3" data-correct="a">
+                        <div class="question-num">Question 3 of 10</div>
+                        <h4>Why should a hot cathode ion gauge NOT be operated above 10⁻³ Torr?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q3" value="a"> The filament will oxidize and burn out</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="b"> It will give inaccurate readings</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="c"> It will damage the vacuum chamber</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="d"> It will contaminate the vacuum</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="4" data-correct="d">
+                        <div class="question-num">Question 4 of 10</div>
+                        <h4>Which fitting type is required for UHV applications with bakeout capability?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q4" value="a"> KF (Quick Flange) with Viton O-ring</label>
+                            <label class="quiz-option"><input type="radio" name="q4" value="b"> Compression fittings</label>
+                            <label class="quiz-option"><input type="radio" name="q4" value="c"> ISO-K with elastomer seal</label>
+                            <label class="quiz-option"><input type="radio" name="q4" value="d"> CF (ConFlat) with copper gasket</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="5" data-correct="b">
+                        <div class="question-num">Question 5 of 10</div>
+                        <h4>What characterizes a "virtual leak" in a vacuum system?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q5" value="a"> Constant leak rate that responds to helium spray</label>
+                            <label class="quiz-option"><input type="radio" name="q5" value="b"> Trapped gas that releases slowly; leak rate decreases over time</label>
+                            <label class="quiz-option"><input type="radio" name="q5" value="c"> Gas diffusing through the chamber walls</label>
+                            <label class="quiz-option"><input type="radio" name="q5" value="d"> A leak too small to detect</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="6" data-correct="c">
+                        <div class="question-num">Question 6 of 10</div>
+                        <h4>Why is helium used for leak detection?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q6" value="a"> It's the cheapest available gas</label>
+                            <label class="quiz-option"><input type="radio" name="q6" value="b"> It glows when it passes through leaks</label>
+                            <label class="quiz-option"><input type="radio" name="q6" value="c"> Small size, inert, low background, easy to detect</label>
+                            <label class="quiz-option"><input type="radio" name="q6" value="d"> It reacts with leak surfaces</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="7" data-correct="a">
+                        <div class="question-num">Question 7 of 10</div>
+                        <h4>What happens if you vent a turbomolecular pump at full speed?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q7" value="a"> Catastrophic bearing and blade failure</label>
+                            <label class="quiz-option"><input type="radio" name="q7" value="b"> The pump gradually slows down</label>
+                            <label class="quiz-option"><input type="radio" name="q7" value="c"> Nothing; turbo pumps handle venting</label>
+                            <label class="quiz-option"><input type="radio" name="q7" value="d"> Oil backstreaming occurs</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="8" data-correct="d">
+                        <div class="question-num">Question 8 of 10</div>
+                        <h4>Which gauge type provides gas-independent readings?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q8" value="a"> Pirani gauge</label>
+                            <label class="quiz-option"><input type="radio" name="q8" value="b"> Hot cathode ion gauge</label>
+                            <label class="quiz-option"><input type="radio" name="q8" value="c"> Thermocouple gauge</label>
+                            <label class="quiz-option"><input type="radio" name="q8" value="d"> Capacitance manometer</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="9" data-correct="b">
+                        <div class="question-num">Question 9 of 10</div>
+                        <h4>What is "bakeout" used for in vacuum systems?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q9" value="a"> To sterilize the chamber</label>
+                            <label class="quiz-option"><input type="radio" name="q9" value="b"> To accelerate desorption of water and adsorbed gases</label>
+                            <label class="quiz-option"><input type="radio" name="q9" value="c"> To test seal integrity</label>
+                            <label class="quiz-option"><input type="radio" name="q9" value="d"> To clean the pump oil</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-question" data-q="10" data-correct="c">
+                        <div class="question-num">Question 10 of 10</div>
+                        <h4>At "crossover pressure," you should:</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q10" value="a"> Vent the chamber to atmosphere</label>
+                            <label class="quiz-option"><input type="radio" name="q10" value="b"> Turn off all pumps</label>
+                            <label class="quiz-option"><input type="radio" name="q10" value="c"> Switch from roughing to high vacuum pump</label>
+                            <label class="quiz-option"><input type="radio" name="q10" value="d"> Add process gas</label>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <div class="quiz-buttons">
+                        <button class="sim-btn" onclick="gradeQuiz()">Submit Quiz</button>
+                        <button class="sim-btn danger" onclick="resetQuiz()">Reset</button>
+                    </div>
+
+                    <div class="quiz-score" id="quiz-score" style="display: none;">
+                        <h3>Quiz Complete!</h3>
+                        <span class="score-number" id="final-score">--</span>
+                        <p id="score-message"></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- End tabs-container -->
+
+        <!-- Footer Navigation -->
+        <nav class="nav-footer" aria-label="Module navigation">
+            <a href="module3_cleanroom_technology.html" class="footer-btn">&#8592; Module 3: Cleanroom Technology</a>
+            <button class="complete-btn" id="complete-btn" onclick="markComplete()">&#10004; Mark Module Complete</button>
+            <a href="module5_vacuum_concepts.html" class="footer-btn">Module 5: Vacuum Concepts &#8594;</a>
+        </nav>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <p>Introduction to Nanotechnology &mdash; Module 4: Vacuum Systems &amp; Assembly</p>
+        <p>Based on the <em>Low-Cost Nanotechnology Laboratory Manual</em></p>
+        <span class="grant-badge">Supported by NSF ATE Grant DUE 2301137</span>
+    </footer>
+
+    <!-- ================================================================
+         JAVASCRIPT
+    ================================================================ -->
+    <script>
+        // ================================================================
+        // TAB NAVIGATION
+        // ================================================================
+        const tabsVisited = new Set(['lecture']);
+        
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById(tabName + '-tab').classList.add('active');
+            document.getElementById(tabName + '-tab').setAttribute('aria-selected', 'true');
+            
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            document.getElementById(tabName + '-panel').classList.add('active');
+            
+            tabsVisited.add(tabName);
+            updateProgress();
+            
+            if (tabName === 'gauges') {
+                initGaugeCanvas();
+            }
+        }
+        
+        function updateProgress() {
+            const totalTabs = 7;
+            const percentage = Math.round((tabsVisited.size / totalTabs) * 100);
+            document.getElementById('progress-fill').style.width = percentage + '%';
+            document.getElementById('progress-text').textContent = percentage + '%';
+        }
+
+        // ================================================================
+        // ACCORDION
+        // ================================================================
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isOpen = item.classList.contains('open');
+            
+            // Close all others in same container
+            item.parentElement.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+            });
+            
+            if (!isOpen) {
+                item.classList.add('open');
+                header.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // ================================================================
+        // GAUGE CANVAS VISUALIZATION
+        // ================================================================
+        let gaugeCanvasInit = false;
+        
+        function initGaugeCanvas() {
+            if (gaugeCanvasInit) return;
+            gaugeCanvasInit = true;
+            
+            const canvas = document.getElementById('gauge-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            drawGaugeChart(ctx, canvas);
+            
+            canvas.addEventListener('mousemove', function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                handleGaugeHover(x, canvas);
+            });
+            
+            canvas.addEventListener('mouseleave', function() {
+                document.getElementById('g-pressure').textContent = '--';
+                document.getElementById('g-gauge').textContent = 'Hover on chart';
+                document.getElementById('g-range').textContent = '--';
+            });
+        }
+        
+        function drawGaugeChart(ctx, canvas) {
+            const w = canvas.width;
+            const h = canvas.height;
+            
+            // Background
+            ctx.fillStyle = '#1a1a2e';
+            ctx.fillRect(0, 0, w, h);
+            
+            const leftMargin = 140;
+            const rightMargin = 20;
+            const barHeight = 24;
+            const barGap = 8;
+            const startY = 30;
+            
+            const gauges = [
+                { name: 'Bourdon', min: 3, max: 1, color: '#FF9999', textColor: '#990000' },
+                { name: 'Capacitance Manometer', min: 3, max: -5, color: '#99FF99', textColor: '#006600' },
+                { name: 'Pirani/Convection', min: 3, max: -4, color: '#FFCC66', textColor: '#996600' },
+                { name: 'Thermocouple', min: 0, max: -3, color: '#66CCFF', textColor: '#003366' },
+                { name: 'Cold Cathode Ion', min: -2, max: -9, color: '#CC99FF', textColor: '#660099' },
+                { name: 'Hot Cathode Ion', min: -3, max: -11, color: '#FF99CC', textColor: '#990066' }
+            ];
+            
+            const scaleWidth = w - leftMargin - rightMargin;
+            const logMin = 3;  // 10^3 = 1000 Torr
+            const logMax = -11; // 10^-11 Torr
+            const logRange = logMin - logMax;
+            
+            // Draw pressure scale at bottom
+            ctx.fillStyle = '#888';
+            ctx.font = '10px Verdana';
+            ctx.textAlign = 'center';
+            
+            for (let p = 3; p >= -11; p -= 2) {
+                const x = leftMargin + ((logMin - p) / logRange) * scaleWidth;
+                ctx.fillText(p >= 0 ? '10^' + p : '10^(' + p + ')', x, h - 5);
+                
+                // Grid line
+                ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                ctx.beginPath();
+                ctx.moveTo(x, startY);
+                ctx.lineTo(x, h - 20);
+                ctx.stroke();
+            }
+            
+            // Draw gauge bars
+            gauges.forEach((gauge, i) => {
+                const y = startY + i * (barHeight + barGap);
+                const x1 = leftMargin + ((logMin - gauge.min) / logRange) * scaleWidth;
+                const x2 = leftMargin + ((logMin - gauge.max) / logRange) * scaleWidth;
+                
+                // Bar
+                ctx.fillStyle = gauge.color;
+                ctx.fillRect(x1, y, x2 - x1, barHeight);
+                
+                // Label
+                ctx.fillStyle = '#FFF';
+                ctx.font = '11px Verdana';
+                ctx.textAlign = 'right';
+                ctx.fillText(gauge.name, leftMargin - 10, y + barHeight/2 + 4);
+            });
+            
+            // Title
+            ctx.fillStyle = '#CC9900';
+            ctx.font = 'bold 12px Verdana';
+            ctx.textAlign = 'center';
+            ctx.fillText('Pressure (Torr)', w/2, h - 18);
+        }
+        
+        function handleGaugeHover(x, canvas) {
+            const leftMargin = 140;
+            const rightMargin = 20;
+            const scaleWidth = canvas.width - leftMargin - rightMargin;
+            
+            if (x < leftMargin || x > canvas.width - rightMargin) {
+                return;
+            }
+            
+            const fraction = (x - leftMargin) / scaleWidth;
+            const logP = 3 - fraction * 14; // 10^3 to 10^-11
+            const pressure = Math.pow(10, logP);
+            
+            // Format pressure
+            let pStr;
+            if (pressure >= 1) pStr = pressure.toFixed(0) + ' Torr';
+            else if (pressure >= 0.001) pStr = (pressure * 1000).toFixed(1) + ' mTorr';
+            else pStr = pressure.toExponential(1) + ' Torr';
+            
+            document.getElementById('g-pressure').textContent = pStr;
+            
+            // Determine range and recommendation
+            let range, gauge;
+            if (logP > 1) {
+                range = 'Rough Vacuum';
+                gauge = 'Bourdon or Pirani';
+            } else if (logP > -3) {
+                range = 'Medium Vacuum';
+                gauge = 'Pirani or Capacitance';
+            } else if (logP > -9) {
+                range = 'High Vacuum';
+                gauge = 'Ion Gauge';
+            } else {
+                range = 'Ultra-High Vacuum';
+                gauge = 'Hot Cathode Ion';
+            }
+            
+            document.getElementById('g-range').textContent = range;
+            document.getElementById('g-gauge').textContent = gauge;
+        }
+
+        // ================================================================
+        // GAUGE SELECTION DECISION TREE
+        // ================================================================
+        const gaugeTreeData = {
+            gq1: {
+                rough: { answer: 'For rough vacuum (>1 Torr), use a <strong>Bourdon gauge</strong> for simple indication or <strong>Pirani gauge</strong> for wider range.' },
+                medium: { next: 'gq2' },
+                high: { next: 'gq3' }
+            },
+            gq2: {
+                yes: { answer: 'Use a <strong>Capacitance Manometer</strong> for accurate, gas-independent readings in medium vacuum.' },
+                no: { answer: 'Use a <strong>Pirani or Thermocouple gauge</strong> for economical medium vacuum indication.' }
+            },
+            gq3: {
+                precise: { answer: 'Use a <strong>Hot Cathode Ion Gauge</strong> for precise HV/UHV measurement. Remember: never operate above 10⁻³ Torr!' },
+                indication: { answer: 'Use a <strong>Cold Cathode Ion Gauge</strong> for robust HV indication with no filament to burn out.' }
+            }
+        };
+        
+        function gaugeSelect(question, answer) {
+            const container = document.getElementById('gauge-tree-container');
+            const result = gaugeTreeData[question][answer];
+            
+            // Mark selected
+            document.querySelectorAll('#' + question + ' .decision-btn').forEach(btn => {
+                btn.style.opacity = '0.5';
+            });
+            event.target.style.opacity = '1';
+            event.target.style.background = 'var(--info)';
+            event.target.style.color = 'white';
+            
+            if (result.answer) {
+                container.innerHTML += `
+                    <div class="decision-node answer">
+                        <h4>✓ Recommendation</h4>
+                        <p>${result.answer}</p>
+                    </div>
+                `;
+            } else if (result.next === 'gq2') {
+                container.innerHTML += `
+                    <div class="decision-node question" id="gq2">
+                        <h4>Do you need high accuracy (±1% or better)?</h4>
+                        <div class="decision-options">
+                            <button class="decision-btn" onclick="gaugeSelect('gq2', 'yes')">Yes - High accuracy needed</button>
+                            <button class="decision-btn" onclick="gaugeSelect('gq2', 'no')">No - Indication is sufficient</button>
+                        </div>
+                    </div>
+                `;
+            } else if (result.next === 'gq3') {
+                container.innerHTML += `
+                    <div class="decision-node question" id="gq3">
+                        <h4>Do you need precise measurement or indication/interlock?</h4>
+                        <div class="decision-options">
+                            <button class="decision-btn" onclick="gaugeSelect('gq3', 'precise')">Precise measurement</button>
+                            <button class="decision-btn" onclick="gaugeSelect('gq3', 'indication')">Indication/interlock only</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        function resetGaugeTree() {
+            document.getElementById('gauge-tree-container').innerHTML = `
+                <div class="decision-node question" id="gq1">
+                    <h4>What is your pressure range?</h4>
+                    <div class="decision-options">
+                        <button class="decision-btn" onclick="gaugeSelect('gq1', 'rough')">Rough (>1 Torr)</button>
+                        <button class="decision-btn" onclick="gaugeSelect('gq1', 'medium')">Medium (1–10⁻³)</button>
+                        <button class="decision-btn" onclick="gaugeSelect('gq1', 'high')">High/UHV (<10⁻³)</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================================================================
+        // QUIZ
+        // ================================================================
+        const quizAnswers = {
+            q1: { correct: 'b', explanation: 'Scroll pumps are oil-free and ideal for clean rough vacuum applications.' },
+            q2: { correct: 'c', explanation: 'Turbo pumps cannot exhaust to atmosphere; they need a backing pump to maintain low exhaust pressure.' },
+            q3: { correct: 'a', explanation: 'The hot tungsten filament rapidly oxidizes at pressures above 10⁻³ Torr and will burn out.' },
+            q4: { correct: 'd', explanation: 'CF flanges with copper gaskets can be baked to 450°C for UHV, while elastomer seals are limited to ~150°C.' },
+            q5: { correct: 'b', explanation: 'Virtual leaks are trapped gas volumes that slowly release; the leak rate decreases over time unlike real leaks.' },
+            q6: { correct: 'c', explanation: 'Helium is small (penetrates tiny leaks), inert (safe), has low atmospheric abundance (5 ppm), and mass 4 is easily detected.' },
+            q7: { correct: 'a', explanation: 'At 20,000-90,000 RPM, sudden air rush causes catastrophic aerodynamic forces that destroy the rotor and bearings.' },
+            q8: { correct: 'd', explanation: 'Capacitance manometers measure actual mechanical deflection from gas pressure, independent of gas species.' },
+            q9: { correct: 'b', explanation: 'Bakeout (150-250°C) accelerates desorption of water and other adsorbed gases from chamber surfaces.' },
+            q10: { correct: 'c', explanation: 'Crossover pressure (~50 mTorr) is when you switch from roughing pump to high vacuum pump operation.' }
+        };
+        
+        function gradeQuiz() {
+            let score = 0;
+            const total = Object.keys(quizAnswers).length;
+            
+            Object.keys(quizAnswers).forEach(q => {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                const question = document.querySelector(`.quiz-question[data-q="${q.slice(1)}"]`);
+                const feedback = question.querySelector('.quiz-feedback');
+                const correctAns = quizAnswers[q].correct;
+                
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect');
+                });
+                
+                if (selected) {
+                    const selectedOpt = selected.closest('.quiz-option');
+                    if (selected.value === correctAns) {
+                        score++;
+                        selectedOpt.classList.add('correct');
+                        feedback.className = 'quiz-feedback show correct';
+                        feedback.innerHTML = '✓ Correct! ' + quizAnswers[q].explanation;
+                    } else {
+                        selectedOpt.classList.add('incorrect');
+                        question.querySelectorAll('.quiz-option').forEach(opt => {
+                            if (opt.querySelector('input').value === correctAns) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                        feedback.className = 'quiz-feedback show incorrect';
+                        feedback.innerHTML = '✗ Incorrect. ' + quizAnswers[q].explanation;
+                    }
+                } else {
+                    feedback.className = 'quiz-feedback show incorrect';
+                    feedback.innerHTML = 'No answer selected.';
+                }
+            });
+            
+            const pct = Math.round((score / total) * 100);
+            document.getElementById('quiz-progress').style.width = '100%';
+            document.getElementById('quiz-score').style.display = 'block';
+            document.getElementById('final-score').textContent = score + '/' + total + ' (' + pct + '%)';
+            
+            let msg;
+            if (pct >= 90) msg = '🎉 Excellent! You have mastered vacuum system fundamentals!';
+            else if (pct >= 70) msg = '👍 Good job! Review the topics you missed.';
+            else if (pct >= 50) msg = '📖 Fair. Consider reviewing the lecture material.';
+            else msg = '📚 More study needed. Please review all sections.';
+            
+            document.getElementById('score-message').textContent = msg;
+            localStorage.setItem('module4_quiz', pct);
+        }
+        
+        function resetQuiz() {
+            document.querySelectorAll('.quiz-question').forEach(q => {
+                q.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+                q.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect'));
+                q.querySelector('.quiz-feedback').className = 'quiz-feedback';
+            });
+            document.getElementById('quiz-progress').style.width = '0%';
+            document.getElementById('quiz-score').style.display = 'none';
+        }
+
+        // ================================================================
+        // MODULE COMPLETION
+        // ================================================================
+        function markComplete() {
+            const progress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+            progress.module4 = true;
+            localStorage.setItem('courseProgress', JSON.stringify(progress));
+            
+            const btn = document.getElementById('complete-btn');
+            btn.textContent = '✓ Module 4 Completed!';
+            btn.style.background = '#006600';
+            btn.disabled = true;
+        }
+        
+        // Check on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const progress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+            if (progress.module4) {
+                const btn = document.getElementById('complete-btn');
+                btn.textContent = '✓ Module 4 Completed!';
+                btn.style.background = '#006600';
+            }
+        });
+    </script>
+</body>
+</html>

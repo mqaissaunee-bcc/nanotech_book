@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 5: Vacuum Concepts and Physics - Mean free path, vapor pressure, gas flow regimes, outgassing, and conductance for nanotechnology.">
+    <title>Module 5: Vacuum Concepts &amp; Physics | Introduction to Nanotechnology</title>
+    <style>
+        :root {
+            --navy: #003366; --navy-deep: #001a33; --teal: #006666; --teal-light: #009999;
+            --cyan: #00CCCC; --cyan-pale: #CCFFFF; --purple: #660099; --purple-light: #F3E5F5;
+            --gold: #CC9900; --gold-light: #FFF8E1; --white: #FFFFFF; --off-white: #F5F5F5;
+            --light-gray: #E0E0E0; --mid-gray: #999999; --dark-gray: #333333; --near-black: #1A1A1A;
+            --success: #009933; --success-light: #E8F5E9; --warning: #FF6600; --warning-light: #FFF3E0;
+            --danger: #CC0000; --danger-light: #FFEBEE; --info: #336699; --info-light: #E3F2FD;
+            --font-display: Georgia, "Times New Roman", serif;
+            --font-body: Verdana, Geneva, Tahoma, sans-serif;
+            --font-mono: "Courier New", Courier, monospace;
+            --max-width: 1200px; --radius: 8px; --radius-lg: 12px;
+            --shadow: 0 4px 16px rgba(0,0,0,0.12); --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
+            --transition: 0.3s ease; --focus-ring: 0 0 0 3px #00CCCC, 0 0 0 5px #003366;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-body); color: var(--dark-gray); line-height: 1.75; min-height: 100vh;
+            background: linear-gradient(135deg, #E6F3FF 0%, var(--white) 50%, var(--purple-light) 100%);
+            background-attachment: fixed;
+        }
+        .skip-link {
+            position: absolute; top: -60px; left: 10px; background: var(--navy); color: var(--white);
+            padding: 12px 24px; z-index: 10000; border-radius: var(--radius); font-weight: bold;
+            text-decoration: none; font-size: 1rem;
+        }
+        .skip-link:focus { top: 10px; outline: none; box-shadow: var(--focus-ring); }
+        *:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+        }
+        header {
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 40%, var(--teal) 100%);
+            color: var(--white); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .header-inner {
+            max-width: var(--max-width); margin: 0 auto; padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+        .logo-group { display: flex; align-items: center; gap: 1rem; }
+        .logo-icon {
+            width: 52px; height: 52px; background: linear-gradient(135deg, var(--cyan), var(--teal-light));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display); font-weight: bold; font-size: 1.1rem; color: var(--navy-deep); flex-shrink: 0;
+        }
+        .logo-text { line-height: 1.3; }
+        .logo-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: bold; }
+        .logo-subtitle { font-size: 0.85rem; opacity: 0.85; }
+        .header-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .header-nav a {
+            color: var(--white); text-decoration: none; padding: 0.45rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius); font-size: 0.85rem; transition: var(--transition);
+        }
+        .header-nav a:hover, .header-nav a:focus { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.6); }
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #004080 50%, var(--teal) 100%);
+            color: var(--white); padding: 3.5rem 2rem; text-align: center;
+        }
+        .hero h1 { font-family: var(--font-display); font-size: 2.6rem; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.15rem; max-width: 800px; margin: 0 auto 1.5rem; opacity: 0.93; line-height: 1.6; }
+        .hero-stats { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .hero-stat { text-align: center; }
+        .hero-stat-value { display: block; font-size: 2rem; font-weight: bold; font-family: var(--font-display); }
+        .hero-stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+        .progress-section { max-width: var(--max-width); margin: 1.5rem auto; padding: 0 2rem; }
+        .progress-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--navy); }
+        .progress-track { width: 100%; height: 10px; background: var(--light-gray); border-radius: 5px; overflow: hidden; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), var(--cyan)); border-radius: 5px; transition: width 0.5s ease; }
+        .objectives { max-width: var(--max-width); margin: 2rem auto; padding: 0 2rem; }
+        .objectives-box { background: var(--white); border: 2px solid var(--teal); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow); }
+        .objectives-box h2 { font-family: var(--font-display); color: var(--navy); margin-bottom: 1rem; font-size: 1.4rem; }
+        .objectives-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+        .obj-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; border-radius: var(--radius); background: var(--info-light); font-size: 0.92rem; }
+        .obj-num { background: var(--navy); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; flex-shrink: 0; }
+        .tabs-wrap { max-width: var(--max-width); margin: 2rem auto 0; padding: 0 2rem; position: sticky; top: 70px; z-index: 500; }
+        .tabs { display: flex; flex-wrap: wrap; gap: 4px; background: var(--white); padding: 0.5rem; border-radius: var(--radius-lg) var(--radius-lg) 0 0; box-shadow: var(--shadow); border-bottom: 3px solid var(--navy); }
+        .tab-btn {
+            flex: 1 1 auto; padding: 0.7rem 0.9rem; border: none; background: transparent; color: var(--dark-gray);
+            font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; cursor: pointer;
+            border-radius: var(--radius); transition: var(--transition); white-space: nowrap;
+        }
+        .tab-btn:hover { background: var(--info-light); color: var(--navy); }
+        .tab-btn.active { background: var(--navy); color: var(--white); box-shadow: 0 2px 8px rgba(0,51,102,0.3); }
+        .tab-content-wrap { max-width: var(--max-width); margin: 0 auto 2rem; padding: 0 2rem; }
+        .tab-panel { display: none; background: var(--white); border-radius: 0 0 var(--radius-lg) var(--radius-lg); box-shadow: var(--shadow); padding: 2.5rem; animation: fadeIn 0.3s ease; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--light-gray); margin-bottom: 2rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .card-header { background: linear-gradient(135deg, var(--navy), var(--teal)); color: var(--white); padding: 1.1rem 1.5rem; font-family: var(--font-display); font-size: 1.2rem; font-weight: bold; }
+        .card-header.teal-h { background: linear-gradient(135deg, var(--teal), var(--teal-light)); }
+        .card-header.purple-h { background: linear-gradient(135deg, var(--purple), #9933CC); }
+        .card-header.gold-h { background: linear-gradient(135deg, #996600, var(--gold)); }
+        .card-body { padding: 1.8rem; }
+        .sub-title { font-family: var(--font-display); color: var(--navy); font-size: 1.25rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan); }
+        .key-concept { background: linear-gradient(to right, #E6F3FF, var(--white)); border-left: 5px solid var(--navy); padding: 1.5rem; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; }
+        .key-concept h4 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1.05rem; }
+        .industry-note { background: linear-gradient(to right, var(--gold-light), var(--white)); border-left: 5px solid var(--gold); padding: 1.5rem; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; }
+        .industry-note h4 { color: #886600; margin-bottom: 0.5rem; }
+        .safety-box { background: linear-gradient(to right, var(--danger-light), var(--white)); border-left: 5px solid var(--danger); padding: 1.5rem; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; }
+        .safety-box h4 { color: var(--danger); margin-bottom: 0.5rem; }
+        .tip-box { background: linear-gradient(to right, var(--success-light), var(--white)); border-left: 5px solid var(--success); padding: 1.5rem; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.5rem 0; }
+        .tip-box h4 { color: var(--success); margin-bottom: 0.5rem; }
+        .formula-box { background: #F8F6FF; border: 2px solid #9966CC; border-radius: var(--radius-lg); padding: 1.5rem; margin: 1.5rem 0; text-align: center; }
+        .formula-box h4 { color: var(--purple); margin-bottom: 0.75rem; font-size: 1rem; }
+        .formula { font-family: var(--font-display); font-size: 1.35rem; color: var(--near-black); margin: 0.75rem 0; line-height: 1.6; }
+        .formula-desc { font-size: 0.9rem; text-align: left; margin-top: 1rem; color: var(--dark-gray); }
+        .formula-desc ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 1.5rem 0; }
+        .col-box { padding: 1.25rem; border-radius: var(--radius); border-top: 4px solid var(--teal); background: var(--off-white); }
+        .col-box h4 { margin-bottom: 0.5rem; font-size: 1rem; }
+        .col-box ul, .col-box ol { margin-left: 1.2rem; margin-top: 0.5rem; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+        .data-table th, .data-table td { padding: 0.75rem 1rem; text-align: left; border: 1px solid var(--light-gray); }
+        .data-table thead th { background: var(--navy); color: var(--white); font-weight: 600; font-size: 0.85rem; }
+        .data-table tbody tr:nth-child(even) { background: #F0F8FF; }
+        .data-table tbody tr:hover { background: #DDEEFF; }
+        .diagram-box { text-align: center; margin: 2rem 0; overflow-x: auto; }
+        .diagram-box svg { max-width: 100%; height: auto; }
+        .diagram-cap { font-size: 0.85rem; color: var(--mid-gray); font-style: italic; margin-top: 0.5rem; }
+        .tt { position: relative; color: var(--teal); border-bottom: 1px dashed var(--teal); cursor: help; font-weight: 600; }
+        .tt .tt-text {
+            visibility: hidden; opacity: 0; position: absolute; z-index: 9000; background: var(--navy-deep);
+            color: var(--white); padding: 10px 14px; border-radius: var(--radius); font-size: 0.82rem;
+            font-weight: normal; line-height: 1.5; width: 280px; max-width: 90vw;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.35); pointer-events: none; transition: opacity 0.2s ease;
+            bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+        }
+        .tt .tt-text::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--navy-deep); }
+        .tt:hover .tt-text, .tt:focus .tt-text { visibility: visible; opacity: 1; }
+        .sim-container { background: linear-gradient(135deg, #F0F8FF, var(--white)); border: 2px solid var(--info); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; }
+        .sim-title { font-family: var(--font-display); color: var(--navy); font-size: 1.2rem; text-align: center; margin-bottom: 0.5rem; }
+        .sim-desc { text-align: center; font-size: 0.9rem; color: var(--mid-gray); margin-bottom: 1.5rem; }
+        .sim-controls { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: flex-end; margin-bottom: 1.5rem; }
+        .ctrl-group { display: flex; flex-direction: column; gap: 0.3rem; }
+        .ctrl-group label { font-size: 0.82rem; font-weight: 600; color: var(--dark-gray); }
+        .ctrl-group input, .ctrl-group select { padding: 0.55rem 0.75rem; border: 2px solid var(--light-gray); border-radius: var(--radius); font-size: 0.95rem; font-family: var(--font-body); min-width: 140px; transition: border-color var(--transition); }
+        .ctrl-group input:focus, .ctrl-group select:focus { border-color: var(--teal); outline: none; }
+        .sim-btn { padding: 0.6rem 1.5rem; background: linear-gradient(135deg, var(--navy), var(--teal)); color: var(--white); border: none; border-radius: var(--radius); font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: var(--transition); }
+        .sim-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,51,102,0.3); }
+        .sim-btn.sec { background: linear-gradient(135deg, var(--teal), var(--teal-light)); }
+        .result-box { background: var(--white); border: 2px solid var(--teal); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; margin-top: 1rem; }
+        .result-val { font-family: var(--font-display); font-size: 2rem; font-weight: bold; color: var(--navy); }
+        .result-lbl { font-size: 0.85rem; color: var(--mid-gray); margin-top: 0.3rem; }
+        .result-exp { font-size: 0.9rem; color: var(--dark-gray); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--light-gray); text-align: left; }
+        .canvas-wrap { text-align: center; margin: 1.5rem 0; }
+        .canvas-wrap canvas { border: 2px solid var(--light-gray); border-radius: var(--radius); max-width: 100%; }
+        .proc-step { position: relative; padding: 1.2rem 1.2rem 1.2rem 70px; margin: 1rem 0; background: var(--off-white); border-radius: var(--radius); border-left: 4px solid var(--teal); min-height: 60px; }
+        .proc-step::before { content: attr(data-step); position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; background: var(--navy); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; }
+        .checklist { margin: 1.5rem 0; }
+        .chk-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid #F0F0F0; font-size: 0.92rem; }
+        .chk-item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--teal); cursor: pointer; }
+        .quiz-q { background: var(--off-white); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--navy); }
+        .quiz-q h4 { color: var(--navy); margin-bottom: 1rem; font-size: 0.95rem; }
+        .quiz-opt { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.75rem; margin: 0.4rem 0; border-radius: var(--radius); cursor: pointer; transition: background var(--transition); font-size: 0.9rem; }
+        .quiz-opt:hover { background: var(--info-light); }
+        .quiz-opt input[type="radio"] { width: 18px; height: 18px; accent-color: var(--navy); cursor: pointer; }
+        .quiz-opt.correct { background: var(--success-light); border: 1px solid var(--success); }
+        .quiz-opt.wrong { background: var(--danger-light); border: 1px solid var(--danger); }
+        .quiz-fb { display: none; padding: 0.75rem; border-radius: var(--radius); margin-top: 0.75rem; font-size: 0.88rem; }
+        .quiz-fb.show { display: block; }
+        .quiz-fb.ok { background: var(--success-light); color: #006622; }
+        .quiz-fb.no { background: var(--danger-light); color: #990000; }
+        .score-box { text-align: center; padding: 2rem; background: linear-gradient(135deg, var(--info-light), var(--white)); border-radius: var(--radius-lg); border: 2px solid var(--navy); display: none; margin-top: 1.5rem; }
+        .score-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: bold; color: var(--navy); }
+        .accordion-item { margin-bottom: 0.5rem; }
+        .acc-hdr { width: 100%; padding: 1rem 1.25rem; background: var(--off-white); border: 1px solid var(--light-gray); border-radius: var(--radius); display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--dark-gray); transition: var(--transition); }
+        .acc-hdr:hover { background: var(--info-light); }
+        .acc-hdr[aria-expanded="true"] { background: var(--navy); color: var(--white); border-radius: var(--radius) var(--radius) 0 0; }
+        .acc-icon { transition: transform 0.3s ease; }
+        .acc-hdr[aria-expanded="true"] .acc-icon { transform: rotate(180deg); }
+        .acc-body { display: none; padding: 1.25rem; border: 1px solid var(--light-gray); border-top: none; border-radius: 0 0 var(--radius) var(--radius); background: var(--white); }
+        .acc-body.open { display: block; }
+        .nav-footer { max-width: var(--max-width); margin: 2rem auto; padding: 0 2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+        .nav-footer a { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--white); color: var(--navy); text-decoration: none; border: 2px solid var(--navy); border-radius: var(--radius); font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .nav-footer a:hover { background: var(--navy); color: var(--white); }
+        footer { background: var(--navy-deep); color: rgba(255,255,255,0.75); text-align: center; padding: 2rem; font-size: 0.85rem; line-height: 1.8; }
+        footer strong { color: var(--white); }
+        @media (max-width: 900px) { .two-col, .three-col { grid-template-columns: 1fr; } .objectives-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2rem; } .tabs-wrap { position: static; } .tab-panel { padding: 1.5rem; } }
+        @media (max-width: 600px) { .header-inner { padding: 0.75rem 1rem; } .tabs { gap: 2px; padding: 0.35rem; } .tab-btn { padding: 0.5rem 0.6rem; font-size: 0.72rem; } .hero { padding: 2rem 1rem; } .hero h1 { font-size: 1.6rem; } .tab-panel { padding: 1rem; } .card-body { padding: 1.2rem; } .proc-step { padding-left: 58px; } .sim-controls { flex-direction: column; align-items: stretch; } .nav-footer { flex-direction: column; } }
+        @media print { header, .tabs-wrap, .sim-container, footer, .nav-footer, .progress-section { display: none; } .tab-panel { display: block !important; } body { background: white; color: black; } }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header><div class="header-inner">
+    <div class="logo-group"><div class="logo-icon" aria-hidden="true">M5</div><div class="logo-text"><div class="logo-title">Introduction to Nanotechnology</div><div class="logo-subtitle">Module 5: Vacuum Concepts &amp; Physics</div></div></div>
+    <nav class="header-nav" aria-label="Module navigation"><a href="course-outline.html">&#8962; Course Home</a><a href="module4_vacuum_systems.html">&#8592; Module 4</a><a href="module6_plasma_technology.html">Module 6 &#8594;</a></nav>
+</div></header>
+<section class="hero"><h1>Module 5: Vacuum Concepts &amp; Physics</h1><p>Master the fundamental physics governing vacuum systems: mean free path, vapor pressure, gas flow regimes, outgassing, and system conductance&mdash;the theoretical backbone of every vacuum-based nanofabrication process.</p>
+    <div class="hero-stats"><div class="hero-stat"><span class="hero-stat-value">3&ndash;4</span><span class="hero-stat-label">Hours Content</span></div><div class="hero-stat"><span class="hero-stat-value">5</span><span class="hero-stat-label">Core Concepts</span></div><div class="hero-stat"><span class="hero-stat-value">6</span><span class="hero-stat-label">Simulations</span></div><div class="hero-stat"><span class="hero-stat-value">15</span><span class="hero-stat-label">Quiz Questions</span></div></div>
+</section>
+<main id="main-content">
+<div class="progress-section" role="region" aria-label="Module progress"><div class="progress-row"><span>Module Progress</span><span id="progressText">0%</span></div><div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill" id="progressFill"></div></div></div>
+<section class="objectives" aria-labelledby="obj-h"><div class="objectives-box"><h2 id="obj-h">&#127919; Learning Objectives</h2><div class="objectives-grid">
+    <div class="obj-item"><span class="obj-num">1</span><span>Define mean free path and explain its relationship to pressure using kinetic molecular theory</span></div>
+    <div class="obj-item"><span class="obj-num">2</span><span>Calculate MFP at various pressure levels using simplified and rigorous equations</span></div>
+    <div class="obj-item"><span class="obj-num">3</span><span>Explain the Knudsen number and determine gas flow regimes</span></div>
+    <div class="obj-item"><span class="obj-num">4</span><span>Define vapor pressure and apply the Clausius-Clapeyron equation</span></div>
+    <div class="obj-item"><span class="obj-num">5</span><span>Identify outgassing sources and explain mitigation strategies including bakeout</span></div>
+    <div class="obj-item"><span class="obj-num">6</span><span>Perform pressure unit conversions between Torr, Pascal, mbar, and atm</span></div>
+    <div class="obj-item"><span class="obj-num">7</span><span>Calculate conductance and effective pumping speed for system components</span></div>
+    <div class="obj-item"><span class="obj-num">8</span><span>Connect vacuum concepts to real-world semiconductor manufacturing</span></div>
+</div></div></section>
+<div class="tabs-wrap"><div class="tabs" role="tablist" aria-label="Module sections">
+    <button class="tab-btn active" id="btn-lecture" role="tab" aria-selected="true" aria-controls="panel-lecture" onclick="showTab('lecture')">&#128214; Lecture</button>
+    <button class="tab-btn" id="btn-mfp" role="tab" aria-selected="false" aria-controls="panel-mfp" onclick="showTab('mfp')">&#128200; MFP Tools</button>
+    <button class="tab-btn" id="btn-vapor" role="tab" aria-selected="false" aria-controls="panel-vapor" onclick="showTab('vapor')">&#128167; Vapor Pressure</button>
+    <button class="tab-btn" id="btn-flow" role="tab" aria-selected="false" aria-controls="panel-flow" onclick="showTab('flow')">&#127754; Flow &amp; Conductance</button>
+    <button class="tab-btn" id="btn-sims" role="tab" aria-selected="false" aria-controls="panel-sims" onclick="showTab('sims')">&#128187; Simulators</button>
+    <button class="tab-btn" id="btn-lab" role="tab" aria-selected="false" aria-controls="panel-lab" onclick="showTab('lab')">&#128300; Lab Activity</button>
+    <button class="tab-btn" id="btn-quiz" role="tab" aria-selected="false" aria-controls="panel-quiz" onclick="showTab('quiz')">&#10004; Quiz</button>
+</div></div>
+<div class="tab-content-wrap">
+<!-- ========== LECTURE ========== -->
+<div class="tab-panel active" id="panel-lecture" role="tabpanel" aria-labelledby="btn-lecture">
+<div class="card"><div class="card-header">Part 1: Introduction to Vacuum Physics</div><div class="card-body">
+    <h3 class="sub-title">Why Vacuum Physics Matters</h3>
+    <p>Understanding gas behavior at reduced pressures is essential for nanotechnology. While Module 4 introduced vacuum systems and components, this module explores the <em>why</em> behind vacuum technology&mdash;the fundamental physics that dictates system design and process parameters.</p>
+    <div class="key-concept"><h4>&#128300; The Invisible World of Molecules</h4><p>At atmospheric pressure (760 Torr), approximately <strong>2.7 &times; 10<sup>19</sup> molecules/cm&sup3;</strong> fill every cubic centimeter of air. This creates constant molecular collisions that interfere with nanoscale processes.</p><p style="margin-top:12px;">At high vacuum (10<sup>&minus;6</sup> Torr), density drops to <strong>3.5 &times; 10<sup>10</sup> molecules/cm&sup3;</strong>&mdash;a reduction of <strong>9 orders of magnitude</strong>. This dramatic reduction enables precision semiconductor manufacturing.</p></div>
+    <h3 class="sub-title">Kinetic Molecular Theory Review</h3>
+    <p>The <span class="tt" tabindex="0">Kinetic Molecular Theory<span class="tt-text">Developed by Rudolf Clausius in 1857. Describes gas behavior based on the motion of individual molecules in constant random motion with elastic collisions.</span></span> (KMT) provides the foundation for vacuum physics:</p>
+    <div class="three-col">
+        <div class="col-box" style="border-top-color:var(--purple);"><h4 style="color:var(--purple);">Random Motion</h4><p>Gas molecules move randomly with velocities described by the <span class="tt" tabindex="0">Maxwell-Boltzmann distribution<span class="tt-text">A statistical distribution of molecular speeds. At room temperature, air molecules average ~450 m/s (~1,000 mph).</span></span>. At 20&deg;C, air molecules average ~450 m/s.</p></div>
+        <div class="col-box" style="border-top-color:var(--teal);"><h4 style="color:var(--teal);">Elastic Collisions</h4><p>Collisions between molecules and container walls are perfectly elastic&mdash;no kinetic energy is lost. This holds well for most vacuum applications.</p></div>
+        <div class="col-box" style="border-top-color:var(--success);"><h4 style="color:var(--success);">Point Masses</h4><p>Molecules are treated as point masses with negligible volume compared to the space between them. Interactions occur only during collisions.</p></div>
+    </div>
+    <h3 class="sub-title">Four Fundamental Vacuum Concepts</h3>
+    <table class="data-table"><thead><tr><th>Concept</th><th>Definition</th><th>Why It Matters</th></tr></thead><tbody>
+        <tr><td><strong>Mean Free Path</strong></td><td>Average distance a molecule travels before colliding with another molecule</td><td>Determines if evaporated atoms reach substrate without collision</td></tr>
+        <tr><td><strong>Vapor Pressure</strong></td><td>Pressure exerted by vapor in equilibrium with its condensed phase</td><td>Determines when materials evaporate; critical for deposition</td></tr>
+        <tr><td><strong>Gas Flow Regimes</strong></td><td>Classification of gas behavior based on the Knudsen number</td><td>Determines appropriate equations for conductance &amp; system design</td></tr>
+        <tr><td><strong>Outgassing</strong></td><td>Release of gas from materials placed in vacuum</td><td>Primary gas load in HV/UHV systems; limits ultimate pressure</td></tr>
+    </tbody></table>
+    <div class="industry-note"><h4>&#127981; Industry Connection</h4><p>Modern semiconductor fabs operate across 15 orders of magnitude in pressure, from atmospheric CVD to ultra-high vacuum surface analysis. Understanding vacuum physics is essential for specifying system requirements, troubleshooting anomalies, and optimizing process conditions.</p></div>
+</div></div>
+<div class="card"><div class="card-header teal-h">Part 2: Pressure Units &amp; Conversions</div><div class="card-body">
+    <h3 class="sub-title">Navigating Pressure Units</h3>
+    <p>Different regions, manufacturers, and scientific disciplines use different units. A working vacuum technologist must convert between them fluently.</p>
+    <table class="data-table"><thead><tr><th>Unit</th><th>Symbol</th><th>1 atm =</th><th>Common Usage</th></tr></thead><tbody>
+        <tr><td>Torr (mmHg)</td><td>Torr</td><td>760</td><td>US vacuum industry</td></tr>
+        <tr><td>Pascal</td><td>Pa</td><td>101,325</td><td>SI standard, publications</td></tr>
+        <tr><td>Millibar</td><td>mbar</td><td>1013.25</td><td>European industry</td></tr>
+        <tr><td>Atmosphere</td><td>atm</td><td>1</td><td>General reference</td></tr>
+        <tr><td>Micron</td><td>&mu;m Hg</td><td>760,000</td><td>Older equipment (1 &mu;m = 10<sup>&minus;3</sup> Torr)</td></tr>
+    </tbody></table>
+    <div class="formula-box"><h4>Key Conversion Factor</h4><div class="formula">1 Torr = 133.32 Pa = 1.333 mbar = 1.316 &times; 10<sup>&minus;3</sup> atm</div><div class="formula-desc"><p><strong>Quick approximations:</strong></p><ul><li>1 Torr &asymp; 1 mbar (within ~33%)</li><li>1 atm &asymp; 10<sup>5</sup> Pa (within ~1.3%)</li></ul></div></div>
+    <h3 class="sub-title">Vacuum Pressure Ranges</h3>
+    <table class="data-table"><thead><tr><th>Range</th><th>Pressure (Torr)</th><th>Molecules/cm&sup3;</th><th>Mean Free Path</th><th>Applications</th></tr></thead><tbody>
+        <tr><td><strong>Rough</strong></td><td>760 &ndash; 1</td><td>10<sup>19</sup>&ndash;10<sup>16</sup></td><td>68 nm &ndash; 5 cm</td><td>Packaging, drying</td></tr>
+        <tr><td><strong>Medium</strong></td><td>1 &ndash; 10<sup>&minus;3</sup></td><td>10<sup>16</sup>&ndash;10<sup>13</sup></td><td>5 cm &ndash; 5 m</td><td>Plasma, sputtering</td></tr>
+        <tr><td><strong>High (HV)</strong></td><td>10<sup>&minus;3</sup>&ndash;10<sup>&minus;9</sup></td><td>10<sup>13</sup>&ndash;10<sup>7</sup></td><td>5 m &ndash; 50 km</td><td>Evaporation, SEM</td></tr>
+        <tr><td><strong>Ultra-High (UHV)</strong></td><td>10<sup>&minus;9</sup>&ndash;10<sup>&minus;12</sup></td><td>10<sup>7</sup>&ndash;10<sup>4</sup></td><td>50 km &ndash; 50,000 km</td><td>Surface science, MBE</td></tr>
+    </tbody></table>
+</div></div>
+<div class="card"><div class="card-header purple-h">Part 3: Mean Free Path &mdash; The Heart of Vacuum Science</div><div class="card-body">
+    <p>The <span class="tt" tabindex="0">mean free path<span class="tt-text">Average distance (&lambda;) a gas molecule travels between collisions. Inversely proportional to pressure. At 760 Torr: 68 nm. At 10&#8315;&#8310; Torr: 50 m.</span></span> (&lambda;) determines whether deposited atoms travel from source to substrate without collision, whether flow is viscous or molecular, and what pressures are needed for processes.</p>
+    <div class="diagram-box">
+        <svg viewBox="0 0 780 260" role="img" aria-label="Mean Free Path comparison at three pressures" style="max-width:780px;">
+            <rect x="10" y="30" width="230" height="190" fill="#FFEBEE" stroke="#CC0000" stroke-width="2" rx="10"/>
+            <text x="125" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#CC0000" font-family="Verdana">Atmospheric (760 Torr)</text>
+            <circle cx="40" cy="80" r="5" fill="#CC0000"/><circle cx="70" cy="65" r="5" fill="#CC0000"/><circle cx="100" cy="90" r="5" fill="#CC0000"/><circle cx="135" cy="72" r="5" fill="#CC0000"/><circle cx="165" cy="95" r="5" fill="#CC0000"/><circle cx="195" cy="68" r="5" fill="#CC0000"/><circle cx="55" cy="120" r="5" fill="#CC0000"/><circle cx="85" cy="135" r="5" fill="#CC0000"/><circle cx="115" cy="115" r="5" fill="#CC0000"/><circle cx="150" cy="140" r="5" fill="#CC0000"/><circle cx="180" cy="125" r="5" fill="#CC0000"/><circle cx="210" cy="110" r="5" fill="#CC0000"/><circle cx="45" cy="170" r="5" fill="#CC0000"/><circle cx="80" cy="185" r="5" fill="#CC0000"/><circle cx="120" cy="165" r="5" fill="#CC0000"/><circle cx="155" cy="190" r="5" fill="#CC0000"/><circle cx="190" cy="175" r="5" fill="#CC0000"/><circle cx="220" cy="195" r="5" fill="#CC0000"/>
+            <text x="125" y="245" text-anchor="middle" font-size="12" fill="#CC0000" font-family="Verdana">&lambda; &asymp; 68 nm</text>
+            <rect x="275" y="30" width="230" height="190" fill="#E3F2FD" stroke="#0066CC" stroke-width="2" rx="10"/>
+            <text x="390" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#0066CC" font-family="Verdana">Medium Vacuum (1 Torr)</text>
+            <circle cx="320" cy="85" r="5" fill="#0066CC"/><circle cx="380" cy="110" r="5" fill="#0066CC"/><circle cx="440" cy="75" r="5" fill="#0066CC"/><circle cx="350" cy="155" r="5" fill="#0066CC"/><circle cx="420" cy="175" r="5" fill="#0066CC"/><circle cx="470" cy="140" r="5" fill="#0066CC"/><circle cx="310" cy="195" r="5" fill="#0066CC"/><circle cx="480" cy="200" r="5" fill="#0066CC"/>
+            <text x="390" y="245" text-anchor="middle" font-size="12" fill="#0066CC" font-family="Verdana">&lambda; &asymp; 5 cm</text>
+            <rect x="540" y="30" width="230" height="190" fill="#E8F5E9" stroke="#008000" stroke-width="2" rx="10"/>
+            <text x="655" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#008000" font-family="Verdana">High Vacuum (10&#8315;&#179; Torr)</text>
+            <circle cx="600" cy="100" r="5" fill="#008000"/><circle cx="700" cy="175" r="5" fill="#008000"/>
+            <text x="655" y="245" text-anchor="middle" font-size="12" fill="#008000" font-family="Verdana">&lambda; &asymp; 50 m</text>
+        </svg>
+        <p class="diagram-cap">Figure 5.1: As pressure decreases, molecular density drops and mean free path increases dramatically.</p>
+    </div>
+    <div class="formula-box"><h4>Rigorous Mean Free Path Equation</h4><div class="formula">&lambda; = k<sub>B</sub>T / (&radic;2 &middot; &pi; &middot; d&sup2; &middot; P)</div><div class="formula-desc"><ul><li>&lambda; = mean free path (m)</li><li>k<sub>B</sub> = Boltzmann constant (1.38 &times; 10<sup>&minus;23</sup> J/K)</li><li>T = temperature (K); d = molecular diameter (for N<sub>2</sub>: 3.7 &times; 10<sup>&minus;10</sup> m)</li><li>P = pressure (Pa)</li></ul></div></div>
+    <div class="formula-box"><h4>Simplified Engineering Equation (air, 20&deg;C)</h4><div class="formula">&lambda; (cm) = 5 &times; 10<sup>&minus;3</sup> / P (Torr)</div><div class="formula-desc"><p>This inverse relationship is fundamental. Examples:</p><ul><li>760 Torr: &lambda; = 66 nm &mdash; atmospheric, constant collisions</li><li>10<sup>&minus;3</sup> Torr: &lambda; = 5 cm &mdash; comparable to chamber dimensions</li><li>10<sup>&minus;6</sup> Torr: &lambda; = 50 m &mdash; far exceeds any chamber</li></ul></div></div>
+    <h3 class="sub-title">Why MFP Matters for Thin Film Deposition</h3>
+    <div class="two-col"><div><p>In <span class="tt" tabindex="0">thermal evaporation<span class="tt-text">A PVD process: source material is heated until it evaporates, then vapor atoms travel through vacuum and condense on a substrate to form a thin film.</span></span>, atoms must travel from source to substrate. If MFP is shorter than this distance, atoms collide with residual gas, causing:</p><ul style="margin:0.5rem 0 0 1.2rem;"><li><strong>Energy loss:</strong> Scattered atoms have less kinetic energy</li><li><strong>Direction changes:</strong> Non-uniform film coverage</li><li><strong>Contamination:</strong> Reactions with gas molecules</li><li><strong>Poor adhesion:</strong> Degraded film quality</li></ul></div><div class="tip-box" style="margin:0;"><h4>&#128220; Design Rule of Thumb</h4><p>MFP should be <strong>at least 10&times;</strong> the source-to-substrate distance. For a 50 cm chamber, this requires pressures below 10<sup>&minus;4</sup> Torr.</p></div></div>
+</div></div>
+<div class="card"><div class="card-header gold-h">Part 4: Vapor Pressure &amp; Clausius-Clapeyron</div><div class="card-body">
+    <p><span class="tt" tabindex="0">Vapor pressure<span class="tt-text">Pressure exerted by a vapor in thermodynamic equilibrium with its condensed phase at a given temperature. Increases exponentially with temperature.</span></span> determines when materials evaporate for deposition and which materials are suitable inside vacuum chambers.</p>
+    <div class="formula-box"><h4>Clausius-Clapeyron Equation</h4><div class="formula">ln(P) = &minus;&Delta;H<sub>vap</sub>/(R &middot; T) + C</div><div class="formula-desc"><ul><li>P = vapor pressure; &Delta;H<sub>vap</sub> = enthalpy of vaporization (J/mol)</li><li>R = 8.314 J/mol&middot;K; T = temperature (K); C = material constant</li></ul></div></div>
+    <div class="formula-box"><h4>Two-Point Form (Practical Use)</h4><div class="formula">ln(P<sub>2</sub>/P<sub>1</sub>) = &minus;&Delta;H<sub>vap</sub>/R &times; (1/T<sub>2</sub> &minus; 1/T<sub>1</sub>)</div><div class="formula-desc"><p>Calculate vapor pressure at one temperature given the value at another&mdash;essential for predicting evaporation behavior.</p></div></div>
+    <div class="key-concept"><h4>&#128161; Water Boiling Under Vacuum</h4><p>Water boils at 100&deg;C at 760 Torr, but at only ~20&deg;C at ~17.5 Torr. Liquids left in vacuum chambers evaporate rapidly and can overwhelm the pumping system.</p></div>
+    <h3 class="sub-title">Material Selection for Vacuum</h3>
+    <div class="two-col"><div class="col-box" style="border-top-color:var(--danger);"><h4 style="color:var(--danger);">&#10060; Avoid in Vacuum</h4><ul><li>Zinc, cadmium (high vapor pressure metals)</li><li>Most plastics &amp; elastomers</li><li>Standard lubricants &amp; greases</li><li>Lead-containing solders</li><li>Organic materials</li></ul></div><div class="col-box" style="border-top-color:var(--success);"><h4 style="color:var(--success);">&#10004; Suitable for Vacuum</h4><ul><li>Stainless steel, aluminum, copper</li><li>Viton, Kalrez (fluoroelastomers)</li><li>Ceramic, glass, quartz</li><li>Vacuum-grade greases (Apiezon, Krytox)</li><li>PTFE (with limitations)</li></ul></div></div>
+</div></div>
+<div class="card"><div class="card-header">Part 5: Outgassing &mdash; The Hidden Gas Load</div><div class="card-body">
+    <p><span class="tt" tabindex="0">Outgassing<span class="tt-text">Release of gas from materials under vacuum. Often the dominant gas load in HV/UHV systems, determining ultimate achievable pressure.</span></span> is often the dominant gas load in high and ultra-high vacuum systems, setting the ultimate achievable pressure.</p>
+    <div class="two-col"><div class="col-box" style="border-top-color:var(--danger);"><h4 style="color:var(--danger);">Four Sources</h4><ol style="margin-left:1.2rem;"><li><strong>Vaporization:</strong> Direct evaporation from surfaces</li><li><strong>Desorption:</strong> Release of adsorbed molecules</li><li><strong>Diffusion:</strong> Dissolved gas migrating to surface</li><li><strong>Permeation:</strong> Gas penetrating through walls</li></ol></div><div class="col-box" style="border-top-color:var(--success);"><h4 style="color:var(--success);">Primary Species</h4><ul><li><strong>H<sub>2</sub>O:</strong> Dominant in unbaked systems</li><li><strong>H<sub>2</sub>:</strong> Dominant in baked metal systems</li><li><strong>CO, CO<sub>2</sub>:</strong> From organic contamination</li><li><strong>Hydrocarbons:</strong> From oils, greases, fingerprints</li></ul></div></div>
+    <table class="data-table"><thead><tr><th>Material</th><th>Condition</th><th>Outgassing Rate (Torr&middot;L/s&middot;cm&sup2;)</th></tr></thead><tbody>
+        <tr><td>Stainless Steel</td><td>Unbaked, 10 hr pumping</td><td>~10<sup>&minus;9</sup></td></tr>
+        <tr><td>Stainless Steel</td><td>Baked 150&deg;C, 24 hr</td><td>~10<sup>&minus;11</sup></td></tr>
+        <tr><td>Stainless Steel</td><td>Vacuum fired 950&deg;C</td><td>~10<sup>&minus;13</sup></td></tr>
+        <tr><td>Aluminum 6061</td><td>Unbaked</td><td>~10<sup>&minus;8</sup></td></tr>
+        <tr><td>OFHC Copper</td><td>Baked 200&deg;C</td><td>~10<sup>&minus;12</sup></td></tr>
+        <tr><td>Viton O-ring</td><td>Unbaked</td><td>~10<sup>&minus;7</sup></td></tr>
+        <tr><td><strong>Fingerprint</strong></td><td>&mdash;</td><td><strong>~10<sup>&minus;4</sup></strong></td></tr>
+    </tbody></table>
+    <div class="safety-box"><h4>&#9888;&#65039; Never Touch Vacuum Components!</h4><p>A single fingerprint has an outgassing rate <strong>10,000&times; higher</strong> than clean stainless steel. Always wear clean, lint-free gloves.</p></div>
+    <h3 class="sub-title">Bakeout Procedures</h3>
+    <p><span class="tt" tabindex="0">Bakeout<span class="tt-text">Heating a vacuum system while pumping to accelerate outgassing and desorption. Typical: 120&ndash;450&deg;C depending on materials and target pressure.</span></span> is the most effective method for reducing outgassing:</p>
+    <div class="two-col"><div class="col-box"><h4>Typical Parameters</h4><ul><li><strong>Temperature:</strong> 120&ndash;150&deg;C for moderate UHV</li><li><strong>Duration:</strong> 24&ndash;72 hours</li><li><strong>Ramp rate:</strong> 1&ndash;2&deg;C/min (avoid thermal shock)</li><li><strong>Higher temp (300&ndash;450&deg;C):</strong> For extreme UHV</li></ul></div><div class="col-box"><h4>Limitations</h4><ul><li>Elastomer seals limited to ~150&deg;C</li><li>Aluminum limited to ~200&deg;C</li><li>Some instruments cannot tolerate heat</li><li>Significant energy &amp; time costs</li></ul></div></div>
+    <div class="key-concept"><h4>&#128161; Time Dependence of Outgassing</h4><p>Unbaked water outgassing follows <strong>t<sup>&minus;1</sup></strong> decay: reducing pressure by another decade requires 10&times; longer pumping. Baked systems (hydrogen-dominated) follow a more favorable <strong>t<sup>&minus;1/2</sup></strong> decay.</p></div>
+</div></div>
+</div>
+<!-- ========== MFP TOOLS ========== -->
+<div class="tab-panel" id="panel-mfp" role="tabpanel" aria-labelledby="btn-mfp">
+<div class="card"><div class="card-header purple-h">Mean Free Path Interactive Tools</div><div class="card-body">
+    <div class="sim-container">
+        <h3 class="sim-title">&#127912; Animated Molecular Motion</h3>
+        <p class="sim-desc">Watch how molecular density and collisions change with pressure. Drag the slider to explore.</p>
+        <div class="sim-controls"><div class="ctrl-group"><label for="animP">Pressure: <strong id="animPLbl">760</strong> Torr</label><input type="range" id="animP" min="-6" max="2.88" step="0.1" value="2.88" style="width:300px;" oninput="updateAnim(this.value)" aria-label="Pressure slider"></div></div>
+        <div class="canvas-wrap"><canvas id="mfpCanvas" width="700" height="300" aria-label="Molecular motion animation"></canvas></div>
+        <div id="animInfo" style="text-align:center;font-size:0.9rem;margin-top:0.75rem;color:var(--dark-gray);">MFP: <strong id="aMFP">66 nm</strong> &nbsp;|&nbsp; Molecules: <strong id="aCnt">80</strong> &nbsp;|&nbsp; Regime: <strong id="aReg">Viscous</strong></div>
+    </div>
+    <div class="sim-container">
+        <h3 class="sim-title">&#128200; MFP Calculator</h3>
+        <p class="sim-desc">Enter a pressure to calculate the mean free path for air at 20&deg;C.</p>
+        <div class="sim-controls"><div class="ctrl-group"><label for="mfpIn">Pressure (Torr):</label><input type="number" id="mfpIn" value="0.001" step="any" min="0.000001"></div><button class="sim-btn" onclick="calcMFP()">Calculate</button></div>
+        <div class="result-box"><div class="result-val" id="mfpVal">5.00 cm</div><div class="result-lbl">Mean Free Path</div><div class="result-exp" id="mfpExp">Suitable for thermal evaporation in typical chambers.</div></div>
+    </div>
+    <div class="sim-container">
+        <h3 class="sim-title">&#128260; Pressure Unit Converter</h3>
+        <div class="sim-controls"><div class="ctrl-group"><label for="cVal">Value:</label><input type="number" id="cVal" value="1" step="any"></div><div class="ctrl-group"><label for="cUnit">Unit:</label><select id="cUnit"><option value="torr">Torr</option><option value="pa">Pascal</option><option value="mbar">mbar</option><option value="atm">atm</option></select></div><button class="sim-btn sec" onclick="convP()">Convert</button></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;margin-top:1rem;"><div class="result-box"><div class="result-val" style="font-size:1.2rem;" id="rTorr">1.000</div><div class="result-lbl">Torr</div></div><div class="result-box"><div class="result-val" style="font-size:1.2rem;" id="rPa">133.3</div><div class="result-lbl">Pascal</div></div><div class="result-box"><div class="result-val" style="font-size:1.2rem;" id="rMbar">1.333</div><div class="result-lbl">mbar</div></div><div class="result-box"><div class="result-val" style="font-size:1.2rem;" id="rAtm">1.32e-3</div><div class="result-lbl">atm</div></div></div>
+    </div>
+</div></div></div>
+<!-- ========== VAPOR PRESSURE ========== -->
+<div class="tab-panel" id="panel-vapor" role="tabpanel" aria-labelledby="btn-vapor">
+<div class="card"><div class="card-header gold-h">Vapor Pressure Explorer</div><div class="card-body">
+    <div class="sim-container">
+        <h3 class="sim-title">&#128293; Vapor Pressure vs. Temperature</h3>
+        <p class="sim-desc">Select a material to view its vapor pressure curve. Click the graph for point data.</p>
+        <div class="sim-controls"><div class="ctrl-group"><label for="vpMat">Material:</label><select id="vpMat"><option value="al">Aluminum (Al)</option><option value="au">Gold (Au)</option><option value="ag">Silver (Ag)</option><option value="cu">Copper (Cu)</option><option value="cr">Chromium (Cr)</option><option value="ti">Titanium (Ti)</option><option value="w">Tungsten (W)</option><option value="h2o">Water (H&#8322;O)</option></select></div><button class="sim-btn" onclick="drawVP()">Plot Curve</button></div>
+        <div class="canvas-wrap"><canvas id="vpCanvas" width="700" height="380" aria-label="Vapor pressure vs temperature graph"></canvas></div>
+        <div id="vpInfo" style="text-align:center;margin-top:0.5rem;font-size:0.9rem;color:var(--dark-gray);"></div>
+    </div>
+    <div class="sim-container">
+        <h3 class="sim-title">&#128290; Clausius-Clapeyron Calculator</h3>
+        <p class="sim-desc">Given P&#8321; at T&#8321;, find P&#8322; at T&#8322;.</p>
+        <div class="sim-controls"><div class="ctrl-group"><label for="ccP1">P&#8321; (Torr):</label><input type="number" id="ccP1" value="0.001" step="any"></div><div class="ctrl-group"><label for="ccT1">T&#8321; (&deg;C):</label><input type="number" id="ccT1" value="1000"></div><div class="ctrl-group"><label for="ccT2">T&#8322; (&deg;C):</label><input type="number" id="ccT2" value="1200"></div><div class="ctrl-group"><label for="ccH">&Delta;H (kJ/mol):</label><input type="number" id="ccH" value="294"></div><button class="sim-btn sec" onclick="calcCC()">Calculate</button></div>
+        <div class="result-box"><div class="result-val" id="ccRes">---</div><div class="result-lbl">Vapor Pressure at T&#8322;</div><div class="result-exp" id="ccExp">Enter values and click Calculate.</div></div>
+    </div>
+</div></div></div>
+<!-- ========== FLOW & CONDUCTANCE ========== -->
+<div class="tab-panel" id="panel-flow" role="tabpanel" aria-labelledby="btn-flow">
+<div class="card"><div class="card-header teal-h">Gas Flow Regimes &amp; Conductance</div><div class="card-body">
+    <h3 class="sub-title">The Knudsen Number</h3>
+    <p>The <span class="tt" tabindex="0">Knudsen number<span class="tt-text">Kn = &lambda;/D. Dimensionless ratio comparing mean free path to characteristic dimension. Determines gas flow regime.</span></span> classifies three distinct flow regimes:</p>
+    <div class="formula-box"><h4>Knudsen Number</h4><div class="formula">Kn = &lambda; / D</div><div class="formula-desc"><ul><li><strong>Kn &lt; 0.01</strong> &rarr; Viscous Flow (molecule-molecule collisions dominate)</li><li><strong>0.01 &lt; Kn &lt; 1</strong> &rarr; Transition Flow (both types important)</li><li><strong>Kn &gt; 1</strong> &rarr; Molecular Flow (wall collisions dominate)</li></ul></div></div>
+    <div class="diagram-box">
+        <svg viewBox="0 0 780 190" role="img" aria-label="Three gas flow regimes" style="max-width:780px;">
+            <rect x="10" y="10" width="240" height="170" fill="#E8F5E9" stroke="#009933" stroke-width="2" rx="10"/>
+            <text x="130" y="32" text-anchor="middle" font-size="13" font-weight="bold" fill="#009933" font-family="Verdana">Viscous Flow</text>
+            <text x="130" y="50" text-anchor="middle" font-size="11" fill="#006622" font-family="Verdana">Kn &lt; 0.01</text>
+            <path d="M30 80 Q80 70 130 80 T230 80" stroke="#009933" fill="none" stroke-width="2"/><path d="M30 100 Q80 90 130 100 T230 100" stroke="#009933" fill="none" stroke-width="2"/><path d="M30 120 Q80 110 130 120 T230 120" stroke="#009933" fill="none" stroke-width="2"/><path d="M30 140 Q80 130 130 140 T230 140" stroke="#009933" fill="none" stroke-width="2"/>
+            <text x="130" y="170" text-anchor="middle" font-size="10" fill="#006622" font-family="Verdana">Fluid-like, laminar</text>
+            <rect x="270" y="10" width="240" height="170" fill="#FFF3E0" stroke="#FF6600" stroke-width="2" rx="10"/>
+            <text x="390" y="32" text-anchor="middle" font-size="13" font-weight="bold" fill="#FF6600" font-family="Verdana">Transition Flow</text>
+            <text x="390" y="50" text-anchor="middle" font-size="11" fill="#CC5500" font-family="Verdana">0.01 &lt; Kn &lt; 1</text>
+            <path d="M290 85 L320 80 L345 95 L380 78" stroke="#FF6600" fill="none" stroke-width="2"/><path d="M310 115 L350 108 L380 120 L420 105" stroke="#FF6600" fill="none" stroke-width="2"/><path d="M290 140 L330 148 L365 132 L400 142" stroke="#FF6600" fill="none" stroke-width="2"/>
+            <text x="390" y="170" text-anchor="middle" font-size="10" fill="#CC5500" font-family="Verdana">Mixed behavior</text>
+            <rect x="530" y="10" width="240" height="170" fill="#E3F2FD" stroke="#003366" stroke-width="2" rx="10"/>
+            <text x="650" y="32" text-anchor="middle" font-size="13" font-weight="bold" fill="#003366" font-family="Verdana">Molecular Flow</text>
+            <text x="650" y="50" text-anchor="middle" font-size="11" fill="#002244" font-family="Verdana">Kn &gt; 1</text>
+            <line x1="570" y1="90" x2="610" y2="75" stroke="#003366" stroke-width="2"/><circle cx="612" cy="74" r="4" fill="#003366"/><line x1="620" y1="115" x2="680" y2="95" stroke="#003366" stroke-width="2"/><circle cx="682" cy="94" r="4" fill="#003366"/><line x1="580" y1="145" x2="640" y2="155" stroke="#003366" stroke-width="2"/><circle cx="642" cy="156" r="4" fill="#003366"/><line x1="700" y1="125" x2="660" y2="140" stroke="#003366" stroke-width="2"/><circle cx="658" cy="141" r="4" fill="#003366"/>
+            <text x="650" y="170" text-anchor="middle" font-size="10" fill="#002244" font-family="Verdana">Independent particles</text>
+        </svg>
+    </div>
+    <h3 class="sub-title">Conductance Equations</h3>
+    <div class="formula-box"><h4>Long Tube Conductance</h4><div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;"><div><p><strong>Viscous (air, 20&deg;C):</strong></p><div class="formula" style="font-size:1.1rem;">C = 180 &times; D&#8308; &times; P<sub>avg</sub> / L</div></div><div><p><strong>Molecular (air, 20&deg;C):</strong></p><div class="formula" style="font-size:1.1rem;">C = 12.1 &times; D&sup3; / L</div></div></div><div class="formula-desc"><p>C in L/s; D and L in cm; P in Torr</p></div></div>
+    <div class="formula-box"><h4>Effective Pumping Speed</h4><div class="formula">1/S<sub>eff</sub> = 1/S<sub>pump</sub> + 1/C</div><div class="formula-desc"><p>Like resistors in parallel. A 1000 L/s pump through a 100 L/s pipe yields only ~91 L/s at the chamber!</p></div></div>
+    <div class="industry-note"><h4>&#127981; Design Rule: Short and Fat Pipes</h4><p>In molecular flow, doubling diameter increases conductance <strong>8&times;</strong> (D&sup3;), while doubling length only halves it.</p></div>
+    <div class="sim-container"><h3 class="sim-title">&#128295; Knudsen Number Analyzer</h3>
+        <div class="sim-controls"><div class="ctrl-group"><label for="knP">Pressure (Torr):</label><input type="number" id="knP" value="0.001" step="any"></div><div class="ctrl-group"><label for="knD">Pipe Diameter (cm):</label><input type="number" id="knD" value="5" step="any"></div><button class="sim-btn" onclick="calcKn()">Analyze</button></div>
+        <div class="result-box"><div class="result-val" id="knRes" style="color:var(--info);">Molecular Flow</div><div class="result-lbl">Kn = <span id="knNum">1.00</span></div><div class="result-exp" id="knExp">---</div></div></div>
+    <div class="sim-container"><h3 class="sim-title">&#128295; Tube Conductance Calculator</h3>
+        <div class="sim-controls"><div class="ctrl-group"><label for="cD">Diameter (cm):</label><input type="number" id="cD" value="5" step="0.1"></div><div class="ctrl-group"><label for="cL">Length (cm):</label><input type="number" id="cL" value="20" step="0.1"></div><button class="sim-btn sec" onclick="calcCond()">Calculate</button></div>
+        <div class="result-box"><div class="result-val" id="condRes">75.6 L/s</div><div class="result-lbl">Molecular Flow Conductance</div><div class="result-exp" id="condExp">---</div></div></div>
+    <div class="sim-container"><h3 class="sim-title">&#9881; Effective Pumping Speed</h3>
+        <div class="sim-controls"><div class="ctrl-group"><label for="eS">Pump Speed (L/s):</label><input type="number" id="eS" value="300"></div><div class="ctrl-group"><label for="eC">Pipe Conductance (L/s):</label><input type="number" id="eC" value="75"></div><button class="sim-btn" onclick="calcEff()">Calculate</button></div>
+        <div class="result-box"><div class="result-val" id="effRes">60.0 L/s</div><div class="result-lbl">Effective Speed at Chamber</div><div class="result-exp" id="effExp">---</div></div></div>
+</div></div></div>
+<!-- ========== SIMULATORS ========== -->
+<div class="tab-panel" id="panel-sims" role="tabpanel" aria-labelledby="btn-sims">
+<div class="card"><div class="card-header">Advanced Simulators</div><div class="card-body">
+    <div class="sim-container"><h3 class="sim-title">&#128200; Pumpdown Curve Simulator</h3><p class="sim-desc">Visualize chamber pressure vs. time during evacuation. See the transition from volume removal to outgassing-limited pumping.</p>
+        <div class="sim-controls"><div class="ctrl-group"><label for="pdV">Volume (L):</label><input type="number" id="pdV" value="50" min="1"></div><div class="ctrl-group"><label for="pdS">Pump Speed (L/s):</label><input type="number" id="pdS" value="100" min="1"></div><div class="ctrl-group"><label for="pdQ">Outgas Rate (Torr&middot;L/s):</label><input type="number" id="pdQ" value="0.0001" step="any"></div><button class="sim-btn" onclick="drawPD()">Simulate</button></div>
+        <div class="canvas-wrap"><canvas id="pdCanvas" width="700" height="380" aria-label="Pumpdown curve"></canvas></div>
+        <div id="pdInfo" style="text-align:center;font-size:0.9rem;margin-top:0.5rem;color:var(--dark-gray);"></div></div>
+    <div class="sim-container"><h3 class="sim-title">&#128336; Outgassing Timeline</h3><p class="sim-desc">See how outgassing rate decreases with pumping time and the effect of bakeout.</p>
+        <div class="sim-controls"><div class="ctrl-group"><label for="ogM">Material:</label><select id="ogM"><option value="ss">SS (unbaked)</option><option value="ssb">SS (baked 150&deg;C)</option><option value="al">Aluminum</option><option value="viton">Viton O-ring</option></select></div><div class="ctrl-group"><label for="ogA">Surface Area (cm&sup2;):</label><input type="number" id="ogA" value="5000" min="100"></div><button class="sim-btn sec" onclick="drawOG()">Plot</button></div>
+        <div class="canvas-wrap"><canvas id="ogCanvas" width="700" height="380" aria-label="Outgassing rate vs time"></canvas></div></div>
+</div></div></div>
+<!-- ========== LAB ========== -->
+<div class="tab-panel" id="panel-lab" role="tabpanel" aria-labelledby="btn-lab">
+<div class="card"><div class="card-header">Lab Activity: Vacuum Concepts Exploration</div><div class="card-body">
+    <div class="key-concept"><h4>&#127919; Lab Objective</h4><p>Perform mean free path experiments using the Kurt J. Lesker vacuum trainer, observe vapor pressure demonstrations, measure pressure gradients, and compare experimental results with theoretical calculations.</p><p style="margin-top:8px;"><strong>Duration:</strong> ~1 hour &nbsp;|&nbsp; <strong>Equipment:</strong> KJL Vacuum Trainer, lab glassware, lighter, water, salt, incense</p></div>
+    <div class="safety-box"><h4>&#9888;&#65039; Safety Reminders</h4><p>Wear safety glasses and lab coat at all times. Handle glassware with care&mdash;vacuum flasks can implode. Never vent rapidly. Follow all instructor guidance.</p></div>
+    <h3 class="sub-title">Experiment 1: Incense in a Jar (Mean Free Path)</h3>
+    <div class="proc-step" data-step="1">Place incense into a beaker inside the bell jar. Light it and replace the lid.</div>
+    <div class="proc-step" data-step="2">Allow the bell jar to fill completely with smoke until opaque.</div>
+    <div class="proc-step" data-step="3">Close the vent valve. Turn on the pump and open the butterfly valve.</div>
+    <div class="proc-step" data-step="4">Observe the clearing of smoke. <strong>Record:</strong> Time to clear and pressure at that point.</div>
+    <div class="proc-step" data-step="5">Calculate MFP at the final pressure using &lambda; = 5&times;10<sup>&minus;3</sup>/P. Compare to bell jar diameter.</div>
+    <h3 class="sub-title">Experiment 2: Boiling Water Under Vacuum</h3>
+    <div class="proc-step" data-step="1">Place a small beaker of room-temperature water inside the bell jar.</div>
+    <div class="proc-step" data-step="2">Begin evacuating while watching the water closely.</div>
+    <div class="proc-step" data-step="3">Record the pressure at which boiling begins. Compare to theoretical ~17.5 Torr at 20&deg;C.</div>
+    <div class="proc-step" data-step="4">Repeat with salt water. Observe any difference in boiling pressure.</div>
+    <h3 class="sub-title">Experiment 3: Pressure Gradient Measurement</h3>
+    <div class="proc-step" data-step="1">At base pressure, record gauge readings at different system points.</div>
+    <div class="proc-step" data-step="2">Calculate theoretical conductance of each pipe section.</div>
+    <div class="proc-step" data-step="3">Compare measured pressure differences with conductance predictions.</div>
+    <h3 class="sub-title" style="margin-top:2rem;">Pre-Lab Checklist</h3>
+    <div class="checklist"><div class="chk-item"><input type="checkbox" id="cl1"><label for="cl1">Can calculate MFP at any pressure</label></div><div class="chk-item"><input type="checkbox" id="cl2"><label for="cl2">Understand Clausius-Clapeyron relationship</label></div><div class="chk-item"><input type="checkbox" id="cl3"><label for="cl3">Can identify flow regimes using Knudsen number</label></div><div class="chk-item"><input type="checkbox" id="cl4"><label for="cl4">Reviewed safety procedures for vacuum equipment</label></div><div class="chk-item"><input type="checkbox" id="cl5"><label for="cl5">Prepared lab notebook with data tables</label></div></div>
+    <h3 class="sub-title">Discussion Questions</h3>
+    <div class="accordion-item"><button class="acc-hdr" onclick="toggleAcc(this)" aria-expanded="false"><span>1. Why does smoke clear from the bell jar during evacuation?</span><span class="acc-icon">&#9660;</span></button><div class="acc-body">As pressure decreases, the pump removes gas molecules. With fewer molecules, smoke particles are carried toward the pump inlet rather than remaining suspended. The mean free path of suspended particles increases dramatically.</div></div>
+    <div class="accordion-item"><button class="acc-hdr" onclick="toggleAcc(this)" aria-expanded="false"><span>2. Why does adding salt change the boiling point under vacuum?</span><span class="acc-icon">&#9660;</span></button><div class="acc-body">Dissolved salt lowers water's vapor pressure via Raoult's Law. Since boiling occurs when vapor pressure equals external pressure, salt water requires lower external pressure to boil&mdash;demonstrating the colligative property of vapor pressure depression.</div></div>
+    <div class="accordion-item"><button class="acc-hdr" onclick="toggleAcc(this)" aria-expanded="false"><span>3. If a system won't reach base pressure, what should you check?</span><span class="acc-icon">&#9660;</span></button><div class="acc-body">Systematic approach: (1) Real leaks&mdash;check O-rings, fittings, welds; (2) Virtual leaks&mdash;trapped volumes; (3) Outgassing&mdash;more pump time or bakeout; (4) Gauge issues&mdash;verify calibration; (5) Pump problems&mdash;oil level, foreline pressure, turbo speed.</div></div>
+</div></div></div>
+<!-- ========== QUIZ ========== -->
+<div class="tab-panel" id="panel-quiz" role="tabpanel" aria-labelledby="btn-quiz">
+<div class="card"><div class="card-header">Module 5 Knowledge Check</div><div class="card-body">
+    <p style="text-align:center;margin-bottom:2rem;">Select the best answer for each question, then click Submit.</p>
+    <div id="quizBox"></div>
+    <div style="text-align:center;margin-top:2rem;"><button class="sim-btn" onclick="gradeQuiz()" style="padding:0.8rem 3rem;font-size:1.1rem;">Submit Quiz</button></div>
+    <div class="score-box" id="scoreBox"><div class="score-num" id="scoreFinal">0/15</div><p id="scoreMsg" style="margin-top:0.75rem;font-size:1rem;"></p></div>
+</div></div></div>
+</div><!-- end tab-content-wrap -->
+<nav class="nav-footer" aria-label="Module navigation"><a href="module4_vacuum_systems.html">&#8592; Module 4: Vacuum Systems</a><a href="course-outline.html">&#8962; Course Home</a><a href="module6_plasma_technology.html">Module 6: Plasma Technology &#8594;</a></nav>
+</main>
+<footer><p><strong>Introduction to Nanotechnology</strong> &mdash; Module 5: Vacuum Concepts &amp; Physics</p><p>Developed with support from <strong>NSF ATE Grant DUE 2301137</strong> | Penn State University</p><p>&copy; 2025 &mdash; Educational use permitted with attribution</p></footer>
+<script>
+(function(){
+'use strict';
+var allTabs=['lecture','mfp','vapor','flow','sims','lab','quiz'],visited=new Set(['lecture']);
+window.showTab=function(n){allTabs.forEach(function(t){var p=document.getElementById('panel-'+t),b=document.getElementById('btn-'+t);if(p)p.classList.remove('active');if(b){b.classList.remove('active');b.setAttribute('aria-selected','false');}});var ap=document.getElementById('panel-'+n),ab=document.getElementById('btn-'+n);if(ap)ap.classList.add('active');if(ab){ab.classList.add('active');ab.setAttribute('aria-selected','true');}visited.add(n);updProg();window.scrollTo({top:350,behavior:'smooth'});};
+function updProg(){var p=Math.round((visited.size/allTabs.length)*100);document.getElementById('progressFill').style.width=p+'%';document.getElementById('progressText').textContent=p+'%';}
+
+/* ===== TOOLTIP POSITIONING ===== */
+document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.tt').forEach(function(el){
+        function repos(){var tip=el.querySelector('.tt-text');if(!tip)return;tip.style.left='50%';tip.style.right='auto';tip.style.transform='translateX(-50%)';tip.style.bottom='calc(100% + 10px)';tip.style.top='auto';setTimeout(function(){var r=tip.getBoundingClientRect();if(r.right>window.innerWidth-10){tip.style.left='auto';tip.style.right='0';tip.style.transform='none';}if(r.left<10){tip.style.left='0';tip.style.right='auto';tip.style.transform='none';}if(r.top<10){tip.style.bottom='auto';tip.style.top='calc(100% + 10px)';}},15);}
+        el.addEventListener('mouseenter',repos);el.addEventListener('focus',repos);
+    });
+    initAnim();buildQuiz();
+});
+
+/* ===== MFP CALCULATOR ===== */
+window.calcMFP=function(){var p=parseFloat(document.getElementById('mfpIn').value);if(!p||p<=0){document.getElementById('mfpVal').textContent='Invalid';return;}var m=5e-3/p,t,e;if(m<1e-4){t=(m*1e7).toFixed(1)+' nm';e='Extremely short MFP. Constant collisions&mdash;atmospheric behavior.';}else if(m<1){t=(m*10).toFixed(2)+' mm';e='Millimeter range. Viscous flow dominates. Not suitable for deposition.';}else if(m<100){t=m.toFixed(2)+' cm';e='Comparable to chamber dimensions. Transition flow regime.';}else if(m<1e5){t=(m/100).toFixed(1)+' m';e='Excellent for thermal evaporation. Atoms travel without collision.';}else{t=(m/1e5).toFixed(1)+' km';e='Far exceeds any chamber. Ideal for UHV surface science.';}document.getElementById('mfpVal').textContent=t;document.getElementById('mfpExp').textContent=e;};
+
+/* ===== PRESSURE CONVERTER ===== */
+window.convP=function(){var v=parseFloat(document.getElementById('cVal').value),u=document.getElementById('cUnit').value;if(isNaN(v))return;var torr;if(u==='torr')torr=v;else if(u==='pa')torr=v/133.322;else if(u==='mbar')torr=v/1.33322;else torr=v*760;var f=function(n){if(n===0)return'0';if(Math.abs(n)>=0.001&&Math.abs(n)<1e4)return n.toPrecision(4);return n.toExponential(3);};document.getElementById('rTorr').textContent=f(torr);document.getElementById('rPa').textContent=f(torr*133.322);document.getElementById('rMbar').textContent=f(torr*1.33322);document.getElementById('rAtm').textContent=f(torr/760);};
+
+/* ===== ANIMATED MOLECULES ===== */
+var mols=[],animCtx,animRun=false;
+function initAnim(){var c=document.getElementById('mfpCanvas');if(!c)return;animCtx=c.getContext('2d');updateAnim(2.88);animRun=true;aLoop();}
+window.updateAnim=function(lv){var p=Math.pow(10,parseFloat(lv));document.getElementById('animPLbl').textContent=p>=1?p.toFixed(1):p.toExponential(1);var m=5e-3/p,mt;if(m<0.001)mt=(m*1e7).toFixed(0)+' nm';else if(m<1)mt=(m*10).toFixed(1)+' mm';else if(m<100)mt=m.toFixed(1)+' cm';else mt=(m/100).toFixed(0)+' m';document.getElementById('aMFP').textContent=mt;var cnt=Math.max(1,Math.min(120,Math.round(Math.pow(10,(parseFloat(lv)+6)/3.5))));document.getElementById('aCnt').textContent=cnt;var kn=m/5;document.getElementById('aReg').textContent=kn<0.01?'Viscous':kn<1?'Transition':'Molecular';mols=[];for(var i=0;i<cnt;i++)mols.push({x:Math.random()*696+2,y:Math.random()*296+2,vx:(Math.random()-0.5)*3,vy:(Math.random()-0.5)*3});};
+function aLoop(){if(!animRun||!animCtx)return;animCtx.fillStyle='#0A0A2E';animCtx.fillRect(0,0,700,300);animCtx.strokeStyle='rgba(255,255,255,0.04)';for(var g=0;g<700;g+=35){animCtx.beginPath();animCtx.moveTo(g,0);animCtx.lineTo(g,300);animCtx.stroke();}for(var h=0;h<300;h+=35){animCtx.beginPath();animCtx.moveTo(0,h);animCtx.lineTo(700,h);animCtx.stroke();}mols.forEach(function(m){m.x+=m.vx;m.y+=m.vy;if(m.x<4||m.x>696)m.vx*=-1;if(m.y<4||m.y>296)m.vy*=-1;m.x=Math.max(4,Math.min(696,m.x));m.y=Math.max(4,Math.min(296,m.y));var gr=animCtx.createRadialGradient(m.x,m.y,0,m.x,m.y,5);gr.addColorStop(0,'#00FFFF');gr.addColorStop(1,'#006666');animCtx.beginPath();animCtx.arc(m.x,m.y,5,0,Math.PI*2);animCtx.fillStyle=gr;animCtx.fill();});requestAnimationFrame(aLoop);}
+
+/* ===== VAPOR PRESSURE ===== */
+var vpD={al:{n:'Aluminum',H:294e3,Tb:2740,mp:660,c:'#999'},au:{n:'Gold',H:334e3,Tb:3080,mp:1064,c:'#FFD700'},ag:{n:'Silver',H:258e3,Tb:2435,mp:962,c:'#C0C0C0'},cu:{n:'Copper',H:300e3,Tb:2835,mp:1085,c:'#CC6633'},cr:{n:'Chromium',H:347e3,Tb:2944,mp:1907,c:'#669999'},ti:{n:'Titanium',H:425e3,Tb:3560,mp:1668,c:'#9966CC'},w:{n:'Tungsten',H:774e3,Tb:5930,mp:3422,c:'#336699'},h2o:{n:'Water',H:40700,Tb:373,mp:0,c:'#0099CC'}};
+window.drawVP=function(){var cv=document.getElementById('vpCanvas'),cx=cv.getContext('2d'),mt=vpD[document.getElementById('vpMat').value],W=cv.width,H=cv.height,pad={t:50,r:30,b:60,l:70},pw=W-pad.l-pad.r,ph=H-pad.t-pad.b;cx.fillStyle='#FFF';cx.fillRect(0,0,W,H);
+    var Tmin,Tmax;if(mt.n==='Water'){Tmin=-10;Tmax=120;}else{Tmin=Math.max(0,mt.mp-500);Tmax=mt.Tb+200;}
+    var lpMin=-6,lpMax=3,R=8.314;
+    cx.strokeStyle='#333';cx.lineWidth=2;cx.beginPath();cx.moveTo(pad.l,pad.t);cx.lineTo(pad.l,H-pad.b);cx.lineTo(W-pad.r,H-pad.b);cx.stroke();
+    cx.fillStyle='#666';cx.font='11px Verdana';cx.textAlign='right';
+    for(var lp=lpMin;lp<=lpMax;lp++){var y=pad.t+ph*(1-(lp-lpMin)/(lpMax-lpMin));cx.fillText('1e'+lp,pad.l-8,y+4);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(pad.l,y);cx.lineTo(W-pad.r,y);cx.stroke();}
+    cx.textAlign='center';var nT=6;for(var i=0;i<=nT;i++){var T=Tmin+(Tmax-Tmin)*i/nT,x=pad.l+pw*i/nT;cx.fillStyle='#666';cx.fillText(Math.round(T)+'°C',x,H-pad.b+20);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(x,pad.t);cx.lineTo(x,H-pad.b);cx.stroke();}
+    cx.fillStyle='#333';cx.font='bold 12px Verdana';cx.textAlign='center';cx.fillText('Temperature (°C)',W/2,H-10);cx.save();cx.translate(15,H/2);cx.rotate(-Math.PI/2);cx.fillText('Vapor Pressure (Torr)',0,0);cx.restore();
+    cx.strokeStyle=mt.c;cx.lineWidth=3;cx.beginPath();var first=true,PbRef=760,TbRefK=mt.Tb>200?mt.Tb+273.15:mt.Tb;
+    for(var j=0;j<=200;j++){var Tc=Tmin+(Tmax-Tmin)*j/200,Tk=Tc+273.15;var logP=Math.log10(PbRef)+(-mt.H/(R*Math.LN10))*(1/Tk-1/TbRefK);if(logP<lpMin-1||logP>lpMax+1)continue;var xp=pad.l+pw*(Tc-Tmin)/(Tmax-Tmin),yp=pad.t+ph*(1-(logP-lpMin)/(lpMax-lpMin));if(xp<pad.l||xp>W-pad.r||yp<pad.t||yp>H-pad.b)continue;if(first){cx.moveTo(xp,yp);first=false;}else cx.lineTo(xp,yp);}cx.stroke();
+    if(mt.mp>Tmin&&mt.mp<Tmax){var mx=pad.l+pw*(mt.mp-Tmin)/(Tmax-Tmin);cx.strokeStyle='#CC0000';cx.lineWidth=1;cx.setLineDash([5,5]);cx.beginPath();cx.moveTo(mx,pad.t);cx.lineTo(mx,H-pad.b);cx.stroke();cx.setLineDash([]);cx.fillStyle='#CC0000';cx.font='10px Verdana';cx.textAlign='center';cx.fillText('mp: '+mt.mp+'°C',mx,pad.t-5);}
+    cx.fillStyle=mt.c;cx.font='bold 14px Georgia';cx.textAlign='left';cx.fillText(mt.n,pad.l+10,pad.t+20);
+    document.getElementById('vpInfo').textContent=mt.n+': Boiling point = '+(mt.n==='Water'?'100':mt.Tb)+'°C at 760 Torr. Melting point = '+mt.mp+'°C.';
+};
+
+/* ===== CLAUSIUS-CLAPEYRON ===== */
+window.calcCC=function(){var P1=parseFloat(document.getElementById('ccP1').value),T1=parseFloat(document.getElementById('ccT1').value)+273.15,T2=parseFloat(document.getElementById('ccT2').value)+273.15,H=parseFloat(document.getElementById('ccH').value)*1000,R=8.314;var lnRatio=-H/R*(1/T2-1/T1);var P2=P1*Math.exp(lnRatio);var fmt=function(n){if(Math.abs(n)>=0.01&&Math.abs(n)<1e4)return n.toPrecision(4);return n.toExponential(3);};document.getElementById('ccRes').textContent=fmt(P2)+' Torr';document.getElementById('ccExp').textContent='At '+Math.round(T2-273)+'°C the vapor pressure is '+(P2>P1?'higher':'lower')+' than at '+Math.round(T1-273)+'°C. Ratio P₂/P₁ = '+fmt(P2/P1)+'.';};
+
+/* ===== KNUDSEN ===== */
+window.calcKn=function(){var p=parseFloat(document.getElementById('knP').value),d=parseFloat(document.getElementById('knD').value);var m=5e-3/p,kn=m/d;var reg,col,exp;if(kn<0.01){reg='Viscous Flow';col='#009933';exp='Molecule-molecule collisions dominate. Gas behaves as continuous fluid. Use viscous flow equations.';}else if(kn<1){reg='Transition Flow';col='#FF6600';exp='Both wall and inter-molecule collisions significant. Use empirical or interpolated equations.';}else{reg='Molecular Flow';col='#003366';exp='Wall collisions dominate. Molecules move independently. Conductance is pressure-independent.';}document.getElementById('knRes').textContent=reg;document.getElementById('knRes').style.color=col;document.getElementById('knNum').textContent=kn.toExponential(2);document.getElementById('knExp').textContent=exp;};
+
+/* ===== CONDUCTANCE ===== */
+window.calcCond=function(){var d=parseFloat(document.getElementById('cD').value),l=parseFloat(document.getElementById('cL').value);var c=12.1*Math.pow(d,3)/l;var ld=l/d,exp;if(ld<5)exp='Short tube (L/D='+ld.toFixed(1)+'). Actual conductance may be higher. Consider Clausing factors.';else if(ld>50)exp='Very long tube (L/D='+ld.toFixed(1)+'). Significantly limits pumping speed.';else exp='L/D='+ld.toFixed(1)+'. Long-tube approximation is reasonable.';document.getElementById('condRes').textContent=c.toFixed(1)+' L/s';document.getElementById('condExp').textContent=exp;};
+
+/* ===== EFFECTIVE PUMPING SPEED ===== */
+window.calcEff=function(){var s=parseFloat(document.getElementById('eS').value),c=parseFloat(document.getElementById('eC').value);var eff=1/(1/s+1/c);var pct=(eff/s*100).toFixed(1);document.getElementById('effRes').textContent=eff.toFixed(1)+' L/s';document.getElementById('effExp').textContent='Only '+pct+'% of the pump speed is available at the chamber. Conductance limits performance by '+(100-pct).toFixed(1)+'%.';};
+
+/* ===== PUMPDOWN CURVE ===== */
+window.drawPD=function(){var cv=document.getElementById('pdCanvas'),cx=cv.getContext('2d'),V=parseFloat(document.getElementById('pdV').value),S=parseFloat(document.getElementById('pdS').value),Q=parseFloat(document.getElementById('pdQ').value);var W=cv.width,H=cv.height,pad={t:50,r:30,b:60,l:70},pw=W-pad.l-pad.r,ph=H-pad.t-pad.b;cx.fillStyle='#FFF';cx.fillRect(0,0,W,H);
+    var tau=V/S,tMax=tau*15,lpMin=-7,lpMax=3,Pult=Q/S;
+    cx.strokeStyle='#333';cx.lineWidth=2;cx.beginPath();cx.moveTo(pad.l,pad.t);cx.lineTo(pad.l,H-pad.b);cx.lineTo(W-pad.r,H-pad.b);cx.stroke();
+    cx.fillStyle='#666';cx.font='11px Verdana';cx.textAlign='right';for(var lp=lpMin;lp<=lpMax;lp++){var y=pad.t+ph*(1-(lp-lpMin)/(lpMax-lpMin));cx.fillText('1e'+lp,pad.l-8,y+4);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(pad.l,y);cx.lineTo(W-pad.r,y);cx.stroke();}
+    cx.textAlign='center';for(var i=0;i<=5;i++){var t=tMax*i/5,x=pad.l+pw*i/5;cx.fillStyle='#666';cx.fillText(t.toFixed(1)+'s',x,H-pad.b+20);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(x,pad.t);cx.lineTo(x,H-pad.b);cx.stroke();}
+    cx.fillStyle='#333';cx.font='bold 12px Verdana';cx.textAlign='center';cx.fillText('Time (seconds)',W/2,H-10);cx.save();cx.translate(15,H/2);cx.rotate(-Math.PI/2);cx.fillText('Pressure (Torr)',0,0);cx.restore();
+    cx.strokeStyle='#003366';cx.lineWidth=3;cx.beginPath();var first=true;
+    for(var j=0;j<=300;j++){var tt=tMax*j/300;var P=760*Math.exp(-S*tt/V)+Pult;var logP=Math.log10(Math.max(P,1e-10));if(logP<lpMin)logP=lpMin;var xp=pad.l+pw*(tt/tMax),yp=pad.t+ph*(1-(logP-lpMin)/(lpMax-lpMin));if(first){cx.moveTo(xp,yp);first=false;}else cx.lineTo(xp,yp);}cx.stroke();
+    if(Pult>0){var logPult=Math.log10(Pult);if(logPult>=lpMin){var yult=pad.t+ph*(1-(logPult-lpMin)/(lpMax-lpMin));cx.strokeStyle='#CC0000';cx.lineWidth=1;cx.setLineDash([5,5]);cx.beginPath();cx.moveTo(pad.l,yult);cx.lineTo(W-pad.r,yult);cx.stroke();cx.setLineDash([]);cx.fillStyle='#CC0000';cx.font='10px Verdana';cx.textAlign='left';cx.fillText('Ultimate: '+Pult.toExponential(1)+' Torr',pad.l+5,yult-8);}}
+    document.getElementById('pdInfo').textContent='Time constant τ = V/S = '+tau.toFixed(2)+'s. Ultimate pressure = Q/S = '+Pult.toExponential(2)+' Torr.';
+};
+
+/* ===== OUTGASSING TIMELINE ===== */
+var ogData={ss:{q0:1e-7,decay:1,name:'SS (unbaked)'},ssb:{q0:1e-9,decay:0.5,name:'SS (baked)'},al:{q0:5e-7,decay:1,name:'Aluminum'},viton:{q0:1e-5,decay:0.8,name:'Viton'}};
+window.drawOG=function(){var cv=document.getElementById('ogCanvas'),cx=cv.getContext('2d'),mat=ogData[document.getElementById('ogM').value],A=parseFloat(document.getElementById('ogA').value);var W=cv.width,H=cv.height,pad={t:50,r:30,b:60,l:80},pw=W-pad.l-pad.r,ph=H-pad.t-pad.b;cx.fillStyle='#FFF';cx.fillRect(0,0,W,H);
+    var tMax=100,ltMin=-14,ltMax=-3;
+    cx.strokeStyle='#333';cx.lineWidth=2;cx.beginPath();cx.moveTo(pad.l,pad.t);cx.lineTo(pad.l,H-pad.b);cx.lineTo(W-pad.r,H-pad.b);cx.stroke();
+    cx.fillStyle='#666';cx.font='11px Verdana';cx.textAlign='right';for(var lp=ltMin;lp<=ltMax;lp+=1){var y=pad.t+ph*(1-(lp-ltMin)/(ltMax-ltMin));cx.fillText('1e'+lp,pad.l-8,y+4);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(pad.l,y);cx.lineTo(W-pad.r,y);cx.stroke();}
+    cx.textAlign='center';for(var i=0;i<=5;i++){var t=tMax*i/5,x=pad.l+pw*i/5;cx.fillStyle='#666';cx.fillText(t.toFixed(0)+'hr',x,H-pad.b+20);}
+    cx.fillStyle='#333';cx.font='bold 12px Verdana';cx.textAlign='center';cx.fillText('Pumping Time (hours)',W/2,H-10);cx.save();cx.translate(15,H/2);cx.rotate(-Math.PI/2);cx.fillText('Gas Load (Torr·L/s)',0,0);cx.restore();
+    cx.strokeStyle='#006666';cx.lineWidth=3;cx.beginPath();var first=true;
+    for(var j=1;j<=300;j++){var th=tMax*j/300;if(th<0.1)th=0.1;var q=mat.q0*A*Math.pow(th,-mat.decay);var logQ=Math.log10(Math.max(q,1e-15));if(logQ<ltMin)logQ=ltMin;if(logQ>ltMax)logQ=ltMax;var xp=pad.l+pw*(th/tMax),yp=pad.t+ph*(1-(logQ-ltMin)/(ltMax-ltMin));if(first){cx.moveTo(xp,yp);first=false;}else cx.lineTo(xp,yp);}cx.stroke();
+    cx.fillStyle='#006666';cx.font='bold 13px Georgia';cx.textAlign='left';cx.fillText(mat.name+' ('+A+' cm²)',pad.l+10,pad.t+20);
+};
+
+/* ===== ACCORDION ===== */
+window.toggleAcc=function(btn){var body=btn.nextElementSibling;var ex=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',ex?'false':'true');body.classList.toggle('open');};
+
+/* ===== QUIZ ===== */
+var quizData=[
+    {q:'1. The mean free path of air at 10⁻³ Torr is approximately:',opts:['66 nm','5 mm','5 cm','50 m'],ans:2,exp:'λ = 5×10⁻³/10⁻³ = 5 cm.'},
+    {q:'2. Which equation describes the relationship between vapor pressure and temperature?',opts:['Ideal Gas Law','Clausius-Clapeyron','Bernoulli\'s Equation','Navier-Stokes'],ans:1,exp:'The Clausius-Clapeyron equation relates vapor pressure to temperature via the enthalpy of vaporization.'},
+    {q:'3. A Knudsen number of 0.005 indicates:',opts:['Molecular flow','Transition flow','Viscous flow','No flow'],ans:2,exp:'Kn < 0.01 means viscous flow where molecule-molecule collisions dominate.'},
+    {q:'4. The dominant outgassing species in an unbaked stainless steel system is:',opts:['Hydrogen (H₂)','Carbon monoxide (CO)','Water vapor (H₂O)','Nitrogen (N₂)'],ans:2,exp:'Water adsorbed on surfaces is the dominant outgassing species in unbaked systems.'},
+    {q:'5. Converting 1 Torr to Pascal gives approximately:',opts:['13.3 Pa','133 Pa','1333 Pa','101,325 Pa'],ans:1,exp:'1 Torr = 133.32 Pa.'},
+    {q:'6. In molecular flow, doubling the tube diameter increases conductance by a factor of:',opts:['2','4','8','16'],ans:2,exp:'Molecular flow conductance ∝ D³. Doubling D gives 2³ = 8× increase.'},
+    {q:'7. A fingerprint on a vacuum component has an outgassing rate approximately:',opts:['Equal to clean steel','10× higher than clean steel','100× higher','10,000× higher'],ans:3,exp:'Fingerprint outgassing rate (~10⁻⁴) is about 10,000× higher than clean stainless steel (~10⁻⁸ to 10⁻⁹).'},
+    {q:'8. Water boils at room temperature (~20°C) when pressure drops below approximately:',opts:['100 Torr','17.5 Torr','1 Torr','0.001 Torr'],ans:1,exp:'Water\'s vapor pressure at 20°C is about 17.5 Torr.'},
+    {q:'9. The effective pumping speed formula (1/Seff = 1/Spump + 1/C) is analogous to:',opts:['Resistors in series','Resistors in parallel','Capacitors in series','Inductors in series'],ans:1,exp:'The reciprocal addition is identical to resistors in parallel in electrical circuits.'},
+    {q:'10. Bakeout of a vacuum system primarily accelerates removal of:',opts:['Bulk gas volume','Adsorbed water vapor','Real leaks','Permeation through metal'],ans:1,exp:'Bakeout primarily drives off adsorbed water that would otherwise take weeks to desorb at room temperature.'},
+    {q:'11. At ultra-high vacuum (10⁻¹⁰ Torr), the mean free path is approximately:',opts:['5 cm','50 m','500 km','50,000 km'],ans:3,exp:'λ = 5×10⁻³/10⁻¹⁰ = 5×10⁷ cm = 500 km.'},
+    {q:'12. Which material should NOT be used in a high vacuum system?',opts:['Stainless steel 316','Viton O-rings','Standard lubricating grease','OFHC copper'],ans:2,exp:'Standard greases have very high vapor pressures and outgassing rates, contaminating the vacuum.'},
+    {q:'13. The Boltzmann constant k_B in the rigorous MFP equation represents:',opts:['Molecular diameter','Energy per molecule per kelvin','Gas flow rate','Pump speed'],ans:1,exp:'k_B = 1.38×10⁻²³ J/K relates molecular kinetic energy to temperature.'},
+    {q:'14. For unbaked systems, outgassing rate decreases with pumping time following:',opts:['t⁻¹/² decay','t⁻¹ decay','Linear decay','Exponential decay'],ans:1,exp:'Water desorption-limited outgassing follows t⁻¹ decay—each decade of improvement takes 10× longer.'},
+    {q:'15. A pump rated at 500 L/s connected through a pipe with 50 L/s conductance gives an effective speed of:',opts:['550 L/s','500 L/s','~45 L/s','~250 L/s'],ans:2,exp:'1/Seff = 1/500 + 1/50 = 0.022. Seff = 45.5 L/s. The conductance bottleneck dominates.'}
+];
+function buildQuiz(){var box=document.getElementById('quizBox');if(!box)return;var html='';quizData.forEach(function(q,i){html+='<div class="quiz-q" data-qi="'+i+'"><h4>'+q.q+'</h4>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+o+'</span></label>';});html+='<div class="quiz-fb" id="fb'+i+'"></div></div>';});box.innerHTML=html;}
+window.gradeQuiz=function(){var score=0,total=quizData.length;quizData.forEach(function(q,i){var div=document.querySelector('[data-qi="'+i+'"]');var sel=div.querySelector('input:checked');var fb=document.getElementById('fb'+i);div.querySelectorAll('.quiz-opt').forEach(function(o){o.classList.remove('correct','wrong');});if(sel){var v=parseInt(sel.value);if(v===q.ans){score++;sel.closest('.quiz-opt').classList.add('correct');fb.className='quiz-fb show ok';fb.innerHTML='&#10004; Correct! '+q.exp;}else{sel.closest('.quiz-opt').classList.add('wrong');div.querySelectorAll('.quiz-opt')[q.ans].classList.add('correct');fb.className='quiz-fb show no';fb.innerHTML='&#10008; Incorrect. '+q.exp;}}else{fb.className='quiz-fb show no';fb.innerHTML='No answer selected. '+q.exp;}});
+    var pct=Math.round(score/total*100);document.getElementById('scoreFinal').textContent=score+'/'+total+' ('+pct+'%)';var msg;if(pct>=90)msg='🎉 Excellent! Outstanding mastery of vacuum concepts!';else if(pct>=70)msg='👍 Good work! Review the topics you missed.';else if(pct>=50)msg='📚 Fair. Consider re-reading the lecture material.';else msg='💪 Keep studying. Review the lecture and try the simulators again.';document.getElementById('scoreMsg').textContent=msg;document.getElementById('scoreBox').style.display='block';document.getElementById('scoreBox').scrollIntoView({behavior:'smooth'});};
+})();
+</script>
+</body>
+</html>

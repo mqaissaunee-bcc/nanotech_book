@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Module 9: Etching Technology — Comprehensive coverage of wet and dry etching, isotropic and anisotropic profiles, selectivity, RIE, DRIE Bosch process, atomic layer etching, etchant chemistries, and hands-on ferric chloride etching lab.">
+<title>Module 9: Etching Technology | Introduction to Nanotechnology</title>
+<style>
+:root{--navy:#000066;--primary-blue:#003366;--secondary-blue:#336699;--light-blue:#6699CC;--pale-blue:#CCEEFF;--ice-blue:#E6F3FF;--etch-amber:#CC6600;--dark-amber:#993300;--light-amber:#FF9933;--pale-amber:#FFF3E0;--warm-amber:#FFE0B2;--etch-teal:#006666;--dark-teal:#004D4D;--light-teal:#009999;--pale-teal:#E0F7FA;--green:#008000;--dark-green:#006600;--pale-green:#E6FFE6;--gold:#CC9900;--dark-gold:#996600;--orange:#FF6600;--red:#CC0000;--dark-red:#990000;--pale-red:#FFE6E6;--purple:#663399;--pale-purple:#F3E8FF;--copper:#CC6633;--white:#FFFFFF;--off-white:#F5F5F5;--light-gray:#E0E0E0;--medium-gray:#999999;--dark-gray:#666666;--charcoal:#333333;--black:#000000;--shadow:rgba(0,0,0,0.15);--shadow-dark:rgba(0,0,0,0.25);--font-primary:Georgia,'Times New Roman',serif;--font-display:'Trebuchet MS',Arial,sans-serif;--font-mono:'Courier New',monospace;--transition:0.3s ease;--radius:8px;--radius-lg:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-primary);background:linear-gradient(135deg,var(--pale-amber) 0%,var(--white) 50%,var(--pale-teal) 100%);color:var(--charcoal);line-height:1.7;min-height:100vh}
+.skip-link{position:absolute;top:-50px;left:10px;background:var(--etch-amber);color:var(--white);padding:12px 20px;z-index:10000;border-radius:var(--radius);font-weight:bold;text-decoration:none;font-family:var(--font-display)}
+.skip-link:focus{top:10px}
+a:focus,button:focus,input:focus,select:focus,textarea:focus,[tabindex]:focus{outline:3px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+header{background:linear-gradient(135deg,var(--dark-amber) 0%,var(--etch-amber) 50%,var(--etch-teal) 100%);color:var(--white);padding:1rem 2rem;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px var(--shadow-dark)}
+.header-content{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.logo-section{display:flex;align-items:center;gap:1rem}
+.logo-icon{width:55px;height:55px;background:linear-gradient(135deg,var(--etch-amber),var(--copper));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:bold;font-size:1.2rem;color:var(--white);border:3px solid var(--gold);box-shadow:0 4px 15px var(--shadow),0 0 20px rgba(204,102,0,0.4);animation:etchGlow 3s ease-in-out infinite}
+@keyframes etchGlow{0%,100%{box-shadow:0 4px 15px var(--shadow),0 0 20px rgba(204,102,0,0.4)}50%{box-shadow:0 4px 15px var(--shadow),0 0 35px rgba(255,153,51,0.7)}}
+.site-title{font-family:var(--font-display);font-size:1.3rem;font-weight:bold;letter-spacing:0.5px}
+.site-subtitle{font-size:0.95rem;opacity:0.9;margin-top:2px}
+.nav-buttons{display:flex;gap:0.75rem;flex-wrap:wrap}
+.nav-btn{background:rgba(255,255,255,0.15);color:var(--white);padding:0.6rem 1.2rem;border-radius:var(--radius);text-decoration:none;font-size:0.9rem;font-weight:600;transition:all var(--transition);border:1px solid rgba(255,255,255,0.3);font-family:var(--font-display)}
+.nav-btn:hover,.nav-btn:focus{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+main{max-width:1400px;margin:0 auto;padding:2rem}
+.hero{background:linear-gradient(135deg,var(--dark-amber) 0%,var(--etch-amber) 40%,var(--etch-teal) 100%);color:var(--white);padding:3rem;border-radius:var(--radius-lg);margin-bottom:2rem;box-shadow:0 8px 30px var(--shadow-dark);text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,153,51,0.25) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(0,102,102,0.2) 0%,transparent 50%);pointer-events:none}
+.hero h1{font-family:var(--font-display);font-size:2.5rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,0.3);position:relative}
+.hero p{font-size:1.15rem;max-width:900px;margin:0 auto 1.5rem;opacity:0.95;position:relative}
+.hero-meta{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;font-size:0.95rem;position:relative}
+.hero-meta span{background:rgba(255,255,255,0.2);padding:0.5rem 1rem;border-radius:25px;border:1px solid rgba(255,255,255,0.3)}
+.progress-container{background:var(--white);padding:1rem 1.5rem;border-radius:var(--radius);margin-bottom:2rem;box-shadow:0 4px 15px var(--shadow)}
+.progress-label{display:flex;justify-content:space-between;margin-bottom:0.5rem;font-weight:600;color:var(--etch-amber);font-family:var(--font-display)}
+.progress-bar{height:12px;background:var(--light-gray);border-radius:6px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--etch-amber),var(--light-amber));width:0%;transition:width 0.5s ease;border-radius:6px}
+.objectives{background:linear-gradient(135deg,var(--pale-amber) 0%,var(--white) 100%);border-left:5px solid var(--etch-amber);padding:2rem;border-radius:var(--radius);margin-bottom:2rem;box-shadow:0 4px 15px var(--shadow)}
+.objectives h3{font-family:var(--font-display);color:var(--dark-amber);font-size:1.4rem;margin-bottom:1rem}
+.objectives ul{margin-left:1.5rem}
+.objectives li{margin-bottom:0.6rem}
+.objectives li::marker{color:var(--etch-amber);font-weight:bold}
+.tabs{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem;background:var(--white);padding:1rem;border-radius:var(--radius-lg);box-shadow:0 4px 15px var(--shadow)}
+.tab-btn{flex:1;min-width:130px;padding:1rem;border:2px solid var(--light-gray);background:var(--white);color:var(--charcoal);font-family:var(--font-display);font-size:0.85rem;font-weight:600;border-radius:var(--radius);cursor:pointer;transition:all var(--transition);text-align:center}
+.tab-btn:hover{border-color:var(--etch-amber);background:var(--pale-amber)}
+.tab-btn.active{background:linear-gradient(135deg,var(--etch-amber),var(--dark-amber));color:var(--white);border-color:var(--etch-amber);box-shadow:0 4px 15px var(--shadow)}
+.tab-content{display:none;animation:fadeIn 0.4s ease}
+.tab-content.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card{background:var(--white);border-radius:var(--radius-lg);box-shadow:0 4px 20px var(--shadow);margin-bottom:2rem;overflow:hidden}
+.card-header{background:linear-gradient(135deg,var(--etch-amber),var(--dark-amber));color:var(--white);padding:1.25rem 1.5rem;font-family:var(--font-display);font-size:1.2rem;font-weight:bold}
+.card-header.teal{background:linear-gradient(135deg,var(--etch-teal),var(--dark-teal))}
+.card-header.green{background:linear-gradient(135deg,var(--green),var(--dark-green))}
+.card-header.blue{background:linear-gradient(135deg,var(--primary-blue),var(--navy))}
+.card-header.red{background:linear-gradient(135deg,var(--red),var(--dark-red))}
+.card-header.purple{background:linear-gradient(135deg,var(--purple),#4B0082)}
+.card-body{padding:2rem}
+.section-header{font-family:var(--font-display);font-size:1.6rem;color:var(--dark-amber);margin:2rem 0 1.5rem;padding-bottom:0.75rem;border-bottom:3px solid var(--etch-amber)}
+.subsection-header{font-family:var(--font-display);font-size:1.3rem;color:var(--etch-teal);margin:1.5rem 0 1rem}
+.tooltip-term{color:var(--dark-amber);border-bottom:2px dotted var(--etch-amber);cursor:help;position:relative;font-weight:600;display:inline}
+.tooltip-content{visibility:hidden;opacity:0;position:fixed;z-index:9999;background:var(--charcoal);color:var(--white);padding:1rem;border-radius:var(--radius);font-size:0.9rem;font-weight:normal;line-height:1.5;width:300px;max-width:90vw;box-shadow:0 8px 25px var(--shadow-dark);transition:opacity 0.3s ease,visibility 0.3s ease;pointer-events:none}
+.tooltip-content.show{visibility:visible;opacity:1}
+.data-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem;box-shadow:0 4px 15px var(--shadow);border-radius:var(--radius);overflow:hidden}
+.data-table thead{background:linear-gradient(135deg,var(--etch-amber),var(--dark-amber));color:var(--white)}
+.data-table th{padding:1rem;text-align:left;font-weight:600;font-family:var(--font-display)}
+.data-table td{padding:0.85rem 1rem;border-bottom:1px solid var(--light-gray)}
+.data-table tbody tr:hover{background:var(--pale-amber)}
+.data-table tbody tr:nth-child(even){background:var(--off-white)}
+.data-table tbody tr:nth-child(even):hover{background:var(--pale-amber)}
+.table-responsive{overflow-x:auto;margin:1.5rem 0}
+.two-column{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+.column-box{background:var(--off-white);padding:1.5rem;border-radius:var(--radius);border-top:4px solid var(--etch-amber)}
+.column-box.teal-top{border-top-color:var(--etch-teal)}
+.column-box.green-top{border-top-color:var(--green)}
+.column-box.red-top{border-top-color:var(--red)}
+.column-box.blue-top{border-top-color:var(--primary-blue)}
+.column-box.purple-top{border-top-color:var(--purple)}
+.column-box h4{font-family:var(--font-display);margin-bottom:0.75rem;color:var(--dark-amber)}
+.formula-box{background:linear-gradient(135deg,var(--ice-blue),var(--white));border:2px solid var(--secondary-blue);border-radius:var(--radius);padding:1.5rem;margin:1.5rem 0;text-align:center}
+.formula-box h4{font-family:var(--font-display);color:var(--primary-blue);margin-bottom:0.75rem}
+.formula{font-family:var(--font-mono);font-size:1.3rem;color:var(--navy);margin:0.75rem 0;padding:0.5rem;background:var(--white);border-radius:var(--radius);display:inline-block}
+.formula-description{font-size:0.95rem;color:var(--dark-gray);margin-top:0.75rem;text-align:left}
+.info-note{background:linear-gradient(135deg,var(--pale-amber),var(--white));border-left:4px solid var(--etch-amber);padding:1.25rem;border-radius:var(--radius);margin:1.5rem 0}
+.teal-note{background:linear-gradient(135deg,var(--pale-teal),var(--white));border-left:4px solid var(--etch-teal);padding:1.25rem;border-radius:var(--radius);margin:1.5rem 0}
+.safety-note{background:linear-gradient(135deg,var(--pale-red),var(--white));border-left:4px solid var(--red);padding:1.25rem;border-radius:var(--radius);margin:1.5rem 0}
+.industry-note{background:linear-gradient(135deg,var(--pale-green),var(--white));border-left:4px solid var(--green);padding:1.25rem;border-radius:var(--radius);margin:1.5rem 0}
+.purple-note{background:linear-gradient(135deg,var(--pale-purple),var(--white));border-left:4px solid var(--purple);padding:1.25rem;border-radius:var(--radius);margin:1.5rem 0}
+.info-note h4,.teal-note h4,.safety-note h4,.industry-note h4,.purple-note h4{font-family:var(--font-display);margin-bottom:0.5rem}
+.diagram-container{background:var(--white);border:2px solid var(--light-gray);border-radius:var(--radius);padding:1.5rem;margin:1.5rem 0;text-align:center;overflow-x:auto}
+.diagram-container svg{max-width:100%;height:auto}
+.diagram-caption{font-style:italic;color:var(--dark-gray);font-size:0.9rem;margin-top:0.75rem;text-align:center}
+.sim-container{background:var(--off-white);border-radius:var(--radius);padding:1.5rem;margin:1.5rem 0}
+.sim-controls{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-bottom:1rem;padding:1rem;background:var(--white);border-radius:var(--radius);border:1px solid var(--light-gray)}
+.sim-controls label{font-weight:600;font-family:var(--font-display);color:var(--dark-amber)}
+.sim-controls select,.sim-controls input[type="range"]{padding:0.5rem;border:2px solid var(--light-gray);border-radius:var(--radius);font-family:var(--font-primary);font-size:0.95rem;background:var(--white)}
+.sim-controls select:focus,.sim-controls input:focus{border-color:var(--etch-amber)}
+.sim-canvas-wrap{background:var(--white);border:2px solid var(--light-gray);border-radius:var(--radius);overflow:hidden;text-align:center}
+.sim-canvas-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.sim-info{margin-top:1rem;padding:1rem;background:var(--pale-amber);border-radius:var(--radius);font-size:0.95rem}
+.quiz-question{background:var(--off-white);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem;border-left:4px solid var(--etch-amber)}
+.question-text{font-weight:600;margin-bottom:1rem;font-size:1.05rem}
+.quiz-options{list-style:none;margin:0;padding:0}
+.quiz-options li{margin-bottom:0.6rem}
+.quiz-options label{display:flex;align-items:flex-start;gap:0.75rem;padding:0.75rem 1rem;border-radius:var(--radius);cursor:pointer;transition:background var(--transition);border:2px solid transparent}
+.quiz-options label:hover{background:var(--pale-amber);border-color:var(--etch-amber)}
+.quiz-options input[type="radio"]{margin-top:3px;accent-color:var(--etch-amber);transform:scale(1.2)}
+.quiz-feedback{margin-top:0.75rem;padding:0.75rem 1rem;border-radius:var(--radius);font-weight:600;display:none}
+.quiz-feedback.correct{display:block;background:var(--pale-green);color:var(--dark-green);border-left:4px solid var(--green)}
+.quiz-feedback.incorrect{display:block;background:var(--pale-red);color:var(--dark-red);border-left:4px solid var(--red)}
+.check-btn{background:linear-gradient(135deg,var(--etch-amber),var(--dark-amber));color:var(--white);border:none;padding:0.6rem 1.5rem;border-radius:var(--radius);cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:0.95rem;transition:all var(--transition)}
+.check-btn:hover{transform:translateY(-2px);box-shadow:0 4px 15px var(--shadow)}
+.check-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.quiz-score{background:linear-gradient(135deg,var(--etch-amber),var(--etch-teal));color:var(--white);padding:1.5rem;border-radius:var(--radius);text-align:center;font-family:var(--font-display);font-size:1.3rem;margin-top:1.5rem;display:none}
+.lab-step{display:flex;gap:1.5rem;margin-bottom:1.5rem;padding:1.5rem;background:var(--off-white);border-radius:var(--radius);border-left:4px solid var(--etch-teal)}
+.step-number{flex-shrink:0;width:50px;height:50px;background:linear-gradient(135deg,var(--etch-teal),var(--dark-teal));color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:bold;font-size:1.2rem}
+.step-content h4{font-family:var(--font-display);color:var(--dark-teal);margin-bottom:0.5rem}
+.discussion-list{list-style:none;counter-reset:disc;margin:0;padding:0}
+.discussion-list li{counter-increment:disc;padding:1rem 1rem 1rem 3.5rem;margin-bottom:0.75rem;background:var(--off-white);border-radius:var(--radius);position:relative;border-left:3px solid var(--etch-amber)}
+.discussion-list li::before{content:counter(disc);position:absolute;left:0.75rem;top:0.85rem;background:var(--etch-amber);color:var(--white);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:bold;font-size:0.85rem}
+footer{background:linear-gradient(135deg,var(--charcoal),var(--black));color:var(--light-gray);padding:2rem;text-align:center;margin-top:3rem;font-size:0.9rem}
+footer a{color:var(--light-amber);text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:768px){.hero h1{font-size:1.8rem}.hero{padding:2rem 1.5rem}main{padding:1rem}.two-column{grid-template-columns:1fr}.tabs{flex-direction:column}.tab-btn{min-width:auto}.lab-step{flex-direction:column}.header-content{flex-direction:column;text-align:center}.nav-buttons{justify-content:center}.data-table{font-size:0.85rem}.data-table th,.data-table td{padding:0.6rem}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header>
+<div class="header-content">
+<div class="logo-section">
+<div class="logo-icon" aria-hidden="true">E</div>
+<div><div class="site-title">Introduction to Nanotechnology</div><div class="site-subtitle">Module 9: Etching Technology</div></div>
+</div>
+<nav class="nav-buttons" aria-label="Module navigation">
+<a href="module8_photolithography.html" class="nav-btn">&larr; Module 8</a>
+<a href="course-outline.html" class="nav-btn">&#127968; Course Home</a>
+<a href="module10_pattern_transfer.html" class="nav-btn">Module 10 &rarr;</a>
+</nav>
+</div>
+</header>
+
+<main id="main-content">
+
+<!-- HERO -->
+<div class="hero">
+<h1>Module 9: Etching Technology</h1>
+<p>Sculpting at the nanoscale &mdash; learn to control etch profiles, selectivity, and rate to transfer patterns with nanometer precision. From wet-bench chemistry to advanced plasma reactors, etching is where design becomes device.</p>
+<div class="hero-meta">
+<span>&#128337; 3&ndash;4 Hours</span>
+<span>&#128218; Lecture + Lab</span>
+<span>&#128187; Interactive Simulations</span>
+<span>&#9879;&#65039; Chemical Safety</span>
+</div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-container" role="region" aria-label="Module progress">
+<div class="progress-label"><span>Module Progress</span><span id="progressText">0%</span></div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>
+</div>
+
+<!-- OBJECTIVES -->
+<div class="objectives" role="region" aria-labelledby="obj-heading">
+<h3 id="obj-heading">&#127919; Learning Objectives</h3>
+<p>Upon completion of this module, students will be able to:</p>
+<ul>
+<li>Explain the fundamental principles of wet chemical etching and dry plasma etching</li>
+<li>Differentiate between <strong>isotropic</strong> and <strong>anisotropic</strong> etch profiles and their applications</li>
+<li>Calculate <strong>etch rates</strong>, <strong>selectivity ratios</strong>, and <strong>undercut distances</strong></li>
+<li>Describe the operation of <strong>Reactive Ion Etching (RIE)</strong> and <strong>Deep RIE (DRIE)</strong> systems</li>
+<li>Explain the <strong>Bosch process</strong> cycle of passivation and etching for high-aspect-ratio features</li>
+<li>Identify common etchant chemistries (HF, KOH, FeCl&#8323;, H&#8323;PO&#8324;) and their target materials</li>
+<li>Describe emerging <strong>Atomic Layer Etching (ALE)</strong> and its role in sub-5 nm manufacturing</li>
+<li>Apply safety protocols for handling chemical etchants</li>
+<li>Perform a hands-on wet etch experiment and measure etch rate experimentally</li>
+</ul>
+</div>
+
+<!-- TABS -->
+<div class="tabs" role="tablist" aria-label="Module sections">
+<button class="tab-btn active" onclick="showTab('lecture')" role="tab" aria-selected="true" aria-controls="lecture" id="tab-lecture">&#128214; Lecture</button>
+<button class="tab-btn" onclick="showTab('theory')" role="tab" aria-selected="false" aria-controls="theory" id="tab-theory">&#128300; Theory Deep Dive</button>
+<button class="tab-btn" onclick="showTab('simulation')" role="tab" aria-selected="false" aria-controls="simulation" id="tab-simulation">&#128187; Simulations</button>
+<button class="tab-btn" onclick="showTab('lab')" role="tab" aria-selected="false" aria-controls="lab" id="tab-lab">&#129514; Hands-On Lab</button>
+<button class="tab-btn" onclick="showTab('quiz')" role="tab" aria-selected="false" aria-controls="quiz" id="tab-quiz">&#9989; Quiz</button>
+</div>
+
+<!-- ================================================================
+     LECTURE TAB
+     ================================================================ -->
+<div id="lecture" class="tab-content active" role="tabpanel" aria-labelledby="tab-lecture">
+
+<div class="card"><div class="card-header">Section 9.1 &mdash; What Is Etching?</div><div class="card-body">
+<p>In semiconductor fabrication, <span class="tooltip-term" data-tooltip="The controlled removal of material from a substrate surface using chemical reactions, physical bombardment, or both. Etching transfers patterns from a mask into the underlying material.">etching<span class="tooltip-content"></span></span> is the controlled removal of material from a substrate to transfer a pattern defined by a mask. If photolithography is the &ldquo;photography&rdquo; of the semiconductor world, etching is the &ldquo;sculpture&rdquo; &mdash; it carves the pattern into the actual device layers.</p>
+<p>Every integrated circuit, MEMS device, and nanoscale sensor requires dozens to hundreds of etching steps during fabrication. A modern microprocessor may undergo more than 60 individual etch steps to define transistor gates, interconnect trenches, contact holes, and isolation structures. The challenge at each step: remove <em>exactly</em> the right material, in <em>exactly</em> the right places, to <em>exactly</em> the right depth &mdash; without damaging anything else.</p>
+
+<div class="info-note"><h4>&#128161; The Big Picture</h4>
+<p>The fabrication sequence is cyclical: <strong>Deposit &rarr; Pattern (Lithography) &rarr; Etch &rarr; Repeat</strong>. This cycle may be performed 30&ndash;60+ times to build a modern chip. Etching is the subtractive step that defines device geometry.</p></div>
+
+<h3 class="subsection-header">Etching in the Fabrication Sequence</h3>
+<p>Etching occurs immediately after the photolithography step. A thin film has been deposited, a photoresist pattern defined on top, and now the exposed regions of the thin film must be removed. The photoresist acts as a protective <span class="tooltip-term" data-tooltip="A material layer that protects selected regions of the substrate from being etched. Common mask materials include photoresist, silicon dioxide, silicon nitride, and metals.">etch mask<span class="tooltip-content"></span></span>, shielding the areas underneath while the etchant attacks the unprotected film.</p>
+
+<!-- SVG: Etch Process Overview -->
+<div class="diagram-container" role="img" aria-label="Diagram showing the etch process: before etching with patterned mask, and after etching with pattern transferred into the film">
+<svg viewBox="0 0 750 280" xmlns="http://www.w3.org/2000/svg" style="max-width:750px;">
+<text x="185" y="22" text-anchor="middle" font-family="Trebuchet MS,sans-serif" font-size="15" font-weight="bold" fill="#993300">Before Etching</text>
+<rect x="30" y="150" width="310" height="80" fill="#E0E0E0" stroke="#999" stroke-width="1" rx="2"/>
+<text x="185" y="195" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#666">Substrate (Si)</text>
+<rect x="30" y="105" width="310" height="45" fill="#6699CC" stroke="#336699" stroke-width="1"/>
+<text x="185" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="white" font-weight="bold">Target Film</text>
+<rect x="30" y="72" width="90" height="33" fill="#CC3333" stroke="#990000" stroke-width="1" rx="2"/>
+<rect x="155" y="72" width="40" height="33" fill="#CC3333" stroke="#990000" stroke-width="1" rx="2"/>
+<rect x="250" y="72" width="90" height="33" fill="#CC3333" stroke="#990000" stroke-width="1" rx="2"/>
+<text x="75" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="white">PR Mask</text>
+<text x="295" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="white">PR Mask</text>
+<line x1="135" y1="48" x2="135" y2="69" stroke="#CC6600" stroke-width="2" marker-end="url(#a1)"/>
+<line x1="215" y1="48" x2="215" y2="69" stroke="#CC6600" stroke-width="2" marker-end="url(#a1)"/>
+<text x="175" y="42" text-anchor="middle" font-family="Trebuchet MS,sans-serif" font-size="11" fill="#CC6600" font-weight="bold">Etchant</text>
+<text x="580" y="22" text-anchor="middle" font-family="Trebuchet MS,sans-serif" font-size="15" font-weight="bold" fill="#006666">After Etching</text>
+<rect x="420" y="150" width="310" height="80" fill="#E0E0E0" stroke="#999" stroke-width="1" rx="2"/>
+<text x="575" y="195" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#666">Substrate (Si)</text>
+<rect x="420" y="105" width="90" height="45" fill="#6699CC" stroke="#336699" stroke-width="1"/>
+<rect x="545" y="105" width="40" height="45" fill="#6699CC" stroke="#336699" stroke-width="1"/>
+<rect x="640" y="105" width="90" height="45" fill="#6699CC" stroke="#336699" stroke-width="1"/>
+<rect x="510" y="105" width="35" height="45" fill="#F5F5F5" stroke="#CCC" stroke-width="1" stroke-dasharray="4"/>
+<rect x="585" y="105" width="55" height="45" fill="#F5F5F5" stroke="#CCC" stroke-width="1" stroke-dasharray="4"/>
+<text x="527" y="131" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#999">Etched</text>
+<text x="612" y="131" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#999">Etched</text>
+<line x1="368" y1="130" x2="405" y2="130" stroke="#333" stroke-width="2" marker-end="url(#a2)"/>
+<text x="375" y="265" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#666" font-style="italic">Figure 9.1: The etch step transfers the photoresist pattern into the underlying thin film.</text>
+<defs><marker id="a1" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto"><path d="M0,0 L4,8 L8,0 Z" fill="#CC6600"/></marker>
+<marker id="a2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#333"/></marker></defs>
+</svg></div>
+
+<h3 class="subsection-header">The Two Fundamental Classes of Etching</h3>
+<div class="two-column">
+<div class="column-box"><h4 style="color:var(--etch-amber)">&#128167; Wet Etching</h4>
+<p>The substrate is immersed in a liquid chemical solution that dissolves the target material through chemical reaction. This is the oldest and simplest etching technique.</p>
+<p><strong>Key traits:</strong> Generally isotropic, high selectivity, excellent throughput via batch processing, strong temperature dependence, lower equipment cost.</p></div>
+<div class="column-box teal-top"><h4 style="color:var(--etch-teal)">&#9889; Dry Etching</h4>
+<p>Reactive gases in a <span class="tooltip-term" data-tooltip="An ionized gas containing positive ions, free electrons, and neutral radicals. Plasma provides both reactive chemical species and directional kinetic energy for material removal.">plasma<span class="tooltip-content"></span></span> state attack the substrate through a combination of chemical reactions and physical ion bombardment.</p>
+<p><strong>Key traits:</strong> Can be highly anisotropic, moderate selectivity, excellent reproducibility, single-wafer processing, higher equipment cost.</p></div>
+</div>
+</div></div>
+
+<!-- Isotropic vs Anisotropic -->
+<div class="card"><div class="card-header teal">Section 9.2 &mdash; Isotropic vs. Anisotropic Etch Profiles</div><div class="card-body">
+<p>The most critical distinction in etching is the <strong>directionality</strong> of material removal. This determines the shape of the etch profile and ultimately what feature sizes are achievable.</p>
+<div class="two-column">
+<div class="column-box"><h4 style="color:var(--etch-amber)">&#9899; Isotropic Etching</h4>
+<p><strong>&ldquo;Iso&rdquo;</strong> = same, <strong>&ldquo;tropic&rdquo;</strong> = direction. The etch proceeds at the <strong>same rate in all directions</strong>. This produces a rounded cavity with <span class="tooltip-term" data-tooltip="The lateral distance an etch extends beneath the protective mask. In a perfectly isotropic etch, undercut distance equals the etch depth. Undercut limits the minimum achievable feature size.">undercut<span class="tooltip-content"></span></span> beneath the mask approximately equal to the etch depth.</p>
+<p><strong>Typical method:</strong> Wet chemical etching</p>
+<p><strong>Best for:</strong> Bulk removal, cleaning, MEMS cavities where undercut is tolerable</p></div>
+<div class="column-box teal-top"><h4 style="color:var(--etch-teal)">&#9899; Anisotropic Etching</h4>
+<p><strong>&ldquo;An&rdquo;</strong> = not. The etch rate <strong>varies with direction</strong>. In plasma dry etching, ions bombard vertically, so the vertical rate far exceeds lateral. This produces <strong>steep, near-vertical sidewalls</strong> with minimal undercut.</p>
+<p><strong>Typical method:</strong> RIE, ICP-RIE, DRIE</p>
+<p><strong>Best for:</strong> Critical dimension patterning, high-aspect-ratio trenches, sub-micron IC features</p></div>
+</div>
+
+<div class="formula-box"><h4>Degree of Anisotropy (A)</h4>
+<div class="formula">A = 1 &minus; (R<sub>lateral</sub> / R<sub>vertical</sub>)</div>
+<div class="formula-description">
+<p>Where R<sub>lateral</sub> is the lateral etch rate and R<sub>vertical</sub> is the vertical etch rate.</p>
+<ul style="margin-left:1.5rem"><li><strong>A = 0</strong> &rarr; Perfectly isotropic (equal in all directions)</li>
+<li><strong>A = 1</strong> &rarr; Perfectly anisotropic (zero lateral etching)</li>
+<li><strong>A = 0.5&ndash;0.9</strong> &rarr; Typical range for RIE processes</li></ul>
+</div></div>
+
+<div class="teal-note"><h4>&#129505; Crystal-Dependent Anisotropic Wet Etching</h4>
+<p>A special exception: <strong>KOH etching of silicon</strong> is an anisotropic <em>wet</em> etch. KOH etches the Si(100) crystal plane approximately 400&times; faster than the Si(111) plane, producing characteristic V-grooves with a precise 54.7&deg; angle. This is widely used in MEMS to create diaphragms, channels, and through-wafer vias.</p></div>
+</div></div>
+
+<!-- Wet Etching -->
+<div class="card"><div class="card-header">Section 9.3 &mdash; Wet Etching: Principles and Chemistries</div><div class="card-body">
+<p>Wet etching is conceptually simple: immerse a substrate in a chemical solution that dissolves the target material. Despite its simplicity, wet etching remains essential &mdash; roughly 30&ndash;40% of all etch steps in semiconductor fabrication are still wet processes.</p>
+
+<h3 class="subsection-header">Mechanism of Wet Etching</h3>
+<p>The wet etch process involves three sequential steps:</p>
+<ol style="margin-left:1.5rem;margin-bottom:1rem"><li><strong>Diffusion:</strong> Etchant molecules diffuse through solution to reach the surface</li>
+<li><strong>Reaction:</strong> Chemical reaction forms soluble byproducts</li>
+<li><strong>Removal:</strong> Reaction products dissolve and diffuse away into bulk solution</li></ol>
+<p>If the reaction is rate-limiting, the process is <strong>reaction-rate limited</strong> (strongly temperature-dependent). If diffusion is limiting, it is <strong>transport limited</strong> (dependent on agitation).</p>
+
+<h3 class="subsection-header">Common Wet Etchant Chemistries</h3>
+<div class="table-responsive"><table class="data-table" aria-label="Common wet etchant chemistries">
+<thead><tr><th>Target Material</th><th>Etchant</th><th>Type</th><th>Typical Rate</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>SiO&#8322;</td><td>Buffered HF (BOE)</td><td>Isotropic</td><td>~100 nm/min</td><td>Standard oxide etch; HF is extremely dangerous</td></tr>
+<tr><td>Si&#8323;N&#8324;</td><td>Hot H&#8323;PO&#8324; (160&deg;C)</td><td>Isotropic</td><td>~5 nm/min</td><td>Selective to oxide; requires heated bath</td></tr>
+<tr><td>Silicon</td><td>KOH (30%, 80&deg;C)</td><td>Anisotropic</td><td>~1 &micro;m/min</td><td>Crystal-plane selective; 54.7&deg; V-grooves</td></tr>
+<tr><td>Silicon</td><td>TMAH (25%)</td><td>Anisotropic</td><td>~0.5 &micro;m/min</td><td>CMOS-compatible alternative to KOH</td></tr>
+<tr><td>Aluminum</td><td>H&#8323;PO&#8324;/HNO&#8323;/H&#8322;O</td><td>Isotropic</td><td>~200 nm/min</td><td>Standard Al etchant; heated to 40&ndash;50&deg;C</td></tr>
+<tr><td>Copper</td><td>FeCl&#8323; (ferric chloride)</td><td>Isotropic</td><td>~25 &micro;m/min</td><td>PCB fabrication standard; our lab etchant</td></tr>
+<tr><td>Gold</td><td>KI/I&#8322; (iodine)</td><td>Isotropic</td><td>~0.5 &micro;m/min</td><td>Gentle etch for Au thin films</td></tr>
+<tr><td>Chromium</td><td>Ceric ammonium nitrate</td><td>Isotropic</td><td>~60 nm/min</td><td>Photomask fabrication</td></tr>
+</tbody></table></div>
+
+<div class="safety-note"><h4>&#9888;&#65039; Critical Safety: Hydrofluoric Acid (HF)</h4>
+<p>HF is the standard etchant for SiO&#8322; but is <strong>extremely dangerous</strong>. Unlike most acids that cause immediate pain, HF penetrates skin painlessly and attacks underlying bone by binding calcium. Even small exposures can be fatal. In fabs, HF handling requires specialized training, calcium gluconate antidote gel on-hand, buddy systems, and specific PPE. <strong>HF should never be used in educational settings without proper institutional safety protocols.</strong></p></div>
+</div></div>
+
+<!-- Dry Etching -->
+<div class="card"><div class="card-header teal">Section 9.4 &mdash; Dry Etching: From Sputtering to RIE</div><div class="card-body">
+<p>Dry etching uses reactive gases in a plasma state. Its evolution tracks the industry&rsquo;s march toward smaller features &mdash; each new technology node demanded more precise directional control than wet etching could provide.</p>
+
+<h3 class="subsection-header">The Spectrum of Dry Etching</h3>
+<div class="two-column">
+<div class="column-box red-top"><h4 style="color:var(--red)">Physical: Ion Milling</h4>
+<p>Inert gas ions (Ar&#8314;) sputter material by momentum transfer &mdash; pure physical bombardment.</p>
+<p><strong>Anisotropy:</strong> Very high &bull; <strong>Selectivity:</strong> Very low &bull; <strong>Damage:</strong> High</p></div>
+<div class="column-box green-top"><h4 style="color:var(--green)">Chemical: Plasma Etching</h4>
+<p>Reactive radicals (F*, Cl*, O*) diffuse to the substrate and react chemically. No directed ion bombardment.</p>
+<p><strong>Anisotropy:</strong> Very low &bull; <strong>Selectivity:</strong> Very high &bull; <strong>Damage:</strong> Very low</p></div>
+</div>
+
+<div class="info-note"><h4>&#128161; The Best of Both Worlds: Reactive Ion Etching (RIE)</h4>
+<p>RIE combines chemical reactivity with physical ion bombardment. Reactive gas ions are accelerated vertically onto the substrate by the <span class="tooltip-term" data-tooltip="A negative voltage that develops on the powered electrode in an RIE system because electrons are more mobile than ions. This DC bias accelerates positive ions vertically toward the substrate.">DC self-bias<span class="tooltip-content"></span></span>. Ions break bonds on horizontal surfaces while sidewalls see minimal bombardment. Result: <strong>high anisotropy AND reasonable selectivity</strong>.</p></div>
+
+<h3 class="subsection-header">How RIE Works</h3>
+<ol style="margin-left:1.5rem;margin-bottom:1rem">
+<li>Reactive gas fills the chamber at low pressure (10&ndash;100 mTorr)</li>
+<li>RF field (13.56 MHz) strips electrons, creating plasma with ions, electrons, and radicals</li>
+<li>DC self-bias develops on cathode, accelerating positive ions vertically toward substrate</li>
+<li>Ions bombard horizontal surfaces, breaking bonds and enabling chemical reactions</li>
+<li>Volatile reaction products (e.g., SiF&#8324;) are pumped away</li></ol>
+
+<h3 class="subsection-header">ICP-RIE: Higher Density, Better Control</h3>
+<p><span class="tooltip-term" data-tooltip="Inductively Coupled Plasma RIE. Uses separate RF sources for plasma generation and ion energy control, enabling high etch rates with low damage. Plasma densities of 10^11 to 10^12 ions/cm3 are achievable.">ICP-RIE<span class="tooltip-content"></span></span> is the workhorse of modern etching. It uses <strong>two independent RF sources</strong>: one to generate high-density plasma via inductive coil, and one to control ion energy at the substrate. This decoupling enables high etch rates while minimizing substrate damage.</p>
+
+<h3 class="subsection-header">Common Dry Etch Chemistries</h3>
+<div class="table-responsive"><table class="data-table" aria-label="Common dry etch gas chemistries">
+<thead><tr><th>Target Material</th><th>Etch Gas(es)</th><th>Reactive Species</th><th>Typical Rate</th></tr></thead>
+<tbody>
+<tr><td>Silicon</td><td>SF&#8326;, CF&#8324;/O&#8322;</td><td>F* radicals</td><td>200&ndash;500 nm/min</td></tr>
+<tr><td>SiO&#8322;</td><td>CHF&#8323;, C&#8324;F&#8328;</td><td>CF<sub>x</sub>&#8314; ions</td><td>100&ndash;300 nm/min</td></tr>
+<tr><td>Si&#8323;N&#8324;</td><td>CHF&#8323;/O&#8322;</td><td>F* + CF<sub>x</sub>&#8314;</td><td>50&ndash;150 nm/min</td></tr>
+<tr><td>Aluminum</td><td>BCl&#8323;/Cl&#8322;</td><td>Cl* radicals</td><td>300&ndash;600 nm/min</td></tr>
+<tr><td>Photoresist</td><td>O&#8322; (ashing)</td><td>O* radicals</td><td>100&ndash;500 nm/min</td></tr>
+</tbody></table></div>
+</div></div>
+
+<!-- Selectivity -->
+<div class="card"><div class="card-header">Section 9.5 &mdash; Selectivity, Etch Rate, and Process Control</div><div class="card-body">
+<div class="formula-box"><h4>Etch Rate (R)</h4>
+<div class="formula">R = d / t</div>
+<div class="formula-description"><p>Where <strong>d</strong> = thickness removed and <strong>t</strong> = etch time. Expressed in nm/min or &micro;m/min.</p></div></div>
+
+<div class="formula-box"><h4>Selectivity (S)</h4>
+<div class="formula">S = R<sub>target</sub> / R<sub>mask</sub></div>
+<div class="formula-description"><p>Ratio of etch rate of target material to mask (or stop layer). Higher selectivity = better mask preservation.</p>
+<ul style="margin-left:1.5rem"><li><strong>Wet etching:</strong> Selectivity can exceed 100:1 to 1000:1</li>
+<li><strong>Dry etching (RIE):</strong> Typical 3:1 to 30:1</li>
+<li><strong>Ion milling:</strong> Near 1:1 (poor)</li></ul></div></div>
+
+<div class="info-note"><h4>&#128200; Worked Example</h4>
+<p>A 500 nm SiO&#8322; film is etched in BOE for 5 min (fully removed). Etch rate = 500 nm / 5 min = <strong>100 nm/min</strong>.</p>
+<p>If the photoresist lost 25 nm during the same etch: Selectivity = 100 / (25/5) = <strong>20:1</strong>.</p></div>
+</div></div>
+
+<!-- DRIE Bosch -->
+<div class="card"><div class="card-header purple">Section 9.6 &mdash; DRIE and the Bosch Process</div><div class="card-body">
+<p><span class="tooltip-term" data-tooltip="Deep Reactive Ion Etching. Creates very deep, high-aspect-ratio features (50:1 to 100:1+) with near-vertical sidewalls. Essential for MEMS and through-silicon vias.">DRIE<span class="tooltip-content"></span></span> can create trenches hundreds of micrometers deep with aspect ratios exceeding 50:1 &mdash; the backbone of MEMS fabrication and 3D chip packaging.</p>
+
+<h3 class="subsection-header">The Bosch Process: Alternating Etch and Passivation</h3>
+<p>The <span class="tooltip-term" data-tooltip="Named after Robert Bosch GmbH. Alternates between: (1) SF6 etch step that isotropically removes silicon and (2) C4F8 passivation step that deposits Teflon-like polymer on all surfaces. Ions remove polymer from horizontal surfaces while sidewalls stay protected.">Bosch process<span class="tooltip-content"></span></span> achieves deep anisotropic etching by rapidly alternating two steps:</p>
+
+<div class="two-column">
+<div class="column-box red-top"><h4 style="color:var(--red)">Step 1: Etch (SF&#8326;)</h4>
+<p>SF&#8326; plasma generates fluorine radicals that <strong>isotropically etch silicon</strong> for 3&ndash;12 seconds, removing a small amount in all directions.</p></div>
+<div class="column-box blue-top"><h4 style="color:var(--primary-blue)">Step 2: Passivate (C&#8324;F&#8328;)</h4>
+<p>C&#8324;F&#8328; plasma deposits a thin <strong>Teflon-like fluorocarbon polymer</strong> on all surfaces &mdash; protecting sidewalls from the next etch step.</p></div>
+</div>
+<p style="margin-top:1rem">When etching resumes, directional ions remove passivation from the horizontal trench bottom while vertical sidewalls retain protection. This cycle repeats hundreds to thousands of times, progressively deepening the trench.</p>
+
+<div class="info-note"><h4>&#128270; Sidewall Scalloping</h4>
+<p>Each etch-passivate cycle creates a tiny lateral divot, producing characteristic <strong>scalloped sidewalls</strong> with 50&ndash;200 nm roughness. For applications requiring smooth walls, cycle times are shortened or post-etch smoothing is applied.</p></div>
+
+<div class="two-column">
+<div class="column-box"><h4>Loading Effect</h4><p>Etch rate depends on total exposed silicon area. More exposed area consumes more radicals, reducing rate.</p></div>
+<div class="column-box teal-top"><h4>Microloading (ARDE)</h4><p>Narrower trenches etch slower than wider ones because fewer radicals diffuse to the bottom. A 5 &micro;m trench may etch 30% slower than a 50 &micro;m trench.</p></div>
+</div>
+
+<div class="industry-note"><h4>&#127981; Industry Applications of DRIE</h4>
+<p>MEMS accelerometers and gyroscopes (every smartphone), through-silicon vias (TSVs) for 3D chip stacking, microfluidic channels for lab-on-a-chip devices, silicon photonics waveguides, and micro-mirror arrays for DLP projectors. The global MEMS market exceeds $15 billion annually.</p></div>
+</div></div>
+
+<!-- ALE -->
+<div class="card"><div class="card-header blue">Section 9.7 &mdash; Atomic Layer Etching: The Frontier</div><div class="card-body">
+<p>As transistors shrink below 5 nm, even RIE becomes too coarse. <span class="tooltip-term" data-tooltip="Atomic Layer Etching. Removes exactly one atomic layer per cycle through self-limiting reactions. Provides sub-angstrom depth control (better than 0.1 nm/cycle), essential for the most advanced nodes.">Atomic Layer Etching (ALE)<span class="tooltip-content"></span></span> removes material <strong>one atomic layer at a time</strong> with self-limiting precision.</p>
+
+<h3 class="subsection-header">How ALE Works</h3>
+<ol style="margin-left:1.5rem;margin-bottom:1rem">
+<li><strong>Surface Modification:</strong> Reactive gas modifies exactly one atomic layer (e.g., Cl&#8322; chemisorbs on Si forming SiCl<sub>x</sub>)</li>
+<li><strong>Removal:</strong> Low-energy ions or a second species remove only the modified layer. Self-limiting &mdash; stops automatically after one layer.</li></ol>
+<p>Each cycle removes ~0.05&ndash;0.3 nm. The self-limiting nature prevents over-etching &mdash; critical for atomic-scale devices.</p>
+
+<div class="purple-note"><h4>&#128640; ALE Market and Future</h4>
+<p>The ALE equipment market was valued at approximately $740 million in 2024 and is projected to exceed $1.3 billion by 2032. ALE is considered essential for gate-all-around (GAA) transistors, 3D NAND with 200+ layers, and advanced packaging. Major manufacturers including Lam Research, Applied Materials, and Tokyo Electron are investing heavily in ALE development.</p></div>
+</div></div>
+
+<!-- Etch Masks -->
+<div class="card"><div class="card-header green">Section 9.8 &mdash; Etch Mask Materials</div><div class="card-body">
+<div class="table-responsive"><table class="data-table" aria-label="Common etch mask materials">
+<thead><tr><th>Mask Material</th><th>Used For</th><th>Removal Method</th><th>Advantages</th></tr></thead>
+<tbody>
+<tr><td>Photoresist</td><td>Most etch steps</td><td>O&#8322; plasma or solvent</td><td>Easy patterning via lithography</td></tr>
+<tr><td>SiO&#8322; (thermal)</td><td>Si DRIE, KOH etching</td><td>HF or BOE</td><td>Excellent KOH resistance</td></tr>
+<tr><td>Si&#8323;N&#8324;</td><td>Oxidation masking</td><td>Hot H&#8323;PO&#8324;</td><td>Resists HF and oxidation</td></tr>
+<tr><td>Chromium</td><td>Photomask glass</td><td>Ceric ammonium nitrate</td><td>Very thin, high resolution</td></tr>
+<tr><td>Sharpie / wax</td><td>Educational demos</td><td>Acetone / solvent</td><td>Zero cost, easy to apply</td></tr>
+</tbody></table></div>
+<div class="info-note"><h4>&#128161; Lab Connection</h4>
+<p>In our lab, we use a Sharpie as an etch mask &mdash; an organic polymer applied by hand. In industry, the mask is photoresist patterned by UV lithography (Module 8). Both serve the same purpose; the Sharpie just has much lower resolution (~500 &micro;m vs. sub-100 nm).</p></div>
+</div></div>
+</div>
+
+<!-- ================================================================
+     THEORY DEEP DIVE TAB
+     ================================================================ -->
+<div id="theory" class="tab-content" role="tabpanel" aria-labelledby="tab-theory">
+
+<div class="card"><div class="card-header">Etch Kinetics: Temperature and the Arrhenius Relationship</div><div class="card-body">
+<div class="formula-box"><h4>Arrhenius Equation for Etch Rate</h4>
+<div class="formula">R = A &middot; e<sup>&minus;E<sub>a</sub>/(k<sub>B</sub>T)</sup></div>
+<div class="formula-description"><p>Where <strong>R</strong> = etch rate, <strong>A</strong> = pre-exponential factor, <strong>E<sub>a</sub></strong> = activation energy (eV), <strong>k<sub>B</sub></strong> = Boltzmann constant (8.617 &times; 10<sup>&minus;5</sup> eV/K), <strong>T</strong> = temperature (K).</p>
+<p>Rule of thumb: for every 10&deg;C increase, the etch rate roughly doubles. A 2&deg;C fluctuation can cause 10&ndash;15% variation in etch rate, which is why wet etch baths require precise temperature control.</p></div></div>
+
+<h3 class="subsection-header">Plasma Physics in RIE</h3>
+<div class="two-column">
+<div class="column-box"><h4>Ions (e.g., CF&#8323;&#8314;, Ar&#8314;)</h4>
+<p>Accelerated vertically by DC self-bias. Kinetic energy of 50&ndash;500 eV provides the physical bombardment component, creating anisotropic profiles.</p></div>
+<div class="column-box teal-top"><h4>Radicals (e.g., F*, Cl*, O*)</h4>
+<p>Neutral species with unpaired electrons. Not affected by electric fields, so they move randomly (isotropically), providing the chemistry-selective etching component.</p></div>
+</div>
+
+<div class="teal-note"><h4>&#128202; The Coburn-Winters Experiment (1979)</h4>
+<p>The landmark experiment: XeF&#8322; alone etched Si at ~1 nm/min, Ar&#8314; beam alone at ~3 nm/min, but XeF&#8322; + Ar&#8314; simultaneously gave ~15 nm/min &mdash; <strong>5&times; greater than the sum</strong>. This proved ion bombardment synergistically enhances chemical etching rather than simply adding to it.</p></div>
+
+<h3 class="subsection-header">Endpoint Detection</h3>
+<div class="two-column">
+<div class="column-box"><h4>Optical Emission Spectroscopy (OES)</h4>
+<p>Monitors light emitted by plasma species. When the target film is consumed, reaction product concentrations change, altering the emission spectrum to signal endpoint.</p></div>
+<div class="column-box teal-top"><h4>Laser Interferometry</h4>
+<p>A laser reflects off the film; as it thins, interference creates oscillating reflectivity. Oscillation period reveals etch rate; oscillations stopping indicates film removal.</p></div>
+</div>
+</div></div>
+
+<div class="card"><div class="card-header teal">Comprehensive Comparison: Wet vs. Dry Etching</div><div class="card-body">
+<div class="table-responsive"><table class="data-table" aria-label="Comprehensive comparison of wet and dry etching">
+<thead><tr><th>Parameter</th><th>Wet Etching</th><th>Dry Etching (RIE)</th></tr></thead>
+<tbody>
+<tr><td><strong>Mechanism</strong></td><td>Chemical dissolution</td><td>Chemical + physical bombardment</td></tr>
+<tr><td><strong>Profile</strong></td><td>Isotropic (except KOH/TMAH)</td><td>Anisotropic (controllable)</td></tr>
+<tr><td><strong>Selectivity</strong></td><td>Very high (50:1 to &gt;1000:1)</td><td>Moderate (3:1 to 30:1)</td></tr>
+<tr><td><strong>Min. Feature</strong></td><td>&gt;1 &micro;m (undercut limited)</td><td>&lt;10 nm (state of art)</td></tr>
+<tr><td><strong>Throughput</strong></td><td>High (batch: 25&ndash;50 wafers)</td><td>Lower (single wafer)</td></tr>
+<tr><td><strong>Reproducibility</strong></td><td>Moderate (temp sensitive)</td><td>Excellent</td></tr>
+<tr><td><strong>Damage</strong></td><td>Minimal</td><td>Possible (ion bombardment)</td></tr>
+<tr><td><strong>Equipment Cost</strong></td><td>$10K&ndash;$100K</td><td>$500K&ndash;$5M</td></tr>
+<tr><td><strong>Waste</strong></td><td>Large liquid volumes</td><td>Small gaseous volumes</td></tr>
+</tbody></table></div>
+</div></div>
+</div>
+
+<!-- ================================================================
+     SIMULATIONS TAB
+     ================================================================ -->
+<div id="simulation" class="tab-content" role="tabpanel" aria-labelledby="tab-simulation">
+
+<!-- Sim 1: Etch Profile -->
+<div class="card"><div class="card-header">Simulation 1: Etch Profile Visualizer</div><div class="card-body">
+<p>Explore how different etching techniques produce different profiles. Select an etch type and adjust the progress slider.</p>
+<div class="sim-container">
+<div class="sim-controls">
+<label for="etchTypeSelect">Etch Type:</label>
+<select id="etchTypeSelect"><option value="wet-iso">Wet Etch (Isotropic)</option><option value="wet-aniso">KOH (Anisotropic 54.7&deg;)</option><option value="rie">RIE (Near-Vertical)</option><option value="drie">DRIE / Bosch</option></select>
+<label for="etchProgress">Progress:</label>
+<input type="range" id="etchProgress" min="0" max="100" value="50" style="width:180px">
+<span id="etchProgressVal" style="font-weight:600;min-width:40px">50%</span>
+</div>
+<div class="sim-canvas-wrap"><canvas id="etchProfileCanvas" width="700" height="340"></canvas></div>
+<div class="sim-info" id="profileInfo">Adjust the etch type and progress to see the profile develop.</div>
+</div></div></div>
+
+<!-- Sim 2: Calculator -->
+<div class="card"><div class="card-header teal">Simulation 2: Etch Rate &amp; Selectivity Calculator</div><div class="card-body">
+<p>Calculate etch rate, selectivity, and undercut distance.</p>
+<div class="sim-container">
+<div class="sim-controls" style="flex-direction:column;align-items:stretch">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+<div><label for="calcFilm">Film Thickness (nm):</label><br><input type="number" id="calcFilm" value="500" min="1" max="100000" style="width:100%;padding:0.5rem;border:2px solid var(--light-gray);border-radius:var(--radius)"></div>
+<div><label for="calcTime">Etch Time (min):</label><br><input type="number" id="calcTime" value="5" min="0.1" max="1000" step="0.1" style="width:100%;padding:0.5rem;border:2px solid var(--light-gray);border-radius:var(--radius)"></div>
+<div><label for="calcMask">Mask Loss (nm):</label><br><input type="number" id="calcMask" value="25" min="0" max="10000" style="width:100%;padding:0.5rem;border:2px solid var(--light-gray);border-radius:var(--radius)"></div>
+<div><label for="calcAniso">Anisotropy (0&ndash;1):</label><br><input type="range" id="calcAniso" min="0" max="100" value="0" style="width:100%"><br><span id="calcAnisoVal" style="font-size:0.9rem">0.00 (isotropic)</span></div>
+</div>
+<button class="check-btn" onclick="calculateEtch()" style="margin-top:1rem;align-self:flex-start">Calculate</button>
+</div>
+<div id="calcResults" style="padding:1.5rem;background:var(--pale-teal);border-radius:var(--radius);margin-top:1rem"><p>Enter values and click Calculate.</p></div>
+</div></div></div>
+
+<!-- Sim 3: Bosch Process -->
+<div class="card"><div class="card-header purple">Simulation 3: Bosch Process Cycle Animation</div><div class="card-body">
+<p>Watch the Bosch process in action &mdash; alternating between SF&#8326; etching and C&#8324;F&#8328; passivation.</p>
+<div class="sim-container">
+<div class="sim-controls">
+<button class="check-btn" id="boschStartBtn" onclick="startBosch()">&#9654; Start Animation</button>
+<button class="check-btn" onclick="resetBosch()" style="background:linear-gradient(135deg,var(--medium-gray),var(--dark-gray))">&#8634; Reset</button>
+<span style="font-weight:600;font-family:var(--font-display)">Cycle: <span id="boschCycleNum">0</span> / 10</span>
+</div>
+<div class="sim-canvas-wrap"><canvas id="boschCanvas" width="700" height="380"></canvas></div>
+<div class="sim-info" id="boschInfo">Click &ldquo;Start&rdquo; to watch the Bosch process cycle through 10 etch/passivation cycles.</div>
+</div></div></div>
+
+<!-- Sim 4: Temperature -->
+<div class="card"><div class="card-header">Simulation 4: Temperature vs. Etch Rate</div><div class="card-body">
+<p>See how temperature affects wet etch rate following the Arrhenius relationship.</p>
+<div class="sim-container">
+<div class="sim-controls">
+<label for="tempSlider">Temperature (&deg;C):</label>
+<input type="range" id="tempSlider" min="10" max="100" value="25" style="width:200px">
+<span id="tempVal" style="font-weight:600">25&deg;C</span>
+<label for="eaSlider">E<sub>a</sub> (eV):</label>
+<input type="range" id="eaSlider" min="20" max="80" value="45" style="width:140px">
+<span id="eaVal" style="font-weight:600">0.45 eV</span>
+</div>
+<div class="sim-canvas-wrap"><canvas id="tempCanvas" width="700" height="340"></canvas></div>
+<div class="sim-info" id="tempInfo">Adjust temperature and activation energy to see their effect on etch rate.</div>
+</div></div></div>
+</div>
+
+<!-- ================================================================
+     LAB TAB
+     ================================================================ -->
+<div id="lab" class="tab-content" role="tabpanel" aria-labelledby="tab-lab">
+<div class="card"><div class="card-header green">Hands-On Lab: Wet Etching of Aluminum with Ferric Chloride</div><div class="card-body">
+<p>Perform wet etching of aluminum using FeCl&#8323; solution, create a patterned mask using a Sharpie marker, measure the etch rate, and compare results to published values.</p>
+
+<div class="safety-note"><h4>&#9888;&#65039; Safety Requirements</h4>
+<ul style="margin-left:1.5rem">
+<li>Wear <strong>safety goggles</strong> at all times</li>
+<li>Wear <strong>nitrile gloves</strong> when handling FeCl&#8323;</li>
+<li>Work in a <strong>well-ventilated area</strong> or under a fume hood</li>
+<li>FeCl&#8323; permanently stains &mdash; wear a <strong>lab coat</strong></li>
+<li>Do not pour FeCl&#8323; down the drain &mdash; dispose per instructor guidelines</li>
+<li>Rinse immediately with water if FeCl&#8323; contacts skin</li>
+</ul></div>
+
+<h3 class="section-header">Materials &amp; Equipment</h3>
+<div class="two-column">
+<div class="column-box"><h4>Materials</h4>
+<ul style="margin-left:1.5rem"><li>Aluminum disk substrates</li><li>Ferric chloride solution (FeCl&#8323;)</li><li>Fine-tip Sharpie permanent marker</li><li>Acetone and DI water</li><li>Paper towels / cleanroom wipes</li></ul></div>
+<div class="column-box teal-top"><h4>Equipment</h4>
+<ul style="margin-left:1.5rem"><li>Plastic container for etchant</li><li>Thermometer</li><li>Timer / stopwatch</li><li>Digital calipers (optional)</li><li>Tweezers (plastic-tipped)</li></ul></div>
+</div>
+
+<h3 class="section-header">Procedure</h3>
+<div class="lab-step"><div class="step-number">1</div><div class="step-content"><h4>Prepare the Substrate</h4><p>Clean the aluminum disk with acetone, then DI water. Dry with lint-free wipe. Surface should be uniformly shiny with no fingerprints or debris.</p></div></div>
+<div class="lab-step"><div class="step-number">2</div><div class="step-content"><h4>Apply the Etch Mask</h4><p>Draw your design on the aluminum using the Sharpie. The ink acts as the etch mask &mdash; protected areas stay shiny. Apply in a single, even coat and allow 2&ndash;3 minutes to dry.</p>
+<p><strong>Industry connection:</strong> This is analogous to photoresist from Module 8. The Sharpie is a low-cost stand-in.</p></div></div>
+<div class="lab-step"><div class="step-number">3</div><div class="step-content"><h4>Prepare the Etchant Bath</h4><p>Pour FeCl&#8323; solution to ~1&ndash;2 cm depth. Record temperature. If heating, warm to 40&ndash;50&deg;C. Do not exceed 60&deg;C.</p>
+<p><strong>Chemical reaction:</strong> <span style="font-family:var(--font-mono)">2 FeCl&#8323; + Al &rarr; AlCl&#8323; + 2 FeCl&#8322;</span></p></div></div>
+<div class="lab-step"><div class="step-number">4</div><div class="step-content"><h4>Immerse and Etch</h4><p>Place substrate face-down in etchant (gravity helps byproducts fall away). Start timer. Typical time: 30&ndash;60 min at room temperature; 10&ndash;20 min at 50&deg;C.</p></div></div>
+<div class="lab-step"><div class="step-number">5</div><div class="step-content"><h4>Monitor Progress</h4><p>Check every 5&ndash;10 min. Exposed areas become darker and rougher. Etch is complete when exposed areas are clearly differentiated from protected areas.</p></div></div>
+<div class="lab-step"><div class="step-number">6</div><div class="step-content"><h4>Rinse and Remove Mask</h4><p>Rinse thoroughly with DI water to stop the reaction. Soak/spray with acetone to dissolve the Sharpie mask. Rinse again and dry.</p></div></div>
+<div class="lab-step"><div class="step-number">7</div><div class="step-content"><h4>Inspect Results</h4><p>Etched areas appear darker/pitted; protected areas are shiny/smooth. If measurement tools are available, measure step height to calculate etch rate.</p></div></div>
+
+<h3 class="section-header">Discussion Questions</h3>
+<ol class="discussion-list">
+<li>What is the difference between dry etching and wet etching? Provide an example of each.</li>
+<li>When should dry etching be used over wet etching, and vice versa?</li>
+<li>In this experiment, a Sharpie is used as the etch mask. In industry, what material would be used? How does this relate to Module 8?</li>
+<li>The etch process depends on temperature. If the temperature were lowered by 20&deg;C, would it take more or less time? Explain using the Arrhenius relationship.</li>
+<li>If 10 &micro;m of SiO&#8322; are etched over 30 seconds, what is the etch rate in nm/min?</li>
+<li>What is selectivity? Why is it important for pattern fidelity?</li>
+<li>What etchant is used to etch SiO&#8322;? What safety concerns are associated with it?</li>
+<li>What are the key steps to perform an etch? Why is each important?</li>
+<li>What is an anisotropic profile? What is an isotropic profile?</li>
+<li>Which etch type produces anisotropic profiles? Which produces isotropic?</li>
+</ol>
+</div></div>
+</div>
+
+<!-- ================================================================
+     QUIZ TAB
+     ================================================================ -->
+<div id="quiz" class="tab-content" role="tabpanel" aria-labelledby="tab-quiz">
+<div class="card"><div class="card-header">Knowledge Check &mdash; Module 9: Etching Technology</div><div class="card-body">
+<p>Select the best answer for each question, then click &ldquo;Check Answer&rdquo; for instant feedback.</p>
+<div class="quiz-container" id="quizContainer">
+
+<div class="quiz-question" data-correct="b">
+<p class="question-text">1. What does &ldquo;isotropic&rdquo; mean in etching?</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q1" value="a"> Removes material only vertically</label></li>
+<li><label><input type="radio" name="q1" value="b"> Etches at the same rate in all directions</label></li>
+<li><label><input type="radio" name="q1" value="c"> Selective to only one material type</label></li>
+<li><label><input type="radio" name="q1" value="d"> Requires a vacuum environment</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q1"></div>
+<button class="check-btn" onclick="checkQuiz('q1','b','Correct! Isotropic = same rate in all directions, producing undercut beneath the mask.','Incorrect. Iso = same, tropic = direction. Isotropic etching removes material equally in all directions.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="c">
+<p class="question-text">2. The primary advantage of wet etching over dry etching is:</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q2" value="a"> Better anisotropy</label></li>
+<li><label><input type="radio" name="q2" value="b"> Smaller feature sizes</label></li>
+<li><label><input type="radio" name="q2" value="c"> Higher selectivity and batch processing capability</label></li>
+<li><label><input type="radio" name="q2" value="d"> No chemical waste</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q2"></div>
+<button class="check-btn" onclick="checkQuiz('q2','c','Correct! Wet etching achieves selectivity of 50:1 to >1000:1 and batch processes 25&ndash;50 wafers.','Incorrect. Wet etching excels in selectivity (up to 1000:1) and throughput via batch processing.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="a">
+<p class="question-text">3. In RIE, what creates the anisotropic etch profile?</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q3" value="a"> DC self-bias accelerates ions vertically toward the substrate</label></li>
+<li><label><input type="radio" name="q3" value="b"> Chemical reactions only occur downward</label></li>
+<li><label><input type="radio" name="q3" value="c"> The mask blocks all lateral etching</label></li>
+<li><label><input type="radio" name="q3" value="d"> Gravity pulls etchant down</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q3"></div>
+<button class="check-btn" onclick="checkQuiz('q3','a','Correct! The DC self-bias accelerates ions vertically, enhancing etch rate on horizontal surfaces while sidewalls see minimal bombardment.','Incorrect. The key mechanism is the DC self-bias voltage that accelerates positive ions vertically toward the substrate.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="d">
+<p class="question-text">4. The Bosch process alternates between which two steps?</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q4" value="a"> Wet etching and dry etching</label></li>
+<li><label><input type="radio" name="q4" value="b"> Oxidation and reduction</label></li>
+<li><label><input type="radio" name="q4" value="c"> Deposition and lithography</label></li>
+<li><label><input type="radio" name="q4" value="d"> SF&#8326; silicon etching and C&#8324;F&#8328; passivation</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q4"></div>
+<button class="check-btn" onclick="checkQuiz('q4','d','Correct! The Bosch process alternates between SF&#8326; etch (isotropic Si removal) and C&#8324;F&#8328; passivation (Teflon-like sidewall coating).','Incorrect. The Bosch process cycles between SF&#8326; silicon etching and C&#8324;F&#8328; sidewall passivation deposition.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="b">
+<p class="question-text">5. If a 500 nm film is etched in 5 minutes, what is the etch rate?</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q5" value="a"> 50 nm/min</label></li>
+<li><label><input type="radio" name="q5" value="b"> 100 nm/min</label></li>
+<li><label><input type="radio" name="q5" value="c"> 250 nm/min</label></li>
+<li><label><input type="radio" name="q5" value="d"> 2500 nm/min</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q5"></div>
+<button class="check-btn" onclick="checkQuiz('q5','b','Correct! R = d/t = 500 nm / 5 min = 100 nm/min.','Incorrect. Etch rate = thickness / time = 500 nm / 5 min = 100 nm/min.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="c">
+<p class="question-text">6. KOH etching of silicon is unusual because it is:</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q6" value="a"> A dry etching process that uses liquid KOH</label></li>
+<li><label><input type="radio" name="q6" value="b"> An isotropic etch that produces vertical walls</label></li>
+<li><label><input type="radio" name="q6" value="c"> An anisotropic WET etch due to crystal-plane selectivity</label></li>
+<li><label><input type="radio" name="q6" value="d"> The safest etchant in the semiconductor industry</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q6"></div>
+<button class="check-btn" onclick="checkQuiz('q6','c','Correct! KOH etches Si(100) ~400x faster than Si(111), producing anisotropic V-grooves at 54.7&deg; &mdash; a rare case of anisotropic wet etching.','Incorrect. KOH is unique as an anisotropic wet etch &mdash; it exploits crystal-plane selectivity to produce V-grooves.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="a">
+<p class="question-text">7. Selectivity of 20:1 means the target material etches how much faster than the mask?</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q7" value="a"> 20 times faster</label></li>
+<li><label><input type="radio" name="q7" value="b"> 20 times slower</label></li>
+<li><label><input type="radio" name="q7" value="c"> 20 nm per minute</label></li>
+<li><label><input type="radio" name="q7" value="d"> 2 times faster</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q7"></div>
+<button class="check-btn" onclick="checkQuiz('q7','a','Correct! Selectivity = R_target / R_mask. A ratio of 20:1 means the target etches 20x faster.','Incorrect. Selectivity is the ratio of target etch rate to mask etch rate. 20:1 means the target is removed 20 times faster.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="b">
+<p class="question-text">8. What is the characteristic sidewall artifact of the Bosch process?</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q8" value="a"> Mirror-smooth vertical walls</label></li>
+<li><label><input type="radio" name="q8" value="b"> Scalloped (wavy) sidewalls from alternating etch/passivation</label></li>
+<li><label><input type="radio" name="q8" value="c"> 54.7&deg; angled sidewalls</label></li>
+<li><label><input type="radio" name="q8" value="d"> Completely isotropic rounded profile</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q8"></div>
+<button class="check-btn" onclick="checkQuiz('q8','b','Correct! Each etch/passivation cycle creates a small lateral divot, producing characteristic scalloped sidewalls with 50&ndash;200 nm roughness.','Incorrect. The alternating etch/passivation cycles of the Bosch process create characteristic scalloped (wavy) sidewalls.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="d">
+<p class="question-text">9. Atomic Layer Etching (ALE) is important because it:</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q9" value="a"> Is the cheapest etching technique available</label></li>
+<li><label><input type="radio" name="q9" value="b"> Uses only wet chemistry for precision</label></li>
+<li><label><input type="radio" name="q9" value="c"> Can etch all materials simultaneously</label></li>
+<li><label><input type="radio" name="q9" value="d"> Removes exactly one atomic layer per cycle with self-limiting precision</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q9"></div>
+<button class="check-btn" onclick="checkQuiz('q9','d','Correct! ALE uses self-limiting surface reactions to remove precisely one atomic layer per cycle (&lt;0.3 nm), essential for sub-5 nm device fabrication.','Incorrect. ALE&#39;s key advantage is self-limiting, one-atomic-layer-per-cycle removal with sub-angstrom precision.')">Check Answer</button>
+</div>
+
+<div class="quiz-question" data-correct="c">
+<p class="question-text">10. Why is HF particularly dangerous compared to other acids?</p>
+<ul class="quiz-options">
+<li><label><input type="radio" name="q10" value="a"> It explodes on contact with water</label></li>
+<li><label><input type="radio" name="q10" value="b"> It produces toxic gas at room temperature</label></li>
+<li><label><input type="radio" name="q10" value="c"> It penetrates skin painlessly and attacks bone by binding calcium</label></li>
+<li><label><input type="radio" name="q10" value="d"> It dissolves glass containers, making storage impossible</label></li>
+</ul>
+<div class="quiz-feedback" id="fb-q10"></div>
+<button class="check-btn" onclick="checkQuiz('q10','c','Correct! HF penetrates skin without causing immediate pain and binds calcium in bones and blood, making even small exposures potentially fatal.','Incorrect. HF is uniquely dangerous because it painlessly penetrates skin and attacks bone tissue by binding calcium ions.')">Check Answer</button>
+</div>
+
+</div>
+<div class="quiz-score" id="quizScore"></div>
+<div style="margin-top:1rem;display:flex;gap:1rem">
+<button class="check-btn" onclick="scoreQuiz()">&#128202; Score All</button>
+<button class="check-btn" onclick="resetQuiz()" style="background:linear-gradient(135deg,var(--medium-gray),var(--dark-gray))">&#8634; Reset Quiz</button>
+</div>
+</div></div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+<p><strong>Introduction to Nanotechnology</strong> &mdash; Module 9: Etching Technology</p>
+<p>Developed under NSF ATE Grant DUE 2301137. Content is for educational purposes.</p>
+<p style="margin-top:0.5rem"><a href="course-outline.html">Course Outline</a> &bull; <a href="module8_photolithography.html">Previous Module</a> &bull; <a href="module10_pattern_transfer.html">Next Module</a></p>
+</footer>
+
+<!-- ================================================================
+     JAVASCRIPT
+     ================================================================ -->
+<script>
+(function(){
+'use strict';
+
+// ===== TAB SYSTEM =====
+window.showTab = function(tabId){
+    document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false')});
+    var el = document.getElementById(tabId);
+    if(el) el.classList.add('active');
+    var btn = document.getElementById('tab-'+tabId);
+    if(btn){btn.classList.add('active');btn.setAttribute('aria-selected','true')}
+    updateProgress();
+};
+
+// ===== PROGRESS TRACKING =====
+var visited = {};
+function updateProgress(){
+    document.querySelectorAll('.tab-content.active').forEach(function(t){visited[t.id]=true});
+    var pct = Math.round(Object.keys(visited).length/5*100);
+    var fill = document.getElementById('progressFill');
+    var txt = document.getElementById('progressText');
+    if(fill){fill.style.width=pct+'%';fill.setAttribute('aria-valuenow',pct)}
+    if(txt) txt.textContent=pct+'%';
+}
+updateProgress();
+
+// ===== TOOLTIP SYSTEM (position-aware) =====
+document.querySelectorAll('.tooltip-term').forEach(function(term){
+    var tip = term.querySelector('.tooltip-content');
+    if(!tip) return;
+    tip.textContent = term.getAttribute('data-tooltip')||'';
+    function positionTip(e){
+        var rect = term.getBoundingClientRect();
+        var tw = 300, pad = 12;
+        var left = rect.left + rect.width/2 - tw/2;
+        var top = rect.bottom + 8;
+        if(left < pad) left = pad;
+        if(left + tw > window.innerWidth - pad) left = window.innerWidth - tw - pad;
+        if(top + 200 > window.innerHeight){top = rect.top - 8; tip.style.transform='translateY(-100%)'} else {tip.style.transform='none'}
+        tip.style.left = left+'px';
+        tip.style.top = top+'px';
+    }
+    term.addEventListener('mouseenter',function(e){positionTip(e);tip.classList.add('show')});
+    term.addEventListener('mouseleave',function(){tip.classList.remove('show')});
+    term.addEventListener('focus',function(e){positionTip(e);tip.classList.add('show')});
+    term.addEventListener('blur',function(){tip.classList.remove('show')});
+    term.setAttribute('tabindex','0');
+    term.setAttribute('role','button');
+    term.setAttribute('aria-describedby','tooltip');
+});
+
+// ===== SIMULATION 1: ETCH PROFILE =====
+var epCanvas = document.getElementById('etchProfileCanvas');
+var epCtx = epCanvas ? epCanvas.getContext('2d') : null;
+
+function drawEtchProfile(){
+    if(!epCtx) return;
+    var c=epCanvas, w=c.width, h=c.height, ctx=epCtx;
+    var type = document.getElementById('etchTypeSelect').value;
+    var prog = parseInt(document.getElementById('etchProgress').value);
+    document.getElementById('etchProgressVal').textContent = prog+'%';
+    ctx.clearRect(0,0,w,h);
+    var cx=w/2, maskW=90, maskH=30, filmH=50, filmY=100, subH=120;
+    var gap=130, p=prog/100;
+    // Substrate
+    ctx.fillStyle='#D0D0D0';ctx.fillRect(50,filmY+filmH,w-100,subH);
+    ctx.fillStyle='#666';ctx.font='12px Georgia';ctx.textAlign='center';
+    ctx.fillText('Substrate',cx,filmY+filmH+subH-10);
+    // Film
+    ctx.fillStyle='#6699CC';ctx.fillRect(50,filmY,w-100,filmH);
+    // Etch cavity
+    var maxDepth=filmH*0.95, depth=maxDepth*p;
+    if(type==='wet-iso'){
+        var rx=gap/2*p+5, ry=depth;
+        if(rx>2&&ry>2){
+            ctx.save();ctx.beginPath();ctx.ellipse(cx,filmY,rx,ry,0,0,Math.PI);ctx.fillStyle='#D0D0D0';ctx.fill();ctx.restore();
+            // Clear above film
+            ctx.fillStyle='#F5F5F5';ctx.fillRect(cx-gap/2,filmY-filmH,gap,filmH);
+        }
+    } else if(type==='wet-aniso'){
+        if(depth>2){
+            var halfW=gap/2, angle=54.7*Math.PI/180, sideIn=depth/Math.tan(angle);
+            ctx.beginPath();ctx.moveTo(cx-halfW,filmY);ctx.lineTo(cx-halfW+sideIn,filmY+depth);
+            ctx.lineTo(cx+halfW-sideIn,filmY+depth);ctx.lineTo(cx+halfW,filmY);ctx.closePath();
+            ctx.fillStyle='#D0D0D0';ctx.fill();ctx.strokeStyle='#999';ctx.lineWidth=1;ctx.stroke();
+        }
+    } else if(type==='rie'){
+        if(depth>2){
+            var sw=2*p;
+            ctx.fillStyle='#D0D0D0';ctx.fillRect(cx-gap/2+sw,filmY,gap-2*sw,depth);
+        }
+    } else if(type==='drie'){
+        if(depth>2){
+            var scN=Math.floor(p*10)+1, scH=depth/scN;
+            ctx.fillStyle='#D0D0D0';
+            for(var i=0;i<scN;i++){
+                var sy=filmY+i*scH, scW=gap-4+Math.sin(i*0.8)*3;
+                ctx.fillRect(cx-scW/2,sy,scW,scH+1);
+            }
+            // Scallop lines
+            ctx.strokeStyle='#009999';ctx.lineWidth=1;
+            for(var i=1;i<scN;i++){
+                var sy=filmY+i*scH;
+                ctx.beginPath();ctx.arc(cx-gap/2+2,sy,3,-Math.PI/2,Math.PI/2);ctx.stroke();
+                ctx.beginPath();ctx.arc(cx+gap/2-2,sy,3,Math.PI/2,-Math.PI/2);ctx.stroke();
+            }
+        }
+    }
+    // Clear above film for gap
+    ctx.fillStyle='#F5F5F5';ctx.fillRect(cx-gap/2,filmY-maskH-5,gap,maskH+5);
+    // Masks
+    ctx.fillStyle='#CC3333';
+    ctx.fillRect(cx-gap/2-maskW,filmY-maskH,maskW,maskH);
+    ctx.fillRect(cx+gap/2,filmY-maskH,maskW,maskH);
+    ctx.fillStyle='#FFF';ctx.font='bold 11px Trebuchet MS';ctx.textAlign='center';
+    ctx.fillText('PR Mask',cx-gap/2-maskW/2,filmY-maskH/2+4);
+    ctx.fillText('PR Mask',cx+gap/2+maskW/2,filmY-maskH/2+4);
+    // Film label
+    ctx.fillStyle='#FFF';ctx.font='12px Georgia';ctx.fillText('Film',80,filmY+filmH/2+5);
+    // Title
+    var titles={'wet-iso':'Wet Etch (Isotropic) \u2014 Rounded Profile','wet-aniso':'KOH Wet Etch \u2014 54.7\u00B0 V-Groove','rie':'RIE \u2014 Near-Vertical Sidewalls','drie':'DRIE / Bosch \u2014 Vertical with Scallops'};
+    ctx.fillStyle='#333';ctx.font='bold 15px Trebuchet MS';ctx.textAlign='center';ctx.fillText(titles[type]||'',cx,30);
+    // Info
+    var infos={'wet-iso':'Isotropic: removes material equally in all directions. Undercut \u2248 etch depth. Limited to features >1 \u00B5m.','wet-aniso':'KOH etches Si(100) ~400\u00D7 faster than Si(111), creating V-grooves at 54.7\u00B0. Used extensively in MEMS.','rie':'RIE combines chemical radicals and directional ion bombardment. Achieves 85\u201395% anisotropy.','drie':'DRIE Bosch process alternates passivation (C\u2084F\u2088) and etch (SF\u2086). Creates deep trenches with slight scalloping.'};
+    document.getElementById('profileInfo').textContent=infos[type]||'';
+}
+document.getElementById('etchTypeSelect').addEventListener('change',drawEtchProfile);
+document.getElementById('etchProgress').addEventListener('input',drawEtchProfile);
+drawEtchProfile();
+
+// ===== SIMULATION 2: CALCULATOR =====
+document.getElementById('calcAniso').addEventListener('input',function(){
+    var v=(this.value/100).toFixed(2);
+    document.getElementById('calcAnisoVal').textContent=v+(v==0?' (isotropic)':v==1?' (perfect aniso.)':'');
+});
+window.calculateEtch=function(){
+    var film=parseFloat(document.getElementById('calcFilm').value)||0;
+    var time=parseFloat(document.getElementById('calcTime').value)||0.1;
+    var mask=parseFloat(document.getElementById('calcMask').value)||0;
+    var A=parseInt(document.getElementById('calcAniso').value)/100;
+    var rate=film/time;
+    var maskRate=mask/time;
+    var sel=maskRate>0?(rate/maskRate).toFixed(1):'Infinite';
+    var undercut=rate*time*(1-A);
+    var res=document.getElementById('calcResults');
+    res.innerHTML='<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">'+
+    '<div><strong style="color:var(--dark-amber)">Etch Rate:</strong><br><span style="font-size:1.3rem;font-weight:bold;color:var(--etch-teal)">'+rate.toFixed(1)+' nm/min</span></div>'+
+    '<div><strong style="color:var(--dark-amber)">Selectivity:</strong><br><span style="font-size:1.3rem;font-weight:bold;color:var(--etch-teal)">'+sel+':1</span></div>'+
+    '<div><strong style="color:var(--dark-amber)">Undercut Distance:</strong><br><span style="font-size:1.3rem;font-weight:bold;color:var(--etch-teal)">'+undercut.toFixed(1)+' nm</span></div>'+
+    '<div><strong style="color:var(--dark-amber)">Anisotropy:</strong><br><span style="font-size:1.3rem;font-weight:bold;color:var(--etch-teal)">'+A.toFixed(2)+'</span></div></div>';
+};
+
+// ===== SIMULATION 3: BOSCH PROCESS =====
+var bCanvas=document.getElementById('boschCanvas');
+var bCtx=bCanvas?bCanvas.getContext('2d'):null;
+var boschCycle=0, boschStep=0, boschRunning=false, boschTimer=null;
+var totalBoschCycles=10;
+
+function drawBosch(){
+    if(!bCtx) return;
+    var c=bCanvas, w=c.width, h=c.height, ctx=bCtx;
+    ctx.clearRect(0,0,w,h);
+    var cx=w/2, topY=70, maskH=28, trenchW=80, maxD=220;
+    var depthPerCycle=maxD/totalBoschCycles;
+    var currentDepth=Math.min(boschCycle*depthPerCycle,maxD);
+    // Silicon block
+    ctx.fillStyle='#B0B0B0';ctx.fillRect(cx-200,topY+maskH,400,maxD+40);
+    // Trench
+    if(currentDepth>0){
+        ctx.fillStyle='#F5F5F5';ctx.fillRect(cx-trenchW/2,topY+maskH,trenchW,currentDepth);
+        // Scallops
+        ctx.strokeStyle='#00AA00';ctx.lineWidth=2;
+        for(var i=0;i<boschCycle;i++){
+            var sy=topY+maskH+i*depthPerCycle;
+            ctx.beginPath();ctx.arc(cx-trenchW/2,sy+depthPerCycle/2,2.5,Math.PI*1.5,Math.PI*0.5);ctx.stroke();
+            ctx.beginPath();ctx.arc(cx+trenchW/2,sy+depthPerCycle/2,2.5,Math.PI*0.5,Math.PI*1.5);ctx.stroke();
+        }
+        // Current step highlight
+        if(boschCycle<totalBoschCycles){
+            var csY=topY+maskH+currentDepth;
+            if(boschStep===0){
+                // Passivation - green walls
+                ctx.strokeStyle='#00CC00';ctx.lineWidth=3;
+                ctx.beginPath();ctx.moveTo(cx-trenchW/2,topY+maskH);ctx.lineTo(cx-trenchW/2,csY);ctx.stroke();
+                ctx.beginPath();ctx.moveTo(cx+trenchW/2,topY+maskH);ctx.lineTo(cx+trenchW/2,csY);ctx.stroke();
+                ctx.strokeStyle='#00CC00';ctx.lineWidth=2;
+                ctx.beginPath();ctx.moveTo(cx-trenchW/2,csY);ctx.lineTo(cx+trenchW/2,csY);ctx.stroke();
+            } else if(boschStep===1){
+                // Ion bombardment arrows
+                ctx.fillStyle='#FF6600';
+                for(var i=-1;i<=1;i++){
+                    var ax=cx+i*20;
+                    ctx.beginPath();ctx.moveTo(ax,csY-30);ctx.lineTo(ax,csY-5);ctx.strokeStyle='#FF6600';ctx.lineWidth=2;ctx.stroke();
+                    ctx.beginPath();ctx.moveTo(ax-4,csY-12);ctx.lineTo(ax,csY-4);ctx.lineTo(ax+4,csY-12);ctx.fill();
+                }
+            } else {
+                // Silicon etch glow
+                ctx.fillStyle='rgba(0,204,204,0.3)';ctx.fillRect(cx-trenchW/2,csY,trenchW,depthPerCycle);
+            }
+        }
+    }
+    // Mask
+    ctx.fillStyle='#CC3333';
+    ctx.fillRect(cx-200,topY,200-trenchW/2,maskH);
+    ctx.fillRect(cx+trenchW/2,topY,200-trenchW/2,maskH);
+    ctx.fillStyle='#FFF';ctx.font='bold 11px Trebuchet MS';ctx.textAlign='center';
+    ctx.fillText('Mask',cx-120,topY+maskH/2+4);ctx.fillText('Mask',cx+120,topY+maskH/2+4);
+    // Title
+    ctx.fillStyle='#333';ctx.font='bold 15px Trebuchet MS';ctx.textAlign='center';
+    if(boschCycle>=totalBoschCycles){
+        ctx.fillText('Bosch Process \u2014 Complete!',cx,28);
+        ctx.fillStyle='#008000';ctx.font='bold 13px Trebuchet MS';
+        ctx.fillText(totalBoschCycles+' cycles, depth: '+currentDepth.toFixed(0)+' units',cx,48);
+    } else {
+        ctx.fillText('Bosch Process \u2014 Cycle '+(boschCycle+1)+'/'+totalBoschCycles,cx,28);
+        var sNames=['Passivation (C\u2084F\u2088)','Ion Bombardment','Silicon Etch (SF\u2086)'];
+        var sColors=['#00CC00','#FF6600','#009999'];
+        ctx.fillStyle=sColors[boschStep];ctx.font='bold 13px Trebuchet MS';
+        ctx.fillText('Step '+(boschStep+1)+': '+sNames[boschStep],cx,48);
+    }
+    // Legend
+    var ly=h-18;ctx.font='11px Trebuchet MS';ctx.textAlign='left';
+    ctx.fillStyle='#00CC00';ctx.fillRect(50,ly-9,12,12);ctx.fillStyle='#333';ctx.fillText('Passivation',66,ly+1);
+    ctx.fillStyle='#FF6600';ctx.fillRect(180,ly-9,12,12);ctx.fillStyle='#333';ctx.fillText('Bombardment',196,ly+1);
+    ctx.fillStyle='#009999';ctx.fillRect(320,ly-9,12,12);ctx.fillStyle='#333';ctx.fillText('Si Etch',336,ly+1);
+    ctx.fillStyle='#B0B0B0';ctx.fillRect(430,ly-9,12,12);ctx.fillStyle='#333';ctx.fillText('Silicon',446,ly+1);
+    ctx.fillStyle='#CC3333';ctx.fillRect(520,ly-9,12,12);ctx.fillStyle='#333';ctx.fillText('Etch Mask',536,ly+1);
+    document.getElementById('boschCycleNum').textContent=boschCycle;
+}
+
+window.startBosch=function(){
+    if(boschRunning) return;
+    boschRunning=true;
+    document.getElementById('boschStartBtn').disabled=true;
+    function step(){
+        drawBosch();
+        var sNames=['Depositing passivation layer (C\u2084F\u2088)...','Ion bombardment removing bottom passivation...','Etching silicon with SF\u2086 radicals...'];
+        if(boschCycle<totalBoschCycles){
+            document.getElementById('boschInfo').innerHTML='<strong>Cycle '+(boschCycle+1)+'/'+totalBoschCycles+'</strong> \u2014 '+sNames[boschStep];
+        }
+        boschStep++;
+        if(boschStep>2){boschStep=0;boschCycle++}
+        if(boschCycle<=totalBoschCycles){
+            boschTimer=setTimeout(step,500);
+        } else {
+            boschRunning=false;
+            document.getElementById('boschStartBtn').disabled=false;
+            document.getElementById('boschInfo').innerHTML='<strong>Complete!</strong> '+totalBoschCycles+' cycles executed. The trench shows characteristic Bosch process scalloping.';
+            drawBosch();
+        }
+    }
+    step();
+};
+window.resetBosch=function(){
+    boschRunning=false;clearTimeout(boschTimer);
+    boschCycle=0;boschStep=0;
+    document.getElementById('boschStartBtn').disabled=false;
+    document.getElementById('boschInfo').textContent='Click "Start" to begin the Bosch process animation.';
+    drawBosch();
+};
+drawBosch();
+
+// ===== SIMULATION 4: TEMPERATURE =====
+var tCanvas=document.getElementById('tempCanvas');
+var tCtx=tCanvas?tCanvas.getContext('2d'):null;
+
+function drawTempGraph(){
+    if(!tCtx) return;
+    var c=tCanvas, w=c.width, h=c.height, ctx=tCtx;
+    ctx.clearRect(0,0,w,h);
+    var T=parseInt(document.getElementById('tempSlider').value);
+    var Ea=parseInt(document.getElementById('eaSlider').value)/100;
+    document.getElementById('tempVal').textContent=T+'\u00B0C';
+    document.getElementById('eaVal').textContent=Ea.toFixed(2)+' eV';
+    var m={top:45,right:30,bottom:55,left:75};
+    var pw=w-m.left-m.right, ph=h-m.top-m.bottom;
+    var Ea_J=Ea*1.602e-19, kB=1.381e-23, T0=298.15, baseRate=100;
+    // Compute points
+    var pts=[], maxR=0;
+    for(var t=10;t<=100;t+=2){
+        var TK=t+273.15;
+        var r=baseRate*Math.exp((Ea_J/kB)*(1/T0-1/TK));
+        if(r>10000) r=10000;
+        pts.push({temp:t,rate:r});
+        if(r>maxR) maxR=r;
+    }
+    maxR*=1.15;if(maxR<150) maxR=150;
+    // Axes
+    ctx.strokeStyle='#333';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(m.left,m.top);ctx.lineTo(m.left,h-m.bottom);ctx.lineTo(w-m.right,h-m.bottom);ctx.stroke();
+    // Grid
+    ctx.strokeStyle='#E0E0E0';ctx.lineWidth=1;
+    for(var i=0;i<=5;i++){
+        var y=m.top+ph*(1-i/5);
+        ctx.beginPath();ctx.moveTo(m.left,y);ctx.lineTo(w-m.right,y);ctx.stroke();
+        ctx.fillStyle='#666';ctx.font='11px Georgia';ctx.textAlign='right';
+        ctx.fillText(Math.round(maxR*i/5),m.left-8,y+4);
+    }
+    for(var t=10;t<=100;t+=10){
+        var x=m.left+((t-10)/90)*pw;
+        ctx.beginPath();ctx.moveTo(x,h-m.bottom);ctx.lineTo(x,h-m.bottom+5);ctx.strokeStyle='#333';ctx.stroke();
+        ctx.fillStyle='#666';ctx.font='11px Georgia';ctx.textAlign='center';
+        ctx.fillText(t+'\u00B0',x,h-m.bottom+18);
+    }
+    // Labels
+    ctx.fillStyle='#333';ctx.font='bold 13px Trebuchet MS';ctx.textAlign='center';
+    ctx.fillText('Temperature (\u00B0C)',w/2,h-8);
+    ctx.save();ctx.translate(15,h/2);ctx.rotate(-Math.PI/2);ctx.fillText('Etch Rate (nm/min)',0,0);ctx.restore();
+    // Curve
+    ctx.beginPath();ctx.strokeStyle='#CC6600';ctx.lineWidth=3;
+    pts.forEach(function(pt,i){
+        var x=m.left+((pt.temp-10)/90)*pw;
+        var y=m.top+ph*(1-pt.rate/maxR);
+        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+    // Current point
+    var TK=T+273.15;
+    var curRate=baseRate*Math.exp((Ea_J/kB)*(1/T0-1/TK));
+    if(curRate>10000) curRate=10000;
+    var px=m.left+((T-10)/90)*pw;
+    var py=m.top+ph*(1-curRate/maxR);
+    ctx.beginPath();ctx.arc(px,py,7,0,Math.PI*2);ctx.fillStyle='#CC0000';ctx.fill();ctx.strokeStyle='#FFF';ctx.lineWidth=2;ctx.stroke();
+    // Value label
+    ctx.fillStyle='#CC0000';ctx.font='bold 13px Trebuchet MS';ctx.textAlign='left';
+    var lx=px+12,ly=py-8;if(lx+100>w) lx=px-110;if(ly<m.top+10) ly=py+20;
+    ctx.fillText(curRate.toFixed(1)+' nm/min @ '+T+'\u00B0C',lx,ly);
+    document.getElementById('tempInfo').textContent='At '+T+'\u00B0C with Ea='+Ea.toFixed(2)+' eV, etch rate = '+curRate.toFixed(1)+' nm/min (base: 100 nm/min at 25\u00B0C).';
+}
+document.getElementById('tempSlider').addEventListener('input',drawTempGraph);
+document.getElementById('eaSlider').addEventListener('input',drawTempGraph);
+drawTempGraph();
+
+// ===== QUIZ SYSTEM =====
+window.checkQuiz=function(name,correct,rightMsg,wrongMsg){
+    var sel=document.querySelector('input[name="'+name+'"]:checked');
+    var fb=document.getElementById('fb-'+name);
+    if(!sel){fb.className='quiz-feedback incorrect';fb.style.display='block';fb.textContent='Please select an answer.';return}
+    if(sel.value===correct){fb.className='quiz-feedback correct';fb.innerHTML='\u2705 '+rightMsg}
+    else{fb.className='quiz-feedback incorrect';fb.innerHTML='\u274C '+wrongMsg}
+    fb.style.display='block';
+};
+window.scoreQuiz=function(){
+    var total=10,correct=0;
+    var answers={q1:'b',q2:'c',q3:'a',q4:'d',q5:'b',q6:'c',q7:'a',q8:'b',q9:'d',q10:'c'};
+    for(var q in answers){
+        var sel=document.querySelector('input[name="'+q+'"]:checked');
+        if(sel&&sel.value===answers[q]) correct++;
+    }
+    var pct=Math.round(correct/total*100);
+    var sc=document.getElementById('quizScore');
+    sc.style.display='block';
+    sc.innerHTML='\uD83D\uDCCA Score: '+correct+'/'+total+' ('+pct+'%)'+(pct>=80?' \u2014 Excellent work!':pct>=60?' \u2014 Good effort! Review missed concepts.':' \u2014 Review the lecture material and try again.');
+};
+window.resetQuiz=function(){
+    document.querySelectorAll('.quiz-feedback').forEach(function(f){f.style.display='none';f.className='quiz-feedback'});
+    document.querySelectorAll('.quiz-options input').forEach(function(r){r.checked=false});
+    document.getElementById('quizScore').style.display='none';
+};
+
+})();
+</script>
+</body>
+</html>

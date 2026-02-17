@@ -1,0 +1,3087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 3: Cleanroom Technology - A comprehensive interactive learning module covering contamination control, ISO 14644 standards, HEPA/ULPA filtration, gowning procedures, and cleanroom economics for semiconductor manufacturing.">
+    <title>Module 3: Cleanroom Technology | Introduction to Nanotechnology</title>
+    <style>
+        /* ============================================================
+           CSS CUSTOM PROPERTIES - Web-Safe Color Palette
+           ============================================================ */
+        :root {
+            /* Primary palette */
+            --navy: #003366;
+            --navy-deep: #001a33;
+            --teal: #006666;
+            --teal-light: #009999;
+            --cyan: #00CCCC;
+            --cyan-pale: #CCFFFF;
+            
+            /* Neutrals */
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --light-gray: #E0E0E0;
+            --mid-gray: #999999;
+            --dark-gray: #333333;
+            --near-black: #1A1A1A;
+            
+            /* Semantic colors */
+            --success: #009933;
+            --success-light: #E8F5E9;
+            --warning: #FF6600;
+            --warning-light: #FFF3E0;
+            --danger: #CC0000;
+            --danger-light: #FFEBEE;
+            --info: #336699;
+            --info-light: #E3F2FD;
+            --gold: #CC9900;
+            --gold-light: #FFF8E1;
+            --purple: #660099;
+            --purple-light: #F3E5F5;
+            
+            /* Typography */
+            --font-display: Georgia, "Times New Roman", serif;
+            --font-body: Verdana, Geneva, Tahoma, sans-serif;
+            --font-mono: "Courier New", Courier, monospace;
+            
+            /* Layout */
+            --max-width: 1200px;
+            --radius: 8px;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.18);
+            --transition: 0.3s ease;
+            
+            /* Focus ring for ADA */
+            --focus-ring: 0 0 0 3px #00CCCC, 0 0 0 5px #003366;
+        }
+        
+        /* ============================================================
+           RESET & BASE STYLES
+           ============================================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+            background: var(--off-white);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* ============================================================
+           SKIP LINK (ADA Compliance)
+           ============================================================ */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            background: var(--cyan);
+            color: var(--navy-deep);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: bold;
+            z-index: 10000;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 1rem;
+            outline: none;
+            box-shadow: var(--focus-ring);
+        }
+        
+        /* Focus styles for ADA */
+        :focus-visible {
+            outline: 3px solid var(--cyan);
+            outline-offset: 2px;
+        }
+        
+        /* ============================================================
+           HEADER
+           ============================================================ */
+        header {
+            background: linear-gradient(135deg, var(--navy-deep), var(--navy), var(--teal));
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--navy);
+        }
+        
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: var(--font-display);
+        }
+        
+        .site-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: rgba(255,255,255,0.12);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.25);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all var(--transition);
+        }
+        
+        .nav-btn:hover, .nav-btn:focus {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+        
+        /* ============================================================
+           MAIN CONTENT AREA
+           ============================================================ */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        /* ============================================================
+           HERO SECTION
+           ============================================================ */
+        .hero {
+            background: linear-gradient(135deg, var(--info), var(--teal), var(--navy));
+            color: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(204,153,0,0.15), transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            font-family: var(--font-display);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 800px;
+            position: relative;
+        }
+        
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        
+        .hero-meta span {
+            background: rgba(255,255,255,0.18);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* ============================================================
+           LEARNING OBJECTIVES
+           ============================================================ */
+        .objectives {
+            background: var(--info-light);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--info);
+        }
+        
+        .objectives h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .objectives ul {
+            margin-left: 1.5rem;
+        }
+        
+        .objectives li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ============================================================
+           PROGRESS TRACKER
+           ============================================================ */
+        .progress-container {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .progress-container h4 {
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+        
+        .progress-bar-bg {
+            background: var(--light-gray);
+            border-radius: 20px;
+            height: 24px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--teal), var(--success));
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: bold;
+            min-width: 40px;
+        }
+        
+        /* ============================================================
+           TABS NAVIGATION
+           ============================================================ */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--light-gray);
+        }
+        
+        .tab-btn {
+            background: var(--off-white);
+            border: none;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all var(--transition);
+            border-radius: var(--radius) var(--radius) 0 0;
+            font-weight: 600;
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+        }
+        
+        .tab-btn:hover {
+            background: var(--light-gray);
+        }
+        
+        .tab-btn.active {
+            background: var(--navy);
+            color: var(--white);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ============================================================
+           CARDS
+           ============================================================ */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 1.25rem 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        /* ============================================================
+           CONTENT SECTIONS
+           ============================================================ */
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        
+        .content-section h3 {
+            color: var(--navy);
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--teal);
+        }
+        
+        .content-section h4 {
+            color: var(--info);
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1rem;
+        }
+        
+        .content-section ul, .content-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ============================================================
+           ACCENT BOXES
+           ============================================================ */
+        .key-concept {
+            background: linear-gradient(135deg, #E6F3FF, #F0F8FF);
+            border-left: 5px solid var(--info);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .key-concept h4 {
+            margin-top: 0;
+            color: var(--navy);
+        }
+        
+        .example-box {
+            background: var(--success-light);
+            border-left: 5px solid var(--success);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .example-box h4 {
+            color: var(--success);
+            margin-top: 0;
+        }
+        
+        .industry-note {
+            background: var(--purple-light);
+            border-left: 5px solid var(--purple);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .industry-note h4 {
+            color: var(--purple);
+            margin-top: 0;
+        }
+        
+        .safety-warning {
+            background: var(--warning-light);
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .safety-warning h4 {
+            color: var(--warning);
+            margin-top: 0;
+        }
+        
+        .danger-alert {
+            background: var(--danger-light);
+            border-left: 5px solid var(--danger);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .danger-alert h4 {
+            color: var(--danger);
+            margin-top: 0;
+        }
+        
+        .history-box {
+            background: linear-gradient(135deg, #F5F5DC, #FFFAF0);
+            border-left: 5px solid var(--gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .history-box h4 {
+            color: #996600;
+            margin-top: 0;
+        }
+        
+        .formula-box {
+            background: var(--gold-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            text-align: center;
+            font-size: 1.3rem;
+            font-family: var(--font-mono);
+            margin: 1.5rem 0;
+            border: 2px solid var(--gold);
+        }
+        
+        .stat-highlight {
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .stat-highlight .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: var(--font-display);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-highlight .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* ============================================================
+           LAYOUTS
+           ============================================================ */
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        
+        .four-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .column-box {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--teal);
+        }
+        
+        .column-box h4 {
+            color: var(--navy);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* ============================================================
+           TABLES
+           ============================================================ */
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .data-table th {
+            background: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: var(--off-white);
+        }
+        
+        .data-table tr:hover {
+            background: var(--gold-light);
+        }
+        
+        .data-table caption {
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            caption-side: top;
+            text-align: left;
+        }
+        
+        /* ============================================================
+           TOOLTIPS
+           ============================================================ */
+        .tooltip-term {
+            border-bottom: 2px dotted var(--teal);
+            cursor: help;
+            position: relative;
+            color: var(--info);
+            font-weight: 600;
+        }
+        
+        .tooltip-content {
+            position: fixed;
+            background: var(--near-black);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            width: 300px;
+            max-width: calc(100vw - 40px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition);
+            z-index: 9999;
+            box-shadow: var(--shadow-lg);
+            font-weight: normal;
+            line-height: 1.6;
+            pointer-events: none;
+            /* Will be positioned by JavaScript */
+            top: 0;
+            left: 0;
+        }
+        
+        .tooltip-content::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+        }
+        
+        .tooltip-content.tooltip-above::before {
+            bottom: -8px;
+            border-top: 8px solid var(--near-black);
+        }
+        
+        .tooltip-content.tooltip-below::before {
+            top: -8px;
+            border-bottom: 8px solid var(--near-black);
+        }
+        
+        .tooltip-term:hover .tooltip-content,
+        .tooltip-term:focus .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ============================================================
+           SIMULATIONS
+           ============================================================ */
+        .sim-container {
+            background: var(--off-white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .sim-container h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .sim-canvas {
+            background: var(--white);
+            border: 3px solid var(--light-gray);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .sim-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .sim-btn {
+            background: var(--teal);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all var(--transition);
+            font-family: var(--font-body);
+        }
+        
+        .sim-btn:hover {
+            background: var(--info);
+            transform: translateY(-2px);
+        }
+        
+        .sim-btn:disabled {
+            background: var(--mid-gray);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .sim-btn.active-btn {
+            background: var(--success);
+        }
+        
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .slider-group label {
+            font-weight: 600;
+            min-width: 100px;
+            font-size: 0.9rem;
+        }
+        
+        .slider-group input[type="range"] {
+            width: 150px;
+            cursor: pointer;
+        }
+        
+        .slider-val {
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--radius);
+            min-width: 80px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .sim-readout {
+            text-align: center;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            margin-top: 1rem;
+            font-size: 1rem;
+            border: 2px solid var(--teal);
+        }
+        
+        /* ============================================================
+           INTERACTIVE DIAGRAMS
+           ============================================================ */
+        .diagram-container {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .diagram-svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* ============================================================
+           GOWNING SEQUENCE
+           ============================================================ */
+        .gowning-sequence {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .gowning-step {
+            background: var(--white);
+            border: 3px solid var(--light-gray);
+            border-radius: var(--radius);
+            padding: 1rem;
+            width: 150px;
+            text-align: center;
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+        
+        .gowning-step:hover, .gowning-step.active {
+            border-color: var(--teal);
+            background: var(--cyan-pale);
+            transform: translateY(-5px);
+        }
+        
+        .gowning-step .step-num {
+            background: var(--navy);
+            color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .gowning-step .step-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gowning-step .step-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+        
+        /* ============================================================
+           ISO COMPARISON CARDS
+           ============================================================ */
+        .iso-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .iso-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--navy);
+            transition: transform var(--transition);
+        }
+        
+        .iso-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .iso-card.iso-1-3 { border-top-color: #CC0000; }
+        .iso-card.iso-4-5 { border-top-color: #FF6600; }
+        .iso-card.iso-6-7 { border-top-color: #CC9900; }
+        .iso-card.iso-8-9 { border-top-color: #009933; }
+        
+        .iso-card .iso-class {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--navy);
+            font-family: var(--font-display);
+        }
+        
+        .iso-card .iso-particles {
+            font-size: 0.9rem;
+            color: var(--mid-gray);
+            margin: 0.5rem 0;
+        }
+        
+        .iso-card .iso-application {
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+        }
+        
+        /* ============================================================
+           DISCUSSION QUESTIONS
+           ============================================================ */
+        .discussion-questions {
+            background: var(--gold-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+        }
+        
+        .discussion-questions h4 {
+            color: var(--warning);
+            margin-bottom: 1rem;
+        }
+        
+        .discussion-questions ol {
+            margin-left: 1.5rem;
+        }
+        
+        .discussion-questions li {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* ============================================================
+           PROCEDURE STEPS
+           ============================================================ */
+        .procedure-step {
+            position: relative;
+            padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .procedure-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--teal);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .procedure-step h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ============================================================
+           CHECKLIST
+           ============================================================ */
+        .checklist {
+            background: var(--success-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+        }
+        
+        .checklist h4 {
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            background: var(--white);
+            border-radius: var(--radius);
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+        
+        /* ============================================================
+           QUIZ
+           ============================================================ */
+        .quiz-container {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .quiz-question {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--off-white);
+        }
+        
+        .question-text {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--navy);
+            font-size: 1.05rem;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--off-white);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .quiz-option:hover {
+            background: var(--gold-light);
+            border-color: var(--gold);
+        }
+        
+        .quiz-option.correct {
+            background: var(--success-light);
+            border-color: var(--success);
+        }
+        
+        .quiz-option.incorrect {
+            background: var(--danger-light);
+            border-color: var(--danger);
+        }
+        
+        .quiz-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .quiz-feedback {
+            margin-top: 0.75rem;
+            padding: 1rem;
+            border-radius: var(--radius);
+            display: none;
+            font-size: 0.95rem;
+        }
+        
+        .quiz-feedback.show {
+            display: block;
+        }
+        
+        .quiz-feedback.correct {
+            background: var(--success-light);
+            border-left: 4px solid var(--success);
+        }
+        
+        .quiz-feedback.incorrect {
+            background: var(--danger-light);
+            border-left: 4px solid var(--danger);
+        }
+        
+        .quiz-score {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: var(--radius);
+            margin-top: 1.5rem;
+        }
+        
+        .quiz-score .score-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: var(--font-display);
+        }
+        
+        /* ============================================================
+           CALCULATOR
+           ============================================================ */
+        .calculator-container {
+            background: var(--off-white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .calc-input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .calc-input-group label {
+            font-weight: 600;
+            min-width: 150px;
+        }
+        
+        .calc-input-group input, .calc-input-group select {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            width: 200px;
+        }
+        
+        .calc-input-group input:focus, .calc-input-group select:focus {
+            border-color: var(--teal);
+            outline: none;
+        }
+        
+        .calc-result {
+            background: var(--navy);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .calc-result .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: var(--font-display);
+        }
+        
+        /* ============================================================
+           TIMELINE
+           ============================================================ */
+        .timeline {
+            position: relative;
+            padding: 1.5rem 0;
+            margin: 1.5rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--teal), var(--navy), var(--gold));
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 70px;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: attr(data-year);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 56px;
+            height: 56px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-align: center;
+            line-height: 1.1;
+            border: 3px solid var(--gold);
+        }
+        
+        .timeline-item h4 {
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-item p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        /* ============================================================
+           NAVIGATION FOOTER
+           ============================================================ */
+        .nav-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 3px solid var(--light-gray);
+            flex-wrap: wrap;
+        }
+        
+        .nav-footer a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+        
+        .nav-footer a:hover {
+            background: var(--teal);
+            transform: translateY(-2px);
+        }
+        
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        footer {
+            background: var(--navy-deep);
+            color: rgba(255,255,255,0.7);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .grant-badge {
+            display: inline-block;
+            border: 1px solid rgba(0,204,204,0.4);
+            border-radius: 25px;
+            padding: 0.4rem 1rem;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--cyan);
+        }
+        
+        /* ============================================================
+           RESPONSIVE DESIGN
+           ============================================================ */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tab-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .procedure-step {
+                padding-left: 3.5rem;
+            }
+            
+            .procedure-step::before {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .two-column, .three-column, .four-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .gowning-step {
+                width: 120px;
+            }
+            
+            .calc-input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .calc-input-group input, .calc-input-group select {
+                width: 100%;
+            }
+            
+            .nav-footer {
+                flex-direction: column;
+            }
+        }
+        
+        /* ============================================================
+           PRINT STYLES
+           ============================================================ */
+        @media print {
+            .tabs, .sim-container, .quiz-container, .nav-footer, .progress-container {
+                display: none;
+            }
+            
+            .tab-content {
+                display: block !important;
+            }
+            
+            header {
+                position: static;
+            }
+        }
+        
+        /* ============================================================
+           PARTICLE ANIMATION CANVAS SPECIFIC
+           ============================================================ */
+        .cleanroom-viz {
+            position: relative;
+            background: linear-gradient(to bottom, #E3F2FD, #FFFFFF);
+            border: 3px solid var(--light-gray);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        
+        .cleanroom-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 51, 102, 0.9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        /* Stat Grid */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-box {
+            background: var(--white);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--teal);
+        }
+        
+        .stat-box .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--navy);
+            font-family: var(--font-display);
+        }
+        
+        .stat-box .stat-desc {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- ============================================================
+         HEADER
+         ============================================================ -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon" aria-hidden="true">3</div>
+                <div>
+                    <div class="site-title">Introduction to Nanotechnology</div>
+                    <div class="site-subtitle">Module 3: Cleanroom Technology</div>
+                </div>
+            </div>
+            <nav class="nav-buttons" aria-label="Module navigation">
+                <a href="course-outline.html" class="nav-btn">&#8592; Course Home</a>
+                <a href="module2_vacuum_assembly.html" class="nav-btn">&#8592; Previous Module</a>
+                <a href="module4_vacuum_concepts.html" class="nav-btn">Next Module &#8594;</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
+    <main id="main-content">
+        
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Module 3: Cleanroom Technology</h1>
+            <p>Master the principles of contamination control, ISO classification standards, HEPA/ULPA filtration, airflow dynamics, and gowning procedures essential for semiconductor manufacturing and nanotechnology research.</p>
+            <div class="hero-meta">
+                <span>&#128337; Duration: 3-4 Hours</span>
+                <span>&#128218; Lecture + Hands-On Lab</span>
+                <span>&#128187; Interactive Simulations</span>
+                <span>&#128200; Industry Economics</span>
+            </div>
+        </div>
+        
+        <!-- Learning Objectives -->
+        <div class="objectives" role="region" aria-labelledby="objectives-heading">
+            <h3 id="objectives-heading">&#127919; Learning Objectives</h3>
+            <p>Upon completion of this module, students will be able to:</p>
+            <ul>
+                <li>Explain why cleanroom environments are essential for semiconductor fabrication and nanotechnology</li>
+                <li>Classify cleanrooms according to ISO 14644-1 and identify particle count limits for each class</li>
+                <li>Describe the four capture mechanisms (interception, impaction, diffusion, electrostatic) used by HEPA/ULPA filters</li>
+                <li>Compare unidirectional (laminar) and non-unidirectional (turbulent) airflow patterns</li>
+                <li>Identify major sources of contamination and quantify human particle generation</li>
+                <li>Demonstrate proper gowning sequence and explain why each step is necessary</li>
+                <li>Calculate air change rates and understand cleanroom economics</li>
+                <li>Construct a functional mini-cleanroom and measure particle counts to verify effectiveness</li>
+            </ul>
+        </div>
+        
+        <!-- Progress Tracker -->
+        <div class="progress-container">
+            <h4>Module Progress</h4>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            </div>
+        </div>
+        
+        <!-- Tab Navigation -->
+        <div class="tabs" role="tablist" aria-label="Module content sections">
+            <button class="tab-btn active" data-tab="lecture" role="tab" aria-selected="true" aria-controls="lecture-panel">&#128214; Lecture Content</button>
+            <button class="tab-btn" data-tab="simulation" role="tab" aria-selected="false" aria-controls="simulation-panel">&#128187; Simulations</button>
+            <button class="tab-btn" data-tab="experiment" role="tab" aria-selected="false" aria-controls="experiment-panel">&#128300; Lab Experiment</button>
+            <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false" aria-controls="quiz-panel">&#10003; Knowledge Check</button>
+        </div>
+        
+        <!-- ============================================================
+             LECTURE CONTENT TAB
+             ============================================================ -->
+        <div id="lecture-panel" class="tab-content active" role="tabpanel" aria-labelledby="lecture-tab">
+            
+            <!-- Part 1: Introduction -->
+            <div class="card">
+                <div class="card-header">Part 1: Why Cleanrooms Matter</div>
+                <div class="card-body">
+                    
+                    <div class="content-section">
+                        <h3>The Nanoscale Challenge</h3>
+                        <p>In semiconductor fabrication, pharmaceuticals, and nanotechnology research, <span class="tooltip-term" tabindex="0">cleanroom<span class="tooltip-content">A controlled environment using HEPA/ULPA filtration, positive pressure, and strict protocols to minimize airborne particulates to specified levels. Temperature, humidity, and pressure are also precisely controlled.</span></span> environments are not just helpful&#8212;they are absolutely essential. Modern microchips contain billions of transistors, each measured in nanometers, where a single particle of dust can be catastrophic.</p>
+                        
+                        <div class="key-concept">
+                            <h4>&#128269; The Scale Problem</h4>
+                            <p>Consider this: Modern transistors are manufactured at the <strong>3-7 nanometer</strong> scale. A human hair is approximately <strong>70,000 nanometers</strong> wide. A single dust particle (typically 1-10 micrometers, or 1,000-10,000 nanometers) landing on a microchip during fabrication could completely destroy circuit pathways, rendering an entire wafer of chips worthless.</p>
+                            <p style="margin-top: 1rem;"><strong>Scale analogy:</strong> If a transistor were the size of a tennis ball, a typical dust particle would be the size of a two-story building crashing onto it!</p>
+                        </div>
+                        
+                        <!-- Industry Market Stats -->
+                        <div class="stat-grid">
+                            <div class="stat-box">
+                                <div class="stat-value">$11.88B</div>
+                                <div class="stat-desc">Semiconductor Cleanroom Market by 2030</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">8.0%</div>
+                                <div class="stat-desc">Annual Market Growth (CAGR)</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">$588B</div>
+                                <div class="stat-desc">Global Semiconductor Sales 2024</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">37.6%</div>
+                                <div class="stat-desc">Asia-Pacific Market Share</div>
+                            </div>
+                        </div>
+                        
+                        <div class="industry-note">
+                            <h4>&#127981; Industry Insight: CHIPS Act Impact</h4>
+                            <p>The U.S. CHIPS and Science Act ($53 billion investment) has ignited unprecedented fab construction. In 2024, President Biden announced up to $6.1 billion for Micron to build cleanroom facilities in New York and Idaho. This domestic chip manufacturing push is driving massive cleanroom construction demand, with <strong>18 new semiconductor fabs starting construction in 2025</strong>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Sources of Contamination</h3>
+                        <p>Understanding contamination sources is essential for effective control. The human body is, by far, the single greatest source of particles in a cleanroom environment.</p>
+                        
+                        <div class="two-column">
+                            <div class="column-box">
+                                <h4 style="color: var(--danger);">&#129489; Human Sources (75-80% of all contamination)</h4>
+                                <ul>
+                                    <li><strong>Skin cells:</strong> 30,000-40,000 shed per minute</li>
+                                    <li><strong>Hair:</strong> 50-100 strands lost daily</li>
+                                    <li><strong>Respiratory droplets:</strong> Up to 40,000 per sneeze</li>
+                                    <li><strong>Cosmetics, lotions:</strong> Volatile organics</li>
+                                    <li><strong>Movement:</strong> 5-7 million particles/min while walking</li>
+                                    <li><strong>Talking:</strong> 50+ particles per word spoken</li>
+                                </ul>
+                            </div>
+                            <div class="column-box">
+                                <h4 style="color: var(--warning);">&#9881;&#65039; Non-Human Sources</h4>
+                                <ul>
+                                    <li><strong>Equipment:</strong> Motors, bearings, moving parts</li>
+                                    <li><strong>Process chemicals:</strong> Outgassing and residues</li>
+                                    <li><strong>Outside air:</strong> Infiltration through gaps</li>
+                                    <li><strong>Building materials:</strong> Deterioration over time</li>
+                                    <li><strong>Supplies:</strong> Paper, packaging, cardboard</li>
+                                    <li><strong>Static discharge:</strong> ESD can damage circuits</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-highlight">
+                            <span class="stat-number">5,000,000</span>
+                            <span class="stat-label">Particles generated per minute by a person sitting still</span>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h4>&#128202; Human Activity Particle Generation</h4>
+                            <table class="data-table" style="margin-top: 1rem;">
+                                <thead>
+                                    <tr>
+                                        <th>Activity</th>
+                                        <th>Particles/Minute (&#8805;0.3&#181;m)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sitting motionless</td><td>100,000</td></tr>
+                                    <tr><td>Sitting with minor movement</td><td>500,000</td></tr>
+                                    <tr><td>Standing</td><td>500,000</td></tr>
+                                    <tr><td>Walking slowly (2 mph)</td><td>5,000,000</td></tr>
+                                    <tr><td>Walking briskly (3.5 mph)</td><td>7,500,000</td></tr>
+                                    <tr><td>Climbing stairs / Running</td><td>10,000,000+</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Part 2: HEPA Filtration -->
+            <div class="card">
+                <div class="card-header">Part 2: HEPA and ULPA Filtration Technology</div>
+                <div class="card-body">
+                    
+                    <div class="content-section">
+                        <h3>Filter Types and Efficiency</h3>
+                        <p><span class="tooltip-term" tabindex="0">HEPA filters<span class="tooltip-content">High-Efficiency Particulate Air filters that remove at least 99.97% of particles 0.3 micrometers or larger. Originally developed during the Manhattan Project to capture radioactive particles.</span></span> (High-Efficiency Particulate Air) are the backbone of cleanroom technology. They consist of randomly arranged fiberglass fibers (0.5-2.0 &#181;m diameter) that capture particles through multiple mechanisms.</p>
+                        
+                        <div class="history-box">
+                            <h4>&#128220; Historical Note: Manhattan Project Origins</h4>
+                            <p>HEPA filters were developed during World War II as part of the Manhattan Project to capture radioactive particles. The technology remained classified until 1950, after which it was adapted for cleanroom use in the emerging semiconductor industry.</p>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <caption>Filter Classifications and Efficiency Standards</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Filter Type</th>
+                                        <th>Efficiency at MPPS*</th>
+                                        <th>Typical Application</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>HEPA H13</td><td>&#8805;99.95%</td><td>Pharmaceutical, hospital surgical suites</td></tr>
+                                    <tr><td>HEPA H14</td><td>&#8805;99.995%</td><td>Semiconductor, research laboratories</td></tr>
+                                    <tr><td>ULPA U15</td><td>&#8805;99.9995%</td><td>Advanced semiconductor manufacturing</td></tr>
+                                    <tr><td>ULPA U16</td><td>&#8805;99.99995%</td><td>Nanotechnology research</td></tr>
+                                    <tr><td>ULPA U17</td><td>&#8805;99.999995%</td><td>Ultra-critical lithography processes</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--mid-gray);">*MPPS = Most Penetrating Particle Size (typically 0.1-0.3 &#181;m)</p>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Four Capture Mechanisms</h3>
+                        <p>HEPA filters capture particles through four distinct mechanisms, each optimized for different particle sizes:</p>
+                        
+                        <div class="four-column">
+                            <div class="column-box" style="border-top-color: #336699;">
+                                <h4 style="color: #336699;">1. Interception</h4>
+                                <p>Particles following air streams come within one radius of a fiber and adhere due to van der Waals forces.</p>
+                                <p><strong>Best for:</strong> 0.1-1 &#181;m particles</p>
+                            </div>
+                            <div class="column-box" style="border-top-color: #009933;">
+                                <h4 style="color: #009933;">2. Impaction</h4>
+                                <p>Larger particles have too much inertia to follow air curves around fibers and collide directly.</p>
+                                <p><strong>Best for:</strong> &gt;1 &#181;m particles</p>
+                            </div>
+                            <div class="column-box" style="border-top-color: #CC9900;">
+                                <h4 style="color: #CC9900;">3. Diffusion</h4>
+                                <p>Tiny particles move erratically via Brownian motion (random collisions with gas molecules) and contact fibers.</p>
+                                <p><strong>Best for:</strong> &lt;0.1 &#181;m particles</p>
+                            </div>
+                            <div class="column-box" style="border-top-color: #660099;">
+                                <h4 style="color: #660099;">4. Electrostatic</h4>
+                                <p>Charged fibers attract particles of opposite charge, enhancing capture across all sizes.</p>
+                                <p><strong>Best for:</strong> All particle sizes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h4>&#127919; The 0.3 Micron Myth</h4>
+                            <p>Many people incorrectly believe HEPA filters only capture particles &#8805;0.3 &#181;m. In reality, <strong>0.3 &#181;m is the Most Penetrating Particle Size (MPPS)</strong>&#8212;the size that is <em>hardest</em> to capture because it falls in the transition zone between diffusion and interception/impaction mechanisms.</p>
+                            <p style="margin-top: 1rem;">Particles both <strong>larger AND smaller</strong> than 0.3 &#181;m are actually captured <strong>MORE efficiently</strong>! This is why 99.97% efficiency at 0.3 &#181;m means even higher efficiency for all other particle sizes.</p>
+                        </div>
+                        
+                        <!-- SVG Diagram: Filter Efficiency Curve -->
+                        <div class="diagram-container">
+                            <h4>Filter Efficiency vs. Particle Size</h4>
+                            <svg class="diagram-svg" viewBox="0 0 600 350" aria-label="Graph showing HEPA filter efficiency versus particle size">
+                                <!-- Background -->
+                                <rect x="80" y="30" width="480" height="260" fill="#F5F5F5" stroke="#CCCCCC" stroke-width="1"/>
+                                
+                                <!-- Grid lines -->
+                                <g stroke="#E0E0E0" stroke-width="1">
+                                    <line x1="80" y1="95" x2="560" y2="95"/>
+                                    <line x1="80" y1="160" x2="560" y2="160"/>
+                                    <line x1="80" y1="225" x2="560" y2="225"/>
+                                    <line x1="200" y1="30" x2="200" y2="290"/>
+                                    <line x1="320" y1="30" x2="320" y2="290"/>
+                                    <line x1="440" y1="30" x2="440" y2="290"/>
+                                </g>
+                                
+                                <!-- Axes -->
+                                <line x1="80" y1="290" x2="560" y2="290" stroke="#333" stroke-width="2"/>
+                                <line x1="80" y1="30" x2="80" y2="290" stroke="#333" stroke-width="2"/>
+                                
+                                <!-- Efficiency curve (U-shaped with minimum at MPPS) -->
+                                <path d="M 90 50 Q 140 55, 180 80 Q 260 180, 320 200 Q 380 180, 440 80 Q 500 55, 550 50" 
+                                      fill="none" stroke="#009999" stroke-width="4" stroke-linecap="round"/>
+                                
+                                <!-- MPPS marker -->
+                                <line x1="320" y1="200" x2="320" y2="290" stroke="#CC0000" stroke-width="2" stroke-dasharray="5,5"/>
+                                <circle cx="320" cy="200" r="8" fill="#CC0000"/>
+                                
+                                <!-- Labels -->
+                                <text x="320" y="320" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Particle Size (&#181;m)</text>
+                                <text x="35" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#333" transform="rotate(-90, 35, 160)">Efficiency (%)</text>
+                                
+                                <!-- X-axis labels -->
+                                <text x="90" y="308" text-anchor="middle" font-size="11" fill="#666">0.01</text>
+                                <text x="200" y="308" text-anchor="middle" font-size="11" fill="#666">0.1</text>
+                                <text x="320" y="308" text-anchor="middle" font-size="11" fill="#CC0000" font-weight="bold">0.3 (MPPS)</text>
+                                <text x="440" y="308" text-anchor="middle" font-size="11" fill="#666">1.0</text>
+                                <text x="550" y="308" text-anchor="middle" font-size="11" fill="#666">10</text>
+                                
+                                <!-- Y-axis labels -->
+                                <text x="70" y="295" text-anchor="end" font-size="11" fill="#666">99.90%</text>
+                                <text x="70" y="230" text-anchor="end" font-size="11" fill="#666">99.95%</text>
+                                <text x="70" y="165" text-anchor="end" font-size="11" fill="#666">99.97%</text>
+                                <text x="70" y="100" text-anchor="end" font-size="11" fill="#666">99.99%</text>
+                                <text x="70" y="50" text-anchor="end" font-size="11" fill="#666">99.999%</text>
+                                
+                                <!-- Mechanism labels -->
+                                <text x="140" y="75" text-anchor="middle" font-size="12" fill="#CC9900" font-weight="bold">Diffusion</text>
+                                <text x="480" y="75" text-anchor="middle" font-size="12" fill="#009933" font-weight="bold">Impaction</text>
+                                <text x="390" y="130" text-anchor="middle" font-size="11" fill="#336699">Interception</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Part 3: ISO Classifications -->
+            <div class="card">
+                <div class="card-header">Part 3: ISO 14644-1 Classification Standards</div>
+                <div class="card-body">
+                    
+                    <div class="content-section">
+                        <h3>Understanding ISO Classes</h3>
+                        <p>The international standard <strong>ISO 14644-1</strong> classifies cleanrooms based on the maximum allowable number of particles per cubic meter of air at specified particle sizes. Lower ISO numbers indicate cleaner environments.</p>
+                        
+                        <div class="iso-cards">
+                            <div class="iso-card iso-1-3">
+                                <div class="iso-class">ISO 1-3</div>
+                                <div class="iso-particles">10-1,000 particles/m&#179; (&#8805;0.1&#181;m)</div>
+                                <div class="iso-application">Nanotechnology R&D, Advanced EUV lithography</div>
+                            </div>
+                            <div class="iso-card iso-4-5">
+                                <div class="iso-class">ISO 4-5</div>
+                                <div class="iso-particles">10,000-100,000 particles/m&#179;</div>
+                                <div class="iso-application">Semiconductor fab, Pharmaceutical sterile</div>
+                            </div>
+                            <div class="iso-card iso-6-7">
+                                <div class="iso-class">ISO 6-7</div>
+                                <div class="iso-particles">1M-10M particles/m&#179;</div>
+                                <div class="iso-application">Medical devices, Optics, Aerospace</div>
+                            </div>
+                            <div class="iso-card iso-8-9">
+                                <div class="iso-class">ISO 8-9</div>
+                                <div class="iso-particles">35M-35B particles/m&#179;</div>
+                                <div class="iso-application">General manufacturing, Food processing</div>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <caption>ISO 14644-1 Particle Count Limits (particles/m&#179;)</caption>
+                                <thead>
+                                    <tr>
+                                        <th>ISO Class</th>
+                                        <th>&#8805;0.1 &#181;m</th>
+                                        <th>&#8805;0.3 &#181;m</th>
+                                        <th>&#8805;0.5 &#181;m</th>
+                                        <th>&#8805;5.0 &#181;m</th>
+                                        <th>US FED STD 209E</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>ISO 1</strong></td><td>10</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr>
+                                    <tr><td><strong>ISO 2</strong></td><td>100</td><td>10</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr>
+                                    <tr><td><strong>ISO 3</strong></td><td>1,000</td><td>102</td><td>35</td><td>&#8212;</td><td>Class 1</td></tr>
+                                    <tr><td><strong>ISO 4</strong></td><td>10,000</td><td>1,020</td><td>352</td><td>&#8212;</td><td>Class 10</td></tr>
+                                    <tr><td><strong>ISO 5</strong></td><td>100,000</td><td>10,200</td><td>3,520</td><td>29</td><td>Class 100</td></tr>
+                                    <tr><td><strong>ISO 6</strong></td><td>1,000,000</td><td>102,000</td><td>35,200</td><td>293</td><td>Class 1,000</td></tr>
+                                    <tr><td><strong>ISO 7</strong></td><td>&#8212;</td><td>&#8212;</td><td>352,000</td><td>2,930</td><td>Class 10,000</td></tr>
+                                    <tr><td><strong>ISO 8</strong></td><td>&#8212;</td><td>&#8212;</td><td>3,520,000</td><td>29,300</td><td>Class 100,000</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h4>&#128202; Real-World Comparison</h4>
+                            <ul>
+                                <li><strong>Normal outdoor air:</strong> ~35,000,000 particles/m&#179; (&#8805;0.5 &#181;m)</li>
+                                <li><strong>Typical office building:</strong> ~500,000-1,000,000 particles/m&#179;</li>
+                                <li><strong>ISO 8 cleanroom:</strong> ~3,520,000 particles/m&#179;</li>
+                                <li><strong>ISO 5 cleanroom:</strong> ~3,520 particles/m&#179;</li>
+                                <li><strong>ISO 3 cleanroom:</strong> ~35 particles/m&#179;</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong>An ISO 5 cleanroom is approximately 1,000x cleaner than a typical office, and 10,000x cleaner than outdoor air!</strong></p>
+                        </div>
+                        
+                        <div class="formula-box">
+                            <strong>ISO Classification Formula:</strong><br>
+                            C<sub>n</sub> = 10<sup>N</sup> &#215; (0.1/D)<sup>2.08</sup><br>
+                            <span style="font-size: 0.9rem;">Where C<sub>n</sub> = max particles/m&#179;, N = ISO class, D = particle diameter (&#181;m)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Applications by ISO Class</h3>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <caption>Cleanroom Applications and Gowning Requirements</caption>
+                                <thead>
+                                    <tr>
+                                        <th>ISO Class</th>
+                                        <th>Typical Applications</th>
+                                        <th>Physical Barriers Required</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>ISO 1-2</strong></td>
+                                        <td>Nanotechnology R&D, EUV lithography, ultra-critical processes</td>
+                                        <td>Full suit with supplied air, air showers, multiple stage gowning</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ISO 3</strong></td>
+                                        <td>Advanced semiconductor lithography, MEMS fabrication</td>
+                                        <td>Full bunny suit, hood, goggles, double/triple gloving</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ISO 4</strong></td>
+                                        <td>Semiconductor wafer processing, hard disk drive assembly</td>
+                                        <td>Full cleanroom garment, hood, booties, gloves</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ISO 5</strong></td>
+                                        <td>Pharmaceutical sterile compounding, optics manufacturing</td>
+                                        <td>Sterile coverall, hood, face mask, sterile gloves</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ISO 6</strong></td>
+                                        <td>Implantable medical devices, precision optics</td>
+                                        <td>Frock or coverall, bouffant cap, shoe covers</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ISO 7</strong></td>
+                                        <td>Medical device assembly, aerospace components</td>
+                                        <td>Lab coat or frock, hair cover, shoe covers</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ISO 8</strong></td>
+                                        <td>General manufacturing, food processing, education labs</td>
+                                        <td>Smock or frock, hair cover, dedicated footwear</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Part 4: Airflow Patterns -->
+            <div class="card">
+                <div class="card-header">Part 4: Airflow Patterns and Air Change Rates</div>
+                <div class="card-body">
+                    
+                    <div class="content-section">
+                        <h3>Unidirectional vs. Non-Unidirectional Flow</h3>
+                        
+                        <div class="two-column">
+                            <div class="column-box" style="background: #E3F2FD; border-top-color: #336699;">
+                                <h4 style="color: #336699;">&#10140; Unidirectional (Laminar) Flow</h4>
+                                <ul>
+                                    <li>Parallel airstreams at 0.3-0.5 m/s</li>
+                                    <li>Usually top-down (vertical) or horizontal</li>
+                                    <li>Particles carried directly to return vents</li>
+                                    <li>Used for <strong>ISO 1-5</strong> cleanrooms</li>
+                                    <li>Requires ~100% ceiling HEPA coverage</li>
+                                    <li>Higher cost, better contamination control</li>
+                                </ul>
+                                <p style="margin-top: 1rem;"><strong>Best for:</strong> Critical semiconductor processes, pharmaceutical sterile filling</p>
+                            </div>
+                            <div class="column-box" style="background: #FFF3E0; border-top-color: #FF6600;">
+                                <h4 style="color: #FF6600;">&#128260; Non-Unidirectional (Turbulent) Flow</h4>
+                                <ul>
+                                    <li>Mixed airflow patterns</li>
+                                    <li>Lower air velocity</li>
+                                    <li>HEPA filters in ceiling with multiple returns</li>
+                                    <li>Used for <strong>ISO 6-8</strong> cleanrooms</li>
+                                    <li>Partial ceiling HEPA coverage</li>
+                                    <li>Lower cost, easier implementation</li>
+                                </ul>
+                                <p style="margin-top: 1rem;"><strong>Best for:</strong> Medical devices, general manufacturing, teaching labs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="industry-note">
+                            <h4>&#128161; Modern Semiconductor Fab Design</h4>
+                            <p>Modern fabs use a "raised floor" design with the cleanroom above a sub-fab utility level. Air flows from ceiling-mounted Fan Filter Units (FFUs) down through the cleanroom, then through perforated floor tiles into the sub-fab where pumps, power supplies, and gas lines are housed. This keeps heat, vibration, and maintenance out of the pristine cleanroom "ballroom."</p>
+                            <p style="margin-top: 0.75rem;"><strong>Minienvironments:</strong> Wafers travel in sealed pods (FOUPs) and are only exposed to filtered ISO Class 1 air inside process tools, even when the surrounding room is ISO 5.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Air Change Rates</h3>
+                        <p>Air changes per hour (ACH) indicates how many times the entire volume of air in a cleanroom is replaced in one hour. Higher ISO classes require dramatically more air changes.</p>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <caption>Typical Air Change Rates by ISO Classification</caption>
+                                <thead>
+                                    <tr>
+                                        <th>ISO Class</th>
+                                        <th>Air Changes/Hour</th>
+                                        <th>Airflow Type</th>
+                                        <th>Energy Intensity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>ISO 3-4</strong></td><td>360-540</td><td>Unidirectional</td><td>Very High</td></tr>
+                                    <tr><td><strong>ISO 5</strong></td><td>240-480</td><td>Unidirectional</td><td>High</td></tr>
+                                    <tr><td><strong>ISO 6</strong></td><td>90-180</td><td>Mixed</td><td>Moderate</td></tr>
+                                    <tr><td><strong>ISO 7</strong></td><td>30-60</td><td>Non-unidirectional</td><td>Low-Moderate</td></tr>
+                                    <tr><td><strong>ISO 8</strong></td><td>10-25</td><td>Non-unidirectional</td><td>Low</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h4>&#9889; Energy Considerations</h4>
+                            <p>Cleanrooms are extremely energy-intensive. The HVAC system alone can account for <strong>40-60% of total facility energy consumption</strong>. Modern facilities use variable-speed drives, low-pressure-drop diffusers, and predictive HVAC maintenance to reduce costs. A typical semiconductor fab can consume <strong>50-100 megawatts</strong> of power&#8212;equivalent to a small city!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Part 5: Gowning Procedures -->
+            <div class="card">
+                <div class="card-header">Part 5: Gowning Procedures and Personnel Protocols</div>
+                <div class="card-body">
+                    
+                    <div class="content-section">
+                        <h3>The Importance of Proper Gowning</h3>
+                        <p>Since humans are the primary source of contamination (75-80%), proper gowning is critical. The gowning sequence is designed to progressively cover contamination sources while preventing transfer to clean garments.</p>
+                        
+                        <div class="safety-warning">
+                            <h4>&#9888;&#65039; Critical Rule</h4>
+                            <p>Always gown from <strong>cleanest to dirtiest</strong> areas. Never touch your face, hair, or exposed skin after gloving. If you do, you must re-glove before continuing.</p>
+                        </div>
+                        
+                        <h4>ISO 5 Gowning Sequence (Full Bunny Suit)</h4>
+                        <div class="gowning-sequence" role="list" aria-label="Gowning sequence steps">
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">1</div>
+                                <div class="step-icon">&#128095;</div>
+                                <div class="step-name">Remove Jewelry &amp; Personal Items</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">2</div>
+                                <div class="step-icon">&#128166;</div>
+                                <div class="step-name">Wash &amp; Dry Hands</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">3</div>
+                                <div class="step-icon">&#129509;</div>
+                                <div class="step-name">Shoe Covers</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">4</div>
+                                <div class="step-icon">&#129506;</div>
+                                <div class="step-name">Bouffant Cap</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">5</div>
+                                <div class="step-icon">&#128567;</div>
+                                <div class="step-name">Face Mask</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">6</div>
+                                <div class="step-icon">&#129509;</div>
+                                <div class="step-name">Coverall / Bunny Suit</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">7</div>
+                                <div class="step-icon">&#129511;</div>
+                                <div class="step-name">Hood</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">8</div>
+                                <div class="step-icon">&#128095;</div>
+                                <div class="step-name">First Gloves</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">9</div>
+                                <div class="step-icon">&#129507;</div>
+                                <div class="step-name">Boots / Booties</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">10</div>
+                                <div class="step-icon">&#128588;</div>
+                                <div class="step-name">Safety Glasses</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">11</div>
+                                <div class="step-icon">&#129308;</div>
+                                <div class="step-name">Second Gloves</div>
+                            </div>
+                            <div class="gowning-step" tabindex="0" role="listitem">
+                                <div class="step-num">12</div>
+                                <div class="step-icon">&#128682;</div>
+                                <div class="step-name">Air Shower Entry</div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h4>&#128161; Gowning Tips</h4>
+                            <ul>
+                                <li><strong>Never</strong> wear jewelry, watches, or cosmetics in cleanrooms</li>
+                                <li><strong>Never</strong> use powdered gloves (talc generates particles)</li>
+                                <li><strong>Always</strong> tuck hood into coverall collar</li>
+                                <li><strong>Always</strong> double-glove in ISO 5 or cleaner environments</li>
+                                <li><strong>Always</strong> step on sticky mats or through air showers when transitioning</li>
+                                <li>Move slowly and deliberately&#8212;rapid movements generate more particles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Cleanroom Behavioral Protocols</h3>
+                        <div class="two-column">
+                            <div class="danger-alert">
+                                <h4>&#10060; Never Do This</h4>
+                                <ul>
+                                    <li>Run or make sudden movements</li>
+                                    <li>Touch your face, hair, or skin</li>
+                                    <li>Bring paper, cardboard, or wood products</li>
+                                    <li>Wear makeup, perfume, or cologne</li>
+                                    <li>Eat, drink, or chew gum</li>
+                                    <li>Write with pencils (graphite particles)</li>
+                                    <li>Lean on or touch equipment unnecessarily</li>
+                                </ul>
+                            </div>
+                            <div class="example-box">
+                                <h4>&#9989; Always Do This</h4>
+                                <ul>
+                                    <li>Move slowly and deliberately</li>
+                                    <li>Keep hands away from face</li>
+                                    <li>Use cleanroom-approved paper and pens</li>
+                                    <li>Report any tears in gowning immediately</li>
+                                    <li>Use designated cleanroom chairs</li>
+                                    <li>Follow traffic flow patterns</li>
+                                    <li>Report any spills or contamination events</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Part 6: Economics -->
+            <div class="card">
+                <div class="card-header">Part 6: Cleanroom Economics and Industry Trends</div>
+                <div class="card-body">
+                    
+                    <div class="content-section">
+                        <h3>The Cost of Cleanliness</h3>
+                        <p>Cleanroom construction and operation represents one of the largest capital and operating expenses in semiconductor manufacturing. Understanding these economics is essential for engineers and technicians.</p>
+                        
+                        <div class="stat-grid">
+                            <div class="stat-box">
+                                <div class="stat-value">$2.8B</div>
+                                <div class="stat-desc">Global Cleanroom Construction Market 2024</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">$800-$1,200</div>
+                                <div class="stat-desc">Per sq ft for ISO 5 Construction</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">40-60%</div>
+                                <div class="stat-desc">Energy from HVAC Systems</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">$200-$500M</div>
+                                <div class="stat-desc">Cost for a Single Fab Cleanroom</div>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <caption>Estimated Cleanroom Construction Costs by ISO Class</caption>
+                                <thead>
+                                    <tr>
+                                        <th>ISO Class</th>
+                                        <th>Construction Cost ($/sq ft)</th>
+                                        <th>Annual Operating Cost ($/sq ft)</th>
+                                        <th>Primary Cost Drivers</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>ISO 3</strong></td><td>$1,500-$2,500</td><td>$300-$500</td><td>ULPA filters, air handlers, vibration control</td></tr>
+                                    <tr><td><strong>ISO 5</strong></td><td>$800-$1,200</td><td>$150-$250</td><td>FFUs, raised floors, specialized HVAC</td></tr>
+                                    <tr><td><strong>ISO 7</strong></td><td>$300-$500</td><td>$50-$100</td><td>HEPA coverage, pressure controls</td></tr>
+                                    <tr><td><strong>ISO 8</strong></td><td>$150-$250</td><td>$25-$50</td><td>Basic filtration, gowning areas</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="industry-note">
+                            <h4>&#128200; Industry Trend: Modular Cleanrooms</h4>
+                            <p>Modular cleanrooms captured <strong>52.6% market share</strong> in 2024 and are growing rapidly. Pre-fabricated panels and systems can cut construction time by <strong>60%</strong> compared to stick-built facilities. Companies like Exyte, AES Clean Technology, and Terra Universal are leading this transformation with rapid-deployment solutions that meet ISO 5 standards or better.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Current Industry Trends</h3>
+                        <ul>
+                            <li><strong>IoT-Enabled Monitoring:</strong> Real-time particle counters, temperature/humidity sensors, and AI-driven predictive maintenance</li>
+                            <li><strong>Cleanroom Robotics:</strong> Automated guided vehicles (AGVs), robotic arms for wafer handling to minimize human contamination</li>
+                            <li><strong>Sustainability:</strong> Energy-efficient HVAC, LED lighting, water recycling systems</li>
+                            <li><strong>Minienvironments:</strong> SMIF pods and FOUPs isolate wafers in ISO 1 conditions even in ISO 5 ballrooms</li>
+                            <li><strong>Augmented Reality:</strong> CleanAR tools guide cleanroom cleaning procedures using AR glasses</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="discussion-questions">
+                        <h4>&#128172; Discussion Questions</h4>
+                        <ol>
+                            <li>Why does the semiconductor industry require cleaner environments than pharmaceutical manufacturing?</li>
+                            <li>If HEPA filters capture particles smaller than 0.3 &#181;m more efficiently, why is 0.3 &#181;m used as the specification standard?</li>
+                            <li>How might cleanroom design change as transistor sizes shrink below 2nm?</li>
+                            <li>What are the tradeoffs between modular and stick-built cleanroom construction?</li>
+                            <li>Why do some ultra-clean fabs use robotic automation instead of human workers?</li>
+                            <li>How does the CHIPS Act impact domestic cleanroom construction and the job market?</li>
+                            <li>What would happen to chip yield if the cleanroom classification dropped from ISO 5 to ISO 7?</li>
+                            <li>Why is ESD (electrostatic discharge) control as important as particle control in semiconductor cleanrooms?</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- ============================================================
+             SIMULATION TAB
+             ============================================================ -->
+        <div id="simulation-panel" class="tab-content" role="tabpanel" aria-labelledby="simulation-tab">
+            
+            <div class="card">
+                <div class="card-header">Interactive Simulation: Particle Behavior and Filtration</div>
+                <div class="card-body">
+                    
+                    <div class="sim-container">
+                        <h4>Cleanroom Particle Visualization</h4>
+                        <p style="text-align: center; margin-bottom: 1rem;">Compare particle behavior in different cleanroom environments. Observe how filtration and airflow affect particle counts.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                            <div class="cleanroom-viz" style="height: 300px;">
+                                <canvas id="outdoorCanvas" width="350" height="300"></canvas>
+                                <div class="cleanroom-label">Outdoor Air</div>
+                            </div>
+                            <div class="cleanroom-viz" style="height: 300px;">
+                                <canvas id="cleanroomCanvas" width="350" height="300"></canvas>
+                                <div class="cleanroom-label" id="cleanroomLabel">ISO 5 Cleanroom</div>
+                            </div>
+                        </div>
+                        
+                        <div class="sim-controls" style="margin-top: 1.5rem;">
+                            <div class="slider-group">
+                                <label for="isoSlider">ISO Class:</label>
+                                <input type="range" id="isoSlider" min="3" max="8" value="5" aria-label="ISO Classification">
+                                <span class="slider-val" id="isoValue">ISO 5</span>
+                            </div>
+                            <button class="sim-btn" id="toggleAirflow">Toggle Airflow</button>
+                            <button class="sim-btn" id="addContamination">Add Contamination</button>
+                            <button class="sim-btn" id="resetSim">Reset</button>
+                        </div>
+                        
+                        <div class="sim-readout">
+                            <strong>Outdoor Particles:</strong> <span id="outdoorCount">~35,000,000</span>/m&#179; &nbsp;|&nbsp;
+                            <strong>Cleanroom Particles:</strong> <span id="cleanroomCount">~3,520</span>/m&#179; &nbsp;|&nbsp;
+                            <strong>Reduction Factor:</strong> <span id="reductionFactor">~10,000x</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">HEPA Filter Efficiency Calculator</div>
+                <div class="card-body">
+                    
+                    <div class="calculator-container">
+                        <h4>Calculate Filter Performance</h4>
+                        <p>Determine how many particles pass through a filter based on efficiency and input particle count.</p>
+                        
+                        <div class="calc-input-group">
+                            <label for="inputParticles">Input Particles:</label>
+                            <input type="number" id="inputParticles" value="1000000" min="0" step="1000">
+                            <span>particles</span>
+                        </div>
+                        
+                        <div class="calc-input-group">
+                            <label for="filterType">Filter Type:</label>
+                            <select id="filterType">
+                                <option value="99.95">HEPA H13 (99.95%)</option>
+                                <option value="99.995" selected>HEPA H14 (99.995%)</option>
+                                <option value="99.9995">ULPA U15 (99.9995%)</option>
+                                <option value="99.99995">ULPA U16 (99.99995%)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="sim-btn" id="calculateFilter" style="margin-top: 1rem;">Calculate Penetration</button>
+                        
+                        <div class="calc-result" id="filterResult">
+                            <div class="result-value">50 particles</div>
+                            <div>pass through the filter (0.005% penetration)</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Air Change Rate Calculator</div>
+                <div class="card-body">
+                    
+                    <div class="calculator-container">
+                        <h4>Calculate Air Changes Per Hour (ACH)</h4>
+                        <p>Determine the required airflow rate for your cleanroom dimensions.</p>
+                        
+                        <div class="calc-input-group">
+                            <label for="roomLength">Room Length:</label>
+                            <input type="number" id="roomLength" value="10" min="1" step="0.5">
+                            <span>meters</span>
+                        </div>
+                        
+                        <div class="calc-input-group">
+                            <label for="roomWidth">Room Width:</label>
+                            <input type="number" id="roomWidth" value="8" min="1" step="0.5">
+                            <span>meters</span>
+                        </div>
+                        
+                        <div class="calc-input-group">
+                            <label for="roomHeight">Room Height:</label>
+                            <input type="number" id="roomHeight" value="3" min="1" step="0.5">
+                            <span>meters</span>
+                        </div>
+                        
+                        <div class="calc-input-group">
+                            <label for="targetACH">Target ACH:</label>
+                            <select id="targetACH">
+                                <option value="480">ISO 5 (480 ACH)</option>
+                                <option value="180">ISO 6 (180 ACH)</option>
+                                <option value="60">ISO 7 (60 ACH)</option>
+                                <option value="25">ISO 8 (25 ACH)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="sim-btn" id="calculateACH" style="margin-top: 1rem;">Calculate Airflow</button>
+                        
+                        <div class="calc-result" id="achResult">
+                            <div class="result-value">115,200 m&#179;/hr</div>
+                            <div>Required airflow rate (32 m&#179;/s)</div>
+                            <div style="margin-top: 0.5rem; font-size: 0.9rem;">Room Volume: 240 m&#179;</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- ============================================================
+             EXPERIMENT TAB
+             ============================================================ -->
+        <div id="experiment-panel" class="tab-content" role="tabpanel" aria-labelledby="experiment-tab">
+            
+            <div class="card">
+                <div class="card-header">Hands-On Lab: Build a Mini-Cleanroom</div>
+                <div class="card-body">
+                    
+                    <div class="safety-warning">
+                        <h4>&#9888;&#65039; Safety Disclosure</h4>
+                        <p>This lab uses small particles (sawdust or powder) and a flashlight for visualization. Wear safety goggles to protect eyes. Do not inhale fine particles. Work in a well-ventilated area. Adult supervision required for younger students.</p>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Experiment Objective</h3>
+                        <p>Observe airborne particulates and demonstrate the need for cleanrooms through visualization experiments. Students will construct a simulation of a "unit of air" to visualize dust, then build a mockup mini-cleanroom to observe filtration in action.</p>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Required Materials</h3>
+                        <div class="two-column">
+                            <div class="checklist">
+                                <h4>&#128230; Part A: Particle Visualization</h4>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat1">
+                                    <label for="mat1">1 cardboard box (~1 cubic foot)</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat2">
+                                    <label for="mat2">Plastic wrap or clear film</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat3">
+                                    <label for="mat3">Flashlight (bright LED preferred)</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat4">
+                                    <label for="mat4">Sawdust or fine powder</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat5">
+                                    <label for="mat5">Duct tape</label>
+                                </div>
+                            </div>
+                            <div class="checklist">
+                                <h4>&#128230; Part B: Mini-Cleanroom</h4>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat6">
+                                    <label for="mat6">1 printer paper box with lid</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat7">
+                                    <label for="mat7">1 smaller box (fits inside with gap)</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat8">
+                                    <label for="mat8">Computer fan (USB or 9V battery)</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat9">
+                                    <label for="mat9">Coffee filter or HEPA vacuum filter</label>
+                                </div>
+                                <div class="checklist-item">
+                                    <input type="checkbox" id="mat10">
+                                    <label for="mat10">9V battery and wire (if not USB fan)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <p><strong>Estimated Cost:</strong> ~$20 per student &nbsp;|&nbsp; <strong>Duration:</strong> 45-60 minutes</p>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Procedure: Part A - Visualizing Particles</h3>
+                        
+                        <div class="procedure-step" data-step="1">
+                            <h4>Prepare the Observation Chamber</h4>
+                            <p>Cut a viewing window on one side of the cardboard box. Cover the window with clear plastic wrap, sealing edges with duct tape. Cut a small hole on the opposite side for the flashlight.</p>
+                        </div>
+                        
+                        <div class="procedure-step" data-step="2">
+                            <h4>Seal the Box</h4>
+                            <p>Seal all seams and corners with duct tape to create a relatively airtight chamber. Leave a small flap for introducing particles.</p>
+                        </div>
+                        
+                        <div class="procedure-step" data-step="3">
+                            <h4>Introduce Particles</h4>
+                            <p>In a dimmed room, carefully sprinkle a small amount of sawdust or powder into the box. Seal the flap immediately.</p>
+                        </div>
+                        
+                        <div class="procedure-step" data-step="4">
+                            <h4>Observe Particle Behavior</h4>
+                            <p>Insert the flashlight beam through the hole (perpendicular to viewing window). Observe how particles become visible in the light beam. Note how they float, settle, and move with air currents.</p>
+                        </div>
+                        
+                        <div class="procedure-step" data-step="5">
+                            <h4>Record Observations</h4>
+                            <p>Sketch what you observe. Note how long particles remain airborne. Try gently shaking the box and observing changes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Procedure: Part B - Mini-Cleanroom</h3>
+                        
+                        <div class="procedure-step" data-step="6">
+                            <h4>Prepare the Fan Assembly</h4>
+                            <p>Cut a hole in the lid of the larger box sized to fit your computer fan. Mount the fan blowing downward into the box. Attach a coffee filter or HEPA filter material over the intake side of the fan.</p>
+                        </div>
+                        
+                        <div class="procedure-step" data-step="7">
+                            <h4>Create the "Cleanroom" Chamber</h4>
+                            <p>Place the smaller box inside the larger box, creating a gap around the edges for air return. Cut small holes in the bottom of the smaller box for air to flow through.</p>
+                        </div>
+                        
+                        <div class="procedure-step" data-step="8">
+                            <h4>Add Viewing Windows</h4>
+                            <p>Cut and cover viewing windows on the sides of the outer box. Insert flashlight hole for observation.</p>
+                        </div>
+                        
+                        <div class="procedure-step" data-step="9">
+                            <h4>Test the Mini-Cleanroom</h4>
+                            <p>Introduce particles into the chamber. Turn on the fan and observe how particles are captured or pushed out. Compare visibility before and after fan activation.</p>
+                        </div>
+                        
+                        <div class="procedure-step" data-step="10">
+                            <h4>Document Results</h4>
+                            <p>Record observations in the data table below. Photograph or sketch the particle distribution with fan on vs. off.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Data Collection</h3>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Observation</th>
+                                        <th>Without Fan</th>
+                                        <th>With Fan (30s)</th>
+                                        <th>With Fan (60s)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Visible particle density (High/Med/Low)</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Particle movement pattern</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time for particles to settle (est.)</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Airflow direction observed</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="discussion-questions">
+                        <h4>&#128172; Analysis Questions</h4>
+                        <ol>
+                            <li>How did particle visibility change when the fan was activated?</li>
+                            <li>What role did the filter play in capturing particles?</li>
+                            <li>How does this model relate to real cleanroom HEPA filtration?</li>
+                            <li>What limitations does this mini-cleanroom have compared to a real ISO 5 cleanroom?</li>
+                            <li>How could you improve this design to capture more particles?</li>
+                            <li>Why is unidirectional (top-down) airflow more effective than turbulent airflow?</li>
+                            <li>What would happen if you increased the fan speed?</li>
+                            <li>How would adding a second filter stage affect performance?</li>
+                        </ol>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- ============================================================
+             QUIZ TAB
+             ============================================================ -->
+        <div id="quiz-panel" class="tab-content" role="tabpanel" aria-labelledby="quiz-tab">
+            
+            <div class="card">
+                <div class="card-header">Knowledge Check: Cleanroom Technology</div>
+                <div class="card-body">
+                    
+                    <div class="quiz-container">
+                        <p style="margin-bottom: 1.5rem;">Test your understanding of cleanroom concepts. Select the best answer for each question.</p>
+                        
+                        <div class="quiz-question" data-correct="c">
+                            <p class="question-text">1. What is the PRIMARY source of contamination in a cleanroom environment?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q1" value="a"> Outside air infiltration</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="b"> Processing equipment</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="c"> Human bodies (skin, hair, respiratory droplets)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="d"> Chemical outgassing</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="b">
+                            <p class="question-text">2. Which ISO cleanroom class represents the CLEANEST environment?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q2" value="a"> ISO 8</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="b"> ISO 1</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="c"> ISO 5</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="d"> ISO 9</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="d">
+                            <p class="question-text">3. Why is 0.3 micrometers significant for HEPA filter specifications?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q3" value="a"> It's the largest particle size that matters</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="b"> It's the smallest particle that can be captured</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="c"> Particles smaller than this pass through easily</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="d"> It's the Most Penetrating Particle Size (hardest to capture)</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="a">
+                            <p class="question-text">4. What capture mechanism is most effective for particles smaller than 0.1 &#181;m?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q4" value="a"> Diffusion (Brownian motion)</label>
+                                <label class="quiz-option"><input type="radio" name="q4" value="b"> Impaction</label>
+                                <label class="quiz-option"><input type="radio" name="q4" value="c"> Interception</label>
+                                <label class="quiz-option"><input type="radio" name="q4" value="d"> Gravity settling</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="c">
+                            <p class="question-text">5. An ISO 5 cleanroom allows a maximum of how many particles (&#8805;0.5&#181;m) per cubic meter?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q5" value="a"> 35</label>
+                                <label class="quiz-option"><input type="radio" name="q5" value="b"> 352</label>
+                                <label class="quiz-option"><input type="radio" name="q5" value="c"> 3,520</label>
+                                <label class="quiz-option"><input type="radio" name="q5" value="d"> 35,200</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="b">
+                            <p class="question-text">6. Which airflow pattern is used for ISO 1-5 cleanrooms?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q6" value="a"> Turbulent (non-unidirectional)</label>
+                                <label class="quiz-option"><input type="radio" name="q6" value="b"> Unidirectional (laminar)</label>
+                                <label class="quiz-option"><input type="radio" name="q6" value="c"> Recirculating</label>
+                                <label class="quiz-option"><input type="radio" name="q6" value="d"> Natural convection</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="d">
+                            <p class="question-text">7. Approximately how many particles per minute does a person generate while walking?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q7" value="a"> 1,000</label>
+                                <label class="quiz-option"><input type="radio" name="q7" value="b"> 100,000</label>
+                                <label class="quiz-option"><input type="radio" name="q7" value="c"> 500,000</label>
+                                <label class="quiz-option"><input type="radio" name="q7" value="d"> 5,000,000+</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="a">
+                            <p class="question-text">8. What is the minimum efficiency of an H14 HEPA filter at the MPPS?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q8" value="a"> 99.995%</label>
+                                <label class="quiz-option"><input type="radio" name="q8" value="b"> 99.97%</label>
+                                <label class="quiz-option"><input type="radio" name="q8" value="c"> 99.9%</label>
+                                <label class="quiz-option"><input type="radio" name="q8" value="d"> 99.99%</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="c">
+                            <p class="question-text">9. What percentage of a cleanroom facility's energy is typically consumed by HVAC systems?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q9" value="a"> 10-20%</label>
+                                <label class="quiz-option"><input type="radio" name="q9" value="b"> 25-35%</label>
+                                <label class="quiz-option"><input type="radio" name="q9" value="c"> 40-60%</label>
+                                <label class="quiz-option"><input type="radio" name="q9" value="d"> 70-80%</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="b">
+                            <p class="question-text">10. In the proper gowning sequence, when should gloves first be put on?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q10" value="a"> First, before anything else</label>
+                                <label class="quiz-option"><input type="radio" name="q10" value="b"> After coverall, hood, and before boots</label>
+                                <label class="quiz-option"><input type="radio" name="q10" value="c"> Last, after all other garments</label>
+                                <label class="quiz-option"><input type="radio" name="q10" value="d"> Immediately after shoe covers</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="d">
+                            <p class="question-text">11. What is the approximate global semiconductor cleanroom market size projected for 2030?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q11" value="a"> $2.8 billion</label>
+                                <label class="quiz-option"><input type="radio" name="q11" value="b"> $5.5 billion</label>
+                                <label class="quiz-option"><input type="radio" name="q11" value="c"> $8.0 billion</label>
+                                <label class="quiz-option"><input type="radio" name="q11" value="d"> $11.88 billion</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <div class="quiz-question" data-correct="a">
+                            <p class="question-text">12. Which item should NEVER be brought into a cleanroom?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q12" value="a"> Cardboard boxes</label>
+                                <label class="quiz-option"><input type="radio" name="q12" value="b"> Cleanroom-approved notebooks</label>
+                                <label class="quiz-option"><input type="radio" name="q12" value="c"> Stainless steel tweezers</label>
+                                <label class="quiz-option"><input type="radio" name="q12" value="d"> Plastic wafer carriers</label>
+                            </div>
+                            <div class="quiz-feedback"></div>
+                        </div>
+                        
+                        <button class="sim-btn" id="submitQuiz" style="margin-top: 1.5rem; width: 100%;">Submit Quiz</button>
+                        
+                        <div class="quiz-score" id="quizScore" style="display: none;">
+                            <p>Your Score:</p>
+                            <span class="score-number" id="scoreDisplay">0/12</span>
+                            <p id="scoreMessage">Keep studying!</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Navigation Footer -->
+        <div class="nav-footer">
+            <a href="module2_vacuum_assembly.html">&#8592; Module 2: Vacuum Assembly</a>
+            <a href="course-outline.html">Course Home</a>
+            <a href="module4_vacuum_concepts.html">Module 4: Vacuum Concepts &#8594;</a>
+        </div>
+        
+    </main>
+    
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer role="contentinfo">
+        <p>Introduction to Nanotechnology | Module 3: Cleanroom Technology</p>
+        <p>Based on the Low-Cost Nanotechnology Laboratory Manual</p>
+        <span class="grant-badge">Supported by NSF ATE Grant DUE 2301137</span>
+    </footer>
+    
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // ============================================================
+        // TOOLTIP POSITIONING
+        // ============================================================
+        const tooltipTerms = document.querySelectorAll('.tooltip-term');
+        
+        function positionTooltip(term) {
+            const tooltip = term.querySelector('.tooltip-content');
+            if (!tooltip) return;
+            
+            const termRect = term.getBoundingClientRect();
+            const tooltipWidth = 300; // matches CSS width
+            const padding = 20; // padding from screen edges
+            const arrowOffset = 8; // arrow height
+            
+            // Calculate horizontal position (try to center on term)
+            let leftPos = termRect.left + (termRect.width / 2) - (tooltipWidth / 2);
+            
+            // Adjust if tooltip would go off left edge
+            if (leftPos < padding) {
+                leftPos = padding;
+            }
+            
+            // Adjust if tooltip would go off right edge
+            if (leftPos + tooltipWidth > window.innerWidth - padding) {
+                leftPos = window.innerWidth - tooltipWidth - padding;
+            }
+            
+            // Calculate vertical position (prefer above, fallback to below)
+            let topPos;
+            const tooltipHeight = tooltip.offsetHeight || 100; // estimate if not rendered
+            
+            // Remove previous positioning classes
+            tooltip.classList.remove('tooltip-above', 'tooltip-below');
+            
+            // Try to position above the term
+            if (termRect.top > tooltipHeight + arrowOffset + padding) {
+                // Enough space above
+                topPos = termRect.top - tooltipHeight - arrowOffset;
+                tooltip.classList.add('tooltip-above');
+                
+                // Position arrow
+                const arrowLeft = termRect.left + (termRect.width / 2) - leftPos - 8;
+                tooltip.style.setProperty('--arrow-left', Math.max(16, Math.min(tooltipWidth - 24, arrowLeft)) + 'px');
+            } else {
+                // Position below the term
+                topPos = termRect.bottom + arrowOffset;
+                tooltip.classList.add('tooltip-below');
+                
+                // Position arrow
+                const arrowLeft = termRect.left + (termRect.width / 2) - leftPos - 8;
+                tooltip.style.setProperty('--arrow-left', Math.max(16, Math.min(tooltipWidth - 24, arrowLeft)) + 'px');
+            }
+            
+            // Apply position
+            tooltip.style.left = leftPos + 'px';
+            tooltip.style.top = topPos + 'px';
+        }
+        
+        // Add event listeners for tooltip positioning
+        tooltipTerms.forEach(function(term) {
+            term.addEventListener('mouseenter', function() {
+                positionTooltip(term);
+            });
+            
+            term.addEventListener('focus', function() {
+                positionTooltip(term);
+            });
+            
+            // Reposition on scroll or resize while visible
+            ['scroll', 'resize'].forEach(function(eventType) {
+                window.addEventListener(eventType, function() {
+                    if (term.matches(':hover') || term.matches(':focus')) {
+                        positionTooltip(term);
+                    }
+                }, { passive: true });
+            });
+        });
+        
+        // Also handle dynamic arrow positioning via CSS custom property
+        const tooltipStyle = document.createElement('style');
+        tooltipStyle.textContent = `
+            .tooltip-content.tooltip-above::before {
+                left: var(--arrow-left, 50%);
+            }
+            .tooltip-content.tooltip-below::before {
+                left: var(--arrow-left, 50%);
+            }
+        `;
+        document.head.appendChild(tooltipStyle);
+        
+        // ============================================================
+        // TAB NAVIGATION
+        // ============================================================
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const targetTab = this.getAttribute('data-tab');
+                
+                // Update buttons
+                tabButtons.forEach(function(b) {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                
+                // Update content
+                tabContents.forEach(function(content) {
+                    content.classList.remove('active');
+                });
+                document.getElementById(targetTab + '-panel').classList.add('active');
+                
+                // Update progress
+                updateProgress();
+            });
+        });
+        
+        // ============================================================
+        // PROGRESS TRACKING
+        // ============================================================
+        function updateProgress() {
+            const quizAnswered = document.querySelectorAll('.quiz-option.correct, .quiz-option.incorrect').length;
+            const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]:checked').length;
+            const totalChecks = document.querySelectorAll('.checklist-item input[type="checkbox"]').length;
+            
+            let progress = 0;
+            
+            // Tab visits count
+            const activeTab = document.querySelector('.tab-btn.active');
+            if (activeTab) {
+                const tabIndex = Array.from(tabButtons).indexOf(activeTab);
+                progress += (tabIndex + 1) * 15;
+            }
+            
+            // Checklist progress
+            progress += (checkboxes / totalChecks) * 20;
+            
+            // Quiz progress
+            progress += (quizAnswered / 12) * 30;
+            
+            progress = Math.min(100, Math.round(progress));
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = progress + '%';
+            progressBar.setAttribute('aria-valuenow', progress);
+        }
+        
+        // ============================================================
+        // PARTICLE SIMULATION
+        // ============================================================
+        const outdoorCanvas = document.getElementById('outdoorCanvas');
+        const cleanroomCanvas = document.getElementById('cleanroomCanvas');
+        const outdoorCtx = outdoorCanvas ? outdoorCanvas.getContext('2d') : null;
+        const cleanroomCtx = cleanroomCanvas ? cleanroomCanvas.getContext('2d') : null;
+        
+        let outdoorParticles = [];
+        let cleanroomParticles = [];
+        let airflowOn = true;
+        let isoClass = 5;
+        let animationId;
+        
+        const isoParticleCounts = {
+            3: { count: 5, label: '~35', reduction: '~1,000,000x' },
+            4: { count: 15, label: '~352', reduction: '~100,000x' },
+            5: { count: 30, label: '~3,520', reduction: '~10,000x' },
+            6: { count: 80, label: '~35,200', reduction: '~1,000x' },
+            7: { count: 150, label: '~352,000', reduction: '~100x' },
+            8: { count: 250, label: '~3,520,000', reduction: '~10x' }
+        };
+        
+        function createParticle(canvas, isOutdoor) {
+            const maxSize = isOutdoor ? 4 : 2;
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * maxSize + 0.5,
+                speedX: (Math.random() - 0.5) * 0.5,
+                speedY: isOutdoor ? (Math.random() - 0.5) * 0.5 : (airflowOn ? 0.5 + Math.random() * 0.5 : (Math.random() - 0.5) * 0.3),
+                opacity: Math.random() * 0.5 + 0.3
+            };
+        }
+        
+        function initParticles() {
+            outdoorParticles = [];
+            cleanroomParticles = [];
+            
+            // Outdoor: lots of particles
+            for (let i = 0; i < 300; i++) {
+                outdoorParticles.push(createParticle(outdoorCanvas, true));
+            }
+            
+            // Cleanroom: based on ISO class
+            const targetCount = isoParticleCounts[isoClass].count;
+            for (let i = 0; i < targetCount; i++) {
+                cleanroomParticles.push(createParticle(cleanroomCanvas, false));
+            }
+            
+            updateReadout();
+        }
+        
+        function updateParticles(particles, ctx, canvas, isOutdoor) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw background
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            if (isOutdoor) {
+                gradient.addColorStop(0, '#87CEEB');
+                gradient.addColorStop(1, '#E0E0E0');
+            } else {
+                gradient.addColorStop(0, '#F5F5F5');
+                gradient.addColorStop(1, '#FFFFFF');
+            }
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw airflow indicators for cleanroom
+            if (!isOutdoor && airflowOn) {
+                ctx.strokeStyle = 'rgba(0, 153, 153, 0.2)';
+                ctx.lineWidth = 1;
+                for (let x = 20; x < canvas.width; x += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 10);
+                    ctx.lineTo(x, canvas.height - 10);
+                    ctx.stroke();
+                    // Arrow
+                    ctx.beginPath();
+                    ctx.moveTo(x - 5, canvas.height - 30);
+                    ctx.lineTo(x, canvas.height - 15);
+                    ctx.lineTo(x + 5, canvas.height - 30);
+                    ctx.stroke();
+                }
+            }
+            
+            // Update and draw particles
+            particles.forEach(function(p, index) {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                
+                // Boundary handling
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                
+                if (isOutdoor) {
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+                } else {
+                    // Cleanroom: particles exit at bottom
+                    if (p.y > canvas.height) {
+                        if (airflowOn) {
+                            // Replace at top if airflow on
+                            p.y = 0;
+                            p.x = Math.random() * canvas.width;
+                        } else {
+                            p.y = canvas.height;
+                            p.speedY = 0;
+                        }
+                    }
+                    if (p.y < 0) p.y = 0;
+                }
+                
+                // Draw particle
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = isOutdoor 
+                    ? 'rgba(139, 69, 19, ' + p.opacity + ')' 
+                    : 'rgba(100, 100, 100, ' + p.opacity + ')';
+                ctx.fill();
+            });
+        }
+        
+        function animate() {
+            if (outdoorCtx && cleanroomCtx) {
+                updateParticles(outdoorParticles, outdoorCtx, outdoorCanvas, true);
+                updateParticles(cleanroomParticles, cleanroomCtx, cleanroomCanvas, false);
+            }
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        function updateReadout() {
+            const data = isoParticleCounts[isoClass];
+            document.getElementById('cleanroomCount').textContent = data.label;
+            document.getElementById('reductionFactor').textContent = data.reduction;
+            document.getElementById('cleanroomLabel').textContent = 'ISO ' + isoClass + ' Cleanroom';
+            document.getElementById('isoValue').textContent = 'ISO ' + isoClass;
+        }
+        
+        // ISO slider
+        const isoSlider = document.getElementById('isoSlider');
+        if (isoSlider) {
+            isoSlider.addEventListener('input', function() {
+                isoClass = parseInt(this.value);
+                
+                // Adjust cleanroom particles
+                const targetCount = isoParticleCounts[isoClass].count;
+                while (cleanroomParticles.length < targetCount) {
+                    cleanroomParticles.push(createParticle(cleanroomCanvas, false));
+                }
+                while (cleanroomParticles.length > targetCount) {
+                    cleanroomParticles.pop();
+                }
+                
+                updateReadout();
+            });
+        }
+        
+        // Toggle airflow
+        const toggleAirflowBtn = document.getElementById('toggleAirflow');
+        if (toggleAirflowBtn) {
+            toggleAirflowBtn.addEventListener('click', function() {
+                airflowOn = !airflowOn;
+                this.textContent = airflowOn ? 'Toggle Airflow' : 'Airflow OFF';
+                this.classList.toggle('active-btn', airflowOn);
+                
+                // Update particle speeds
+                cleanroomParticles.forEach(function(p) {
+                    p.speedY = airflowOn ? 0.5 + Math.random() * 0.5 : (Math.random() - 0.5) * 0.3;
+                });
+            });
+        }
+        
+        // Add contamination
+        const addContaminationBtn = document.getElementById('addContamination');
+        if (addContaminationBtn) {
+            addContaminationBtn.addEventListener('click', function() {
+                // Add burst of particles
+                for (let i = 0; i < 50; i++) {
+                    const p = createParticle(cleanroomCanvas, false);
+                    p.y = 50 + Math.random() * 50;
+                    p.x = cleanroomCanvas.width / 2 + (Math.random() - 0.5) * 100;
+                    p.size = Math.random() * 3 + 1;
+                    cleanroomParticles.push(p);
+                }
+            });
+        }
+        
+        // Reset simulation
+        const resetSimBtn = document.getElementById('resetSim');
+        if (resetSimBtn) {
+            resetSimBtn.addEventListener('click', function() {
+                airflowOn = true;
+                toggleAirflowBtn.textContent = 'Toggle Airflow';
+                toggleAirflowBtn.classList.add('active-btn');
+                initParticles();
+            });
+        }
+        
+        // Initialize simulation
+        if (outdoorCanvas && cleanroomCanvas) {
+            initParticles();
+            animate();
+        }
+        
+        // ============================================================
+        // FILTER CALCULATOR
+        // ============================================================
+        const calculateFilterBtn = document.getElementById('calculateFilter');
+        if (calculateFilterBtn) {
+            calculateFilterBtn.addEventListener('click', function() {
+                const inputParticles = parseFloat(document.getElementById('inputParticles').value);
+                const efficiency = parseFloat(document.getElementById('filterType').value);
+                
+                const penetration = 100 - efficiency;
+                const particlesPassed = Math.round(inputParticles * (penetration / 100));
+                
+                document.getElementById('filterResult').innerHTML = 
+                    '<div class="result-value">' + particlesPassed.toLocaleString() + ' particles</div>' +
+                    '<div>pass through the filter (' + penetration + '% penetration)</div>' +
+                    '<div style="margin-top: 0.5rem; font-size: 0.9rem;">Captured: ' + (inputParticles - particlesPassed).toLocaleString() + ' particles</div>';
+            });
+        }
+        
+        // ============================================================
+        // ACH CALCULATOR
+        // ============================================================
+        const calculateACHBtn = document.getElementById('calculateACH');
+        if (calculateACHBtn) {
+            calculateACHBtn.addEventListener('click', function() {
+                const length = parseFloat(document.getElementById('roomLength').value);
+                const width = parseFloat(document.getElementById('roomWidth').value);
+                const height = parseFloat(document.getElementById('roomHeight').value);
+                const ach = parseFloat(document.getElementById('targetACH').value);
+                
+                const volume = length * width * height;
+                const airflowRate = volume * ach;
+                const airflowPerSecond = (airflowRate / 3600).toFixed(1);
+                
+                document.getElementById('achResult').innerHTML = 
+                    '<div class="result-value">' + airflowRate.toLocaleString() + ' m&#179;/hr</div>' +
+                    '<div>Required airflow rate (' + airflowPerSecond + ' m&#179;/s)</div>' +
+                    '<div style="margin-top: 0.5rem; font-size: 0.9rem;">Room Volume: ' + volume.toLocaleString() + ' m&#179;</div>';
+            });
+        }
+        
+        // ============================================================
+        // QUIZ FUNCTIONALITY
+        // ============================================================
+        const quizQuestions = document.querySelectorAll('.quiz-question');
+        
+        quizQuestions.forEach(function(question) {
+            const options = question.querySelectorAll('.quiz-option');
+            const feedback = question.querySelector('.quiz-feedback');
+            const correctAnswer = question.getAttribute('data-correct');
+            
+            options.forEach(function(option) {
+                option.addEventListener('click', function() {
+                    // If already answered, don't allow changes
+                    if (question.classList.contains('answered')) return;
+                    
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                    
+                    const selectedValue = radio.value;
+                    
+                    // Mark question as answered
+                    question.classList.add('answered');
+                    
+                    // Show result
+                    options.forEach(function(opt) {
+                        opt.style.pointerEvents = 'none';
+                        const optValue = opt.querySelector('input[type="radio"]').value;
+                        if (optValue === correctAnswer) {
+                            opt.classList.add('correct');
+                        } else if (optValue === selectedValue) {
+                            opt.classList.add('incorrect');
+                        }
+                    });
+                    
+                    // Show feedback
+                    if (selectedValue === correctAnswer) {
+                        feedback.textContent = 'Correct! Well done.';
+                        feedback.classList.add('correct', 'show');
+                    } else {
+                        feedback.textContent = 'Incorrect. The correct answer is highlighted.';
+                        feedback.classList.add('incorrect', 'show');
+                    }
+                    
+                    updateProgress();
+                });
+            });
+        });
+        
+        // Submit quiz
+        const submitQuizBtn = document.getElementById('submitQuiz');
+        if (submitQuizBtn) {
+            submitQuizBtn.addEventListener('click', function() {
+                let correct = 0;
+                let total = quizQuestions.length;
+                
+                quizQuestions.forEach(function(question) {
+                    const correctAnswer = question.getAttribute('data-correct');
+                    const selectedOption = question.querySelector('input[type="radio"]:checked');
+                    
+                    if (selectedOption && selectedOption.value === correctAnswer) {
+                        correct++;
+                    }
+                    
+                    // Mark unanswered questions
+                    if (!question.classList.contains('answered')) {
+                        question.classList.add('answered');
+                        const options = question.querySelectorAll('.quiz-option');
+                        options.forEach(function(opt) {
+                            opt.style.pointerEvents = 'none';
+                            const optValue = opt.querySelector('input[type="radio"]').value;
+                            if (optValue === correctAnswer) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                        const feedback = question.querySelector('.quiz-feedback');
+                        feedback.textContent = 'Not answered. The correct answer is highlighted.';
+                        feedback.classList.add('incorrect', 'show');
+                    }
+                });
+                
+                // Show score
+                const scoreDiv = document.getElementById('quizScore');
+                const scoreDisplay = document.getElementById('scoreDisplay');
+                const scoreMessage = document.getElementById('scoreMessage');
+                
+                scoreDisplay.textContent = correct + '/' + total;
+                
+                const percentage = (correct / total) * 100;
+                if (percentage >= 90) {
+                    scoreMessage.textContent = 'Excellent! You have mastered cleanroom technology!';
+                } else if (percentage >= 70) {
+                    scoreMessage.textContent = 'Good job! Review the concepts you missed.';
+                } else if (percentage >= 50) {
+                    scoreMessage.textContent = 'Keep studying! Review the lecture content.';
+                } else {
+                    scoreMessage.textContent = 'More study needed. Re-read the material and try again.';
+                }
+                
+                scoreDiv.style.display = 'block';
+                scoreDiv.scrollIntoView({ behavior: 'smooth' });
+                
+                updateProgress();
+            });
+        }
+        
+        // Initialize progress
+        updateProgress();
+        
+        // Handle checklist changes
+        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(function(cb) {
+            cb.addEventListener('change', updateProgress);
+        });
+        
+    })();
+    </script>
+    
+</body>
+</html>
