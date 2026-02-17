@@ -397,6 +397,78 @@
         .readout-value { font-size: 1.5rem; font-weight: bold; color: var(--gold); font-family: var(--font-mono); }
 
         /* ============================================================
+           VIDEO SECTION STYLES
+           ============================================================ */
+        .video-section {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        .video-section h2 {
+            color: var(--navy);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--teal);
+        }
+        .video-section > p {
+            color: var(--info);
+            margin-bottom: 25px;
+            font-size: 1.02rem;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .video-card {
+            background: var(--off-white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-info {
+            padding: 18px;
+        }
+        .video-info h3 {
+            color: var(--navy);
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+        }
+        .video-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        /* ============================================================
            DECISION TREE
            ============================================================ */
         .decision-tree { background: var(--off-white); border-radius: var(--radius); padding: 2rem; margin: 1.5rem 0; }
@@ -519,6 +591,7 @@
             .tab-panel { padding: 1.25rem; }
             .pump-grid, .two-column, .three-column { grid-template-columns: 1fr; }
             .pump-specs, .pump-pros-cons { grid-template-columns: 1fr; }
+            .video-grid { grid-template-columns: 1fr; }
         }
 
         @media print {
@@ -538,7 +611,7 @@
             <a href="index.html" class="nav-brand">NANO&middot;101</a>
             <ul class="nav-links" role="menubar">
                 <li><a href="index.html" role="menuitem">Home</a></li>
-                <li><a href="index.html" role="menuitem">Outline</a></li>
+                <li><a href="course-outline.html" role="menuitem">Outline</a></li>
                 <li><a href="module3_cleanroom_technology.html" role="menuitem">Module 3</a></li>
                 <li><a href="#" class="active" role="menuitem" aria-current="page">Module 4</a></li>
                 <li><a href="module5_vacuum_concepts.html" role="menuitem">Module 5</a></li>
@@ -627,6 +700,7 @@
                 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="fittings-panel" id="fittings-tab" onclick="switchTab('fittings')">&#128295; Fittings</button>
                 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="leaks-panel" id="leaks-tab" onclick="switchTab('leaks')">&#128269; Leaks</button>
                 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="lab-panel" id="lab-tab" onclick="switchTab('lab')">&#129514; Lab</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="resources-panel" id="resources-tab" onclick="switchTab('resources')">&#127909; Resources</button>
                 <button class="tab-btn" role="tab" aria-selected="false" aria-controls="quiz-panel" id="quiz-tab" onclick="switchTab('quiz')">&#10004; Quiz</button>
             </div>
 
@@ -1795,6 +1869,117 @@
 
             </div>
 
+            <!-- ==================== RESOURCES TAB ==================== -->
+            <div id="resources-panel" class="tab-panel" role="tabpanel" aria-labelledby="resources-tab">
+                
+                <div class="card">
+                    <div class="card-header">&#127909; Video Resources</div>
+                    <div class="card-body">
+                        <p style="font-size:1.05rem;margin-bottom:30px;color:var(--info);">Deepen your understanding of vacuum technology with these curated video resources. Watch any combination that suits your learning style—from basic principles to detailed pump mechanisms.</p>
+                        
+                        <div class="video-grid">
+                            <!-- Video 1 -->
+                            <div class="video-card">
+                                <div class="video-wrapper">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/MTIZTcptuDs" 
+                                        title="Vacuum Basics Explained – Fundamentals of vacuum technology"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h3>Vacuum Basics Explained</h3>
+                                    <span class="video-badge">Fundamentals</span>
+                                </div>
+                            </div>
+
+                            <!-- Video 2 -->
+                            <div class="video-card">
+                                <div class="video-wrapper">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/NvCDu54y__k" 
+                                        title="Introduction to Vacuum Technology – lab-oriented intro"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h3>Introduction to Vacuum Technology</h3>
+                                    <span class="video-badge">Lab-Oriented</span>
+                                </div>
+                            </div>
+
+                            <!-- Video 3 -->
+                            <div class="video-card">
+                                <div class="video-wrapper">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/CAQMZPS99rw" 
+                                        title="How Do Vacuum Pumps Work? – overview of vacuum pumps"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h3>How Do Vacuum Pumps Work?</h3>
+                                    <span class="video-badge">Pump Overview</span>
+                                </div>
+                            </div>
+
+                            <!-- Video 4 -->
+                            <div class="video-card">
+                                <div class="video-wrapper">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/AkXx4_xVJ1g" 
+                                        title="Vacuum Pump Basics – main purpose of vacuum pumps"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h3>Vacuum Pump Basics</h3>
+                                    <span class="video-badge">Purpose & Function</span>
+                                </div>
+                            </div>
+
+                            <!-- Video 5 -->
+                            <div class="video-card">
+                                <div class="video-wrapper">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/9tV6FeDR-vQ" 
+                                        title="How does a rotary vane vacuum pump work? – mechanism of a common pump"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h3>Rotary Vane Vacuum Pump Mechanism</h3>
+                                    <span class="video-badge">Detailed Mechanism</span>
+                                </div>
+                            </div>
+
+                            <!-- Video 6 -->
+                            <div class="video-card">
+                                <div class="video-wrapper">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/Iv-hL3VMBRk" 
+                                        title="High-Vacuum Basics – general high-vacuum concepts"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div class="video-info">
+                                    <h3>High-Vacuum Basics</h3>
+                                    <span class="video-badge">Advanced Concepts</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <!-- ==================== QUIZ TAB ==================== -->
             <div id="quiz-panel" class="tab-panel" role="tabpanel" aria-labelledby="quiz-tab">
                 
@@ -1953,8 +2138,8 @@
     <!-- FOOTER -->
     <footer class="site-footer" role="contentinfo">
         <p>Introduction to Nanotechnology &mdash; Module 4: Vacuum Systems &amp; Assembly</p>
-
-        <p>Penn State University</p>
+        <p>Based on the <em>Low-Cost Nanotechnology Laboratory Manual</em></p>
+        <span class="grant-badge">Supported by NSF ATE Grant DUE 2301137</span>
     </footer>
 
     <!-- ================================================================
@@ -1988,7 +2173,7 @@
         }
         
         function updateProgress() {
-            const totalTabs = 7;
+            const totalTabs = 8;
             const percentage = Math.round((tabsVisited.size / totalTabs) * 100);
             document.getElementById('progress-fill').style.width = percentage + '%';
             document.getElementById('progress-text').textContent = percentage + '%';
