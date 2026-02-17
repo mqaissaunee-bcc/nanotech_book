@@ -164,6 +164,7 @@
         .objective-item {
             display: flex; align-items: flex-start; gap: 0.75rem;
             padding: 1rem; background: var(--info-light); border-radius: var(--radius);
+            color: var(--navy-deep);
         }
         .objective-num {
             background: var(--teal); color: var(--white);
@@ -273,9 +274,10 @@
         .four-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
         .column-box {
             background: var(--off-white); padding: 1.25rem; border-radius: var(--radius);
-            border-top: 4px solid var(--teal);
+            border-top: 4px solid var(--teal); color: var(--dark-gray);
         }
         .column-box h4 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1rem; }
+        .column-box p { color: var(--dark-gray); }
 
         /* ============================================================
            TABLES
@@ -329,7 +331,7 @@
             color: var(--white); font-size: 0.8rem; font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
-        .gauge-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--mid-gray); padding: 0 0.5rem; }
+        .gauge-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--dark-gray); padding: 0 0.5rem; }
 
         /* ============================================================
            FITTING CARDS
@@ -619,6 +621,20 @@
         .footer-content p{margin-bottom:8px;font-size:0.92rem;opacity:0.85;color:#FFFFFF!important}
         footer a{color:#FFFFFF!important}
         footer strong{color:#FFFFFF!important}
+    
+        
+        /* ===== CONTENT TEXT CONTRAST ===== */
+        .card-body { color: #333333; }
+        .card-body p, .card-body li { color: #333333; }
+        .card-body h3, .card-body h4 { color: #003366; }
+        .column-box { color: #333333; }
+        .column-box p { color: #333333; }
+        .column-box h4 { color: #003366; }
+        .objective-item { color: #001a33; }
+        .content-section { color: #333333; }
+        .content-section p, .content-section li { color: #333333; }
+        .content-section h3, .content-section h4 { color: #003366; }
+        .tab-panel { color: #333333; }
     </style>
 </head>
 <body>
@@ -767,9 +783,9 @@
                         <div class="gauge-labels">
                             <span>760 Torr</span>
                             <span>25 Torr</span>
-                            <span>10&sup-3; Torr</span>
-                            <span>10&sup-9; Torr</span>
-                            <span>&lt;10&sup-9; Torr</span>
+                            <span>10<sup>&minus;3</sup> Torr</span>
+                            <span>10<sup>&minus;9</sup> Torr</span>
+                            <span>&lt;10<sup>&minus;9</sup> Torr</span>
                         </div>
 
                         <div class="table-container">
