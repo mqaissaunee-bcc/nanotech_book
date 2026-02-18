@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Module 9: Etching Technology — Comprehensive coverage of wet and dry etching, isotropic and anisotropic profiles, selectivity, RIE, DRIE Bosch process, atomic layer etching, etchant chemistries, and hands-on ferric chloride etching lab.">
+<meta name="description" content="Module 9: Etching Technology â€”Â Comprehensive coverage of wet and dry etching, isotropic and anisotropic profiles, selectivity, RIE, DRIE Bosch process, atomic layer etching, etchant chemistries, and hands-on ferric chloride etching lab.">
 <title>Module 9: Etching Technology | Introduction to Nanotechnology</title>
 <style>
 :root{--navy:#000066;--primary-blue:#003366;--secondary-blue:#336699;--light-blue:#6699CC;--pale-blue:#CCEEFF;--ice-blue:#E6F3FF;--etch-amber:#CC6600;--dark-amber:#993300;--light-amber:#FF9933;--pale-amber:#FFF3E0;--warm-amber:#FFE0B2;--etch-teal:#006666;--dark-teal:#004D4D;--light-teal:#009999;--pale-teal:#E0F7FA;--green:#008000;--dark-green:#006600;--pale-green:#E6FFE6;--gold:#CC9900;--dark-gold:#996600;--orange:#FF6600;--red:#CC0000;--dark-red:#990000;--pale-red:#FFE6E6;--purple:#663399;--pale-purple:#F3E8FF;--copper:#CC6633;--white:#FFFFFF;--off-white:#F5F5F5;--light-gray:#E0E0E0;--medium-gray:#999999;--dark-gray:#666666;--charcoal:#333333;--black:#000000;--shadow:rgba(0,0,0,0.15);--shadow-dark:rgba(0,0,0,0.25);--font-primary:Georgia,'Times New Roman',serif;--font-display:'Trebuchet MS',Arial,sans-serif;--font-mono:'Courier New',monospace;--transition:0.3s ease;--radius:8px;--radius-lg:12px}
@@ -90,6 +90,18 @@ main{max-width:1400px;margin:0 auto;padding:2rem}
 .diagram-container{background:var(--white);border:2px solid var(--light-gray);border-radius:var(--radius);padding:1.5rem;margin:1.5rem 0;text-align:center;overflow-x:auto}
 .diagram-container svg{max-width:100%;height:auto}
 .diagram-caption{font-style:italic;color:var(--dark-gray);font-size:0.9rem;margin-top:0.75rem;text-align:center}
+/* ===== VIDEO SECTION ===== */
+.video-section{background:var(--white);padding:2rem;border-radius:var(--radius-lg);margin-bottom:2rem;box-shadow:0 4px 20px var(--shadow)}
+.video-section h2{font-family:var(--font-display);color:var(--dark-amber);font-size:1.6rem;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:3px solid var(--etch-amber)}
+.video-section>p{color:var(--dark-gray);margin-bottom:1.5rem;font-size:1.02rem}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:1.25rem}
+.video-card{background:var(--off-white);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 10px var(--shadow);transition:transform 0.3s,box-shadow 0.3s}
+.video-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px var(--shadow-dark)}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.video-info{padding:1rem 1.25rem}
+.video-info h3{font-family:var(--font-display);color:var(--dark-amber);font-size:1.05rem;margin-bottom:0.5rem}
+.video-badge{display:inline-block;background:linear-gradient(135deg,var(--etch-amber),var(--dark-amber));color:var(--white);padding:4px 12px;border-radius:15px;font-size:0.8rem;font-weight:600;margin-top:4px;font-family:var(--font-display)}
 .sim-container{background:var(--off-white);border-radius:var(--radius);padding:1.5rem;margin:1.5rem 0}
 .sim-controls{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-bottom:1rem;padding:1rem;background:var(--white);border-radius:var(--radius);border:1px solid var(--light-gray)}
 .sim-controls label{font-weight:600;font-family:var(--font-display);color:var(--dark-amber)}
@@ -121,7 +133,7 @@ main{max-width:1400px;margin:0 auto;padding:2rem}
 footer{background:linear-gradient(135deg,var(--charcoal),var(--black));color:var(--light-gray);padding:2rem;text-align:center;margin-top:3rem;font-size:0.9rem}
 footer a{color:var(--light-amber);text-decoration:none}
 footer a:hover{text-decoration:underline}
-@media(max-width:768px){.hero h1{font-size:1.8rem}.hero{padding:2rem 1.5rem}main{padding:1rem}.two-column{grid-template-columns:1fr}.tabs{flex-direction:column}.tab-btn{min-width:auto}.lab-step{flex-direction:column}.header-content{flex-direction:column;text-align:center}.nav-buttons{justify-content:center}.data-table{font-size:0.85rem}.data-table th,.data-table td{padding:0.6rem}}
+@media(max-width:768px){.hero h1{font-size:1.8rem}.hero{padding:2rem 1.5rem}main{padding:1rem}.two-column{grid-template-columns:1fr}.tabs{flex-direction:column}.tab-btn{min-width:auto}.lab-step{flex-direction:column}.header-content{flex-direction:column;text-align:center}.nav-buttons{justify-content:center}.data-table{font-size:0.85rem}.data-table th,.data-table td{padding:0.6rem}.video-grid{grid-template-columns:1fr}}
 
         
         /* ===== FOOTER OVERRIDE ===== */
@@ -212,6 +224,7 @@ footer a:hover{text-decoration:underline}
 <button class="tab-btn active" onclick="showTab('lecture')" role="tab" aria-selected="true" aria-controls="lecture" id="tab-lecture">&#128214; Lecture</button>
 <button class="tab-btn" onclick="showTab('theory')" role="tab" aria-selected="false" aria-controls="theory" id="tab-theory">&#128300; Theory Deep Dive</button>
 <button class="tab-btn" onclick="showTab('simulation')" role="tab" aria-selected="false" aria-controls="simulation" id="tab-simulation">&#128187; Simulations</button>
+<button class="tab-btn" onclick="showTab('resources')" role="tab" aria-selected="false" aria-controls="resources" id="tab-resources">&#127909; Resources</button>
 <button class="tab-btn" onclick="showTab('lab')" role="tab" aria-selected="false" aria-controls="lab" id="tab-lab">&#129514; Hands-On Lab</button>
 <button class="tab-btn" onclick="showTab('quiz')" role="tab" aria-selected="false" aria-controls="quiz" id="tab-quiz">&#9989; Quiz</button>
 </div>
@@ -560,6 +573,108 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <!-- ================================================================
+     RESOURCES TAB
+     ================================================================ -->
+<div id="resources" class="tab-content" role="tabpanel" aria-labelledby="tab-resources">
+<div class="card">
+<div class="card-header">&#127909; Video Resources</div>
+<div class="card-body">
+<p style="font-size:1.05rem;margin-bottom:1.5rem;color:var(--dark-gray);">Enhance your understanding of etching technology with these curated video resources. Watch any combination that suits your learning style&mdash;from quick overviews to in-depth process explanations.</p>
+
+<div class="video-grid">
+<!-- Video 1 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/3rrVr2sLBE0" title="What Is Etching in Semiconductor Manufacturing?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="video-info">
+<h3>What Is Etching in Semiconductor Manufacturing?</h3>
+<span class="video-badge">Overview</span>
+</div>
+</div>
+
+<!-- Video 2 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/8B0lRW3JVS4" title="Introduction to Wet Etch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="video-info">
+<h3>Introduction to Wet Etch</h3>
+<span class="video-badge">Wet Etching</span>
+</div>
+</div>
+
+<!-- Video 3 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/9_9cdfLiK0Q" title="Wet Etching Process – SiO₂, Si₃N₄, Al" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="video-info">
+<h3>Wet Etching Process &ndash; SiO&#8322;, Si&#8323;N&#8324;, Al</h3>
+<span class="video-badge">Wet Etching</span>
+</div>
+</div>
+
+<!-- Video 4 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/AQvocqPX0t0" title="Plasma Etching Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="video-info">
+<h3>Plasma Etching Explained</h3>
+<span class="video-badge">Dry Etching</span>
+</div>
+</div>
+
+<!-- Video 5 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/k1yCbBrRyu4" title="Plasma Etch (Part 1 Basics)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="video-info">
+<h3>Plasma Etch (Part 1 Basics)</h3>
+<span class="video-badge">Dry Etching</span>
+</div>
+</div>
+
+<!-- Video 6 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/RoQgnC0Oz2k" title="Etching Silicon with Plasma – RIE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="video-info">
+<h3>Etching Silicon with Plasma &ndash; RIE</h3>
+<span class="video-badge">RIE Process</span>
+</div>
+</div>
+
+<!-- Video 7 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/znsr4M2L4ZI" title="VINSE: Introduction to Etching" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="video-info">
+<h3>VINSE: Introduction to Etching</h3>
+<span class="video-badge">Academic</span>
+</div>
+</div>
+
+<!-- Video 8 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/zkdQddMZSyM" title="The Etching Process (Chemical Etching Animation)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="video-info">
+<h3>The Etching Process (Chemical Etching Animation)</h3>
+<span class="video-badge">Animation</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ================================================================
      LAB TAB
      ================================================================ -->
 <div id="lab" class="tab-content" role="tabpanel" aria-labelledby="tab-lab">
@@ -777,7 +892,7 @@ window.showTab = function(tabId){
 var visited = {};
 function updateProgress(){
     document.querySelectorAll('.tab-content.active').forEach(function(t){visited[t.id]=true});
-    var pct = Math.round(Object.keys(visited).length/5*100);
+    var pct = Math.round(Object.keys(visited).length/6*100);
     var fill = document.getElementById('progressFill');
     var txt = document.getElementById('progressText');
     if(fill){fill.style.width=pct+'%';fill.setAttribute('aria-valuenow',pct)}
