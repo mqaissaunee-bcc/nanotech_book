@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Module 11: Electrochemical Deposition — Comprehensive coverage of electrochemistry fundamentals, redox reactions, Faraday's laws, Nernst equation, copper damascene process, gold electrodeposition, and hands-on laboratory experiments for nanotechnology education.">
+    <meta name="description" content="Module 11: Electrochemical Deposition â€”Â Comprehensive coverage of electrochemistry fundamentals, redox reactions, Faraday's laws, Nernst equation, copper damascene process, gold electrodeposition, and hands-on laboratory experiments for nanotechnology education.">
     <title>Module 11: Electrochemical Deposition | Introduction to Nanotechnology</title>
     <style>
         :root {
@@ -168,11 +168,22 @@
         .nsf{max-width:1400px;margin:1rem auto 2rem;padding:0 2rem}
         .nsfi{background:var(--wht);border-radius:var(--r);padding:1.5rem;text-align:center;font-size:.85rem;color:var(--dgr);box-shadow:0 2px 8px var(--shd);border-top:3px solid var(--sec)}
 
+        /* ===== VIDEO SECTION ===== */
+        .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;margin-top:20px}
+        .video-card{background:var(--off);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 10px var(--shd);transition:transform var(--tr),box-shadow var(--tr)}
+        .video-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px var(--shd2)}
+        .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+        .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+        .video-info{padding:18px}
+        .video-info h3{color:var(--sec);font-size:1.08rem;margin-bottom:8px}
+        .video-badge{display:inline-block;background:var(--pri);color:var(--wht);padding:4px 12px;border-radius:15px;font-size:.8rem;font-weight:600;margin-top:6px}
+
         @media(max-width:768px){
             .hdr{flex-direction:column;text-align:center}nav.nb{justify-content:center}
             .hero h1{font-size:1.6rem}.hero-meta{flex-direction:column;align-items:center}
             .tabs{flex-direction:column}.tab-btn{min-width:unset}
             .cmp,.mg{grid-template-columns:1fr}.sctrl,.cg{grid-template-columns:1fr}
+            .video-grid{grid-template-columns:1fr}
             .nf{flex-direction:column;align-items:stretch;text-align:center}
             .cbd{padding:1rem 1.25rem}.ps{padding-left:60px}.tt-box{width:220px;font-size:.8rem}
         }
@@ -254,6 +265,7 @@
 <div class="tabs" role="tablist" aria-label="Module content tabs">
 <button class="tab-btn active" onclick="switchTab('lecture')" role="tab" aria-selected="true" aria-controls="lecture" id="tab-lecture">&#128214; Lecture</button>
 <button class="tab-btn" onclick="switchTab('sim')" role="tab" aria-selected="false" aria-controls="sim" id="tab-sim">&#128300; Simulation</button>
+<button class="tab-btn" onclick="switchTab('resources')" role="tab" aria-selected="false" aria-controls="resources" id="tab-resources">&#127909; Resources</button>
 <button class="tab-btn" onclick="switchTab('procedure')" role="tab" aria-selected="false" aria-controls="procedure" id="tab-procedure">&#128248; Procedure</button>
 <button class="tab-btn" onclick="switchTab('quiz')" role="tab" aria-selected="false" aria-controls="quiz" id="tab-quiz">&#9989; Quiz</button>
 </div>
@@ -460,6 +472,96 @@
 </div></div></div>
 
 </div><!-- /sim -->
+
+<!-- ============ RESOURCES TAB ============ -->
+<div id="resources" class="tc" role="tabpanel" aria-labelledby="tab-resources">
+<div class="card"><div class="chd gold">&#127909; Video Resources</div><div class="cbd">
+<p style="font-size:1.05rem;margin-bottom:30px;color:var(--dgr);">Enhance your understanding of electrochemical deposition with these curated video resources. Watch any combination that suits your learning style&mdash;from quick overviews to detailed demonstrations.</p>
+
+<div class="video-grid">
+<!-- Video 1 -->
+<div class="video-card">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/NKbo49tYcts" 
+            title="Introduction to Electrodeposition – basics of the process"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="video-info">
+        <h3>Introduction to Electrodeposition</h3>
+        <span class="video-badge">Fundamentals</span>
+    </div>
+</div>
+
+<!-- Video 2 -->
+<div class="video-card">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/VNQ3_pQMQGg" 
+            title="What Is Electrochemical Deposition? – process overview"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="video-info">
+        <h3>What Is Electrochemical Deposition?</h3>
+        <span class="video-badge">Process Overview</span>
+    </div>
+</div>
+
+<!-- Video 3 -->
+<div class="video-card">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/qI6YY634MOA" 
+            title="Electroplating - Electrolysis Demonstration"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="video-info">
+        <h3>Electroplating &ndash; Electrolysis Demonstration</h3>
+        <span class="video-badge">Demonstration</span>
+    </div>
+</div>
+
+<!-- Video 4 -->
+<div class="video-card">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/STQlcT4RSq4" 
+            title="Electrolytic Cell Electroplating Explained"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="video-info">
+        <h3>Electrolytic Cell Electroplating Explained</h3>
+        <span class="video-badge">Explanation</span>
+    </div>
+</div>
+
+<!-- Video 5 -->
+<div class="video-card">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/qczuns50OTU" 
+            title="Electroplating 101 – How It Works"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="video-info">
+        <h3>Electroplating 101 &ndash; How It Works</h3>
+        <span class="video-badge">How It Works</span>
+    </div>
+</div>
+</div>
+
+</div></div>
+</div><!-- /resources -->
 
 <!-- ============ PROCEDURE TAB ============ -->
 <div id="procedure" class="tc" role="tabpanel" aria-labelledby="tab-procedure">
