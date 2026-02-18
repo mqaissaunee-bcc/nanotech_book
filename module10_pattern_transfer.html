@@ -171,6 +171,17 @@
         .nav-footer { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
         .nav-footer a { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #fff; color: #1a2332; text-decoration: none; border: 2px solid #1a2332; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; }
         .nav-footer a:hover { background: #1a2332; color: #fff; }
+
+        /* ===== VIDEO SECTION ===== */
+        .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;margin-top:20px}
+        .video-card{background:var(--off);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);transition:transform 0.3s,box-shadow 0.3s}
+        .video-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+        .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+        .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+        .video-info{padding:18px}
+        .video-info h3{font-family:var(--fd);color:var(--em-dk);font-size:1.08rem;margin-bottom:8px}
+        .video-badge{display:inline-block;background:var(--gold);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.8rem;font-weight:600;margin-top:6px}
+        @media(max-width:768px){.video-grid{grid-template-columns:1fr}}
         </style>
 </head>
 <body>
@@ -211,6 +222,7 @@
 <button class="tab-btn active" onclick="showTab('lecture')" role="tab" aria-selected="true" aria-controls="lecture" id="tab-lecture">&#128214; Lecture</button>
 <button class="tab-btn" onclick="showTab('theory')" role="tab" aria-selected="false" aria-controls="theory" id="tab-theory">&#128300; Theory</button>
 <button class="tab-btn" onclick="showTab('sim')" role="tab" aria-selected="false" aria-controls="sim" id="tab-sim">&#128187; Simulations</button>
+<button class="tab-btn" onclick="showTab('resources')" role="tab" aria-selected="false" aria-controls="resources" id="tab-resources">&#127909; Resources</button>
 <button class="tab-btn" onclick="showTab('lab')" role="tab" aria-selected="false" aria-controls="lab" id="tab-lab">&#129514; Lab</button>
 <button class="tab-btn" onclick="showTab('quiz')" role="tab" aria-selected="false" aria-controls="quiz" id="tab-quiz">&#9989; Quiz</button>
 </div>
@@ -351,6 +363,84 @@
 </div>
 <div class="scw"><canvas id="oC" width="700" height="300" aria-label="Overlay error budget chart"></canvas></div>
 <div class="rd" id="oR"></div></div>
+</div>
+
+<!-- ===== RESOURCES TAB ===== -->
+<div id="resources" class="tc" role="tabpanel" aria-labelledby="tab-resources">
+<div class="card">
+<div class="ch">&#127909; Video Resources</div>
+<div class="cb">
+<p style="font-size:1.05rem;margin-bottom:30px;color:var(--dg);">Enhance your understanding of pattern transfer with these curated videos covering microchip patterning, lithography workflows, photomask technology, and semiconductor fabrication processes.</p>
+
+<div class="video-grid">
+<!-- Video 1 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/2Tqkc0olRtI" title="How Does Pattern Transfer Work For Microchips?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h3>How Does Pattern Transfer Work For Microchips?</h3>
+<span class="video-badge">Microchip Fabrication</span>
+</div>
+</div>
+
+<!-- Video 2 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/cooHGw38NLk" title="Lec 35: Lithography & Pattern Transfer (semiconductor)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h3>Lec 35: Lithography &amp; Pattern Transfer</h3>
+<span class="video-badge">Semiconductor Lecture</span>
+</div>
+</div>
+
+<!-- Video 3 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/JR8RolLWo3A" title="What Is the Semiconductor Patterning Process?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h3>What Is the Semiconductor Patterning Process?</h3>
+<span class="video-badge">Process Overview</span>
+</div>
+</div>
+
+<!-- Video 4 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/TjpbrLTem3M" title="Fabrication Processes – Photolithography & Pattern Transfer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h3>Fabrication Processes &ndash; Photolithography &amp; Pattern Transfer</h3>
+<span class="video-badge">Fabrication</span>
+</div>
+</div>
+
+<!-- Video 5 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/YWotZw9fgx8" title="How to Master UV Photolithography: Workflow & Pattern Transfer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h3>How to Master UV Photolithography: Workflow &amp; Pattern Transfer</h3>
+<span class="video-badge">UV Lithography</span>
+</div>
+</div>
+
+<!-- Video 6 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/foMT8gLYxBY" title="Photomasks Explained (contact and projection)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h3>Photomasks Explained (Contact and Projection)</h3>
+<span class="video-badge">Photomask Technology</span>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- ===== LAB TAB ===== -->
