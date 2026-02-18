@@ -895,7 +895,7 @@
                     </div>
 
                     <div class="key-concept">
-                        <h4>ðŸ“ Viewing Tips</h4>
+                        <h4>📝 Viewing Tips</h4>
                         <ul style="margin-left: 20px; line-height: 1.8;">
                             <li>Watch videos in the order presented for best understanding</li>
                             <li>Take notes on key concepts and size comparisons</li>
@@ -1017,22 +1017,15 @@
         </div><!-- END QUIZ TAB -->
 
         <!-- ===== NAV FOOTER ===== -->
-        <div class="nav-footer">
-            <a href="module1_what_is_nanotechnology.html">&larr; Module 1: What Is Nanotechnology?</a>
-            <a href="index.html">&#127968; Course Home</a>
-            <a href="module3_cleanroom_technology.html">Module 3: Cleanroom Technology &rarr;</a>
-        </div>
-
-    </main>
-
-    <footer>
+<nav class="nav-footer" aria-label="Module navigation"><a href="module1_what_is_nanotechnology.html">&larr; Module 1: What Is Nanotechnology?</a><a href="index.html">&#127968; Course Home</a><a href="module3_cleanroom_technology.html">Module 3: Cleanroom Technology &rarr;</a></nav>
+</main>
+<footer>
         <div class="footer-content">
             <p>Introduction to Nanotechnology &mdash; Module 2: Nanoscale Science Fundamentals</p>
             <p>&copy; 2026 &mdash; For Educational Use</p>
         </div>
     </footer>
-
-    <script>
+<script>
         // ===== TAB SWITCHING =====
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -1075,12 +1068,12 @@
 
         // ===== SA:V EXPLORER =====
         const savData = {
-            '1cm': { title: '1 cm Cube', area: '6 cmÃ‚Â²', vol: '1 cmÃ‚Â³', ratio: '6 cmÃ¢ÂÂ»Ã‚Â¹', insight: 'At the macroscale, bulk properties dominate. Surface effects are negligible.' },
-            '1mm': { title: '1 mm Cube', area: '6 mmÃ‚Â²', vol: '1 mmÃ‚Â³', ratio: '60 cmÃ¢ÂÂ»Ã‚Â¹', insight: 'Still macro. Surface effects are minimal but increasing.' },
-            '100um': { title: '100 ÃŽÂ¼m Cube', area: '60,000 ÃŽÂ¼mÃ‚Â²', vol: '1,000,000 ÃŽÂ¼mÃ‚Â³', ratio: '600 cmÃ¢ÂÂ»Ã‚Â¹', insight: 'Approaching micro scale. Surface properties start to matter.' },
-            '1um': { title: '1 ÃŽÂ¼m Cube', area: '6 ÃŽÂ¼mÃ‚Â²', vol: '1 ÃŽÂ¼mÃ‚Â³', ratio: '6,000 cmÃ¢ÂÂ»Ã‚Â¹', insight: 'Microscale. Surface energy becomes significant.' },
-            '100nm': { title: '100 nm Cube', area: '60,000 nmÃ‚Â²', vol: '1,000,000 nmÃ‚Â³', ratio: '60,000 cmÃ¢ÂÂ»Ã‚Â¹', insight: 'Nanoscale! Surface atoms are a significant fraction of total atoms.' },
-            '10nm': { title: '10 nm Cube', area: '600 nmÃ‚Â²', vol: '1,000 nmÃ‚Â³', ratio: '6,000,000 cmÃ¢ÂÂ»Ã‚Â¹', insight: 'Deep nanoscale: ~30% of atoms are on the surface. Quantum effects emerge. Properties differ dramatically from bulk.' }
+            '1cm': { title: '1 cm Cube', area: '6 cm²', vol: '1 cm³', ratio: '6 cm⁻¹', insight: 'At the macroscale, bulk properties dominate. Surface effects are negligible.' },
+            '1mm': { title: '1 mm Cube', area: '6 mm²', vol: '1 mm³', ratio: '60 cm⁻¹', insight: 'Still macro. Surface effects are minimal but increasing.' },
+            '100um': { title: '100 μm Cube', area: '60,000 μm²', vol: '1,000,000 μm³', ratio: '600 cm⁻¹', insight: 'Approaching micro scale. Surface properties start to matter.' },
+            '1um': { title: '1 μm Cube', area: '6 μm²', vol: '1 μm³', ratio: '6,000 cm⁻¹', insight: 'Microscale. Surface energy becomes significant.' },
+            '100nm': { title: '100 nm Cube', area: '60,000 nm²', vol: '1,000,000 nm³', ratio: '60,000 cm⁻¹', insight: 'Nanoscale! Surface atoms are a significant fraction of total atoms.' },
+            '10nm': { title: '10 nm Cube', area: '600 nm²', vol: '1,000 nm³', ratio: '6,000,000 cm⁻¹', insight: 'Deep nanoscale: ~30% of atoms are on the surface. Quantum effects emerge. Properties differ dramatically from bulk.' }
         };
 
         function selectCube(el) {
@@ -1105,7 +1098,7 @@
             const eV = parseFloat(val);
             document.getElementById('bandgap-value').textContent = eV.toFixed(2) + ' eV';
             
-            // Calculate wavelength: ÃŽÂ» = 1240 / E(eV)
+            // Calculate wavelength: λ = 1240 / E(eV)
             const wavelength = 1240 / eV;
             document.getElementById('wavelength-value').textContent = Math.round(wavelength) + ' nm';
             
@@ -1170,7 +1163,7 @@
             
             let display, context;
             if (nm > 1000) {
-                display = (nm / 1000).toFixed(2) + ' ÃŽÂ¼m';
+                display = (nm / 1000).toFixed(2) + ' μm';
             } else if (nm > 1) {
                 display = nm.toFixed(2) + ' nm';
             } else {
@@ -1181,13 +1174,13 @@
             
             // Context
             if (nm > 100) {
-                context = 'Much larger than atomic spacingÃ¢â‚¬â€classical behavior dominates.';
+                context = 'Much larger than atomic spacing—classical behavior dominates.';
             } else if (nm > 10) {
-                context = 'Comparable to molecular dimensionsÃ¢â‚¬â€quantum effects begin to appear.';
+                context = 'Comparable to molecular dimensions—quantum effects begin to appear.';
             } else if (nm > 0.1) {
-                context = 'Comparable to atomic spacingÃ¢â‚¬â€quantum effects are significant!';
+                context = 'Comparable to atomic spacing—quantum effects are significant!';
             } else {
-                context = 'Smaller than atomic spacingÃ¢â‚¬â€deep quantum regime.';
+                context = 'Smaller than atomic spacing—deep quantum regime.';
             }
             
             document.getElementById('debroglie-context').textContent = context;
@@ -1200,9 +1193,9 @@
         const quizQuestions = [
             {
                 q: "What is the de Broglie wavelength relationship?",
-                opts: ["ÃŽÂ» = h Ãƒâ€” p", "ÃŽÂ» = h / p", "ÃŽÂ» = p / h", "ÃŽÂ» = h + p"],
+                opts: ["λ = h × p", "λ = h / p", "λ = p / h", "λ = h + p"],
                 ans: 1,
-                exp: "The de Broglie wavelength is inversely proportional to momentum: ÃŽÂ» = h/p = h/(mv)."
+                exp: "The de Broglie wavelength is inversely proportional to momentum: λ = h/p = h/(mv)."
             },
             {
                 q: "At the nanoscale, what dominates material behavior?",
@@ -1226,13 +1219,13 @@
                 q: "What is plasma?",
                 opts: ["A liquid at high pressure", "A gas at low temperature", "An ionized gas with free electrons", "A solid with delocalized electrons"],
                 ans: 2,
-                exp: "Plasma is ionized gas containing free electrons and ionsÃ¢â‚¬â€the fourth state of matter."
+                exp: "Plasma is ionized gas containing free electrons and ions—the fourth state of matter."
             },
             {
                 q: "Why does a smaller band gap mean longer wavelength emission?",
-                opts: ["E = hc/ÃŽÂ», so smaller E means larger ÃŽÂ»", "Smaller gaps absorb more light", "It doesn'tÃ¢â‚¬â€they're unrelated", "Smaller gaps mean higher frequency"],
+                opts: ["E = hc/λ, so smaller E means larger λ", "Smaller gaps absorb more light", "It doesn't—they're unrelated", "Smaller gaps mean higher frequency"],
                 ans: 0,
-                exp: "Since E = hc/ÃŽÂ», a smaller energy gap produces photons with longer wavelength."
+                exp: "Since E = hc/λ, a smaller energy gap produces photons with longer wavelength."
             },
             {
                 q: "What fundamental limit makes transistors below ~1 nm impractical?",
@@ -1248,9 +1241,9 @@
             },
             {
                 q: "A 10 nm cube has what SA:V ratio compared to a 1 cm cube?",
-                opts: ["Same", "10Ãƒâ€” larger", "1,000Ãƒâ€” larger", "1,000,000Ãƒâ€” larger"],
+                opts: ["Same", "10× larger", "1,000× larger", "1,000,000× larger"],
                 ans: 3,
-                exp: "SA:V = 6/a, so going from 1 cm to 10 nm (factor of 10Ã¢ÂÂ¶ smaller) increases SA:V by 10Ã¢ÂÂ¶."
+                exp: "SA:V = 6/a, so going from 1 cm to 10 nm (factor of 10⁶ smaller) increases SA:V by 10⁶."
             },
             {
                 q: "Moore's Law predicts transistor count doubles approximately every:",
@@ -1318,7 +1311,7 @@
             // Show feedback
             const fb = document.getElementById(`fb-${qIdx}`);
             fb.className = `quiz-feedback show ${correct ? 'correct' : 'incorrect'}`;
-            fb.innerHTML = `<strong>${correct ? 'Ã¢Å“â€œ Correct!' : 'Ã¢Å“â€” Incorrect'}</strong> ${q.exp}`;
+            fb.innerHTML = `<strong>${correct ? '✔ Correct!' : '✘ Incorrect'}</strong> ${q.exp}`;
             
             // Check if all answered
             if (answered.every(a => a)) {

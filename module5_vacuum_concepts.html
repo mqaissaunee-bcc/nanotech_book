@@ -482,7 +482,7 @@
     <div class="score-box" id="scoreBox"><div class="score-num" id="scoreFinal">0/15</div><p id="scoreMsg" style="margin-top:0.75rem;font-size:1rem;"></p></div>
 </div></div></div>
 </div><!-- end tab-content-wrap -->
-<nav class="nav-footer" aria-label="Module navigation"><a href="module4_vacuum_systems_aligned.html">&larr; Module 4: Vacuum Systems & Assembly</a><a href="index.html">&#127968; Course Home</a><a href="module6_plasma_technology.html">Module 6: Plasma Technology &rarr;</a></nav>
+<nav class="nav-footer" aria-label="Module navigation"><a href="module4_vacuum_systems_aligned.html">&larr; Module 4: Vacuum Systems &amp; Assembly</a><a href="index.html">&#127968; Course Home</a><a href="module6_plasma_technology.html">Module 6: Plasma Technology &rarr;</a></nav>
 </main>
 <footer>
         <div class="footer-content">
@@ -526,17 +526,17 @@ window.drawVP=function(){var cv=document.getElementById('vpCanvas'),cx=cv.getCon
     cx.strokeStyle='#333';cx.lineWidth=2;cx.beginPath();cx.moveTo(pad.l,pad.t);cx.lineTo(pad.l,H-pad.b);cx.lineTo(W-pad.r,H-pad.b);cx.stroke();
     cx.fillStyle='#666';cx.font='11px Verdana';cx.textAlign='right';
     for(var lp=lpMin;lp<=lpMax;lp++){var y=pad.t+ph*(1-(lp-lpMin)/(lpMax-lpMin));cx.fillText('1e'+lp,pad.l-8,y+4);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(pad.l,y);cx.lineTo(W-pad.r,y);cx.stroke();}
-    cx.textAlign='center';var nT=6;for(var i=0;i<=nT;i++){var T=Tmin+(Tmax-Tmin)*i/nT,x=pad.l+pw*i/nT;cx.fillStyle='#666';cx.fillText(Math.round(T)+'Â°C',x,H-pad.b+20);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(x,pad.t);cx.lineTo(x,H-pad.b);cx.stroke();}
-    cx.fillStyle='#333';cx.font='bold 12px Verdana';cx.textAlign='center';cx.fillText('Temperature (Â°C)',W/2,H-10);cx.save();cx.translate(15,H/2);cx.rotate(-Math.PI/2);cx.fillText('Vapor Pressure (Torr)',0,0);cx.restore();
+    cx.textAlign='center';var nT=6;for(var i=0;i<=nT;i++){var T=Tmin+(Tmax-Tmin)*i/nT,x=pad.l+pw*i/nT;cx.fillStyle='#666';cx.fillText(Math.round(T)+'°C',x,H-pad.b+20);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(x,pad.t);cx.lineTo(x,H-pad.b);cx.stroke();}
+    cx.fillStyle='#333';cx.font='bold 12px Verdana';cx.textAlign='center';cx.fillText('Temperature (°C)',W/2,H-10);cx.save();cx.translate(15,H/2);cx.rotate(-Math.PI/2);cx.fillText('Vapor Pressure (Torr)',0,0);cx.restore();
     cx.strokeStyle=mt.c;cx.lineWidth=3;cx.beginPath();var first=true,PbRef=760,TbRefK=mt.Tb>200?mt.Tb+273.15:mt.Tb;
     for(var j=0;j<=200;j++){var Tc=Tmin+(Tmax-Tmin)*j/200,Tk=Tc+273.15;var logP=Math.log10(PbRef)+(-mt.H/(R*Math.LN10))*(1/Tk-1/TbRefK);if(logP<lpMin-1||logP>lpMax+1)continue;var xp=pad.l+pw*(Tc-Tmin)/(Tmax-Tmin),yp=pad.t+ph*(1-(logP-lpMin)/(lpMax-lpMin));if(xp<pad.l||xp>W-pad.r||yp<pad.t||yp>H-pad.b)continue;if(first){cx.moveTo(xp,yp);first=false;}else cx.lineTo(xp,yp);}cx.stroke();
-    if(mt.mp>Tmin&&mt.mp<Tmax){var mx=pad.l+pw*(mt.mp-Tmin)/(Tmax-Tmin);cx.strokeStyle='#CC0000';cx.lineWidth=1;cx.setLineDash([5,5]);cx.beginPath();cx.moveTo(mx,pad.t);cx.lineTo(mx,H-pad.b);cx.stroke();cx.setLineDash([]);cx.fillStyle='#CC0000';cx.font='10px Verdana';cx.textAlign='center';cx.fillText('mp: '+mt.mp+'Â°C',mx,pad.t-5);}
+    if(mt.mp>Tmin&&mt.mp<Tmax){var mx=pad.l+pw*(mt.mp-Tmin)/(Tmax-Tmin);cx.strokeStyle='#CC0000';cx.lineWidth=1;cx.setLineDash([5,5]);cx.beginPath();cx.moveTo(mx,pad.t);cx.lineTo(mx,H-pad.b);cx.stroke();cx.setLineDash([]);cx.fillStyle='#CC0000';cx.font='10px Verdana';cx.textAlign='center';cx.fillText('mp: '+mt.mp+'°C',mx,pad.t-5);}
     cx.fillStyle=mt.c;cx.font='bold 14px Georgia';cx.textAlign='left';cx.fillText(mt.n,pad.l+10,pad.t+20);
-    document.getElementById('vpInfo').textContent=mt.n+': Boiling point = '+(mt.n==='Water'?'100':mt.Tb)+'Â°C at 760 Torr. Melting point = '+mt.mp+'Â°C.';
+    document.getElementById('vpInfo').textContent=mt.n+': Boiling point = '+(mt.n==='Water'?'100':mt.Tb)+'°C at 760 Torr. Melting point = '+mt.mp+'°C.';
 };
 
 /* ===== CLAUSIUS-CLAPEYRON ===== */
-window.calcCC=function(){var P1=parseFloat(document.getElementById('ccP1').value),T1=parseFloat(document.getElementById('ccT1').value)+273.15,T2=parseFloat(document.getElementById('ccT2').value)+273.15,H=parseFloat(document.getElementById('ccH').value)*1000,R=8.314;var lnRatio=-H/R*(1/T2-1/T1);var P2=P1*Math.exp(lnRatio);var fmt=function(n){if(Math.abs(n)>=0.01&&Math.abs(n)<1e4)return n.toPrecision(4);return n.toExponential(3);};document.getElementById('ccRes').textContent=fmt(P2)+' Torr';document.getElementById('ccExp').textContent='At '+Math.round(T2-273)+'Â°C the vapor pressure is '+(P2>P1?'higher':'lower')+' than at '+Math.round(T1-273)+'Â°C. Ratio Pâ‚‚/Pâ‚ = '+fmt(P2/P1)+'.';};
+window.calcCC=function(){var P1=parseFloat(document.getElementById('ccP1').value),T1=parseFloat(document.getElementById('ccT1').value)+273.15,T2=parseFloat(document.getElementById('ccT2').value)+273.15,H=parseFloat(document.getElementById('ccH').value)*1000,R=8.314;var lnRatio=-H/R*(1/T2-1/T1);var P2=P1*Math.exp(lnRatio);var fmt=function(n){if(Math.abs(n)>=0.01&&Math.abs(n)<1e4)return n.toPrecision(4);return n.toExponential(3);};document.getElementById('ccRes').textContent=fmt(P2)+' Torr';document.getElementById('ccExp').textContent='At '+Math.round(T2-273)+'°C the vapor pressure is '+(P2>P1?'higher':'lower')+' than at '+Math.round(T1-273)+'°C. Ratio P₂/P₁ = '+fmt(P2/P1)+'.';};
 
 /* ===== KNUDSEN ===== */
 window.calcKn=function(){var p=parseFloat(document.getElementById('knP').value),d=parseFloat(document.getElementById('knD').value);var m=5e-3/p,kn=m/d;var reg,col,exp;if(kn<0.01){reg='Viscous Flow';col='#009933';exp='Molecule-molecule collisions dominate. Gas behaves as continuous fluid. Use viscous flow equations.';}else if(kn<1){reg='Transition Flow';col='#FF6600';exp='Both wall and inter-molecule collisions significant. Use empirical or interpolated equations.';}else{reg='Molecular Flow';col='#003366';exp='Wall collisions dominate. Molecules move independently. Conductance is pressure-independent.';}document.getElementById('knRes').textContent=reg;document.getElementById('knRes').style.color=col;document.getElementById('knNum').textContent=kn.toExponential(2);document.getElementById('knExp').textContent=exp;};
@@ -557,7 +557,7 @@ window.drawPD=function(){var cv=document.getElementById('pdCanvas'),cx=cv.getCon
     cx.strokeStyle='#003366';cx.lineWidth=3;cx.beginPath();var first=true;
     for(var j=0;j<=300;j++){var tt=tMax*j/300;var P=760*Math.exp(-S*tt/V)+Pult;var logP=Math.log10(Math.max(P,1e-10));if(logP<lpMin)logP=lpMin;var xp=pad.l+pw*(tt/tMax),yp=pad.t+ph*(1-(logP-lpMin)/(lpMax-lpMin));if(first){cx.moveTo(xp,yp);first=false;}else cx.lineTo(xp,yp);}cx.stroke();
     if(Pult>0){var logPult=Math.log10(Pult);if(logPult>=lpMin){var yult=pad.t+ph*(1-(logPult-lpMin)/(lpMax-lpMin));cx.strokeStyle='#CC0000';cx.lineWidth=1;cx.setLineDash([5,5]);cx.beginPath();cx.moveTo(pad.l,yult);cx.lineTo(W-pad.r,yult);cx.stroke();cx.setLineDash([]);cx.fillStyle='#CC0000';cx.font='10px Verdana';cx.textAlign='left';cx.fillText('Ultimate: '+Pult.toExponential(1)+' Torr',pad.l+5,yult-8);}}
-    document.getElementById('pdInfo').textContent='Time constant Ï„ = V/S = '+tau.toFixed(2)+'s. Ultimate pressure = Q/S = '+Pult.toExponential(2)+' Torr.';
+    document.getElementById('pdInfo').textContent='Time constant τ = V/S = '+tau.toFixed(2)+'s. Ultimate pressure = Q/S = '+Pult.toExponential(2)+' Torr.';
 };
 
 /* ===== OUTGASSING TIMELINE ===== */
@@ -567,10 +567,10 @@ window.drawOG=function(){var cv=document.getElementById('ogCanvas'),cx=cv.getCon
     cx.strokeStyle='#333';cx.lineWidth=2;cx.beginPath();cx.moveTo(pad.l,pad.t);cx.lineTo(pad.l,H-pad.b);cx.lineTo(W-pad.r,H-pad.b);cx.stroke();
     cx.fillStyle='#666';cx.font='11px Verdana';cx.textAlign='right';for(var lp=ltMin;lp<=ltMax;lp+=1){var y=pad.t+ph*(1-(lp-ltMin)/(ltMax-ltMin));cx.fillText('1e'+lp,pad.l-8,y+4);cx.strokeStyle='#E8E8E8';cx.lineWidth=1;cx.beginPath();cx.moveTo(pad.l,y);cx.lineTo(W-pad.r,y);cx.stroke();}
     cx.textAlign='center';for(var i=0;i<=5;i++){var t=tMax*i/5,x=pad.l+pw*i/5;cx.fillStyle='#666';cx.fillText(t.toFixed(0)+'hr',x,H-pad.b+20);}
-    cx.fillStyle='#333';cx.font='bold 12px Verdana';cx.textAlign='center';cx.fillText('Pumping Time (hours)',W/2,H-10);cx.save();cx.translate(15,H/2);cx.rotate(-Math.PI/2);cx.fillText('Gas Load (TorrÂ·L/s)',0,0);cx.restore();
+    cx.fillStyle='#333';cx.font='bold 12px Verdana';cx.textAlign='center';cx.fillText('Pumping Time (hours)',W/2,H-10);cx.save();cx.translate(15,H/2);cx.rotate(-Math.PI/2);cx.fillText('Gas Load (Torr·L/s)',0,0);cx.restore();
     cx.strokeStyle='#006666';cx.lineWidth=3;cx.beginPath();var first=true;
     for(var j=1;j<=300;j++){var th=tMax*j/300;if(th<0.1)th=0.1;var q=mat.q0*A*Math.pow(th,-mat.decay);var logQ=Math.log10(Math.max(q,1e-15));if(logQ<ltMin)logQ=ltMin;if(logQ>ltMax)logQ=ltMax;var xp=pad.l+pw*(th/tMax),yp=pad.t+ph*(1-(logQ-ltMin)/(ltMax-ltMin));if(first){cx.moveTo(xp,yp);first=false;}else cx.lineTo(xp,yp);}cx.stroke();
-    cx.fillStyle='#006666';cx.font='bold 13px Georgia';cx.textAlign='left';cx.fillText(mat.name+' ('+A+' cmÂ²)',pad.l+10,pad.t+20);
+    cx.fillStyle='#006666';cx.font='bold 13px Georgia';cx.textAlign='left';cx.fillText(mat.name+' ('+A+' cm²)',pad.l+10,pad.t+20);
 };
 
 /* ===== ACCORDION ===== */
@@ -578,25 +578,25 @@ window.toggleAcc=function(btn){var body=btn.nextElementSibling;var ex=btn.getAtt
 
 /* ===== QUIZ ===== */
 var quizData=[
-    {q:'1. The mean free path of air at 10â»Â³ Torr is approximately:',opts:['66 nm','5 mm','5 cm','50 m'],ans:2,exp:'Î» = 5Ã—10â»Â³/10â»Â³ = 5 cm.'},
+    {q:'1. The mean free path of air at 10⁻³ Torr is approximately:',opts:['66 nm','5 mm','5 cm','50 m'],ans:2,exp:'λ = 5×10⁻³/10⁻³ = 5 cm.'},
     {q:'2. Which equation describes the relationship between vapor pressure and temperature?',opts:['Ideal Gas Law','Clausius-Clapeyron','Bernoulli\'s Equation','Navier-Stokes'],ans:1,exp:'The Clausius-Clapeyron equation relates vapor pressure to temperature via the enthalpy of vaporization.'},
     {q:'3. A Knudsen number of 0.005 indicates:',opts:['Molecular flow','Transition flow','Viscous flow','No flow'],ans:2,exp:'Kn < 0.01 means viscous flow where molecule-molecule collisions dominate.'},
-    {q:'4. The dominant outgassing species in an unbaked stainless steel system is:',opts:['Hydrogen (Hâ‚‚)','Carbon monoxide (CO)','Water vapor (Hâ‚‚O)','Nitrogen (Nâ‚‚)'],ans:2,exp:'Water adsorbed on surfaces is the dominant outgassing species in unbaked systems.'},
+    {q:'4. The dominant outgassing species in an unbaked stainless steel system is:',opts:['Hydrogen (H₂)','Carbon monoxide (CO)','Water vapor (H₂O)','Nitrogen (N₂)'],ans:2,exp:'Water adsorbed on surfaces is the dominant outgassing species in unbaked systems.'},
     {q:'5. Converting 1 Torr to Pascal gives approximately:',opts:['13.3 Pa','133 Pa','1333 Pa','101,325 Pa'],ans:1,exp:'1 Torr = 133.32 Pa.'},
-    {q:'6. In molecular flow, doubling the tube diameter increases conductance by a factor of:',opts:['2','4','8','16'],ans:2,exp:'Molecular flow conductance âˆ DÂ³. Doubling D gives 2Â³ = 8Ã— increase.'},
-    {q:'7. A fingerprint on a vacuum component has an outgassing rate approximately:',opts:['Equal to clean steel','10Ã— higher than clean steel','100Ã— higher','10,000Ã— higher'],ans:3,exp:'Fingerprint outgassing rate (~10â»â´) is about 10,000Ã— higher than clean stainless steel (~10â»â¸ to 10â»â¹).'},
-    {q:'8. Water boils at room temperature (~20Â°C) when pressure drops below approximately:',opts:['100 Torr','17.5 Torr','1 Torr','0.001 Torr'],ans:1,exp:'Water\'s vapor pressure at 20Â°C is about 17.5 Torr.'},
+    {q:'6. In molecular flow, doubling the tube diameter increases conductance by a factor of:',opts:['2','4','8','16'],ans:2,exp:'Molecular flow conductance ∝ D³. Doubling D gives 2³ = 8× increase.'},
+    {q:'7. A fingerprint on a vacuum component has an outgassing rate approximately:',opts:['Equal to clean steel','10× higher than clean steel','100× higher','10,000× higher'],ans:3,exp:'Fingerprint outgassing rate (~10⁻⁴) is about 10,000× higher than clean stainless steel (~10⁻⁸ to 10⁻¹).'},
+    {q:'8. Water boils at room temperature (~20°C) when pressure drops below approximately:',opts:['100 Torr','17.5 Torr','1 Torr','0.001 Torr'],ans:1,exp:'Water\'s vapor pressure at 20°C is about 17.5 Torr.'},
     {q:'9. The effective pumping speed formula (1/Seff = 1/Spump + 1/C) is analogous to:',opts:['Resistors in series','Resistors in parallel','Capacitors in series','Inductors in series'],ans:1,exp:'The reciprocal addition is identical to resistors in parallel in electrical circuits.'},
     {q:'10. Bakeout of a vacuum system primarily accelerates removal of:',opts:['Bulk gas volume','Adsorbed water vapor','Real leaks','Permeation through metal'],ans:1,exp:'Bakeout primarily drives off adsorbed water that would otherwise take weeks to desorb at room temperature.'},
-    {q:'11. At ultra-high vacuum (10â»Â¹â° Torr), the mean free path is approximately:',opts:['5 cm','50 m','500 km','50,000 km'],ans:3,exp:'Î» = 5Ã—10â»Â³/10â»Â¹â° = 5Ã—10â· cm = 500 km.'},
+    {q:'11. At ultra-high vacuum (10⁻¹⁰ Torr), the mean free path is approximately:',opts:['5 cm','50 m','500 km','50,000 km'],ans:3,exp:'λ = 5×10⁻³/10⁻¹⁰ = 5×10⁷ cm = 500 km.'},
     {q:'12. Which material should NOT be used in a high vacuum system?',opts:['Stainless steel 316','Viton O-rings','Standard lubricating grease','OFHC copper'],ans:2,exp:'Standard greases have very high vapor pressures and outgassing rates, contaminating the vacuum.'},
-    {q:'13. The Boltzmann constant k_B in the rigorous MFP equation represents:',opts:['Molecular diameter','Energy per molecule per kelvin','Gas flow rate','Pump speed'],ans:1,exp:'k_B = 1.38Ã—10â»Â²Â³ J/K relates molecular kinetic energy to temperature.'},
-    {q:'14. For unbaked systems, outgassing rate decreases with pumping time following:',opts:['tâ»Â¹/Â² decay','tâ»Â¹ decay','Linear decay','Exponential decay'],ans:1,exp:'Water desorption-limited outgassing follows tâ»Â¹ decayâ€”each decade of improvement takes 10Ã— longer.'},
+    {q:'13. The Boltzmann constant k_B in the rigorous MFP equation represents:',opts:['Molecular diameter','Energy per molecule per kelvin','Gas flow rate','Pump speed'],ans:1,exp:'k_B = 1.38×10⁻²³ J/K relates molecular kinetic energy to temperature.'},
+    {q:'14. For unbaked systems, outgassing rate decreases with pumping time following:',opts:['t⁻¹/² decay','t⁻¹ decay','Linear decay','Exponential decay'],ans:1,exp:'Water desorption-limited outgassing follows t⁻¹ decay—each decade of improvement takes 10× longer.'},
     {q:'15. A pump rated at 500 L/s connected through a pipe with 50 L/s conductance gives an effective speed of:',opts:['550 L/s','500 L/s','~45 L/s','~250 L/s'],ans:2,exp:'1/Seff = 1/500 + 1/50 = 0.022. Seff = 45.5 L/s. The conductance bottleneck dominates.'}
 ];
 function buildQuiz(){var box=document.getElementById('quizBox');if(!box)return;var html='';quizData.forEach(function(q,i){html+='<div class="quiz-q" data-qi="'+i+'"><h4>'+q.q+'</h4>';q.opts.forEach(function(o,j){html+='<label class="quiz-opt"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+o+'</span></label>';});html+='<div class="quiz-fb" id="fb'+i+'"></div></div>';});box.innerHTML=html;}
 window.gradeQuiz=function(){var score=0,total=quizData.length;quizData.forEach(function(q,i){var div=document.querySelector('[data-qi="'+i+'"]');var sel=div.querySelector('input:checked');var fb=document.getElementById('fb'+i);div.querySelectorAll('.quiz-opt').forEach(function(o){o.classList.remove('correct','wrong');});if(sel){var v=parseInt(sel.value);if(v===q.ans){score++;sel.closest('.quiz-opt').classList.add('correct');fb.className='quiz-fb show ok';fb.innerHTML='&#10004; Correct! '+q.exp;}else{sel.closest('.quiz-opt').classList.add('wrong');div.querySelectorAll('.quiz-opt')[q.ans].classList.add('correct');fb.className='quiz-fb show no';fb.innerHTML='&#10008; Incorrect. '+q.exp;}}else{fb.className='quiz-fb show no';fb.innerHTML='No answer selected. '+q.exp;}});
-    var pct=Math.round(score/total*100);document.getElementById('scoreFinal').textContent=score+'/'+total+' ('+pct+'%)';var msg;if(pct>=90)msg='ðŸŽ‰ Excellent! Outstanding mastery of vacuum concepts!';else if(pct>=70)msg='ðŸ‘ Good work! Review the topics you missed.';else if(pct>=50)msg='ðŸ“š Fair. Consider re-reading the lecture material.';else msg='ðŸ’ª Keep studying. Review the lecture and try the simulators again.';document.getElementById('scoreMsg').textContent=msg;document.getElementById('scoreBox').style.display='block';document.getElementById('scoreBox').scrollIntoView({behavior:'smooth'});};
+    var pct=Math.round(score/total*100);document.getElementById('scoreFinal').textContent=score+'/'+total+' ('+pct+'%)';var msg;if(pct>=90)msg='🎉 Excellent! Outstanding mastery of vacuum concepts!';else if(pct>=70)msg='😊 Good work! Review the topics you missed.';else if(pct>=50)msg='📚 Fair. Consider re-reading the lecture material.';else msg='📝™Âª Keep studying. Review the lecture and try the simulators again.';document.getElementById('scoreMsg').textContent=msg;document.getElementById('scoreBox').style.display='block';document.getElementById('scoreBox').scrollIntoView({behavior:'smooth'});};
 })();
 </script>
 </body>

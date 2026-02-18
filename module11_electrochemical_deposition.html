@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Module 11: Electrochemical Deposition â€” Comprehensive coverage of electrochemistry fundamentals, redox reactions, Faraday's laws, Nernst equation, copper damascene process, gold electrodeposition, and hands-on laboratory experiments for nanotechnology education.">
+    <meta name="description" content="Module 11: Electrochemical Deposition — Comprehensive coverage of electrochemistry fundamentals, redox reactions, Faraday's laws, Nernst equation, copper damascene process, gold electrodeposition, and hands-on laboratory experiments for nanotechnology education.">
     <title>Module 11: Electrochemical Deposition | Introduction to Nanotechnology</title>
     <style>
         :root {
@@ -210,7 +210,11 @@
         .content-section p, .content-section li { color: #333333; }
         .content-section h3, .content-section h4 { color: #003366; }
         .tab-panel { color: #333333; }
-    </style>
+    
+        .nav-footer { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+        .nav-footer a { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #fff; color: #1a2332; text-decoration: none; border: 2px solid #1a2332; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; }
+        .nav-footer a:hover { background: #1a2332; color: #fff; }
+        </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -626,18 +630,14 @@
 </div><!-- /quiz -->
 
 <!-- FOOTER -->
-<div class="nf">
-<a href="module10_pattern_transfer.html">&larr; Module 10: Pattern Transfer</a>
-<a href="index.html">&#127968; Course Home</a>
-<a href="module12_self_assembly.html">Module 12: Self-Assembly &rarr;</a>
-</div>
+<nav class="nav-footer" aria-label="Module navigation"><a href="module10_pattern_transfer.html">&larr; Module 10: Pattern Transfer</a><a href="index.html">&#127968; Course Home</a><a href="module12_self_assembly.html">Module 12: Self-Assembly &rarr;</a></nav>
+</main>
 <footer>
         <div class="footer-content">
             <p>Introduction to Nanotechnology &mdash; Module 11: Electrochemical Deposition</p>
             <p>&copy; 2026 &mdash; For Educational Use</p>
         </div>
     </footer>
-</main>
 <script>
 // ========== GLOBALS ==========
 const vis=new Set(['lecture']);let dRun=false,dAnim=null,dParts=[],fThick=0,dTime=0;
