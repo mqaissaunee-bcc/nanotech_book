@@ -163,6 +163,17 @@
         .nav-footer { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
         .nav-footer a { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #fff; color: #1a2332; text-decoration: none; border: 2px solid #1a2332; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; }
         .nav-footer a:hover { background: #1a2332; color: #fff; }
+
+        /* ===== VIDEO RESOURCES ===== */
+        .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;margin-top:20px}
+        .video-card{background:var(--light-gray);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);transition:transform 0.3s,box-shadow 0.3s}
+        .video-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+        .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+        .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+        .video-info{padding:18px}
+        .video-info h3{color:var(--primary-blue);font-size:1.08rem;margin-bottom:8px}
+        .video-info p{color:#555;font-size:0.92rem;margin:0}
+        .video-badge{display:inline-block;background:var(--accent-gold);color:var(--white);padding:4px 12px;border-radius:15px;font-size:0.8rem;font-weight:600;margin-top:6px}
         </style>
 </head>
 <body>
@@ -195,6 +206,7 @@
     <div class="tabs" role="tablist" aria-label="Module content sections">
         <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-char" id="tab-char" onclick="switchTab('char')">&#128300; Characterization</button>
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sim" id="tab-sim" onclick="switchTab('sim')">&#9881;&#65039; Simulations</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-res" id="tab-res" onclick="switchTab('res')">&#127909; Resources</button>
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-app" id="tab-app" onclick="switchTab('app')">&#128640; Applications</button>
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-eth" id="tab-eth" onclick="switchTab('eth')">&#9878;&#65039; Ethics</button>
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-rev" id="tab-rev" onclick="switchTab('rev')">&#128218; Course Review</button>
@@ -307,6 +319,101 @@
                 <label>Material: <select id="qdMaterial" aria-label="QD material"><option value="CdSe" selected>CdSe</option><option value="InP">InP</option><option value="PbS">PbS</option></select></label>
             </div>
             <div class="sim-readout" id="qdReadout">Diameter: 5.0 nm &bull; Emission: ~550 nm (Green) &bull; Bandgap: ~2.25 eV</div>
+        </div>
+    </div>
+
+    <!-- TAB: RESOURCES -->
+    <div id="panel-res" class="tab-content" role="tabpanel" aria-labelledby="tab-res">
+        <div class="content-block">
+            <div class="section-head"><div class="section-icon" aria-hidden="true">&#127909;</div><h2>Video Resources</h2></div>
+            <p style="font-size:1.05rem;margin-bottom:30px;color:#555;">Enhance your understanding of nanoscale characterization, real-world applications, and ethical considerations with these curated video resources. Watch any combination that suits your learning style.</p>
+
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/nStil8Rph8k" 
+                            title="Characterization of Nanomaterials (SEM/TEM overview)"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Characterization of Nanomaterials (SEM/TEM overview)</h3>
+                        <p>Overview of key imaging characterization techniques</p>
+                        <span class="video-badge">Characterization</span>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/KqLMpKN3qfo" 
+                            title="Nanotechnology Measurement &amp; Characterization Tools"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Nanotechnology Measurement &amp; Characterization Tools</h3>
+                        <p>Practical look at common nanoscale measurement equipment</p>
+                        <span class="video-badge">Measurement Tools</span>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/43-Pb6uL1cE" 
+                            title="Nanotechnology Applications – Everyday Examples"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Nanotechnology Applications &ndash; Everyday Examples</h3>
+                        <p>How nanotech is already used in products and materials</p>
+                        <span class="video-badge">Applications</span>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/-gdILnzYZEg" 
+                            title="Nanotechnology Applications &amp; Innovations"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Nanotechnology Applications &amp; Innovations</h3>
+                        <p>Broader survey of nano in medicine, energy, and engineering</p>
+                        <span class="video-badge">Innovations</span>
+                    </div>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/3llwI73pBYw" 
+                            title="Nanotechnologies and Ethics"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Nanotechnologies and Ethics</h3>
+                        <p>Ethical issues surrounding nanotechnology development</p>
+                        <span class="video-badge">Ethics</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -578,7 +685,7 @@
     </footer>
 <script>
 // TAB SWITCHING
-var tabKeys=['char','sim','app','eth','rev','quiz'];
+var tabKeys=['char','sim','res','app','eth','rev','quiz'];
 var visitedTabs=new Set(['char']);
 function switchTab(key){tabKeys.forEach(function(k){document.getElementById('tab-'+k).classList.remove('active');document.getElementById('tab-'+k).setAttribute('aria-selected','false');document.getElementById('panel-'+k).classList.remove('active')});document.getElementById('tab-'+key).classList.add('active');document.getElementById('tab-'+key).setAttribute('aria-selected','true');document.getElementById('panel-'+key).classList.add('active');visitedTabs.add(key);updateProgress();if(key==='sim')initAllSimulations()}
 function updateProgress(){var pct=Math.round(visitedTabs.size/tabKeys.length*100);var bar=document.getElementById('moduleProgress');var label=document.getElementById('progressLabel');bar.style.width=pct+'%';bar.parentElement.setAttribute('aria-valuenow',pct);label.textContent=pct+'% Complete'}
