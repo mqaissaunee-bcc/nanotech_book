@@ -140,6 +140,16 @@
         .nav-footer a { color: var(--accent-gold); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid var(--accent-gold); display: inline-block; margin: 0.3rem; }
         .nav-footer a:hover { background: var(--accent-gold); color: var(--primary-navy); }
         .nsf-credit { font-size: 0.85rem; margin-top: 1.5rem; opacity: 0.8; font-family: 'Segoe UI', Arial, sans-serif; }
+        /* ===== VIDEO / RESOURCES SECTION ===== */
+        .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;margin-top:20px}
+        .video-card{background:var(--off-white);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);transition:transform 0.3s,box-shadow 0.3s}
+        .video-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+        .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+        .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+        .video-info{padding:18px}
+        .video-info h3{color:var(--primary-navy);font-size:1.08rem;margin-bottom:8px}
+        .video-badge{display:inline-block;background:var(--accent-gold);color:var(--white);padding:4px 12px;border-radius:15px;font-size:0.8rem;font-weight:600;margin-top:6px}
+
         @media (max-width: 768px) {
             .header-content { flex-direction: column; text-align: center; }
             .hero h1 { font-size: 1.5rem; }
@@ -152,6 +162,7 @@
             .tooltip-content { width: 250px; }
             .data-table { font-size: 0.82rem; }
             .data-table th, .data-table td { padding: 0.5rem; }
+            .video-grid{grid-template-columns:1fr}
         }
         @media print {
             .tabs, .sim-container, .quiz-container, .nav-footer, header, .progress-container, .skip-link { display: none !important; }
@@ -234,6 +245,7 @@
         <div class="tabs" role="tablist" aria-label="Module sections">
             <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="lecture-panel" id="lecture-tab" onclick="switchTab('lecture')">&#128218; Lecture</button>
             <button class="tab-btn" role="tab" aria-selected="false" aria-controls="sim-panel" id="sim-tab" onclick="switchTab('sim')">&#128300; Simulations</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="resources-panel" id="resources-tab" onclick="switchTab('resources')">&#127909; Resources</button>
             <button class="tab-btn" role="tab" aria-selected="false" aria-controls="lab-panel" id="lab-tab" onclick="switchTab('lab')">&#9874; Lab Procedure</button>
             <button class="tab-btn" role="tab" aria-selected="false" aria-controls="quiz-panel" id="quiz-tab" onclick="switchTab('quiz')">&#128221; Quiz</button>
             <button class="tab-btn" role="tab" aria-selected="false" aria-controls="instr-panel" id="instr-tab" onclick="switchTab('instr')">&#128188; Instructor</button>
@@ -422,6 +434,99 @@
                 </div>
             </div>
         </div>
+
+        <!-- ==================== RESOURCES TAB ==================== -->
+        <div id="resources-panel" class="tab-content" role="tabpanel" aria-labelledby="resources-tab">
+            <div class="card">
+                <div class="card-header">&#127909; Video Resources</div>
+                <div class="card-body">
+                    <p style="font-size:1.05rem;margin-bottom:30px;color:var(--text-medium);">Enhance your understanding of bottom-up nanotechnology and self-assembly with these curated video resources. Watch any combination that suits your learning style&mdash;from quick overviews to comprehensive lectures.</p>
+
+                    <div class="video-grid">
+                        <!-- Video 1 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/SGomGeqy3U8" 
+                                    title="13/15 Concepts in Nano: Bottom-Up Self-Assembly"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>13/15 Concepts in Nano: Bottom-Up Self-Assembly</h3>
+                                <span class="video-badge">Intro to Bottom-Up &amp; Self-Assembly</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 2 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/36mIhhdjGAE" 
+                                    title="How Does Self-Assembly Work in Nanotechnology?"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>How Does Self-Assembly Work in Nanotechnology?</h3>
+                                <span class="video-badge">Overview of Self-Assembly</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 3 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/kCW4WvFW9AU" 
+                                    title="Bottom-Up Nanofabrication & Self-Assembly Lecture"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Bottom-Up Nanofabrication &amp; Self-Assembly Lecture</h3>
+                                <span class="video-badge">Educational Lecture</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 4 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/1kWApU3o6ko" 
+                                    title="Self-Assembling Nanotechnology (animation/demo)"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Self-Assembling Nanotechnology</h3>
+                                <span class="video-badge">Animation / Demo</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 5 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/rAAp6kjYCIU" 
+                                    title="Quick Overview: Top-Down vs Bottom-Up Nanomanufacturing"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Quick Overview: Top-Down vs Bottom-Up Nanomanufacturing</h3>
+                                <span class="video-badge">Quick Overview</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- ==================== LAB PROCEDURE TAB ==================== -->
         <div id="lab-panel" class="tab-content" role="tabpanel" aria-labelledby="lab-tab">
             <div class="card"><div class="card-header">Lab: Layer-by-Layer Deposition of Gold Nanoparticles</div><div class="card-body">
@@ -570,7 +675,7 @@
         if(name==='quiz'&&!quizBuilt) buildQuiz();
     }
     function updateProgress() {
-        var pct = Math.round((visitedTabs.size/5)*100);
+        var pct = Math.round((visitedTabs.size/6)*100);
         var f=document.getElementById('progressFill'), t=document.getElementById('progressText');
         if(f){f.style.width=pct+'%';f.setAttribute('aria-valuenow',pct);}
         if(t) t.textContent=pct+'%';
