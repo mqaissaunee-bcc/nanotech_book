@@ -1070,6 +1070,10 @@
                 align-items: center;
             }
 
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
             .contact-angle-visual {
                 flex-direction: column;
                 align-items: center;
@@ -1106,6 +1110,19 @@
         .tooltip-popup.show { opacity: 1; }
     
         
+        /* ===== VIDEO RESOURCES ===== */
+        .video-section{background:var(--white);padding:30px;border-radius:12px;margin-bottom:30px;box-shadow:0 3px 18px rgba(0,0,0,0.1)}
+        .video-section h2{color:var(--navy);font-size:1.6rem;margin-bottom:10px;padding-bottom:12px;border-bottom:3px solid var(--teal)}
+        .video-section > p{color:var(--steel);margin-bottom:25px;font-size:1.02rem}
+        .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;margin-top:20px}
+        .video-card{background:var(--slate);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);transition:transform 0.3s,box-shadow 0.3s}
+        .video-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+        .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+        .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+        .video-info{padding:18px}
+        .video-info h3{color:var(--navy);font-size:1.08rem;margin-bottom:8px}
+        .video-badge{display:inline-block;background:var(--gold);color:var(--white);padding:4px 12px;border-radius:15px;font-size:0.8rem;font-weight:600;margin-top:6px}
+
         /* ===== FOOTER OVERRIDE ===== */
         footer{background:#333333!important;color:#FFFFFF!important;padding:35px 20px!important;margin-top:50px!important;text-align:center!important}
         .footer-content{max-width:1200px;margin:0 auto;text-align:center}
@@ -1203,6 +1220,7 @@
             <button class="tab-btn" id="physics-btn" role="tab" aria-selected="false" aria-controls="physics-tab" onclick="showTab('physics')">&#9889; Plasma Physics</button>
             <button class="tab-btn" id="applications-btn" role="tab" aria-selected="false" aria-controls="applications-tab" onclick="showTab('applications')">&#127981; Applications</button>
             <button class="tab-btn" id="simulator-btn" role="tab" aria-selected="false" aria-controls="simulator-tab" onclick="showTab('simulator')">&#128187; Simulators</button>
+            <button class="tab-btn" id="resources-btn" role="tab" aria-selected="false" aria-controls="resources-tab" onclick="showTab('resources')">&#127909; Resources</button>
             <button class="tab-btn" id="lab-btn" role="tab" aria-selected="false" aria-controls="lab-tab" onclick="showTab('lab')">&#128300; Lab Procedure</button>
             <button class="tab-btn" id="quiz-btn" role="tab" aria-selected="false" aria-controls="quiz-tab" onclick="showTab('quiz')">&#10003; Knowledge Check</button>
         </div>
@@ -1683,7 +1701,7 @@
                 <div class="card-header">Surface Energy and Contact Angle</div>
                 <div class="card-body">
                     
-                    <p>One of the most important applications of plasma treatment is <strong>surface modification</strong> &mdash; changing the surface properties of materials without altering their bulk characteristics. This is quantified through <span class="tooltip-term" tabindex="0" data-tooltip="The angle at which a liquid-vapor interface meets a solid surface. It quantifies the wettability of a surface. Low contact angles (< 90°) indicate hydrophilic surfaces; high angles (> 90°) indicate hydrophobic surfaces.">contact angle</span> measurements.</p>
+                    <p>One of the most important applications of plasma treatment is <strong>surface modification</strong> &mdash; changing the surface properties of materials without altering their bulk characteristics. This is quantified through <span class="tooltip-term" tabindex="0" data-tooltip="The angle at which a liquid-vapor interface meets a solid surface. It quantifies the wettability of a surface. Low contact angles (< 90Â°) indicate hydrophilic surfaces; high angles (> 90Â°) indicate hydrophobic surfaces.">contact angle</span> measurements.</p>
 
                     <h3 class="subsection-header">Understanding Surface Energy</h3>
                     
@@ -1703,7 +1721,7 @@
                                 <ellipse cx="100" cy="68" rx="60" ry="15" fill="#6699FF" opacity="0.8"/>
                                 <!-- Contact angle arc -->
                                 <path d="M 40 68 Q 50 68 55 60" stroke="#CC0000" stroke-width="2" fill="none"/>
-                                <text x="45" y="50" font-size="10" fill="#CC0000">θ &lt; 90°</text>
+                                <text x="45" y="50" font-size="10" fill="#CC0000">Î¸ &lt; 90Â°</text>
                             </svg>
                             <p style="color: var(--green);">&#128167; Hydrophilic (Water-Loving)</p>
                             <p style="font-size: 0.85rem;">High surface energy, water spreads</p>
@@ -1717,7 +1735,7 @@
                                 <ellipse cx="100" cy="50" rx="25" ry="22" fill="#6699FF" opacity="0.8"/>
                                 <!-- Contact angle arc -->
                                 <path d="M 75 70 Q 85 55 100 50" stroke="#CC0000" stroke-width="2" fill="none"/>
-                                <text x="60" y="45" font-size="10" fill="#CC0000">θ &gt; 90°</text>
+                                <text x="60" y="45" font-size="10" fill="#CC0000">Î¸ &gt; 90Â°</text>
                             </svg>
                             <p style="color: var(--red);">&#128167; Hydrophobic (Water-Fearing)</p>
                             <p style="font-size: 0.85rem;">Low surface energy, water beads up</p>
@@ -1754,7 +1772,7 @@
 
                     <h3 class="subsection-header">PDMS Surface Modification</h3>
                     
-                    <p><span class="tooltip-term" tabindex="0" data-tooltip="A silicon-based organic polymer commonly used in microfluidics, soft lithography, and medical devices. It is naturally hydrophobic with a water contact angle of ~105-115°. Plasma treatment can make it temporarily hydrophilic.">PDMS (Polydimethylsiloxane)</span> is a widely used silicone elastomer that is naturally hydrophobic. Plasma treatment can convert its surface from hydrophobic to hydrophilic:</p>
+                    <p><span class="tooltip-term" tabindex="0" data-tooltip="A silicon-based organic polymer commonly used in microfluidics, soft lithography, and medical devices. It is naturally hydrophobic with a water contact angle of ~105-115Â°. Plasma treatment can make it temporarily hydrophilic.">PDMS (Polydimethylsiloxane)</span> is a widely used silicone elastomer that is naturally hydrophobic. Plasma treatment can convert its surface from hydrophobic to hydrophilic:</p>
 
                     <table class="data-table">
                         <thead>
@@ -1768,25 +1786,25 @@
                         <tbody>
                             <tr>
                                 <td>Native PDMS</td>
-                                <td>105&ndash;115°</td>
+                                <td>105&ndash;115Â°</td>
                                 <td>CH&#8323; groups (nonpolar)</td>
                                 <td>Hydrophobic</td>
                             </tr>
                             <tr>
                                 <td>Immediately after O&#8322; plasma</td>
-                                <td>5&ndash;20°</td>
+                                <td>5&ndash;20Â°</td>
                                 <td>Silanol (Si-OH) groups</td>
                                 <td>Highly hydrophilic</td>
                             </tr>
                             <tr>
                                 <td>After 1 hour in air</td>
-                                <td>40&ndash;60°</td>
+                                <td>40&ndash;60Â°</td>
                                 <td>Partial recovery</td>
                                 <td>Moderately hydrophilic</td>
                             </tr>
                             <tr>
                                 <td>After 24 hours in air</td>
-                                <td>80&ndash;100°</td>
+                                <td>80&ndash;100Â°</td>
                                 <td>Near original</td>
                                 <td>Hydrophobic recovery</td>
                             </tr>
@@ -1887,7 +1905,7 @@
 
                     <h3 class="subsection-header">2. Plasma Ashing (Photoresist Removal)</h3>
                     
-                    <p>After photolithography and etching, the photoresist mask must be removed. <span class="tooltip-term" tabindex="0" data-tooltip="A dry process that uses oxygen plasma to oxidize and volatilize organic materials (primarily photoresist) into CO₂ and H₂O vapor. It is cleaner than wet stripping and leaves no residue.">Plasma ashing</span> uses oxygen plasma to convert organic resist into volatile products:</p>
+                    <p>After photolithography and etching, the photoresist mask must be removed. <span class="tooltip-term" tabindex="0" data-tooltip="A dry process that uses oxygen plasma to oxidize and volatilize organic materials (primarily photoresist) into COâ‚‚ and Hâ‚‚O vapor. It is cleaner than wet stripping and leaves no residue.">Plasma ashing</span> uses oxygen plasma to convert organic resist into volatile products:</p>
 
                     <div class="formula-box">
                         <h4>Ashing Chemistry</h4>
@@ -1919,7 +1937,7 @@
                         <div class="column-box">
                             <h4>PECVD Advantages</h4>
                             <ul style="margin-left: 1rem;">
-                                <li>Low deposition temperature (200&ndash;400°C)</li>
+                                <li>Low deposition temperature (200&ndash;400Â°C)</li>
                                 <li>Conformal coverage over topography</li>
                                 <li>Good step coverage</li>
                                 <li>Tunable film properties</li>
@@ -1992,7 +2010,7 @@
                                 <td><strong>Temperature</strong></td>
                                 <td>Affects reaction rates, sticking coefficients</td>
                                 <td>Influences selectivity and profile control</td>
-                                <td>20&ndash;300°C</td>
+                                <td>20&ndash;300Â°C</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2072,7 +2090,7 @@
                         </div>
                         
                         <div class="result-box">
-                            <div class="result-value" id="surfaceEnergyValue">~21 mJ/m²</div>
+                            <div class="result-value" id="surfaceEnergyValue">~21 mJ/mÂ²</div>
                             <div class="result-label">Estimated Surface Energy</div>
                             <div class="result-explanation" id="surfaceEnergyExplanation">
                                 This is a hydrophobic surface. Water will bead up and not wet the surface. Consider plasma treatment to increase surface energy for bonding or coating applications.
@@ -2122,10 +2140,10 @@
                             <div class="control-group">
                                 <label for="ionType">Ion Type</label>
                                 <select id="ionType">
-                                    <option value="40">Ar⁺ (40 amu)</option>
-                                    <option value="69">CF₃⁺ (69 amu)</option>
-                                    <option value="35">Cl⁺ (35 amu)</option>
-                                    <option value="16">O⁺ (16 amu)</option>
+                                    <option value="40">Arâº (40 amu)</option>
+                                    <option value="69">CFâ‚ƒâº (69 amu)</option>
+                                    <option value="35">Clâº (35 amu)</option>
+                                    <option value="16">Oâº (16 amu)</option>
                                 </select>
                             </div>
                         </div>
@@ -2145,6 +2163,98 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- ==================== RESOURCES TAB ==================== -->
+        <div id="resources-tab" class="tab-content" role="tabpanel" aria-labelledby="resources-btn">
+            <div class="card">
+                <div class="card-header">&#127909; Video Resources</div>
+                <div class="card-body">
+                    <p style="font-size:1.05rem;margin-bottom:30px;color:var(--steel);">Enhance your understanding of plasma technology with these curated video resources. Watch any combination that suits your learning style&mdash;from fundamental concepts to practical applications.</p>
+
+                    <div class="video-grid">
+                        <!-- Video 1 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/cX2RX90iWbI" 
+                                    title="Vacuum Plasma Technology – Basics & Applications"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Vacuum Plasma Technology &ndash; Basics &amp; Applications</h3>
+                                <span class="video-badge">Fundamentals</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 2 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/k1yCbBrRyu4" 
+                                    title="Plasma Etching – Fundamentals"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Plasma Etching &ndash; Fundamentals</h3>
+                                <span class="video-badge">Etching Basics</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 3 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/AQvocqPX0t0" 
+                                    title="Plasma Etching Explained (surface etching tech)"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>Plasma Etching Explained</h3>
+                                <span class="video-badge">Surface Etching</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 4 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/BKyKpPXImiU" 
+                                    title="O₂ Plasma Tutorial – Plasma Cleaning and Surface Activation"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>O&#8322; Plasma Tutorial &ndash; Cleaning &amp; Surface Activation</h3>
+                                <span class="video-badge">O&#8322; Plasma</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 5 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/QY17ellJLMs" 
+                                    title="What Is Plasma Etching? (How it Comes Together)"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>What Is Plasma Etching?</h3>
+                                <span class="video-badge">Overview</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- ==================== LAB TAB ==================== -->
@@ -2451,7 +2561,7 @@
 
                     <!-- Question 4 -->
                     <div class="quiz-question" data-correct="d">
-                        <h4>Question 4: A contact angle greater than 90° indicates the surface is:</h4>
+                        <h4>Question 4: A contact angle greater than 90Â° indicates the surface is:</h4>
                         <div class="quiz-options">
                             <label class="quiz-option">
                                 <input type="radio" name="q4" value="a">
