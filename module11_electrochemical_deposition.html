@@ -168,22 +168,11 @@
         .nsf{max-width:1400px;margin:1rem auto 2rem;padding:0 2rem}
         .nsfi{background:var(--wht);border-radius:var(--r);padding:1.5rem;text-align:center;font-size:.85rem;color:var(--dgr);box-shadow:0 2px 8px var(--shd);border-top:3px solid var(--sec)}
 
-        /* ===== VIDEO SECTION ===== */
-        .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;margin-top:20px}
-        .video-card{background:var(--off);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 10px var(--shd);transition:transform var(--tr),box-shadow var(--tr)}
-        .video-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px var(--shd2)}
-        .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
-        .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-        .video-info{padding:18px}
-        .video-info h3{color:var(--sec);font-size:1.08rem;margin-bottom:8px}
-        .video-badge{display:inline-block;background:var(--pri);color:var(--wht);padding:4px 12px;border-radius:15px;font-size:.8rem;font-weight:600;margin-top:6px}
-
         @media(max-width:768px){
             .hdr{flex-direction:column;text-align:center}nav.nb{justify-content:center}
             .hero h1{font-size:1.6rem}.hero-meta{flex-direction:column;align-items:center}
             .tabs{flex-direction:column}.tab-btn{min-width:unset}
             .cmp,.mg{grid-template-columns:1fr}.sctrl,.cg{grid-template-columns:1fr}
-            .video-grid{grid-template-columns:1fr}
             .nf{flex-direction:column;align-items:stretch;text-align:center}
             .cbd{padding:1rem 1.25rem}.ps{padding-left:60px}.tt-box{width:220px;font-size:.8rem}
         }
@@ -265,7 +254,6 @@
 <div class="tabs" role="tablist" aria-label="Module content tabs">
 <button class="tab-btn active" onclick="switchTab('lecture')" role="tab" aria-selected="true" aria-controls="lecture" id="tab-lecture">&#128214; Lecture</button>
 <button class="tab-btn" onclick="switchTab('sim')" role="tab" aria-selected="false" aria-controls="sim" id="tab-sim">&#128300; Simulation</button>
-<button class="tab-btn" onclick="switchTab('resources')" role="tab" aria-selected="false" aria-controls="resources" id="tab-resources">&#127909; Resources</button>
 <button class="tab-btn" onclick="switchTab('procedure')" role="tab" aria-selected="false" aria-controls="procedure" id="tab-procedure">&#128248; Procedure</button>
 <button class="tab-btn" onclick="switchTab('quiz')" role="tab" aria-selected="false" aria-controls="quiz" id="tab-quiz">&#9989; Quiz</button>
 </div>
@@ -473,112 +461,6 @@
 
 </div><!-- /sim -->
 
-<!-- ============ RESOURCES TAB ============ -->
-<div id="resources" class="tc" role="tabpanel" aria-labelledby="tab-resources">
-<div class="card"><div class="chd gold">&#127909; Video Resources</div><div class="cbd">
-<p style="font-size:1.05rem;margin-bottom:30px;color:var(--dgr);">Enhance your understanding of electrochemical deposition with these curated video resources. Watch any combination that suits your learning style&mdash;from quick overviews to detailed demonstrations.</p>
-
-<div class="video-grid">
-<!-- Video 1 -->
-<div class="video-card">
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/NKbo49tYcts" 
-            title="Introduction to Electrodeposition – basics of the process"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    <div class="video-info">
-        <h3>Introduction to Electrodeposition</h3>
-        <span class="video-badge">Fundamentals</span>
-    </div>
-</div>
-
-<!-- Video 2 -->
-<div class="video-card">
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/STQlcT4RSq4" 
-            title="Electrolytic Cell Electroplating Explained"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    <div class="video-info">
-        <h3>Electrolytic Cell Electroplating Explained</h3>
-        <span class="video-badge">Explanation</span>
-    </div>
-</div>
-
-<!-- Video 3 -->
-<div class="video-card">
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/qczuns50OTU" 
-            title="Electroplating 101 – How It Works"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    <div class="video-info">
-        <h3>Electroplating 101 &ndash; How It Works</h3>
-        <span class="video-badge">How It Works</span>
-    </div>
-</div>
-
-<!-- Video 4 -->
-<div class="video-card">
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/OxhCU_jBiOA" 
-            title="How Does Electroplating Work"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    <div class="video-info">
-        <h3>How Does Electroplating Work</h3>
-        <span class="video-badge">Process Overview</span>
-    </div>
-</div>
-
-<!-- Video 5 -->
-<div class="video-card">
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/Gz5Mjng4YcE" 
-            title="Electroplating in the Semiconductor Industry – Copper VIA Fill &amp; Interconnects"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    <div class="video-info">
-        <h3>Electroplating in the Semiconductor Industry</h3>
-        <span class="video-badge">Industry Application</span>
-    </div>
-</div>
-
-<!-- Video 6 -->
-<div class="video-card">
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/75YQdWiGwvo" 
-            title="Wafer Holder for Electrochemical Deposition on Semiconductor Wafers"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    <div class="video-info">
-        <h3>Wafer Holder for Electrochemical Deposition</h3>
-        <span class="video-badge">Equipment</span>
-    </div>
-</div>
-</div>
-
-</div></div>
-</div><!-- /resources -->
-
 <!-- ============ PROCEDURE TAB ============ -->
 <div id="procedure" class="tc" role="tabpanel" aria-labelledby="tab-procedure">
 
@@ -775,7 +657,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         t.addEventListener('mouseenter',pos);t.addEventListener('focus',pos);
     });
-    calc();nernst();drawDepoStatic();
+    calc();nernst();
 });
 
 // ========== TABS ==========
@@ -786,8 +668,27 @@ function switchTab(n){
     document.getElementById('tab-'+n).classList.add('active');
     document.getElementById('tab-'+n).setAttribute('aria-selected','true');
     vis.add(n);updProg();
+    if(n==='sim'){
+        const c=document.getElementById('depoCanvas');
+        c._init=false;
+        if(!dRun)drawDepoStatic();
+    }
     window.scrollTo({top:document.querySelector('.tabs').offsetTop-80,behavior:'smooth'});
 }
+
+// ========== RESPONSIVE CANVAS RESIZE ==========
+let _resizeTimer;
+window.addEventListener('resize',function(){
+    clearTimeout(_resizeTimer);
+    _resizeTimer=setTimeout(function(){
+        const c=document.getElementById('depoCanvas');
+        if(!c)return;
+        const simPanel=document.getElementById('sim');
+        if(!simPanel||!simPanel.classList.contains('active'))return;
+        c._init=false;
+        if(!dRun)drawDepoStatic();
+    },150);
+});
 
 // ========== PROGRESS ==========
 function updProg(){
@@ -835,11 +736,12 @@ function nernst(){
 function getCanvasCtx(){
     const c=document.getElementById('depoCanvas');
     const dpr=window.devicePixelRatio||1;
-    if(!c._init){
-        const r=c.getBoundingClientRect();
-        c.width=r.width*dpr;c.height=420*dpr;
-        c.getContext('2d').scale(dpr,dpr);
-        c._w=r.width;c._h=420;c._init=true;
+    const r=c.getBoundingClientRect();
+    const rw=r.width||c.parentElement.clientWidth||680;
+    if(!c._init||Math.abs(c._w-rw)>2){
+        c.width=rw*dpr;c.height=420*dpr;
+        c.getContext('2d').setTransform(dpr,0,0,dpr,0,0);
+        c._w=rw;c._h=420;c._init=true;
     }
     return{c:c,ctx:c.getContext('2d'),w:c._w,h:c._h};
 }
